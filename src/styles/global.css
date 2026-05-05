@@ -1,17 +1,23 @@
 :root {
-	--bg: #f6f9ff;
-	--panel: #ffffff;
-	--panel-strong: #edf5ff;
-	--text: #172033;
-	--muted: #5f6f86;
-	--subtle: #8795aa;
-	--line: #d7e5f4;
-	--accent: #2f74d0;
-	--accent-strong: #ff9f43;
-	--warning: #f47a2a;
+	--palette-1: #2f74d0;
+	--palette-2: #ff9f43;
+	--palette-3: #f6f9ff;
+	--palette-4: #ffffff;
+	--palette-5: #172033;
+	--palette-6: #5f6f86;
+	--bg: var(--palette-3);
+	--panel: var(--palette-4);
+	--panel-strong: color-mix(in srgb, var(--palette-1) 9%, var(--palette-4));
+	--text: var(--palette-5);
+	--muted: var(--palette-6);
+	--subtle: color-mix(in srgb, var(--palette-6) 70%, var(--palette-4));
+	--line: color-mix(in srgb, var(--palette-1) 18%, var(--palette-4));
+	--accent: var(--palette-1);
+	--accent-strong: var(--palette-2);
+	--warning: color-mix(in srgb, var(--palette-2) 76%, var(--palette-5));
 	--max-width: 1080px;
 	--radius: 8px;
-	--shadow: 0 18px 45px rgba(47, 116, 208, 0.14);
+	--shadow: 0 18px 45px color-mix(in srgb, var(--accent) 14%, transparent);
 	color-scheme: light;
 	font-family:
 		Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -30,10 +36,10 @@ body {
 	margin: 0;
 	min-width: 320px;
 	background:
-		linear-gradient(rgba(47, 116, 208, 0.055) 1px, transparent 1px),
-		linear-gradient(90deg, rgba(47, 116, 208, 0.045) 1px, transparent 1px),
-		radial-gradient(circle at 12% 4%, rgba(255, 159, 67, 0.2), transparent 28rem),
-		radial-gradient(circle at 86% 12%, rgba(47, 116, 208, 0.13), transparent 32rem),
+		linear-gradient(color-mix(in srgb, var(--accent) 5.5%, transparent) 1px, transparent 1px),
+		linear-gradient(90deg, color-mix(in srgb, var(--accent) 4.5%, transparent) 1px, transparent 1px),
+		radial-gradient(circle at 12% 4%, color-mix(in srgb, var(--accent-strong) 20%, transparent), transparent 28rem),
+		radial-gradient(circle at 86% 12%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 32rem),
 		var(--bg);
 	background-size: 36px 36px, 36px 36px, auto, auto, auto;
 	color: var(--text);
@@ -47,8 +53,8 @@ body::before {
 	inset: 0;
 	pointer-events: none;
 	background:
-		linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(246, 249, 255, 0.88) 78%),
-		linear-gradient(135deg, rgba(255, 255, 255, 0.56), transparent 46%);
+		linear-gradient(180deg, color-mix(in srgb, var(--panel) 42%, transparent), color-mix(in srgb, var(--bg) 88%, transparent) 78%),
+		linear-gradient(135deg, color-mix(in srgb, var(--panel) 56%, transparent), transparent 46%);
 }
 
 a {
@@ -72,8 +78,8 @@ main {
 	position: sticky;
 	top: 0;
 	z-index: 10;
-	border-bottom: 1px solid rgba(215, 229, 244, 0.92);
-	background: rgba(255, 255, 255, 0.82);
+	border-bottom: 1px solid color-mix(in srgb, var(--line) 92%, transparent);
+	background: color-mix(in srgb, var(--panel) 82%, transparent);
 	backdrop-filter: blur(14px);
 }
 
@@ -106,10 +112,10 @@ main {
 	width: 38px;
 	height: 38px;
 	place-items: center;
-	border: 1px solid rgba(47, 116, 208, 0.26);
+	border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
 	border-radius: 6px;
-	background: linear-gradient(135deg, rgba(47, 116, 208, 0.1), rgba(255, 159, 67, 0.14));
-	color: #215fae;
+	background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 10%, transparent), color-mix(in srgb, var(--accent-strong) 14%, transparent));
+	color: color-mix(in srgb, var(--accent) 84%, var(--text));
 	font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 	font-size: 0.72rem;
 }
@@ -122,7 +128,7 @@ main {
 
 .nav-links a {
 	border: 1px solid transparent;
-	border-bottom-color: rgba(255, 159, 67, 0);
+	border-bottom-color: color-mix(in srgb, var(--accent-strong) 0%, transparent);
 	border-radius: 6px;
 	padding: 7px 11px;
 	color: var(--muted);
@@ -131,9 +137,9 @@ main {
 
 .nav-links a:hover,
 .nav-links a[aria-current="page"] {
-	border-color: rgba(47, 116, 208, 0.22);
-	border-bottom-color: rgba(244, 122, 42, 0.58);
-	background: rgba(237, 245, 255, 0.88);
+	border-color: color-mix(in srgb, var(--accent) 22%, transparent);
+	border-bottom-color: color-mix(in srgb, var(--warning) 58%, transparent);
+	background: color-mix(in srgb, var(--panel-strong) 88%, transparent);
 	color: var(--text);
 }
 
@@ -184,7 +190,7 @@ h1 {
 	border: 1px solid var(--line);
 	border-radius: var(--radius);
 	background:
-		linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(237, 245, 255, 0.92)),
+		linear-gradient(180deg, color-mix(in srgb, var(--panel) 96%, transparent), color-mix(in srgb, var(--panel-strong) 92%, transparent)),
 		var(--panel);
 	box-shadow: var(--shadow);
 	overflow: hidden;
@@ -195,7 +201,7 @@ h1 {
 	align-items: center;
 	gap: 7px;
 	border-bottom: 1px solid var(--line);
-	background: rgba(237, 245, 255, 0.74);
+	background: color-mix(in srgb, var(--panel-strong) 74%, transparent);
 	padding: 10px 12px;
 }
 
@@ -203,11 +209,11 @@ h1 {
 	width: 9px;
 	height: 9px;
 	border-radius: 50%;
-	background: rgba(135, 149, 170, 0.7);
+	background: color-mix(in srgb, var(--subtle) 70%, transparent);
 }
 
 .terminal-bar span:first-child {
-	background: #ffb6a1;
+	background: color-mix(in srgb, var(--accent-strong) 46%, var(--panel));
 }
 
 .terminal-bar span:nth-child(2) {
@@ -215,7 +221,7 @@ h1 {
 }
 
 .terminal-bar span:nth-child(3) {
-	background: #8fb8ff;
+	background: color-mix(in srgb, var(--accent) 48%, var(--panel));
 }
 
 .status-list {
@@ -228,7 +234,7 @@ h1 {
 	display: flex;
 	justify-content: space-between;
 	gap: 18px;
-	border-bottom: 1px solid rgba(47, 116, 208, 0.12);
+	border-bottom: 1px solid color-mix(in srgb, var(--accent) 12%, transparent);
 	padding-bottom: 10px;
 	font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 	font-size: 0.86rem;
@@ -293,8 +299,8 @@ h3 {
 .contact-card {
 	border: 1px solid var(--line);
 	border-radius: var(--radius);
-	background: rgba(255, 255, 255, 0.88);
-	box-shadow: 0 12px 28px rgba(47, 116, 208, 0.08);
+	background: color-mix(in srgb, var(--panel) 88%, transparent);
+	box-shadow: 0 12px 28px color-mix(in srgb, var(--accent) 8%, transparent);
 }
 
 .card,
@@ -326,13 +332,13 @@ h3 {
 .focus-band {
 	display: grid;
 	gap: 16px;
-	border: 1px solid rgba(47, 116, 208, 0.18);
+	border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
 	border-left: 4px solid var(--accent-strong);
 	border-radius: var(--radius);
 	background:
-		linear-gradient(135deg, rgba(237, 245, 255, 0.98), rgba(255, 255, 255, 0.9)),
-		linear-gradient(90deg, rgba(255, 159, 67, 0.12), transparent 42%);
-	box-shadow: 0 14px 32px rgba(47, 116, 208, 0.09);
+		linear-gradient(135deg, color-mix(in srgb, var(--panel-strong) 98%, transparent), color-mix(in srgb, var(--panel) 90%, transparent)),
+		linear-gradient(90deg, color-mix(in srgb, var(--accent-strong) 12%, transparent), transparent 42%);
+	box-shadow: 0 14px 32px color-mix(in srgb, var(--accent) 9%, transparent);
 	padding: 20px;
 }
 
@@ -379,7 +385,7 @@ h3 {
 	bottom: 8px;
 	left: 13px;
 	width: 2px;
-	background: linear-gradient(var(--accent), rgba(47, 116, 208, 0.08));
+	background: linear-gradient(var(--accent), color-mix(in srgb, var(--accent) 8%, transparent));
 }
 
 .timeline-item {
@@ -398,7 +404,7 @@ h3 {
 	border: 2px solid var(--accent);
 	border-radius: 50%;
 	background: var(--panel);
-	box-shadow: 0 0 0 4px rgba(255, 159, 67, 0.16);
+	box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-strong) 16%, transparent);
 }
 
 .timeline-date {
@@ -420,9 +426,9 @@ h3 {
 	border: 1px solid var(--line);
 	border-radius: var(--radius);
 	background:
-		linear-gradient(135deg, rgba(47, 116, 208, 0.08), transparent 54%),
-		linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(237, 245, 255, 0.82));
-	box-shadow: 0 12px 28px rgba(47, 116, 208, 0.08);
+		linear-gradient(135deg, color-mix(in srgb, var(--accent) 8%, transparent), transparent 54%),
+		linear-gradient(180deg, color-mix(in srgb, var(--panel) 94%, transparent), color-mix(in srgb, var(--panel-strong) 82%, transparent));
+	box-shadow: 0 12px 28px color-mix(in srgb, var(--accent) 8%, transparent);
 	padding: 18px;
 }
 
@@ -443,7 +449,7 @@ h3 {
 
 .contact-card a {
 	width: fit-content;
-	border-bottom: 1px solid rgba(244, 122, 42, 0.55);
+	border-bottom: 1px solid color-mix(in srgb, var(--warning) 55%, transparent);
 	color: var(--accent);
 	font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 	font-size: 0.92rem;
@@ -463,6 +469,64 @@ h3 {
 	gap: 6px;
 	padding: 24px 0;
 	font-size: 0.9rem;
+}
+
+.palette-picker {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.palette-swatch {
+	position: relative;
+	display: grid;
+	width: 30px;
+	height: 30px;
+	place-items: center;
+	border: 1px solid color-mix(in srgb, var(--line) 86%, transparent);
+	border-radius: 6px;
+	box-shadow: 0 6px 16px color-mix(in srgb, var(--accent) 9%, transparent);
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.palette-swatch input {
+	position: absolute;
+	inset: -4px;
+	width: calc(100% + 8px);
+	height: calc(100% + 8px);
+	border: 0;
+	padding: 0;
+	background: transparent;
+	cursor: pointer;
+}
+
+.palette-swatch span[aria-hidden="true"] {
+	position: relative;
+	z-index: 1;
+	border-radius: 3px;
+	background: color-mix(in srgb, var(--panel) 72%, transparent);
+	color: var(--text);
+	font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+	font-size: 0.58rem;
+	font-weight: 700;
+	line-height: 1;
+	padding: 2px;
+	pointer-events: none;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	clip: rect(0, 0, 0, 0);
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 @media (min-width: 700px) {

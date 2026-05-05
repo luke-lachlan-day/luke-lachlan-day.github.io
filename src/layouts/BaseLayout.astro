@@ -17,6 +17,15 @@ const navItems = [
 	{ href: '/contact/', label: 'Contact' },
 ];
 
+const paletteItems = [
+	{ property: '--palette-1', label: 'Primary colour', shortLabel: '1°', value: '#2f74d0' },
+	{ property: '--palette-2', label: 'Secondary colour', shortLabel: '2°', value: '#ff9f43' },
+	{ property: '--palette-3', label: '3° colour', shortLabel: '3°', value: '#f6f9ff' },
+	{ property: '--palette-4', label: '4° colour', shortLabel: '4°', value: '#ffffff' },
+	{ property: '--palette-5', label: '5° colour', shortLabel: '5°', value: '#172033' },
+	{ property: '--palette-6', label: '6° colour', shortLabel: '6°', value: '#5f6f86' },
+];
+
 const currentPath = Astro.url.pathname;
 ---
 
@@ -64,8 +73,77 @@ const currentPath = Astro.url.pathname;
 		<footer class="site-footer">
 			<div class="footer-inner">
 				<p>&copy; {new Date().getFullYear()} Luke Lachlan Day.</p>
-				<p>Built with Astro, semantic HTML, and plain CSS.</p>
+				<div class="palette-picker" aria-label="Editable colour palette">
+					{
+						paletteItems.map((item) => (
+							<label class="palette-swatch" title={item.label}>
+								<span class="sr-only">{item.label}</span>
+								<input
+									type="color"
+									value={item.value}
+									data-palette-property={item.property}
+									aria-label={item.label}
+								/>
+								<span aria-hidden="true">{item.shortLabel}</span>
+							</label>
+						))
+					}
+				</div>
 			</div>
 		</footer>
+
+		<script is:inline>
+			(() => {
+				const storageKey = 'luke-lachlan-day.palette';
+				const root = document.documentElement;
+				const inputs = [...document.querySelectorAll('[data-palette-property]')];
+				const hexColour = /^#[0-9a-f]{6}$/i;
+
+				const applyPalette = (palette) => {
+					Object.entries(palette).forEach(([property, value]) => {
+						if (property.startsWith('--palette-') && hexColour.test(value)) {
+							root.style.setProperty(property, value);
+						}
+					});
+				};
+
+				const readSavedPalette = () => {
+					try {
+						const saved = localStorage.getItem(storageKey);
+						const palette = saved ? JSON.parse(saved) : {};
+						return palette && typeof palette === 'object' && !Array.isArray(palette)
+							? palette
+							: {};
+					} catch {
+						return {};
+					}
+				};
+
+				const currentPalette = readSavedPalette();
+				applyPalette(currentPalette);
+
+				inputs.forEach((input) => {
+					const property = input.dataset.paletteProperty;
+					const computedValue = getComputedStyle(root).getPropertyValue(property).trim();
+					input.value = hexColour.test(currentPalette[property])
+						? currentPalette[property]
+						: computedValue;
+
+					input.addEventListener('input', () => {
+						if (!hexColour.test(input.value)) {
+							return;
+						}
+
+						currentPalette[property] = input.value;
+						root.style.setProperty(property, input.value);
+						try {
+							localStorage.setItem(storageKey, JSON.stringify(currentPalette));
+						} catch {
+							// Keep the live palette change even if browser storage is unavailable.
+						}
+					});
+				});
+			})();
+		</script>
 	</body>
 </html>
