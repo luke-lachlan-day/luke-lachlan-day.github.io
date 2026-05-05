@@ -9,11 +9,23 @@ const { timeline, projects } = profile;
 	title={timeline.title}
 	description={timeline.description}
 >
-	<section class="hero" aria-labelledby="timeline-title">
-		<div class="hero-content">
-			<p class="eyebrow">{timeline.hero.eyebrow}</p>
-			<h1 id="timeline-title">{timeline.hero.title}</h1>
-			<p class="page-lead">{timeline.hero.lead}</p>
+	<section class="section" aria-labelledby="projects-title">
+		<div class="section-header">
+			<p class="eyebrow">{projects.eyebrow}</p>
+			<h2 id="projects-title">{projects.title}</h2>
+			<p>{projects.copy}</p>
+		</div>
+
+		<div class="project-grid">
+			{
+				projects.items.map((project, index) => (
+					<article class="project-card">
+						<span class="meta-label">slot {String(index + 1).padStart(2, '0')}</span>
+						<h3>{project.title}</h3>
+						<p>{project.copy}</p>
+					</article>
+				))
+			}
 		</div>
 	</section>
 
@@ -30,26 +42,6 @@ const { timeline, projects } = profile;
 						<p class="timeline-date">{item.date}</p>
 						<h3 class="timeline-title">{item.title}</h3>
 						<p class="timeline-copy">{item.copy}</p>
-					</article>
-				))
-			}
-		</div>
-	</section>
-
-	<section class="section" aria-labelledby="projects-title">
-		<div class="section-header">
-			<p class="eyebrow">{projects.eyebrow}</p>
-			<h2 id="projects-title">{projects.title}</h2>
-			<p>{projects.copy}</p>
-		</div>
-
-		<div class="project-grid">
-			{
-				projects.items.map((project, index) => (
-					<article class="project-card">
-						<span class="meta-label">slot {String(index + 1).padStart(2, '0')}</span>
-						<h3>{project.title}</h3>
-						<p>{project.copy}</p>
 					</article>
 				))
 			}
