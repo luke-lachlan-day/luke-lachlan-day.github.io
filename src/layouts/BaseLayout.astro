@@ -1,0 +1,71 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Luke Lachlan Day',
+	description = 'Personal website for Luke Lachlan Day.',
+} = Astro.props;
+
+const navItems = [
+	{ href: '/', label: 'Home' },
+	{ href: '/timeline/', label: 'Timeline' },
+	{ href: '/contact/', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<header class="site-header">
+			<nav class="site-nav" aria-label="Primary navigation">
+				<a class="brand" href="/" aria-label="Luke Lachlan Day home">
+					<span class="brand-mark" aria-hidden="true">LLD</span>
+					<span>Luke Lachlan Day</span>
+				</a>
+				<div class="nav-links">
+					{
+						navItems.map((item) => {
+							const isActive =
+								item.href === '/'
+									? currentPath === '/'
+									: currentPath.startsWith(item.href);
+
+							return (
+								<a href={item.href} aria-current={isActive ? 'page' : undefined}>
+									{item.label}
+								</a>
+							);
+						})
+					}
+				</div>
+			</nav>
+		</header>
+
+		<main>
+			<slot />
+		</main>
+
+		<footer class="site-footer">
+			<div class="footer-inner">
+				<p>&copy; {new Date().getFullYear()} Luke Lachlan Day.</p>
+				<p>Built with Astro, semantic HTML, and plain CSS.</p>
+			</div>
+		</footer>
+	</body>
+</html>

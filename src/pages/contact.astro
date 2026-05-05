@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile } from '../data/profile';
+
+const { contact } = profile;
+---
+
+<BaseLayout
+	title={contact.title}
+	description={contact.description}
+>
+	<section class="hero" aria-labelledby="contact-title">
+		<div class="hero-content">
+			<p class="eyebrow">{contact.hero.eyebrow}</p>
+			<h1 id="contact-title">{contact.hero.title}</h1>
+			<p class="page-lead">{contact.hero.lead}</p>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="contact-links-title">
+		<div class="section-header">
+			<p class="eyebrow">{contact.channels.eyebrow}</p>
+			<h2 id="contact-links-title">{contact.channels.title}</h2>
+		</div>
+
+		<div class="contact-grid">
+			{
+				contact.links.map((link) => (
+					<article class="contact-card">
+						<p class="meta-label">{link.label}</p>
+						<h3>{link.display}</h3>
+						<p>{link.copy}</p>
+						<a href={link.href}>{link.display}</a>
+					</article>
+				))
+			}
+		</div>
+	</section>
+</BaseLayout>

@@ -1,17 +1,68 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile } from '../data/profile';
 
+const { home } = profile;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+	title={home.title}
+	description={home.description}
+>
+	<section class="hero" aria-labelledby="home-title">
+		<div class="hero-content">
+			<p class="eyebrow">{home.eyebrow}</p>
+			<h1 id="home-title">{profile.name}</h1>
+			<p class="hero-role">{home.role}</p>
+			<p class="hero-intro">{home.summary}</p>
+		</div>
+
+		<aside class="hero-panel" aria-label="Profile status">
+			<div class="terminal-bar" aria-hidden="true">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<div class="status-list">
+				{
+					home.statusRows.map((row) => (
+						<div class="status-row">
+							<span>{row.label}</span>
+							<span>{row.value}</span>
+						</div>
+					))
+				}
+			</div>
+		</aside>
+	</section>
+
+	<section class="section" aria-labelledby="highlights-title">
+		<div class="section-header">
+			<p class="eyebrow">{home.highlights.eyebrow}</p>
+			<h2 id="highlights-title">{home.highlights.title}</h2>
+		</div>
+		<div class="compact-grid">
+			{
+				home.highlights.items.map((highlight) => (
+					<article class="card">
+						{highlight.kicker && <p class="card-kicker">{highlight.kicker}</p>}
+						<h3>{highlight.title}</h3>
+						<p>{highlight.copy}</p>
+					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="focus-title">
+		<div class="focus-band">
+			<div>
+				<p class="eyebrow">{home.currentFocus.eyebrow}</p>
+				<h2 id="focus-title">{home.currentFocus.title}</h2>
+			</div>
+			<ul class="focus-list">
+				{home.currentFocus.items.map((item) => <li>{item}</li>)}
+			</ul>
+		</div>
+	</section>
+</BaseLayout>
