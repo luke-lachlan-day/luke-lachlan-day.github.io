@@ -199,16 +199,17 @@ main {
 }
 
 .brand img {
-	width: 40px;
-	height: 40px;
-	border: 2px solid color-mix(in srgb, var(--surface) 86%, #ffffff);
+	width: 48px;
+	height: 48px;
+	border: 0px solid transparent;
 	border-radius: 999px;
-	background: var(--surface);
+	background: transparent;
 	filter: var(--image-filter);
 	image-rendering: pixelated;
-	object-fit: contain;
-	padding: 2px;
-	box-shadow: var(--shadow-soft);
+	object-fit: cover;
+	object-position: 0% 100%;
+	padding: 0px;
+	/*box-shadow: var(--shadow-soft);*/
 }
 
 .nav-cluster,

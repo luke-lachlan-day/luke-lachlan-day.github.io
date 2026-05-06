@@ -112,7 +112,7 @@ export const profile = {
 			id: 'solo',
 			name: 'Solo',
 			icon: {
-				src: '/assets/company-solo.webp',
+				src: '/assets/company-solo-back.webp',
 				alt: 'Pixel art solo developer avatar icon.',
 			},
 		},
