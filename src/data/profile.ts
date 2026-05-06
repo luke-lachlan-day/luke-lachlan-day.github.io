@@ -57,11 +57,11 @@ export const profile = {
 			'I build systems, tools, and playful games with a focus on iteration, feel, and memorable player experiences.',
 		heroImages: {
 			light: {
-				src: '/assets/hero-light.webp',
+				src: '/assets/hero-light.png',
 				alt: 'Pixel art traveler looking across a bright mountain valley from a grassy cliff.',
 			},
 			dark: {
-				src: '/assets/hero-dark.webp',
+				src: '/assets/hero-dark.png',
 				alt: 'Pixel art traveler looking across a moonlit mountain valley from a grassy cliff.',
 			},
 		},

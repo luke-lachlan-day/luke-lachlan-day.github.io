@@ -22,8 +22,6 @@
 	--shadow: 0 18px 42px rgba(52, 42, 28, 0.1);
 	--shadow-soft: 0 10px 28px rgba(52, 42, 28, 0.08);
 	--button-text: #ffffff;
-	--hero-blend: rgba(255, 248, 236, 0.98);
-	--hero-veiling: rgba(255, 248, 236, 0.72);
 	--image-filter: saturate(1.08) contrast(1.04);
 	--toggle-accent: #eda21a;
 	--theme-transition: 360ms ease;
@@ -49,8 +47,6 @@
 	--border-strong: #cdbba7;
 	--shadow: 0 18px 42px rgba(52, 42, 28, 0.1);
 	--shadow-soft: 0 10px 28px rgba(52, 42, 28, 0.08);
-	--hero-blend: rgba(255, 248, 236, 0.98);
-	--hero-veiling: rgba(255, 248, 236, 0.72);
 	--image-filter: saturate(1.08) contrast(1.04);
 	--toggle-accent: #eda21a;
 	color-scheme: light;
@@ -74,8 +70,6 @@
 	--border-strong: #405474;
 	--shadow: 0 20px 50px rgba(0, 0, 0, 0.34);
 	--shadow-soft: 0 12px 34px rgba(0, 0, 0, 0.28);
-	--hero-blend: rgba(6, 17, 31, 0.98);
-	--hero-veiling: rgba(6, 17, 31, 0.76);
 	--image-filter: saturate(1.14) contrast(1.12) brightness(0.88);
 	--toggle-accent: #a885ff;
 	color-scheme: dark;
@@ -135,7 +129,6 @@ main {
 .theme-icon,
 .badge,
 .hero-role,
-.hero-art::before,
 .button,
 .button::before,
 .hero-meta span::before,
@@ -629,19 +622,6 @@ h3 {
 	isolation: isolate;
 }
 
-.hero-art::before {
-	content: "";
-	position: absolute;
-	inset: -2px;
-	z-index: 3;
-	pointer-events: none;
-	background:
-		linear-gradient(180deg, var(--bg) 0, color-mix(in srgb, var(--hero-blend) 46%, transparent) 6%, transparent 16%),
-		radial-gradient(ellipse 38% 44% at 25% 53%, var(--hero-blend) 0 18%, color-mix(in srgb, var(--hero-blend) 78%, transparent) 38%, transparent 68%),
-		linear-gradient(90deg, var(--bg) 0 12%, var(--hero-veiling) 26%, transparent 47%),
-		linear-gradient(180deg, transparent 68%, color-mix(in srgb, var(--hero-blend) 18%, transparent) 83%, var(--bg) 100%);
-}
-
 .theme-asset {
 	position: absolute;
 	inset: 0;
@@ -652,6 +632,7 @@ h3 {
 	filter: var(--image-filter);
 	image-rendering: pixelated;
 	opacity: 0;
+	transition: opacity var(--theme-transition), filter var(--theme-transition);
 }
 
 :root[data-theme="light"] .theme-asset-dark,
