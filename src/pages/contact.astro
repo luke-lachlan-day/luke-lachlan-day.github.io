@@ -9,8 +9,14 @@ const { contact } = profile;
 	title={contact.title}
 	description={contact.description}
 >
+	<section class="page-hero" aria-labelledby="contact-title">
+		<p class="eyebrow badge">{contact.hero.eyebrow}</p>
+		<h1 id="contact-title">{contact.hero.title}</h1>
+		<p>{contact.hero.lead}</p>
+	</section>
+
 	<section class="section" aria-labelledby="contact-links-title">
-		<div class="section-header">
+		<div class="section-heading">
 			<p class="eyebrow">{contact.channels.eyebrow}</p>
 			<h2 id="contact-links-title">{contact.channels.title}</h2>
 		</div>

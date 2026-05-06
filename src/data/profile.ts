@@ -1,82 +1,170 @@
-type Link = {
+export type Link = {
 	label: string;
 	href: string;
 	display: string;
 	copy: string;
 };
 
-type Card = {
-	kicker?: string;
+export type Card = {
+	icon: string;
 	title: string;
 	copy: string;
 };
 
-type StatusRow = {
-	label: string;
-	value: string;
-};
-
-type TimelineItem = {
+export type TimelineItem = {
 	date: string;
 	title: string;
 	copy: string;
 };
 
-type Project = {
-	title: string;
-	copy: string;
-};
-
-type HeroContent = {
+export type HeroContent = {
 	eyebrow: string;
 	title: string;
 	lead: string;
 };
 
+export type ImageAsset = {
+	src: string;
+	alt: string;
+};
+
+export type CompanyId = 'daytime-devs' | 'catalyst-games' | 'solo';
+
+export type Company = {
+	id: CompanyId;
+	name: string;
+	icon: ImageAsset;
+};
+
+export type Project = {
+	id: string;
+	companyId: Company['id'];
+	product: string;
+	pictures: ImageAsset[];
+	description: string;
+	tools: string[];
+};
+
 export const profile = {
 	name: 'Luke Lachlan Day',
+	location: 'Adelaide, Australia',
 	home: {
 		title: 'Luke Lachlan Day | Home',
-		description: 'Home and about page for Luke Lachlan Day.',
-		eyebrow: 'Home / About',
-		role: 'Game developer and technical creative placeholder',
+		description: 'Portfolio home page for Luke Lachlan Day, Unity and C# game developer.',
+		eyebrow: 'Indie game developer',
+		role: 'Unity / C# Game Developer',
 		summary:
-			'A compact personal site for work, experiments, and project notes. This first version keeps the content light while establishing a clear structure for a portfolio and development log.',
-		statusRows: [
-			{ label: 'status', value: 'building' },
-			{ label: 'stack', value: 'Astro / HTML / CSS' },
-			{ label: 'focus', value: 'interactive systems' },
-		] satisfies StatusRow[],
+			'I build systems, tools, and playful games with a focus on iteration, feel, and memorable player experiences.',
+		heroImages: {
+			light: {
+				src: '/assets/hero-light.webp',
+				alt: 'Pixel art developer and small robot looking across a bright mountain valley.',
+			},
+			dark: {
+				src: '/assets/hero-dark.webp',
+				alt: 'Pixel art developer and small robot looking across a moonlit mountain valley.',
+			},
+		},
+		actions: [
+			{ label: 'View Projects', href: '/timeline/' },
+			{ label: 'Read Devlog', href: '/timeline/' },
+		],
 		highlights: {
-			eyebrow: 'Highlights',
-			title: 'A quick snapshot',
+			eyebrow: 'Who I Am',
 			items: [
 				{
-					kicker: '01',
-					title: 'Technical craft',
-					copy: 'Interested in readable systems, practical tools, and code that supports fast iteration.',
+					icon: '</>',
+					title: 'Unity & C#',
+					copy: 'Deep experience building systems, tools, and gameplay with clean, maintainable code and scalable architecture.',
 				},
 				{
-					kicker: '02',
-					title: 'Game feel',
-					copy: 'Exploring mechanics, feedback loops, and small details that make interactive work feel responsive.',
+					icon: 'pad',
+					title: 'Gameplay-Focused',
+					copy: 'I love tight systems, juicy interactions, and mechanics that feel great to play.',
 				},
 				{
-					kicker: '03',
-					title: 'Project notes',
-					copy: 'A place for current experiments, timeline entries, and links as the site grows.',
+					icon: 'heart',
+					title: 'Indie Mindset',
+					copy: 'Small teams, big ideas. Ship often, learn always, and make games that matter.',
 				},
 			] satisfies Card[],
 		},
-		currentFocus: {
-			eyebrow: 'Current focus',
-			title: 'Building a foundation',
-			items: [
-				'Shape the site into a clean personal portfolio with room for detail.',
-				'Add real project summaries, screenshots, and repository links over time.',
-				'Keep the first version static, fast, and easy to maintain.',
-			],
+		featuredProjectIds: ['petes-place', 'coop-climbing', 'awbw-opening-analyzer'],
+	},
+	companies: [
+		{
+			id: 'daytime-devs',
+			name: 'Daytime Devs',
+			icon: {
+				src: '/assets/company-daytime-devs.webp',
+				alt: 'Pixel art sun and code mark for Daytime Devs.',
+			},
 		},
+		{
+			id: 'catalyst-games',
+			name: 'Catalyst Games',
+			icon: {
+				src: '/assets/company-catalyst-games.webp',
+				alt: 'Pixel art purple spark and game controller mark for Catalyst Games.',
+			},
+		},
+		{
+			id: 'solo',
+			name: 'Solo',
+			icon: {
+				src: '/assets/company-solo.webp',
+				alt: 'Pixel art solo developer avatar icon.',
+			},
+		},
+	] satisfies Company[],
+	projects: {
+		eyebrow: 'Featured Projects',
+		title: 'Projects and prototypes',
+		copy: 'A data-backed collection of games, tools, and experiments. Add or edit entries here and the cards update across the site.',
+		items: [
+			{
+				id: 'petes-place',
+				companyId: 'solo',
+				product: "Pete's Place",
+				pictures: [
+					{
+						src: '/assets/project-petes-place.webp',
+						alt: "Pixel art cozy forest shop scene for Pete's Place.",
+					},
+				],
+				description:
+					'A cozy life sim about running a little shop, making friends, and helping a town full of quirky characters.',
+				tools: ['Life Sim', 'Cozy', 'Management'],
+			},
+			{
+				id: 'coop-climbing',
+				companyId: 'catalyst-games',
+				product: 'Co-op Climbing Prototype',
+				pictures: [
+					{
+						src: '/assets/project-climbing.webp',
+						alt: 'Pixel art co-op climbers roped together on a sunny cliff face.',
+					},
+				],
+				description:
+					'A co-op climbing game built around communication, trust, and smart movement.',
+				tools: ['Prototype', 'Co-op', 'Physics'],
+			},
+			{
+				id: 'awbw-opening-analyzer',
+				companyId: 'daytime-devs',
+				product: 'AWBW Opening Analyzer',
+				pictures: [
+					{
+						src: '/assets/project-awbw.webp',
+						alt: 'Pixel art turn-based strategy grid with blue and red units.',
+					},
+				],
+				description:
+					'Analyze Advance Wars By Web openings with win rates, data views, and strategy insights.',
+				tools: ['Tool', 'Data', 'Strategy'],
+			},
+		] satisfies Project[],
 	},
 	timeline: {
 		title: 'Timeline | Luke Lachlan Day',
@@ -84,7 +172,7 @@ export const profile = {
 		hero: {
 			eyebrow: 'Timeline',
 			title: 'Work in progress, logged clearly.',
-			lead: 'A lightweight timeline for past work, current projects, and experiments. Entries are placeholders for now and can be replaced with real milestones.',
+			lead: 'A lightweight chronology for past work, current projects, and experiments.',
 		} satisfies HeroContent,
 		history: {
 			eyebrow: 'History',
@@ -93,18 +181,18 @@ export const profile = {
 		items: [
 			{
 				date: 'Now',
-				title: 'Personal site foundation',
-				copy: 'Setting up a static Astro site to collect project history, current work, and contact links.',
+				title: 'Pixel portfolio refresh',
+				copy: 'Turning the site into a themed portfolio with data-backed projects, companies, and visual assets.',
 			},
 			{
 				date: 'Recent',
 				title: 'Prototype and systems work',
-				copy: 'Placeholder entry for gameplay prototypes, technical experiments, and tooling improvements.',
+				copy: 'Gameplay prototypes, technical experiments, and tooling improvements across Unity and web projects.',
 			},
 			{
 				date: 'Past',
 				title: 'Learning and shipped pieces',
-				copy: 'Placeholder entry for previous projects, coursework, collaboration, or production milestones.',
+				copy: 'Previous projects, collaboration, production milestones, and practical development notes.',
 			},
 			{
 				date: 'Archive',
@@ -113,44 +201,17 @@ export const profile = {
 			},
 		] satisfies TimelineItem[],
 	},
-	projects: {
-		eyebrow: 'Current Projects',
-		title: 'Active placeholders',
-		copy: 'Five compact cards for project summaries, prototypes, or public build notes.',
-		items: [
-			{
-				title: 'Project Slot 01',
-				copy: 'Short project description placeholder with room for status, links, and notes.',
-			},
-			{
-				title: 'Project Slot 02',
-				copy: 'Short project description placeholder with room for status, links, and notes.',
-			},
-			{
-				title: 'Project Slot 03',
-				copy: 'Short project description placeholder with room for status, links, and notes.',
-			},
-			{
-				title: 'Project Slot 04',
-				copy: 'Short project description placeholder with room for status, links, and notes.',
-			},
-			{
-				title: 'Project Slot 05',
-				copy: 'Short project description placeholder with room for status, links, and notes.',
-			},
-		] satisfies Project[],
-	},
 	contact: {
 		title: 'Contact | Luke Lachlan Day',
-		description: 'Contact links and social placeholders for Luke Lachlan Day.',
+		description: 'Contact links for Luke Lachlan Day.',
 		hero: {
 			eyebrow: 'Contact',
 			title: 'Links and ways to connect.',
-			lead: 'Placeholder contact details for the first static version. Replace each link with the preferred public destination when ready.',
+			lead: 'Reach out about projects, prototypes, tools, or game-development work.',
 		} satisfies HeroContent,
 		channels: {
 			eyebrow: 'Channels',
-			title: 'Contact placeholders',
+			title: 'Contact',
 		},
 		links: [
 			{
@@ -178,5 +239,9 @@ export const profile = {
 				copy: 'Space for a project hub, social profile, or community link.',
 			},
 		] satisfies Link[],
+	},
+	footer: {
+		message: 'Thanks for stopping by!',
+		linkLabels: ['Email', 'GitHub', 'LinkedIn', 'Projects / Social'],
 	},
 } as const;
