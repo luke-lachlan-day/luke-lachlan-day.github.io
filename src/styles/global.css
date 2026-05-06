@@ -209,7 +209,6 @@ main {
 	object-fit: cover;
 	object-position: 0% 100%;
 	padding: 0px;
-	/*box-shadow: var(--shadow-soft);*/
 }
 
 .nav-cluster,
