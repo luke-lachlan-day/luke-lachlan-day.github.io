@@ -4,8 +4,6 @@
 
 This file is the repo-level source of truth for future agent work on this Astro portfolio site. Follow it before making code, content, asset, styling, or workflow changes. Use justified exceptions only when the surrounding code clearly requires them, and explain the exception in your handoff.
 
-Do not keep a duplicate `Agents.md`; `AGENTS.md` is the canonical filename.
-
 ## Project Shape
 
 - Astro 6 site.
@@ -21,7 +19,7 @@ Do not keep a duplicate `Agents.md`; `AGENTS.md` is the canonical filename.
 - `npm run build` builds the site and is required before UI or content changes are considered shippable.
 - `npm run preview` previews the production build.
 
-Run `npm run build` as the baseline validation step for implementation work governed by this file. For visual or UI changes, also review the result in a browser at mobile and desktop widths.
+Run `npm run build` as the baseline validation step for implementation work governed by this file. For visual or UI changes, also review the result in a browser at phone, tablet, and desktop/PC widths.
 
 ## Engineering Standards
 
@@ -31,7 +29,7 @@ Run `npm run build` as the baseline validation step for implementation work gove
 - Route new colors through the existing CSS variable palette in `:root`, `:root[data-theme="light"]`, and `:root[data-theme="dark"]`; both themes must remain intentional.
 - Prefer modular, reusable Astro components when markup repeats or represents a reusable concept such as project cards, contact cards, page heroes, or section headings.
 - Preserve the current visual direction: pixel-art assets, playful portfolio styling, responsive layouts, light/dark theme support, and consistent card, button, and section treatment.
-- Treat accessibility and shipping quality as mandatory: semantic HTML, useful alt text, keyboard-operable controls, no broken links or placeholders in shipped content unless explicitly intentional, responsive layouts from mobile to desktop, and no text overflow or incoherent overlap.
+- Treat accessibility and shipping quality as mandatory: semantic HTML, useful alt text, keyboard-operable controls, no broken links or placeholders in shipped content unless explicitly intentional, responsive/adaptive layouts that display well on phone, tablet, and desktop/PC screens, and no text overflow or incoherent overlap.
 
 ## ImageMagick
 
