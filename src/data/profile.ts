@@ -58,11 +58,11 @@ export const profile = {
 		heroImages: {
 			light: {
 				src: '/assets/hero-light.webp',
-				alt: 'Pixel art developer and small robot looking across a bright mountain valley.',
+				alt: 'Pixel art traveler looking across a bright mountain valley from a grassy cliff.',
 			},
 			dark: {
 				src: '/assets/hero-dark.webp',
-				alt: 'Pixel art developer and small robot looking across a moonlit mountain valley.',
+				alt: 'Pixel art traveler looking across a moonlit mountain valley from a grassy cliff.',
 			},
 		},
 		actions: [
