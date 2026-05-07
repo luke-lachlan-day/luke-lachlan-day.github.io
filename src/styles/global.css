@@ -464,6 +464,10 @@ h3 {
 	display: block;
 }
 
+.hero-intro-line + .hero-intro-line {
+	margin-top: 0.35rem;
+}
+
 .hero-actions {
 	display: flex;
 	flex-wrap: nowrap;
