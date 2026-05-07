@@ -600,10 +600,11 @@ h3 {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
-	object-position: center right;
+	object-position: 47% center;
 	filter: var(--image-filter);
 	image-rendering: pixelated;
 	opacity: 0;
+	transform: translateX(-2%);
 	transition: opacity var(--theme-transition), filter var(--theme-transition);
 }
 
@@ -890,6 +891,51 @@ h3 {
 	}
 }
 
+@media (min-width: 900px) and (max-width: 1040px) {
+	.hero {
+		grid-template-columns: 1fr;
+		min-height: 590px;
+		overflow: hidden;
+		padding: 34px 0 42px;
+	}
+
+	.hero::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+		background:
+			linear-gradient(
+				90deg,
+				var(--bg) 0%,
+				color-mix(in srgb, var(--bg) 90%, transparent) 44%,
+				color-mix(in srgb, var(--bg) 54%, transparent) 68%,
+				transparent 100%
+			);
+		pointer-events: none;
+	}
+
+	.hero-content {
+		max-width: 620px;
+	}
+
+	.hero-art {
+		position: absolute;
+		top: 50%;
+		right: -18px;
+		z-index: 1;
+		width: min(650px, 70vw);
+		height: min(650px, 70vw);
+		min-height: 0;
+		margin: 0;
+		transform: translate(-4%, -50%);
+	}
+
+	.theme-asset {
+		object-position: 46% center;
+	}
+}
+
 @media (max-width: 899px) {
 	.site-nav {
 		align-items: flex-start;
@@ -905,7 +951,7 @@ h3 {
 
 	.hero {
 		grid-template-columns: 1fr;
-		min-height: 610px;
+		min-height: 590px;
 		overflow: hidden;
 		padding: 34px 0 42px;
 	}
@@ -919,8 +965,8 @@ h3 {
 			linear-gradient(
 				90deg,
 				var(--bg) 0%,
-				color-mix(in srgb, var(--bg) 96%, transparent) 58%,
-				color-mix(in srgb, var(--bg) 76%, transparent) 78%,
+				color-mix(in srgb, var(--bg) 90%, transparent) 44%,
+				color-mix(in srgb, var(--bg) 54%, transparent) 68%,
 				transparent 100%
 			);
 		pointer-events: none;
@@ -933,17 +979,17 @@ h3 {
 	.hero-art {
 		position: absolute;
 		top: 50%;
-		right: -74px;
+		right: -18px;
 		z-index: 1;
-		width: min(760px, 82vw);
-		height: min(540px, 64vw);
+		width: min(650px, 70vw);
+		height: min(650px, 70vw);
 		min-height: 0;
 		margin: 0;
-		transform: translateY(-50%);
+		transform: translate(-4%, -50%);
 	}
 
 	.theme-asset {
-		object-position: center right;
+		object-position: 46% center;
 	}
 
 	.section-tight {
@@ -1014,24 +1060,7 @@ h3 {
 	}
 
 	.hero {
-		min-height: 604px;
 		padding-top: 26px;
-	}
-
-	.hero::after {
-		background:
-			linear-gradient(
-				90deg,
-				var(--bg) 0%,
-				color-mix(in srgb, var(--bg) 98%, transparent) 72%,
-				color-mix(in srgb, var(--bg) 86%, transparent) 100%
-			),
-			linear-gradient(
-				180deg,
-				transparent 0%,
-				color-mix(in srgb, var(--bg) 78%, transparent) 70%,
-				transparent 100%
-			);
 	}
 
 	.hero-content {
@@ -1063,29 +1092,40 @@ h3 {
 		font-size: clamp(0.92rem, 4.8vw, 1.2rem);
 		padding: 10px 22px 12px;
 	}
+}
+
+@media (max-width: 640px) {
+	.hero {
+		display: block;
+		min-height: 0;
+		overflow: visible;
+		padding: 26px 0 22px;
+	}
+
+	.hero::after {
+		content: none;
+	}
 
 	.hero-art {
-		top: 52%;
-		right: -82px;
-		width: min(560px, 104vw);
-		height: min(410px, 78vw);
+		position: relative;
+		top: auto;
+		right: auto;
+		width: clamp(250px, 70vw, 350px);
+		height: auto;
+		aspect-ratio: 1;
+		min-height: 0;
+		margin: 20px auto 0;
+		overflow: visible;
+		transform: translateX(-4%);
 	}
 
 	.theme-asset {
-		object-position: center right;
+		object-position: center;
 	}
 }
 
 @media (max-width: 420px) {
-	.hero {
-		min-height: 624px;
-	}
-
 	.hero-art {
-		top: 58%;
-		right: -118px;
-		width: min(540px, 124vw);
-		height: min(390px, 90vw);
-		opacity: 0.56;
+		width: clamp(238px, 82vw, 330px);
 	}
 }
