@@ -130,15 +130,9 @@ main {
 .theme-toggle,
 .theme-toggle::before,
 .theme-icon,
-.badge,
 .hero-role,
 .button,
 .button::before,
-.hero-meta span::before,
-.hero-meta a::before,
-.section-sparks::before,
-.section-sparks::after,
-.identity-card,
 .project-card,
 .timeline-item,
 .contact-card,
@@ -358,30 +352,6 @@ main {
 	max-width: 500px;
 }
 
-.badge {
-	display: inline-flex;
-	align-items: center;
-	width: fit-content;
-	border: 1px solid color-mix(in srgb, var(--accent) 12%, transparent);
-	border-radius: 9px;
-	background: color-mix(in srgb, var(--accent) 12%, var(--surface));
-	padding: 5px 12px;
-	box-shadow: inset 0 -2px 0 color-mix(in srgb, var(--accent) 10%, transparent);
-}
-
-.badge::before {
-	content: "";
-	width: 10px;
-	height: 10px;
-	margin-right: 9px;
-	border-radius: 2px;
-	background:
-		linear-gradient(135deg, color-mix(in srgb, #ffffff 40%, transparent) 0 28%, transparent 29%),
-		var(--accent);
-	transform: rotate(45deg);
-	box-shadow: 2px 2px 0 color-mix(in srgb, var(--accent) 24%, transparent);
-}
-
 .eyebrow,
 .meta-label {
 	color: var(--accent);
@@ -435,48 +405,29 @@ h3 {
 }
 
 .hero-role {
-	position: relative;
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: fit-content;
+	max-width: 100%;
 	margin-top: 18px;
-	background:
-		linear-gradient(
-			177deg,
-			color-mix(in srgb, var(--paint) 92%, #ffffff) 0 50%,
-			var(--paint) 51% 100%
-		);
-	color: var(--button-text);
+	background: url("/assets/role-brush.png") center / 100% 100% no-repeat;
+	color: #ffffff;
 	font-family: var(--font-display);
-	font-size: clamp(1.45rem, 3vw, 1.95rem);
-	font-weight: 400;
-	line-height: 1.02;
-	padding: 7px 24px 10px;
-	clip-path: polygon(0 18%, 8% 9%, 30% 12%, 58% 3%, 100% 13%, 97% 84%, 70% 94%, 38% 90%, 11% 98%, 2% 82%);
-	text-shadow: 0 1px 0 color-mix(in srgb, #000000 22%, transparent);
-}
-
-.hero-role::before,
-.hero-role::after {
-	content: "";
-	position: absolute;
-	inset-inline: 10px;
-	height: 2px;
-	background: color-mix(in srgb, #ffffff 28%, transparent);
-	opacity: 0.4;
-}
-
-.hero-role::before {
-	top: 6px;
-}
-
-.hero-role::after {
-	bottom: 7px;
+	font-size: clamp(1.22rem, 2.45vw, 1.72rem);
+	font-weight: 800;
+	letter-spacing: 0;
+	line-height: 1.05;
+	padding: 14px 34px 17px;
+	text-align: center;
+	text-shadow: 0 1px 0 color-mix(in srgb, #000000 24%, transparent);
+	white-space: nowrap;
 }
 
 .hero-intro,
 .page-hero p,
 .section-heading p,
 .project-card p,
-.identity-card p,
 .timeline-item p,
 .contact-card p {
 	color: var(--muted);
@@ -491,8 +442,7 @@ h3 {
 	line-height: 1.72;
 }
 
-.hero-actions,
-.hero-meta {
+.hero-actions {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
@@ -553,58 +503,6 @@ h3 {
 
 .button-2::before {
 	-webkit-mask:
-		linear-gradient(#000 0 0) 24% 8% / 44% 9% no-repeat,
-		linear-gradient(#000 0 0) 24% 28% / 52% 9% no-repeat,
-		linear-gradient(#000 0 0) 24% 48% / 52% 9% no-repeat,
-		linear-gradient(#000 0 0) 24% 68% / 36% 9% no-repeat,
-		linear-gradient(#000 0 0) 12% 0 / 64% 100% no-repeat;
-	mask:
-		linear-gradient(#000 0 0) 24% 8% / 44% 9% no-repeat,
-		linear-gradient(#000 0 0) 24% 28% / 52% 9% no-repeat,
-		linear-gradient(#000 0 0) 24% 48% / 52% 9% no-repeat,
-		linear-gradient(#000 0 0) 24% 68% / 36% 9% no-repeat,
-		linear-gradient(#000 0 0) 12% 0 / 64% 100% no-repeat;
-}
-
-.hero-meta {
-	gap: 16px;
-	color: var(--muted);
-	font-family: var(--font-accent);
-	font-size: 1.08rem;
-}
-
-.hero-meta span,
-.hero-meta a {
-	display: inline-flex;
-	align-items: center;
-}
-
-.hero-meta span + a {
-	padding-left: 16px;
-	border-left: 1px solid color-mix(in srgb, var(--muted) 36%, transparent);
-}
-
-.hero-meta span::before,
-.hero-meta a::before {
-	content: "";
-	width: 18px;
-	height: 18px;
-	margin-right: 8px;
-	background: currentColor;
-	opacity: 0.86;
-}
-
-.hero-meta span::before {
-	-webkit-mask:
-		radial-gradient(circle at 50% 38%, transparent 0 19%, #000 20% 36%, transparent 37%),
-		linear-gradient(45deg, transparent 48%, #000 49% 56%, transparent 57%) 50% 74% / 42% 42% no-repeat;
-	mask:
-		radial-gradient(circle at 50% 38%, transparent 0 19%, #000 20% 36%, transparent 37%),
-		linear-gradient(45deg, transparent 48%, #000 49% 56%, transparent 57%) 50% 74% / 42% 42% no-repeat;
-}
-
-.hero-meta a::before {
-	-webkit-mask:
 		linear-gradient(#000 0 0) 0 18% / 100% 64% no-repeat,
 		linear-gradient(35deg, transparent 44%, #000 45% 55%, transparent 56%) 50% 38% / 100% 60% no-repeat,
 		linear-gradient(-35deg, transparent 44%, #000 45% 55%, transparent 56%) 50% 38% / 100% 60% no-repeat;
@@ -614,23 +512,34 @@ h3 {
 		linear-gradient(-35deg, transparent 44%, #000 45% 55%, transparent 56%) 50% 38% / 100% 60% no-repeat;
 }
 
-.hero-meta a,
 .text-link,
 .contact-card a {
 	color: var(--accent);
+}
+
+.contact-card a {
 	font-weight: 800;
 }
 
 .text-link {
+	display: inline-flex;
+	align-items: center;
 	align-self: center;
+	gap: 8px;
 	font-family: var(--font-accent);
 	font-size: 1.22rem;
+	font-weight: 400;
+	line-height: 1;
 	white-space: nowrap;
 }
 
 .text-link::after {
-	content: " ->";
-	font-family: var(--font-body);
+	content: "";
+	flex: 0 0 auto;
+	width: 1.05em;
+	height: 0.78em;
+	background: currentColor;
+	clip-path: polygon(0 42%, 62% 42%, 62% 18%, 100% 50%, 62% 82%, 62% 58%, 0 58%);
 }
 
 .hero-art {
@@ -687,23 +596,10 @@ h3 {
 	padding: 30px 0;
 }
 
-.section-tight {
-	margin-top: -18px;
-	padding-top: 0;
-}
-
 .section-heading {
 	display: grid;
 	gap: 8px;
 	margin-bottom: 18px;
-}
-
-.section-heading.centered {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 16px;
-	text-align: center;
 }
 
 .section-heading.split {
@@ -714,51 +610,12 @@ h3 {
 	max-width: 560px;
 }
 
-.section-sparks {
-	position: relative;
-	display: inline-grid;
-	width: 24px;
-	height: 24px;
-	place-items: center;
-	color: transparent;
-	font-size: 0;
-	line-height: 1;
-}
-
-.section-sparks::before,
-.section-sparks::after {
-	content: "";
-	position: absolute;
-	background: var(--accent-2);
-	clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
-	filter: drop-shadow(0 0 8px color-mix(in srgb, var(--accent-2) 34%, transparent));
-}
-
-:root[data-theme="dark"] .section-sparks::before,
-:root[data-theme="dark"] .section-sparks::after {
-	background: var(--accent);
-}
-
-.section-sparks::before {
-	width: 19px;
-	height: 19px;
-}
-
-.section-sparks::after {
-	right: -6px;
-	top: 2px;
-	width: 8px;
-	height: 8px;
-}
-
-.identity-grid,
 .project-grid,
 .contact-grid {
 	display: grid;
 	gap: 22px;
 }
 
-.identity-card,
 .project-card,
 .timeline-item,
 .contact-card,
@@ -767,74 +624,6 @@ h3 {
 	border-radius: var(--radius);
 	background: var(--surface-glass);
 	box-shadow: var(--shadow);
-}
-
-.identity-card {
-	display: grid;
-	justify-items: center;
-	align-content: start;
-	min-height: 212px;
-	padding: 24px 22px 22px;
-	text-align: center;
-}
-
-.card-icon {
-	position: relative;
-	display: grid;
-	min-width: 78px;
-	height: 62px;
-	place-items: center;
-	color: var(--accent);
-	font-family: var(--font-accent);
-	font-size: 0;
-	font-weight: 400;
-	line-height: 1;
-	text-transform: uppercase;
-}
-
-.identity-card:nth-child(1) .card-icon::before {
-	content: "</>";
-	color: var(--accent);
-	font-family: var(--font-body);
-	font-size: 3.25rem;
-	font-weight: 900;
-	line-height: 1;
-	text-shadow: 4px 0 0 color-mix(in srgb, var(--accent) 22%, transparent);
-}
-
-.identity-card:nth-child(2) .card-icon::before {
-	content: "";
-	width: 62px;
-	height: 41px;
-	border-radius: 20px 20px 14px 14px;
-	background:
-		radial-gradient(circle at 30% 55%, color-mix(in srgb, var(--surface) 90%, #000000) 0 6%, transparent 7%),
-		radial-gradient(circle at 70% 55%, color-mix(in srgb, var(--surface) 90%, #000000) 0 6%, transparent 7%),
-		var(--paint);
-	clip-path: polygon(11% 8%, 89% 8%, 98% 88%, 62% 82%, 55% 66%, 45% 66%, 38% 82%, 2% 88%);
-	box-shadow: 4px 0 0 color-mix(in srgb, var(--paint) 22%, transparent);
-}
-
-.identity-card:nth-child(3) .card-icon::before {
-	content: "";
-	width: 46px;
-	height: 43px;
-	background: var(--paint);
-	clip-path: polygon(50% 92%, 8% 48%, 8% 24%, 24% 8%, 42% 8%, 50% 20%, 58% 8%, 76% 8%, 92% 24%, 92% 48%);
-	box-shadow: 4px 0 0 color-mix(in srgb, var(--paint) 20%, transparent);
-}
-
-.identity-card h3 {
-	margin-top: 8px;
-	font-size: 1.42rem;
-}
-
-.identity-card p:last-child {
-	max-width: 300px;
-	margin-top: 9px;
-	font-size: 0.95rem;
-	font-weight: 700;
-	line-height: 1.45;
 }
 
 .project-grid {
@@ -1041,10 +830,6 @@ h3 {
 }
 
 @media (min-width: 720px) {
-	.identity-grid {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
-
 	.project-grid,
 	.contact-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1091,8 +876,8 @@ h3 {
 			linear-gradient(
 				90deg,
 				var(--bg) 0%,
-				color-mix(in srgb, var(--bg) 90%, transparent) 38%,
-				color-mix(in srgb, var(--bg) 52%, transparent) 64%,
+				color-mix(in srgb, var(--bg) 96%, transparent) 58%,
+				color-mix(in srgb, var(--bg) 76%, transparent) 78%,
 				transparent 100%
 			);
 		pointer-events: none;
@@ -1194,8 +979,13 @@ h3 {
 			linear-gradient(
 				90deg,
 				var(--bg) 0%,
-				color-mix(in srgb, var(--bg) 94%, transparent) 46%,
-				color-mix(in srgb, var(--bg) 62%, transparent) 70%,
+				color-mix(in srgb, var(--bg) 98%, transparent) 72%,
+				color-mix(in srgb, var(--bg) 86%, transparent) 100%
+			),
+			linear-gradient(
+				180deg,
+				transparent 0%,
+				color-mix(in srgb, var(--bg) 78%, transparent) 70%,
 				transparent 100%
 			);
 	}
@@ -1205,24 +995,17 @@ h3 {
 	}
 
 	.hero-intro,
-	.hero-actions,
-	.hero-meta {
+	.hero-actions {
 		max-width: 368px;
 	}
 
 	.hero-role {
-		max-width: 368px;
-		font-size: clamp(1.3rem, 6vw, 1.45rem);
-		padding-inline: 18px;
+		font-size: clamp(0.92rem, 4.8vw, 1.2rem);
+		padding: 10px 22px 12px;
 	}
 
 	.hero-actions .button {
 		width: 100%;
-	}
-
-	.hero-meta span + a {
-		padding-left: 0;
-		border-left: 0;
 	}
 
 	.hero-art {
@@ -1247,6 +1030,6 @@ h3 {
 		right: -118px;
 		width: min(540px, 124vw);
 		height: min(390px, 90vw);
-		opacity: 0.82;
+		opacity: 0.56;
 	}
 }

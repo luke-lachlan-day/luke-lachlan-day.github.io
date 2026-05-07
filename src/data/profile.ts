@@ -5,12 +5,6 @@ export type Link = {
 	copy: string;
 };
 
-export type Card = {
-	icon: string;
-	title: string;
-	copy: string;
-};
-
 export type TimelineItem = {
 	date: string;
 	title: string;
@@ -18,7 +12,6 @@ export type TimelineItem = {
 };
 
 export type HeroContent = {
-	eyebrow: string;
 	title: string;
 	lead: string;
 };
@@ -50,11 +43,10 @@ export const profile = {
 	location: 'Adelaide, Australia',
 	home: {
 		title: 'Luke Lachlan Day | Home',
-		description: 'Portfolio home page for Luke Lachlan Day, Unity and C# game developer.',
-		eyebrow: 'Indie game developer',
-		role: 'Unity / C# Game Developer',
+		description: 'Portfolio home page for Luke Lachlan Day, indie developer and programmer.',
+		role: 'Indie Developer / Programmer',
 		summary:
-			'I build systems, tools, and playful games with a focus on iteration, feel, and memorable player experiences.',
+			'I’m an indie developer based in Adelaide, Australia. I love building playful games, thoughtful systems, and creative tools that help people learn, explore, and express themselves. I care deeply about teaching, creativity, and helping others grow on their own journey. Outside of development, I love cats, healthy food, exercise, and keeping both the mind and body strong.',
 		heroImages: {
 			light: {
 				src: '/assets/hero-light.webp',
@@ -67,28 +59,8 @@ export const profile = {
 		},
 		actions: [
 			{ label: 'View Projects', href: '/timeline/' },
-			{ label: 'Read Devlog', href: '/timeline/' },
+			{ label: 'Get In Touch', href: '/contact/' },
 		],
-		highlights: {
-			eyebrow: 'Who I Am',
-			items: [
-				{
-					icon: '</>',
-					title: 'Unity & C#',
-					copy: 'Deep experience building systems, tools, and gameplay with clean, maintainable code and scalable architecture.',
-				},
-				{
-					icon: 'pad',
-					title: 'Gameplay-Focused',
-					copy: 'I love tight systems, juicy interactions, and mechanics that feel great to play.',
-				},
-				{
-					icon: 'heart',
-					title: 'Indie Mindset',
-					copy: 'Small teams, big ideas. Ship often, learn always, and make games that matter.',
-				},
-			] satisfies Card[],
-		},
 		featuredProjectIds: ['petes-place', 'coop-climbing', 'awbw-opening-analyzer'],
 	},
 	companies: [
@@ -170,7 +142,6 @@ export const profile = {
 		title: 'Timeline | Luke Lachlan Day',
 		description: 'Project and work timeline for Luke Lachlan Day.',
 		hero: {
-			eyebrow: 'Timeline',
 			title: 'Work in progress, logged clearly.',
 			lead: 'A lightweight chronology for past work, current projects, and experiments.',
 		} satisfies HeroContent,
@@ -205,7 +176,6 @@ export const profile = {
 		title: 'Contact | Luke Lachlan Day',
 		description: 'Contact links for Luke Lachlan Day.',
 		hero: {
-			eyebrow: 'Contact',
 			title: 'Links and ways to connect.',
 			lead: 'Reach out about projects, prototypes, tools, or game-development work.',
 		} satisfies HeroContent,

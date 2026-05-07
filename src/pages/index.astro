@@ -17,7 +17,6 @@ const featuredProjects = home.featuredProjectIds
 >
 	<section class="hero" aria-labelledby="home-title">
 		<div class="hero-content">
-			<p class="eyebrow badge">{home.eyebrow}</p>
 			<h1 id="home-title" class="hero-title" aria-label={profile.name}>
 				<span class="hero-title-line">{heroFirstName}</span>
 				<span class="hero-title-line hero-title-line-nowrap">{heroLastLine}</span>
@@ -27,34 +26,11 @@ const featuredProjects = home.featuredProjectIds
 			<div class="hero-actions">
 				{home.actions.map((action, index) => <a class={`button button-${index + 1}`} href={action.href}>{action.label}</a>)}
 			</div>
-			<div class="hero-meta">
-				<span>{profile.location}</span>
-				<a href="/contact/">Get In Touch</a>
-			</div>
 		</div>
 
 		<div class="hero-art" aria-hidden="true">
 			<img class="theme-asset theme-asset-light" src={home.heroImages.light.src} alt="" />
 			<img class="theme-asset theme-asset-dark" src={home.heroImages.dark.src} alt="" />
-		</div>
-	</section>
-
-	<section class="section section-tight" aria-labelledby="highlights-title">
-		<div class="section-heading centered">
-			<p class="section-sparks" aria-hidden="true"></p>
-			<h2 id="highlights-title">{home.highlights.eyebrow}</h2>
-			<p class="section-sparks" aria-hidden="true"></p>
-		</div>
-		<div class="identity-grid">
-			{
-				home.highlights.items.map((highlight) => (
-					<article class="identity-card">
-						<p class="card-icon" aria-hidden="true">{highlight.icon}</p>
-						<h3>{highlight.title}</h3>
-						<p>{highlight.copy}</p>
-					</article>
-				))
-			}
 		</div>
 	</section>
 
