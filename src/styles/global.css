@@ -157,13 +157,7 @@ main {
 	position: sticky;
 	top: 0;
 	z-index: 20;
-	border-bottom: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
-	background: color-mix(in srgb, var(--bg) 91%, transparent);
-	backdrop-filter: blur(16px);
-}
-
-:root[data-theme="dark"] .site-header {
-	background: color-mix(in srgb, var(--bg) 94%, transparent);
+	background: var(--bg);
 }
 
 .site-nav,
@@ -661,8 +655,7 @@ h3 {
 
 .project-card,
 .timeline-item,
-.contact-card,
-.footer-inner {
+.contact-card {
 	border: 1px solid var(--border);
 	border-radius: var(--radius);
 	background: var(--surface-glass);
@@ -827,14 +820,14 @@ h3 {
 .site-footer {
 	position: relative;
 	z-index: 1;
-	padding: 24px 0 12px;
+	padding: 54px 0 28px;
 }
 
 .footer-inner {
 	display: grid;
 	justify-items: center;
-	gap: 8px;
-	padding: 18px 22px;
+	gap: 10px;
+	padding: 0 22px;
 	text-align: center;
 }
 
