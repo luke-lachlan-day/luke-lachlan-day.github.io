@@ -27,8 +27,6 @@
 	--image-filter: saturate(1.08) contrast(1.04);
 	--toggle-accent: #eda21a;
 	--footer-heart-color: #eda21a;
-	--footer-frame-filter: none;
-	--footer-frame-opacity: 0.88;
 	--brush-mask: url("/assets/textures/role-brush.webp") center / 100% 100% no-repeat;
 	--paint-texture: url("/assets/textures/paint-texture.webp");
 	--theme-transition: 360ms ease;
@@ -57,8 +55,6 @@
 	--image-filter: saturate(1.08) contrast(1.04);
 	--toggle-accent: #eda21a;
 	--footer-heart-color: #eda21a;
-	--footer-frame-filter: none;
-	--footer-frame-opacity: 0.88;
 	color-scheme: light;
 }
 
@@ -83,8 +79,6 @@
 	--image-filter: saturate(1.14) contrast(1.12) brightness(0.88);
 	--toggle-accent: #a885ff;
 	--footer-heart-color: #a885ff;
-	--footer-frame-filter: saturate(1.08) contrast(1.04) brightness(0.78);
-	--footer-frame-opacity: 0.72;
 	color-scheme: dark;
 }
 
@@ -156,8 +150,14 @@ main {
 .project-card,
 .timeline-item,
 .contact-card,
+.site-footer,
+.site-footer::before,
+.site-footer::after,
 .footer-inner,
+.footer-inner p,
+.footer-heart,
 .footer-links a,
+.copyright,
 .tool-list span,
 .text-link,
 .contact-card a,
@@ -861,7 +861,8 @@ h3 {
 	padding: 64px 0 34px;
 }
 
-.site-footer::before {
+.site-footer::before,
+.site-footer::after {
 	content: "";
 	position: absolute;
 	left: 50%;
@@ -869,12 +870,27 @@ h3 {
 	bottom: var(--footer-frame-trim);
 	z-index: 0;
 	width: var(--footer-frame-width);
-	background: url("/assets/images/footer-frame.webp") center top / contain no-repeat;
-	filter: var(--footer-frame-filter);
 	image-rendering: pixelated;
-	opacity: var(--footer-frame-opacity);
 	pointer-events: none;
 	transform: translateX(-50%);
+}
+
+.site-footer::before {
+	background: url("/assets/images/footer-frame-light.webp") center bottom / contain no-repeat;
+	opacity: 1;
+}
+
+.site-footer::after {
+	background: url("/assets/images/footer-frame-dark.webp") center bottom / contain no-repeat;
+	opacity: 0;
+}
+
+:root[data-theme="dark"] .site-footer::before {
+	opacity: 0;
+}
+
+:root[data-theme="dark"] .site-footer::after {
+	opacity: 1;
 }
 
 .footer-inner {
@@ -888,14 +904,14 @@ h3 {
 }
 
 .footer-heart {
-	width: 30px;
-	aspect-ratio: 681 / 612;
+	width: 32px;
+	aspect-ratio: 256 / 220;
 	background: var(--footer-heart-color);
 	filter: drop-shadow(0 1px 0 color-mix(in srgb, #ffffff 35%, transparent))
 		drop-shadow(0 2px 0 color-mix(in srgb, #000000 18%, transparent));
 	image-rendering: pixelated;
-	-webkit-mask: url("/assets/images/footer-heart-mask.webp") center / contain no-repeat;
-	mask: url("/assets/images/footer-heart-mask.webp") center / contain no-repeat;
+	-webkit-mask: url("/assets/images/footer-heart.webp") center / contain no-repeat;
+	mask: url("/assets/images/footer-heart.webp") center / contain no-repeat;
 }
 
 .footer-inner p:first-of-type {
