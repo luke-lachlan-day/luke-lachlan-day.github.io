@@ -406,6 +406,22 @@ h1 {
 	text-wrap: balance;
 }
 
+.hero-title {
+	font-size: clamp(4.85rem, 7.6vw, 7.6rem);
+	line-height: 0.78;
+	text-wrap: initial;
+	-webkit-text-stroke: 0.5px currentColor;
+	paint-order: stroke fill;
+}
+
+.hero-title-line {
+	display: block;
+}
+
+.hero-title-line-nowrap {
+	white-space: nowrap;
+}
+
 h2 {
 	font-size: clamp(2.15rem, 4vw, 2.9rem);
 	line-height: 1;
@@ -1059,8 +1075,25 @@ h3 {
 
 	.hero {
 		grid-template-columns: 1fr;
-		min-height: 0;
-		padding-top: 34px;
+		min-height: 610px;
+		overflow: hidden;
+		padding: 34px 0 42px;
+	}
+
+	.hero::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+		background:
+			linear-gradient(
+				90deg,
+				var(--bg) 0%,
+				color-mix(in srgb, var(--bg) 92%, transparent) 42%,
+				color-mix(in srgb, var(--bg) 58%, transparent) 66%,
+				transparent 100%
+			);
+		pointer-events: none;
 	}
 
 	.hero-content {
@@ -1068,12 +1101,18 @@ h3 {
 	}
 
 	.hero-art {
-		min-height: 430px;
-		margin: -18px -16px 0;
+		position: absolute;
+		right: -130px;
+		bottom: 0;
+		z-index: 1;
+		width: min(760px, 82vw);
+		height: min(540px, 64vw);
+		min-height: 0;
+		margin: 0;
 	}
 
 	.theme-asset {
-		object-position: center;
+		object-position: center right;
 	}
 
 	.section-tight {
@@ -1134,12 +1173,28 @@ h3 {
 		font-size: clamp(4.1rem, 18vw, 5.45rem);
 	}
 
+	.hero-title {
+		font-size: clamp(3.78rem, 17vw, 5.05rem);
+	}
+
 	h2 {
 		font-size: 2.25rem;
 	}
 
 	.hero {
+		min-height: 604px;
 		padding-top: 26px;
+	}
+
+	.hero::after {
+		background:
+			linear-gradient(
+				90deg,
+				var(--bg) 0%,
+				color-mix(in srgb, var(--bg) 96%, transparent) 48%,
+				color-mix(in srgb, var(--bg) 72%, transparent) 72%,
+				transparent 100%
+			);
 	}
 
 	.hero-content {
@@ -1168,11 +1223,27 @@ h3 {
 	}
 
 	.hero-art {
-		min-height: 330px;
-		margin-top: -6px;
+		right: -172px;
+		bottom: 4px;
+		width: min(620px, 116vw);
+		height: min(430px, 82vw);
 	}
 
 	.theme-asset {
-		object-position: center;
+		object-position: center right;
+	}
+}
+
+@media (max-width: 420px) {
+	.hero {
+		min-height: 624px;
+	}
+
+	.hero-art {
+		right: -184px;
+		bottom: -54px;
+		width: min(600px, 132vw);
+		height: min(440px, 98vw);
+		opacity: 0.82;
 	}
 }

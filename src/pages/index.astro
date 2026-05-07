@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { profile, type Project } from '../data/profile';
 
 const { home, projects, companies } = profile;
+const [heroFirstName, ...heroRemainingNames] = profile.name.split(' ');
+const heroLastLine = heroRemainingNames.join(' ');
 const companyById = new Map(companies.map((company) => [company.id, company]));
 const featuredProjects = home.featuredProjectIds
 	.map((projectId) => projects.items.find((project) => project.id === projectId))
@@ -16,7 +18,10 @@ const featuredProjects = home.featuredProjectIds
 	<section class="hero" aria-labelledby="home-title">
 		<div class="hero-content">
 			<p class="eyebrow badge">{home.eyebrow}</p>
-			<h1 id="home-title">{profile.name}</h1>
+			<h1 id="home-title" class="hero-title" aria-label={profile.name}>
+				<span class="hero-title-line">{heroFirstName}</span>
+				<span class="hero-title-line hero-title-line-nowrap">{heroLastLine}</span>
+			</h1>
 			<p class="hero-role">{home.role}</p>
 			<p class="hero-intro">{home.summary}</p>
 			<div class="hero-actions">
