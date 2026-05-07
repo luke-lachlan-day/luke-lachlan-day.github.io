@@ -336,7 +336,7 @@ main {
 .hero {
 	position: relative;
 	display: grid;
-	grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.12fr);
+	grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.18fr);
 	align-items: center;
 	min-height: 610px;
 	padding: 30px 0 10px;
@@ -379,7 +379,7 @@ h1 {
 
 .hero-title {
 	color: var(--heading);
-	font-size: clamp(4.55rem, 7.15vw, 7.1rem);
+	font-size: clamp(4.1rem, 6.45vw, 6.4rem);
 	font-weight: 700;
 	line-height: 0.94;
 	padding-block: 0.04em 0.08em;
@@ -521,7 +521,7 @@ h3 {
 
 .button-2 {
 	border-color: color-mix(in srgb, var(--accent) 42%, var(--border));
-	background: transparent;
+	background: var(--bg);
 	background-blend-mode: normal;
 	box-shadow: none;
 	color: var(--accent);
@@ -530,7 +530,7 @@ h3 {
 
 .button-2:hover {
 	border-color: color-mix(in srgb, var(--accent) 66%, var(--border));
-	background: color-mix(in srgb, var(--accent) 7%, transparent);
+	background: color-mix(in srgb, var(--accent) 7%, var(--bg));
 }
 
 :root[data-theme="dark"] .button-2 {
@@ -539,7 +539,7 @@ h3 {
 }
 
 :root[data-theme="dark"] .button-2:hover {
-	background: color-mix(in srgb, var(--accent-2) 10%, transparent);
+	background: color-mix(in srgb, var(--accent-2) 10%, var(--bg));
 }
 
 .button-2::before {
@@ -580,8 +580,8 @@ h3 {
 .hero-art {
 	position: relative;
 	z-index: 1;
-	min-height: 560px;
-	margin-left: -84px;
+	min-height: 645px;
+	margin-left: -118px;
 	overflow: hidden;
 	isolation: isolate;
 }
@@ -913,10 +913,10 @@ h3 {
 	.hero-art {
 		position: absolute;
 		top: 50%;
-		right: -18px;
+		right: -116px;
 		z-index: 1;
-		width: min(650px, 70vw);
-		height: min(650px, 70vw);
+		width: min(748px, 80vw);
+		height: min(748px, 80vw);
 		min-height: 0;
 		margin: 0;
 		transform: translateY(-50%);
@@ -970,10 +970,10 @@ h3 {
 	.hero-art {
 		position: absolute;
 		top: 50%;
-		right: -18px;
+		right: -116px;
 		z-index: 1;
-		width: min(650px, 70vw);
-		height: min(650px, 70vw);
+		width: min(748px, 80vw);
+		height: min(748px, 80vw);
 		min-height: 0;
 		margin: 0;
 		transform: translateY(-50%);
@@ -1042,7 +1042,7 @@ h3 {
 	}
 
 	.hero-title {
-		font-size: clamp(3rem, 14.9vw, 4.42rem);
+		font-size: clamp(2.85rem, 13.4vw, 4rem);
 		max-width: calc(100vw - 22px);
 	}
 
@@ -1109,7 +1109,7 @@ h3 {
 		position: relative;
 		top: auto;
 		right: auto;
-		width: clamp(250px, 70vw, 350px);
+		width: clamp(288px, 80vw, 402px);
 		height: auto;
 		aspect-ratio: 1;
 		min-height: 0;
@@ -1125,6 +1125,6 @@ h3 {
 
 @media (max-width: 420px) {
 	.hero-art {
-		width: clamp(238px, 82vw, 330px);
+		width: clamp(274px, 86vw, 360px);
 	}
 }
