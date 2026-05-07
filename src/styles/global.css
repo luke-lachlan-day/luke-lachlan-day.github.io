@@ -336,10 +336,10 @@ main {
 .hero {
 	position: relative;
 	display: grid;
-	grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.18fr);
+	grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
 	align-items: center;
-	min-height: 610px;
-	padding: 30px 0 10px;
+	min-height: 670px;
+	padding: 24px 0 4px;
 }
 
 .hero-content {
@@ -347,7 +347,7 @@ main {
 	z-index: 3;
 	min-width: 0;
 	width: 100%;
-	max-width: 500px;
+	max-width: 520px;
 }
 
 .eyebrow,
@@ -581,8 +581,9 @@ h3 {
 .hero-art {
 	position: relative;
 	z-index: 1;
-	min-height: 645px;
-	margin-left: -118px;
+	min-height: 704px;
+	margin-left: -210px;
+	margin-right: -18px;
 	overflow: hidden;
 	isolation: isolate;
 }
