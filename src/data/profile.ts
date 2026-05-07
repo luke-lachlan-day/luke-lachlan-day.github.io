@@ -46,7 +46,7 @@ export const profile = {
 		description: 'Portfolio home page for Luke Lachlan Day, indie developer and programmer.',
 		role: 'Indie Developer / Programmer',
 		summary:
-			'I’m an indie developer based in Adelaide, Australia. I love building playful games, thoughtful systems, and creative tools that help people learn, explore, and express themselves. I care deeply about teaching, creativity, and helping others grow on their own journey. Outside of development, I love cats, healthy food, exercise, and keeping both the mind and body strong.',
+			"I'm an indie developer based in Adelaide, Australia. I love science, technology, learning, teaching, and creative problem-solving. I build games, tools, and experiences that help people play, explore, and grow. Outside of development, I love cats, healthy food, exercise, and keeping both mind and body strong.",
 		heroImages: {
 			light: {
 				src: '/assets/hero-light.webp',
