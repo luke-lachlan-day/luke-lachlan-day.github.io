@@ -460,6 +460,10 @@ h3 {
 	line-height: 1.72;
 }
 
+.hero-intro-line {
+	display: block;
+}
+
 .hero-actions {
 	display: flex;
 	flex-wrap: nowrap;

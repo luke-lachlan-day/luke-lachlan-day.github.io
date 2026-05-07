@@ -45,7 +45,10 @@ export const profile = {
 		title: 'Luke Lachlan Day | Home',
 		description: 'Portfolio home page for Luke Lachlan Day, indie developer and programmer.',
 		role: 'Indie Developer / Programmer',
-		summary: "I'm an indie developer who loves science, technology, learning, teaching, and creative problem-solving. I build playful games, creative tools, and interactive experiences that help people explore, learn, and grow.",
+		summary: [
+			"I'm an indie developer who loves science, technology, learning, teaching, and creative problem-solving.",
+			'I build playful games, creative tools, and interactive experiences that help people explore, learn, and grow.',
+		],
 		heroImages: {
 			light: {
 				src: '/assets/hero-light.webp',

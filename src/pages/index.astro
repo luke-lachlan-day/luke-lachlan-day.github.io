@@ -22,7 +22,9 @@ const featuredProjects = home.featuredProjectIds
 				<span class="hero-title-line hero-title-line-nowrap">{heroLastLine}</span>
 			</h1>
 			<p class="hero-role">{home.role}</p>
-			<p class="hero-intro">{home.summary}</p>
+			<p class="hero-intro">
+				{home.summary.map((summaryLine) => <span class="hero-intro-line">{summaryLine}</span>)}
+			</p>
 			<div class="hero-actions">
 				{home.actions.map((action, index) => <a class={`button button-${index + 1}`} href={action.href}>{action.label}</a>)}
 			</div>
