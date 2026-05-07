@@ -29,9 +29,13 @@
 	--footer-heart-color: #eda21a;
 	--brush-mask: url("/assets/textures/role-brush.webp") center / 100% 100% no-repeat;
 	--paint-texture: url("/assets/textures/paint-texture.webp");
-	--theme-transition: 360ms ease;
+	--theme-transition: 0ms;
 	color-scheme: light;
 	font-family: var(--font-body);
+}
+
+:root[data-theme-ready] {
+	--theme-transition: 360ms ease;
 }
 
 :root[data-theme="light"] {
@@ -905,13 +909,11 @@ h3 {
 
 .footer-heart {
 	width: 32px;
-	aspect-ratio: 256 / 220;
+	height: 28px;
 	background: var(--footer-heart-color);
-	filter: drop-shadow(0 1px 0 color-mix(in srgb, #ffffff 35%, transparent))
-		drop-shadow(0 2px 0 color-mix(in srgb, #000000 18%, transparent));
 	image-rendering: pixelated;
-	-webkit-mask: url("/assets/images/footer-heart.webp") center / contain no-repeat;
-	mask: url("/assets/images/footer-heart.webp") center / contain no-repeat;
+	-webkit-mask: url("/assets/images/footer-heart.webp") center / 100% 100% no-repeat;
+	mask: url("/assets/images/footer-heart.webp") center / 100% 100% no-repeat;
 }
 
 .footer-inner p:first-of-type {
