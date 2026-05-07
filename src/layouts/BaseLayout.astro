@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import AssetIcon from '../components/AssetIcon.astro';
+import FallingLeaves from '../components/FallingLeaves.astro';
 import { profile } from '../data/profile';
 
 interface Props {
@@ -60,6 +61,8 @@ const footerLinks = profile.contact.links.filter((link) =>
 		<title>{title}</title>
 	</head>
 	<body>
+		<FallingLeaves config={profile.effects.fallingLeaves} />
+
 		<header class="site-header">
 			<nav class="site-nav" aria-label="Primary navigation">
 				<a class="brand" href="/" aria-label="Luke Lachlan Day home">

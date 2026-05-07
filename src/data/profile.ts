@@ -39,9 +39,20 @@ export type Project = {
 	tools: string[];
 };
 
+export type FallingLeavesEffect = {
+	enabled: boolean;
+	goalAmount: number;
+};
+
 export const profile = {
 	name: 'Luke Lachlan Day',
 	location: 'Adelaide, Australia',
+	effects: {
+		fallingLeaves: {
+			enabled: true,
+			goalAmount: 14,
+		} satisfies FallingLeavesEffect,
+	},
 	home: {
 		title: 'Luke Lachlan Day | Home',
 		description: 'Portfolio home page for Luke Lachlan Day, indie developer and programmer.',

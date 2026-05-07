@@ -1,0 +1,162 @@
+---
+import type { FallingLeavesEffect } from '../data/profile';
+
+interface Props {
+	config: FallingLeavesEffect;
+}
+
+const { config } = Astro.props;
+const leafAmount = Math.max(0, Math.floor(config.goalAmount));
+---
+
+{
+	config.enabled && leafAmount > 0 && (
+		<div
+			class="falling-leaves"
+			aria-hidden="true"
+			data-falling-leaves
+			data-leaf-count={leafAmount}
+			data-leaf-src="/assets/images/leaf.webp"
+		>
+			<div class="falling-leaves-layer falling-leaves-layer-back" data-leaf-layer="back" />
+			<div class="falling-leaves-layer falling-leaves-layer-mid" data-leaf-layer="mid" />
+			<div class="falling-leaves-layer falling-leaves-layer-front" data-leaf-layer="front" />
+		</div>
+	)
+}
+
+<script is:inline>
+	(() => {
+		const root = document.querySelector('[data-falling-leaves]');
+		if (!root) return;
+
+		const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+		if (motionQuery.matches) {
+			root.setAttribute('hidden', '');
+			return;
+		}
+
+		const leafCount = Number.parseInt(root.dataset.leafCount ?? '0', 10);
+		const leafSrc = root.dataset.leafSrc ?? '';
+		const layerSettings = [
+			{
+				name: 'back',
+				share: 0.36,
+				minSize: 28,
+				maxSize: 40,
+				opacity: [0.14, 0.22],
+				blur: [1.1, 1.8],
+				duration: [24, 34],
+				sway: [26, 48],
+				parallax: 0.16,
+				shadow: 0.14,
+			},
+			{
+				name: 'mid',
+				share: 0.42,
+				minSize: 40,
+				maxSize: 56,
+				opacity: [0.22, 0.34],
+				blur: [0.25, 0.7],
+				duration: [18, 27],
+				sway: [34, 66],
+				parallax: 0.34,
+				shadow: 0.22,
+			},
+			{
+				name: 'front',
+				share: 0.22,
+				minSize: 58,
+				maxSize: 82,
+				opacity: [0.28, 0.42],
+				blur: [0, 0.18],
+				duration: [14, 21],
+				sway: [48, 88],
+				parallax: 0.58,
+				shadow: 0.32,
+			},
+		];
+
+		const random = (min, max) => min + Math.random() * (max - min);
+		const layers = layerSettings.map((settings, index) => ({
+			...settings,
+			element: root.querySelector(`[data-leaf-layer="${settings.name}"]`),
+			count:
+				index === layerSettings.length - 1
+					? 0
+					: Math.round(leafCount * settings.share),
+		}));
+
+		const assignedCount = layers.reduce((sum, layer) => sum + layer.count, 0);
+		layers[layers.length - 1].count = Math.max(0, leafCount - assignedCount);
+
+		layers.forEach((layer) => {
+			if (!layer.element) return;
+
+			for (let index = 0; index < layer.count; index += 1) {
+				const leaf = document.createElement('span');
+				leaf.className = 'falling-leaf';
+				leaf.style.setProperty('--leaf-x', `${random(-8, 102).toFixed(2)}vw`);
+				leaf.style.setProperty('--leaf-size', `${random(layer.minSize, layer.maxSize).toFixed(2)}px`);
+				leaf.style.setProperty('--leaf-opacity', random(layer.opacity[0], layer.opacity[1]).toFixed(3));
+				leaf.style.setProperty('--leaf-blur', `${random(layer.blur[0], layer.blur[1]).toFixed(2)}px`);
+				leaf.style.setProperty('--leaf-duration', `${random(layer.duration[0], layer.duration[1]).toFixed(2)}s`);
+				leaf.style.setProperty('--leaf-delay', `${random(-layer.duration[1], -1).toFixed(2)}s`);
+				leaf.style.setProperty('--leaf-sway', `${random(layer.sway[0], layer.sway[1]).toFixed(2)}px`);
+				leaf.style.setProperty('--leaf-drift', `${random(-34, 34).toFixed(2)}px`);
+				leaf.style.setProperty('--leaf-spin', `${random(220, 620).toFixed(2)}deg`);
+				leaf.style.setProperty('--leaf-start-rotation', `${random(0, 360).toFixed(2)}deg`);
+				leaf.style.setProperty('--leaf-tilt', `${random(-34, 34).toFixed(2)}deg`);
+				leaf.style.setProperty('--leaf-shadow-strength', layer.shadow.toFixed(2));
+				leaf.style.backgroundImage = `url("${leafSrc}")`;
+				layer.element.append(leaf);
+			}
+		});
+
+		let pointerX = 0;
+		let pointerY = 0;
+		let scrollY = window.scrollY;
+		let frame = 0;
+
+		const updateParallax = () => {
+			frame = 0;
+			const viewportWidth = window.innerWidth || 1;
+			const viewportHeight = window.innerHeight || 1;
+			const pointerOffsetX = (pointerX / viewportWidth - 0.5) * 2;
+			const pointerOffsetY = (pointerY / viewportHeight - 0.5) * 2;
+
+			layers.forEach((layer) => {
+				if (!layer.element) return;
+				const x = pointerOffsetX * layer.parallax * 24;
+				const y = (scrollY % viewportHeight) * layer.parallax * -0.06 + pointerOffsetY * layer.parallax * 12;
+				layer.element.style.setProperty('--leaf-parallax-x', `${x.toFixed(2)}px`);
+				layer.element.style.setProperty('--leaf-parallax-y', `${y.toFixed(2)}px`);
+			});
+		};
+
+		const requestUpdate = () => {
+			if (!frame) frame = window.requestAnimationFrame(updateParallax);
+		};
+
+		window.addEventListener(
+			'pointermove',
+			(event) => {
+				pointerX = event.clientX;
+				pointerY = event.clientY;
+				requestUpdate();
+			},
+			{ passive: true }
+		);
+
+		window.addEventListener(
+			'scroll',
+			() => {
+				scrollY = window.scrollY;
+				requestUpdate();
+			},
+			{ passive: true }
+		);
+
+		updateParallax();
+	})();
+</script>
