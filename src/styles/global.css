@@ -181,13 +181,13 @@ main {
 
 .site-nav,
 .page-hero,
-.section,
-.footer-inner {
+.section {
 	width: min(100% - 32px, var(--max-width));
 	margin-inline: auto;
 }
 
-.hero {
+.hero,
+.footer-inner {
 	width: min(100% - 32px, var(--hero-max-width));
 	margin-inline: auto;
 }
@@ -851,23 +851,25 @@ h3 {
 }
 
 .site-footer {
+	--footer-frame-width: min(100% - 32px, var(--hero-max-width));
+	--footer-frame-trim: 0px;
 	position: relative;
 	isolation: isolate;
 	z-index: 0;
 	overflow: hidden;
 	background-color: var(--bg);
-	padding: 54px 0 28px;
+	padding: 64px 0 34px;
 }
 
 .site-footer::before {
 	content: "";
 	position: absolute;
 	left: 50%;
-	bottom: 0;
+	top: 0;
+	bottom: var(--footer-frame-trim);
 	z-index: 0;
-	width: min(100% - 32px, var(--max-width));
-	height: clamp(96px, 24.7vw, 300px);
-	background: url("/assets/images/footer-frame.webp") center bottom / contain no-repeat;
+	width: var(--footer-frame-width);
+	background: url("/assets/images/footer-frame.webp") center top / contain no-repeat;
 	filter: var(--footer-frame-filter);
 	image-rendering: pixelated;
 	opacity: var(--footer-frame-opacity);
@@ -1079,17 +1081,19 @@ h3 {
 		font-size: 15px;
 	}
 
-	.site-footer::before {
-		width: min(100% - 22px, var(--max-width));
-		height: 92px;
+	.site-footer {
+		--footer-frame-width: min(100% - 22px, var(--hero-max-width));
 	}
 
 	.site-nav,
-	.hero,
 	.page-hero,
-	.section,
-	.footer-inner {
+	.section {
 		width: min(100% - 22px, var(--max-width));
+	}
+
+	.hero,
+	.footer-inner {
+		width: min(100% - 22px, var(--hero-max-width));
 	}
 
 	.brand {
