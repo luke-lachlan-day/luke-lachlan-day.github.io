@@ -1,5 +1,6 @@
 :root {
 	--max-width: 1216px;
+	--hero-max-width: 1168px;
 	--radius: 14px;
 	--font-body: "Nunito", "Trebuchet MS", "Segoe UI", sans-serif;
 	--font-display: "Balsamiq Sans", "Trebuchet MS", cursive;
@@ -159,11 +160,15 @@ main {
 }
 
 .site-nav,
-.hero,
 .page-hero,
 .section,
 .footer-inner {
 	width: min(100% - 32px, var(--max-width));
+	margin-inline: auto;
+}
+
+.hero {
+	width: min(100% - 32px, var(--hero-max-width));
 	margin-inline: auto;
 }
 
