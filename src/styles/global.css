@@ -411,7 +411,7 @@ h3 {
 	width: fit-content;
 	max-width: 100%;
 	margin-top: 18px;
-	background: url("/assets/role-brush.png") center / 100% 100% no-repeat;
+	background: url("/assets/role-brush.webp") center / 100% 100% no-repeat;
 	color: #ffffff;
 	font-family: var(--font-display);
 	font-size: clamp(1.22rem, 2.45vw, 1.72rem);

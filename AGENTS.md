@@ -44,6 +44,14 @@ For visual or UI review, start the Astro dev server first with `npm run dev`, th
 - Preserve the current visual direction: pixel-art assets, playful portfolio styling, responsive layouts, light/dark theme support, and consistent card, button, and section treatment.
 - Treat accessibility and shipping quality as mandatory: semantic HTML, useful alt text, keyboard-operable controls, no broken links or placeholders in shipped content unless explicitly intentional, responsive/adaptive layouts that display well on phone, tablet, and desktop/PC screens, and no text overflow or incoherent overlap.
 
+## Asset Optimization
+
+- Optimize web-facing raster assets before shipping.
+- Prefer WebP for photos, illustrations, decorative images, and alpha-capable raster assets unless PNG is required for exact lossless output.
+- Use the repo-local ImageMagick executable under `.tools/` for conversions.
+- Do not reference oversized source PNGs from pages or CSS when an optimized WebP is suitable.
+- After asset changes, run `npm run build` and visually verify affected pages.
+
 ## ImageMagick
 
 ImageMagick is available as a portable repo-local install:
