@@ -843,12 +843,46 @@ h3 {
 
 .site-footer {
 	position: relative;
+	isolation: isolate;
 	z-index: 0;
+	overflow: hidden;
 	background-color: var(--bg);
 	padding: 54px 0 28px;
 }
 
+.site-footer::before,
+.site-footer::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	z-index: 0;
+	width: clamp(96px, 14vw, 188px);
+	aspect-ratio: 681 / 612;
+	background: url("/assets/images/footer-heart.webp") center / contain no-repeat;
+	image-rendering: pixelated;
+	opacity: 0.13;
+	pointer-events: none;
+}
+
+.site-footer::before {
+	left: max(16px, calc((100vw - var(--max-width)) / 2));
+	transform: translate(-34%, -50%) rotate(-9deg);
+}
+
+.site-footer::after {
+	right: max(16px, calc((100vw - var(--max-width)) / 2));
+	transform: translate(34%, -50%) scaleX(-1) rotate(-9deg);
+}
+
+:root[data-theme="dark"] .site-footer::before,
+:root[data-theme="dark"] .site-footer::after {
+	filter: saturate(1.1) brightness(1.18);
+	opacity: 0.2;
+}
+
 .footer-inner {
+	position: relative;
+	z-index: 1;
 	display: grid;
 	justify-items: center;
 	gap: 10px;
@@ -857,13 +891,12 @@ h3 {
 }
 
 .footer-heart {
-	width: 24px;
-	height: 24px;
-	background: #f06f3d;
-	clip-path: polygon(50% 92%, 8% 48%, 8% 24%, 24% 8%, 42% 8%, 50% 20%, 58% 8%, 76% 8%, 92% 24%, 92% 48%);
-	box-shadow:
-		0 0 0 2px color-mix(in srgb, #ffffff 35%, transparent),
-		0 0 0 4px color-mix(in srgb, #000000 18%, transparent);
+	width: 30px;
+	aspect-ratio: 681 / 612;
+	background: url("/assets/images/footer-heart.webp") center / contain no-repeat;
+	filter: drop-shadow(0 1px 0 color-mix(in srgb, #ffffff 35%, transparent))
+		drop-shadow(0 2px 0 color-mix(in srgb, #000000 18%, transparent));
+	image-rendering: pixelated;
 }
 
 .footer-inner p:first-of-type {
@@ -1047,6 +1080,18 @@ h3 {
 @media (max-width: 560px) {
 	body {
 		font-size: 15px;
+	}
+
+	.site-footer::before,
+	.site-footer::after {
+		top: 44%;
+		width: 74px;
+		opacity: 0.07;
+	}
+
+	:root[data-theme="dark"] .site-footer::before,
+	:root[data-theme="dark"] .site-footer::after {
+		opacity: 0.12;
 	}
 
 	.site-nav,

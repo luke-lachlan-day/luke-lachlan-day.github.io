@@ -233,6 +233,6 @@ export const profile = {
 	},
 	footer: {
 		message: 'Thanks for stopping by!',
-		linkLabels: ['Email', 'GitHub', 'LinkedIn', 'YouTube', 'Instagram', 'Projects / Social'],
+		linkLabels: ['Email', 'GitHub', 'LinkedIn', 'YouTube', 'Instagram'],
 	},
 } as const;
