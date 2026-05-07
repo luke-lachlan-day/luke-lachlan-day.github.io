@@ -385,29 +385,18 @@ h1 {
 }
 
 .hero-title {
-	background:
-		linear-gradient(var(--heading), var(--heading)),
-		var(--paint-texture) center / 130px 130px repeat;
-	background-blend-mode: multiply;
-	-webkit-background-clip: text;
-	background-clip: text;
 	color: var(--heading);
 	font-size: clamp(4.55rem, 7.15vw, 7.1rem);
 	font-weight: 700;
-	line-height: 0.88;
-	padding-block: 0.04em 0;
+	line-height: 0.94;
+	padding-block: 0.04em 0.08em;
 	width: max-content;
 	max-width: min(calc(100vw - 32px), 680px);
 	text-wrap: initial;
-	-webkit-text-fill-color: transparent;
 }
 
 .hero-title-line {
 	display: block;
-	background: inherit;
-	background-blend-mode: inherit;
-	-webkit-background-clip: text;
-	background-clip: text;
 }
 
 .hero-title-line-nowrap {
@@ -450,7 +439,13 @@ h3 {
 	position: absolute;
 	inset: 0;
 	z-index: -1;
-	background: var(--paint);
+	background:
+		linear-gradient(
+			color-mix(in srgb, var(--paint) 88%, #ffffff),
+			color-mix(in srgb, var(--paint) 88%, #ffffff)
+		),
+		var(--paint-texture) center / 150px 150px repeat;
+	background-blend-mode: multiply;
 	-webkit-mask: var(--brush-mask);
 	mask: var(--brush-mask);
 	pointer-events: none;
@@ -476,10 +471,16 @@ h3 {
 
 .hero-actions {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	align-items: center;
 	gap: 14px;
 	margin-top: 25px;
+}
+
+.hero-actions .button {
+	flex: 1 1 0;
+	min-width: 0;
+	white-space: nowrap;
 }
 
 .button {
@@ -1044,13 +1045,25 @@ h3 {
 		max-width: 368px;
 	}
 
-	.hero-role {
-		font-size: clamp(0.92rem, 4.8vw, 1.2rem);
-		padding: 10px 22px 12px;
+	.hero-actions {
+		gap: 8px;
 	}
 
 	.hero-actions .button {
-		width: 100%;
+		min-height: 54px;
+		gap: 7px;
+		padding: 11px 8px 13px;
+		font-size: clamp(0.82rem, 3.7vw, 0.95rem);
+	}
+
+	.hero-actions .button::before {
+		width: 21px;
+		height: 21px;
+	}
+
+	.hero-role {
+		font-size: clamp(0.92rem, 4.8vw, 1.2rem);
+		padding: 10px 22px 12px;
 	}
 
 	.hero-art {
