@@ -3,6 +3,7 @@ export type Link = {
 	href: string;
 	display: string;
 	copy: string;
+	icon: string;
 };
 
 export type TimelineItem = {
@@ -51,17 +52,17 @@ export const profile = {
 		],
 		heroImages: {
 			light: {
-				src: '/assets/hero-light.webp',
+				src: '/assets/images/hero-light.webp',
 				alt: 'Pixel art traveler looking across a bright mountain valley from a grassy cliff.',
 			},
 			dark: {
-				src: '/assets/hero-dark.webp',
+				src: '/assets/images/hero-dark.webp',
 				alt: 'Pixel art traveler looking across a moonlit mountain valley from a grassy cliff.',
 			},
 		},
 		actions: [
-			{ label: 'View Projects', href: '/timeline/' },
-			{ label: 'Get In Touch', href: '/contact/' },
+			{ label: 'View Projects', href: '/timeline/', icon: '/assets/icons/gamepad.svg' },
+			{ label: 'Get In Touch', href: '/contact/', icon: '/assets/icons/email.svg' },
 		],
 		featuredProjectIds: ['petes-place', 'coop-climbing', 'awbw-opening-analyzer'],
 	},
@@ -70,7 +71,7 @@ export const profile = {
 			id: 'daytime-devs',
 			name: 'Daytime Devs',
 			icon: {
-				src: '/assets/company-daytime-devs.webp',
+				src: '/assets/images/company-daytime-devs.webp',
 				alt: 'Pixel art sun and code mark for Daytime Devs.',
 			},
 		},
@@ -78,7 +79,7 @@ export const profile = {
 			id: 'catalyst-games',
 			name: 'Catalyst Games',
 			icon: {
-				src: '/assets/company-catalyst-games.webp',
+				src: '/assets/images/company-catalyst-games.webp',
 				alt: 'Pixel art purple spark and game controller mark for Catalyst Games.',
 			},
 		},
@@ -86,7 +87,7 @@ export const profile = {
 			id: 'solo',
 			name: 'Solo',
 			icon: {
-				src: '/assets/company-solo-back.webp',
+				src: '/assets/images/company-solo-back.webp',
 				alt: 'Pixel art solo developer avatar icon.',
 			},
 		},
@@ -102,7 +103,7 @@ export const profile = {
 				product: "Pete's Place",
 				pictures: [
 					{
-						src: '/assets/project-petes-place.webp',
+						src: '/assets/images/project-petes-place.webp',
 						alt: "Pixel art cozy forest shop scene for Pete's Place.",
 					},
 				],
@@ -116,7 +117,7 @@ export const profile = {
 				product: 'Co-op Climbing Prototype',
 				pictures: [
 					{
-						src: '/assets/project-climbing.webp',
+						src: '/assets/images/project-climbing.webp',
 						alt: 'Pixel art co-op climbers roped together on a sunny cliff face.',
 					},
 				],
@@ -130,7 +131,7 @@ export const profile = {
 				product: 'AWBW Opening Analyzer',
 				pictures: [
 					{
-						src: '/assets/project-awbw.webp',
+						src: '/assets/images/project-awbw.webp',
 						alt: 'Pixel art turn-based strategy grid with blue and red units.',
 					},
 				],
@@ -191,29 +192,47 @@ export const profile = {
 				href: 'mailto:hello@example.com',
 				display: 'hello@example.com',
 				copy: 'Placeholder email for direct contact.',
+				icon: '/assets/icons/email.svg',
 			},
 			{
 				label: 'GitHub',
 				href: '#',
 				display: 'github.com/placeholder',
 				copy: 'Future home for public repositories and project source.',
+				icon: '/assets/icons/github.svg',
 			},
 			{
 				label: 'LinkedIn',
 				href: '#',
 				display: 'linkedin.com/in/placeholder',
 				copy: 'Placeholder professional profile link.',
+				icon: '/assets/icons/linkedin.svg',
+			},
+			{
+				label: 'YouTube',
+				href: '#',
+				display: 'youtube.com/@placeholder',
+				copy: 'Placeholder video channel link.',
+				icon: '/assets/icons/youtube.svg',
+			},
+			{
+				label: 'Instagram',
+				href: '#',
+				display: 'instagram.com/placeholder',
+				copy: 'Placeholder social profile link.',
+				icon: '/assets/icons/instagram.svg',
 			},
 			{
 				label: 'Projects / Social',
 				href: '#',
 				display: 'project-link-placeholder',
 				copy: 'Space for a project hub, social profile, or community link.',
+				icon: '/assets/icons/gamepad.svg',
 			},
 		] satisfies Link[],
 	},
 	footer: {
 		message: 'Thanks for stopping by!',
-		linkLabels: ['Email', 'GitHub', 'LinkedIn', 'Projects / Social'],
+		linkLabels: ['Email', 'GitHub', 'LinkedIn', 'YouTube', 'Instagram', 'Projects / Social'],
 	},
 } as const;

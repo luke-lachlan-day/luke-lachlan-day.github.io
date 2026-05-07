@@ -1,0 +1,23 @@
+---
+interface Props {
+	src: string;
+	label?: string;
+	class?: string;
+	decorative?: boolean;
+}
+
+const {
+	src,
+	label,
+	class: className,
+	decorative = true,
+} = Astro.props;
+---
+
+<span
+	class:list={['asset-icon', className]}
+	style={`--icon-url: url("${src}")`}
+	aria-hidden={decorative ? 'true' : undefined}
+	role={!decorative && label ? 'img' : undefined}
+	aria-label={!decorative ? label : undefined}
+></span>

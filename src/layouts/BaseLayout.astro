@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import AssetIcon from '../components/AssetIcon.astro';
 import { profile } from '../data/profile';
 
 interface Props {
@@ -61,7 +62,7 @@ const footerLinks = profile.contact.links.filter((link) =>
 		<header class="site-header">
 			<nav class="site-nav" aria-label="Primary navigation">
 				<a class="brand" href="/" aria-label="Luke Lachlan Day home">
-					<img src="/assets/company-solo-clear.webp" alt="" width="42" height="42" />
+					<img src="/assets/images/company-solo-clear.webp" alt="" width="42" height="42" />
 					<span>Luke Lachlan Day</span>
 				</a>
 				<div class="nav-cluster">
@@ -98,7 +99,13 @@ const footerLinks = profile.contact.links.filter((link) =>
 				<div class="footer-heart" aria-hidden="true"></div>
 				<p>{profile.footer.message}</p>
 				<div class="footer-links" aria-label="Social links">
-					{footerLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+					{
+						footerLinks.map((link) => (
+							<a href={link.href} aria-label={link.label} title={link.label}>
+								<AssetIcon src={link.icon} />
+							</a>
+						))
+					}
 				</div>
 				<p class="copyright">&copy; {new Date().getFullYear()} Luke Lachlan Day</p>
 			</div>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AssetIcon from '../components/AssetIcon.astro';
 import { profile, type Project } from '../data/profile';
 
 const { home, projects, companies } = profile;
@@ -26,7 +27,14 @@ const featuredProjects = home.featuredProjectIds
 				{home.summary.map((summaryLine) => <span class="hero-intro-line">{summaryLine}</span>)}
 			</p>
 			<div class="hero-actions">
-				{home.actions.map((action, index) => <a class={`button button-${index + 1}`} href={action.href}>{action.label}</a>)}
+				{
+					home.actions.map((action, index) => (
+						<a class={`button button-${index + 1}`} href={action.href}>
+							<AssetIcon src={action.icon} class="button-icon" />
+							{action.label}
+						</a>
+					))
+				}
 			</div>
 		</div>
 

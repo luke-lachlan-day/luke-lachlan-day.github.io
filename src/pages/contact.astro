@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AssetIcon from '../components/AssetIcon.astro';
 import { profile } from '../data/profile';
 
 const { contact } = profile;
@@ -24,7 +25,10 @@ const { contact } = profile;
 			{
 				contact.links.map((link) => (
 					<article class="contact-card">
-						<p class="meta-label">{link.label}</p>
+						<div class="contact-card-header">
+							<AssetIcon src={link.icon} class="contact-card-icon" />
+							<p class="meta-label">{link.label}</p>
+						</div>
 						<h3>{link.display}</h3>
 						<p>{link.copy}</p>
 						<a href={link.href}>{link.display}</a>
