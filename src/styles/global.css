@@ -2,7 +2,7 @@
 	--max-width: 1216px;
 	--radius: 14px;
 	--font-body: "Nunito", "Trebuchet MS", "Segoe UI", sans-serif;
-	--font-display: "Chewy", "Patrick Hand", "Trebuchet MS", cursive;
+	--font-display: "Balsamiq Sans", "Patrick Hand", "Trebuchet MS", cursive;
 	--font-accent: "Patrick Hand", "Trebuchet MS", "Segoe UI", sans-serif;
 	--bg: #fff8ec;
 	--bg-soft: #fffdf8;
@@ -350,6 +350,8 @@ main {
 .hero-content {
 	position: relative;
 	z-index: 3;
+	min-width: 0;
+	width: 100%;
 	max-width: 500px;
 }
 
@@ -1140,9 +1142,20 @@ h3 {
 		padding-top: 26px;
 	}
 
+	.hero-content {
+		max-width: calc(100vw - 22px);
+	}
+
+	.hero-intro,
+	.hero-actions,
+	.hero-meta {
+		max-width: 368px;
+	}
+
 	.hero-role {
-		max-width: 100%;
-		font-size: 1.45rem;
+		max-width: 368px;
+		font-size: clamp(1.3rem, 6vw, 1.45rem);
+		padding-inline: 18px;
 	}
 
 	.hero-actions .button {
