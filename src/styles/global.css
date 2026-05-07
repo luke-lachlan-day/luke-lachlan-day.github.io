@@ -339,7 +339,7 @@ main {
 	grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
 	align-items: center;
 	min-height: 670px;
-	padding: 24px 0 4px;
+	padding: 14px 0 4px;
 }
 
 .hero-content {
@@ -589,11 +589,12 @@ h3 {
 .hero-art {
 	position: relative;
 	z-index: 1;
-	min-height: 704px;
+	min-height: 650px;
 	margin-left: -210px;
 	margin-right: -18px;
 	overflow: hidden;
 	isolation: isolate;
+	transform: translateY(16px);
 }
 
 .theme-asset {
@@ -897,7 +898,7 @@ h3 {
 		grid-template-columns: 1fr;
 		min-height: 590px;
 		overflow: hidden;
-		padding: 34px 0 42px;
+		padding: 28px 0 36px;
 	}
 
 	.hero::after {
@@ -925,11 +926,11 @@ h3 {
 		top: 50%;
 		right: -116px;
 		z-index: 1;
-		width: min(748px, 80vw);
-		height: min(748px, 80vw);
+		width: min(700px, 80vw);
+		height: min(700px, 80vw);
 		min-height: 0;
 		margin: 0;
-		transform: translateY(-50%);
+		transform: translateY(calc(-50% + 16px));
 	}
 
 	.theme-asset {
@@ -954,7 +955,7 @@ h3 {
 		grid-template-columns: 1fr;
 		min-height: 590px;
 		overflow: hidden;
-		padding: 34px 0 42px;
+		padding: 28px 0 36px;
 	}
 
 	.hero::after {
@@ -982,11 +983,11 @@ h3 {
 		top: 50%;
 		right: -116px;
 		z-index: 1;
-		width: min(748px, 80vw);
-		height: min(748px, 80vw);
+		width: min(700px, 80vw);
+		height: min(700px, 80vw);
 		min-height: 0;
 		margin: 0;
-		transform: translateY(-50%);
+		transform: translateY(calc(-50% + 16px));
 	}
 
 	.theme-asset {
@@ -1100,7 +1101,7 @@ h3 {
 		display: block;
 		min-height: 0;
 		overflow: visible;
-		padding: 26px 0 22px;
+		padding: 22px 0 18px;
 	}
 
 	.hero::after {
@@ -1119,13 +1120,13 @@ h3 {
 		position: relative;
 		top: auto;
 		right: auto;
-		width: clamp(288px, 80vw, 402px);
+		width: clamp(288px, 80vw, 374px);
 		height: auto;
 		aspect-ratio: 1;
 		min-height: 0;
 		margin: 20px auto 0;
 		overflow: visible;
-		transform: translateX(-4%);
+		transform: translate(-4%, 12px);
 	}
 
 	.theme-asset {
@@ -1135,6 +1136,6 @@ h3 {
 
 @media (max-width: 420px) {
 	.hero-art {
-		width: clamp(274px, 86vw, 360px);
+		width: clamp(274px, 86vw, 338px);
 	}
 }
