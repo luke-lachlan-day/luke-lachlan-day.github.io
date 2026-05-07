@@ -21,6 +21,19 @@ This file is the repo-level source of truth for future agent work on this Astro 
 
 Run `npm run build` as the baseline validation step for implementation work governed by this file. For visual or UI changes, also review the result in a browser at phone, tablet, and desktop/PC widths.
 
+## Playwright
+
+Playwright is available through the repo's `@playwright/test` dev dependency. Use it via `npm exec playwright -- ...`.
+
+Common commands:
+
+- `npm exec playwright -- --version`
+- `npm exec playwright -- test`
+- `npm exec playwright -- test --ui`
+- `npm exec playwright -- codegen http://localhost:4321`
+
+For visual or UI review, start the Astro dev server first with `npm run dev`, then use Playwright against the local URL. The repo currently does not define a dedicated Playwright npm script or committed test suite, so use `npm exec playwright -- ...` unless scripts are added later.
+
 ## Engineering Standards
 
 - Keep changes scoped. Do not perform unrelated refactors, dependency churn, broad restyling, or metadata cleanup while making content or feature edits.
