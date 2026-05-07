@@ -83,16 +83,14 @@
 }
 
 html {
-	background: var(--bg);
+	background-color: var(--bg);
 	transition: background-color var(--theme-transition), color var(--theme-transition);
 }
 
 body {
 	margin: 0;
 	min-width: 320px;
-	background:
-		linear-gradient(180deg, color-mix(in srgb, var(--bg-soft) 70%, transparent) 0, transparent 320px),
-		var(--bg);
+	background-color: var(--bg);
 	color: var(--text);
 	font-family: var(--font-body);
 	font-size: 16px;
@@ -157,7 +155,7 @@ main {
 	position: sticky;
 	top: 0;
 	z-index: 20;
-	background: var(--bg);
+	background-color: var(--bg);
 }
 
 .site-nav,
@@ -820,6 +818,7 @@ h3 {
 .site-footer {
 	position: relative;
 	z-index: 1;
+	background-color: var(--bg);
 	padding: 54px 0 28px;
 }
 
