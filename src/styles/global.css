@@ -17,6 +17,7 @@
 	--accent-2: #eda21a;
 	--accent-3: #6f8b47;
 	--paint: #285590;
+	--paint-fill: color-mix(in srgb, var(--accent) 88%, #000000);
 	--border: #ded2c2;
 	--border-strong: #cbbca9;
 	--shadow: 0 18px 42px rgba(52, 42, 28, 0.1);
@@ -440,10 +441,7 @@ h3 {
 	inset: 0;
 	z-index: -1;
 	background:
-		linear-gradient(
-			color-mix(in srgb, var(--paint) 88%, #ffffff),
-			color-mix(in srgb, var(--paint) 88%, #ffffff)
-		),
+		linear-gradient(var(--paint-fill), var(--paint-fill)),
 		var(--paint-texture) center / 150px 150px repeat;
 	background-blend-mode: multiply;
 	-webkit-mask: var(--brush-mask);
@@ -494,7 +492,7 @@ h3 {
 	border: 2px solid transparent;
 	border-radius: 13px;
 	background:
-		linear-gradient(color-mix(in srgb, var(--accent) 88%, #000000), color-mix(in srgb, var(--accent) 88%, #000000)),
+		linear-gradient(var(--paint-fill), var(--paint-fill)),
 		var(--paint-texture) center / 150px 150px repeat;
 	background-blend-mode: multiply;
 	box-shadow: 0 12px 26px color-mix(in srgb, var(--accent) 18%, transparent);
