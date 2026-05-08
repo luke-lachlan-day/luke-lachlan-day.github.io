@@ -74,7 +74,12 @@ const footerLinks = profile.footer.linkLabels.flatMap((label) => {
 
 		<header class="site-header">
 			<nav class="site-nav" aria-label="Primary navigation">
-				<a class="brand" href="/" aria-label="Luke Lachlan Day home">
+				<a
+					class="brand"
+					href="/"
+					aria-label="Luke Lachlan Day home"
+					data-current-page-link={currentPath === '/' ? 'true' : undefined}
+				>
 					<img src="/assets/images/company-solo-clear.webp" alt="" width="42" height="42" />
 					<span>Luke Lachlan Day</span>
 				</a>
@@ -88,7 +93,11 @@ const footerLinks = profile.footer.linkLabels.flatMap((label) => {
 										: currentPath.startsWith(item.href);
 
 								return (
-									<a href={item.href} aria-current={isActive ? 'page' : undefined}>
+									<a
+										href={item.href}
+										aria-current={isActive ? 'page' : undefined}
+										data-current-page-link={isActive ? 'true' : undefined}
+									>
 										{item.label}
 									</a>
 								);
@@ -142,9 +151,15 @@ const footerLinks = profile.footer.linkLabels.flatMap((label) => {
 				const root = document.documentElement;
 				const themeToggle = document.querySelector('[data-theme-toggle]');
 				const leavesToggle = document.querySelector('[data-leaves-toggle]');
+				const currentPageLinks = document.querySelectorAll('[data-current-page-link]');
 				const systemQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
 				const systemTheme = () => (systemQuery.matches ? 'dark' : 'light');
+				const isCurrentUrl = (url) =>
+					url.origin === window.location.origin &&
+					url.pathname === window.location.pathname &&
+					url.search === window.location.search &&
+					url.hash === window.location.hash;
 				const getSavedTheme = () => {
 					try {
 						const saved = localStorage.getItem(themeStorageKey);
@@ -205,6 +220,28 @@ const footerLinks = profile.footer.linkLabels.flatMap((label) => {
 				setTheme(getSavedTheme() ?? systemTheme(), false);
 				setLeaves(getSavedLeaves() ?? root.dataset.leaves, false);
 				enableTransitionsAfterInitialPaint();
+
+				currentPageLinks.forEach((link) => {
+					link.addEventListener('click', (event) => {
+						if (
+							event.defaultPrevented ||
+							event.button !== 0 ||
+							event.metaKey ||
+							event.ctrlKey ||
+							event.shiftKey ||
+							event.altKey ||
+							link.hasAttribute('target') ||
+							link.hasAttribute('download')
+						) {
+							return;
+						}
+
+						const url = new URL(link.href, window.location.href);
+						if (isCurrentUrl(url)) {
+							event.preventDefault();
+						}
+					});
+				});
 
 				themeToggle?.addEventListener('click', () => {
 					enableThemeTransitions();
