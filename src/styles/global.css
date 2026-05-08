@@ -26,6 +26,8 @@
 	--button-text: #ffffff;
 	--image-filter: saturate(1.08) contrast(1.04);
 	--toggle-accent: #eda21a;
+	--toggle-thumb-border: #eda21a;
+	--toggle-shadow-color: rgba(52, 42, 28, 0.08);
 	--footer-heart-color: #eda21a;
 	--brush-mask: url("/assets/textures/role-brush.webp") center / 100% 100% no-repeat;
 	--paint-texture: url("/assets/textures/paint-texture.webp");
@@ -58,6 +60,8 @@
 	--shadow-soft: 0 10px 28px rgba(52, 42, 28, 0.08);
 	--image-filter: saturate(1.08) contrast(1.04);
 	--toggle-accent: #eda21a;
+	--toggle-thumb-border: #eda21a;
+	--toggle-shadow-color: rgba(52, 42, 28, 0.08);
 	--footer-heart-color: #eda21a;
 	color-scheme: light;
 }
@@ -82,6 +86,8 @@
 	--shadow-soft: 0 12px 34px rgba(0, 0, 0, 0.28);
 	--image-filter: saturate(1.14) contrast(1.12) brightness(0.88);
 	--toggle-accent: #a885ff;
+	--toggle-thumb-border: color-mix(in srgb, #a885ff 70%, #405474);
+	--toggle-shadow-color: rgba(0, 0, 0, 0.24);
 	--footer-heart-color: #a885ff;
 	color-scheme: dark;
 }
@@ -369,32 +375,43 @@ main {
 	grid-template-columns: 1fr 1fr;
 	align-items: center;
 	flex: 0 0 auto;
-	width: 96px;
-	height: 42px;
-	border: 2px solid var(--toggle-accent);
-	border-radius: 14px;
-	background: color-mix(in srgb, var(--surface) 86%, transparent);
+	width: 80px;
+	height: 40px;
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--surface) 90%, var(--bg));
 	box-shadow:
-		inset 0 0 0 1px color-mix(in srgb, #ffffff 24%, transparent),
-		var(--shadow-soft);
+		inset 0 1px 2px color-mix(in srgb, #ffffff 24%, transparent),
+		0 2px 7px var(--toggle-shadow-color);
 	cursor: pointer;
-	padding: 3px;
+	padding: 0;
+}
+
+.theme-toggle:focus {
+	outline: none;
+}
+
+.theme-toggle:focus-visible {
+	outline: 2px solid color-mix(in srgb, var(--toggle-accent) 70%, transparent);
+	outline-offset: 3px;
 }
 
 .theme-toggle::before {
 	content: "";
 	position: absolute;
-	top: 4px;
-	bottom: 4px;
-	left: 4px;
-	width: 41px;
-	border-radius: 11px;
-	background: color-mix(in srgb, var(--toggle-accent) 18%, var(--surface));
+	top: -1px;
+	bottom: -1px;
+	left: -1px;
+	width: calc(50% + 1px);
+	border: 1px solid var(--toggle-thumb-border);
+	border-radius: 999px;
+	background: var(--surface);
+	box-shadow: 0 1px 4px var(--toggle-shadow-color);
 }
 
 :root[data-theme="dark"] .theme-toggle::before {
-	background: color-mix(in srgb, var(--toggle-accent) 30%, var(--surface));
-	transform: translateX(43px);
+	background: var(--surface-soft);
+	transform: translateX(100%);
 }
 
 .theme-icon {
@@ -404,38 +421,43 @@ main {
 	justify-self: center;
 	width: 22px;
 	height: 22px;
+	--theme-icon-offset-x: 0;
+	--theme-icon-scale: 1;
+	background-color: var(--muted);
+	-webkit-mask: var(--theme-icon-mask) center / contain no-repeat;
+	mask: var(--theme-icon-mask) center / contain no-repeat;
+	transform: translateX(var(--theme-icon-offset-x)) scale(var(--theme-icon-scale));
 }
 
 .theme-icon-light {
-	background:
-		linear-gradient(var(--accent-2), var(--accent-2)) center / 3px 20px no-repeat,
-		linear-gradient(90deg, var(--accent-2), var(--accent-2)) center / 20px 3px no-repeat,
-		linear-gradient(45deg, transparent 42%, var(--accent-2) 43% 56%, transparent 57%) center / 20px 20px no-repeat,
-		linear-gradient(-45deg, transparent 42%, var(--accent-2) 43% 56%, transparent 57%) center / 20px 20px no-repeat,
-		radial-gradient(circle, var(--accent-2) 0 35%, transparent 37%);
+	--theme-icon-mask: url("/assets/icons/sun.svg");
+	background-color: var(--accent-2);
 }
 
 .theme-icon-dark {
-	width: 24px;
-	height: 24px;
-	background: url("/assets/icons/theme-moon.png") center / contain no-repeat;
-	filter:
-		drop-shadow(1px 0 0 var(--toggle-accent))
-		drop-shadow(-1px 0 0 var(--toggle-accent))
-		drop-shadow(0 1px 0 var(--toggle-accent))
-		drop-shadow(0 -1px 0 var(--toggle-accent));
+	--theme-icon-mask: url("/assets/icons/moon.svg");
+	--theme-icon-offset-x: 3px;
+	background-color: color-mix(in srgb, var(--muted) 72%, var(--surface));
+}
+
+:root[data-theme="dark"] .theme-icon-light {
+	background-color: color-mix(in srgb, var(--muted) 64%, var(--surface));
+}
+
+:root[data-theme="dark"] .theme-icon-dark {
+	background-color: var(--toggle-accent);
 }
 
 :root[data-theme="light"] .theme-icon-dark,
 :root[data-theme="dark"] .theme-icon-light {
 	opacity: 0.44;
-	transform: scale(0.88);
+	--theme-icon-scale: 0.88;
 }
 
 :root[data-theme="light"] .theme-icon-light,
 :root[data-theme="dark"] .theme-icon-dark {
 	opacity: 1;
-	transform: scale(1.07);
+	--theme-icon-scale: 1.07;
 }
 
 .hero {
@@ -1216,16 +1238,8 @@ h3 {
 	}
 
 	.theme-toggle {
-		width: 82px;
+		width: 76px;
 		height: 38px;
-	}
-
-	.theme-toggle::before {
-		width: 34px;
-	}
-
-	:root[data-theme="dark"] .theme-toggle::before {
-		transform: translateX(36px);
 	}
 
 	h1 {
