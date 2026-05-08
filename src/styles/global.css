@@ -985,7 +985,7 @@ h3 {
 }
 
 .footer-heart {
-	width: 32px;
+	width: 34px;
 	height: 28px;
 	background: var(--footer-heart-color);
 	image-rendering: pixelated;
