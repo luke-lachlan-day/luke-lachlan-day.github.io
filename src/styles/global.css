@@ -30,6 +30,7 @@
 	--toggle-shadow-color: rgba(52, 42, 28, 0.08);
 	--footer-heart-color: #eda21a;
 	--brush-mask: url("/assets/textures/role-brush.webp") center / 100% 100% no-repeat;
+	--nav-brush-mask: url("/assets/textures/nav-brush.webp") center / 100% 100% no-repeat;
 	--paint-texture: url("/assets/textures/paint-texture.webp");
 	--theme-transition: 0ms;
 	color-scheme: light;
@@ -351,26 +352,25 @@ main {
 .nav-links a::after {
 	content: "";
 	position: absolute;
-	left: 8px;
-	right: 8px;
-	bottom: 1px;
-	height: 7px;
+	left: 50%;
+	bottom: 4px;
+	width: 70%;
+	height: 4px;
 	background: var(--paint);
-	-webkit-mask: var(--brush-mask);
-	mask: var(--brush-mask);
+	-webkit-mask: var(--nav-brush-mask);
+	mask: var(--nav-brush-mask);
 	opacity: 0;
-	transform: scaleX(0.55);
-	transform-origin: left center;
+	transform: translateX(-50%);
+	pointer-events: none;
+	transition: none;
 }
 
 .nav-links a:hover,
-.nav-links a:focus-visible,
 .nav-links a[aria-current="page"] {
 	color: var(--accent);
 }
 
 .nav-links a:hover,
-.nav-links a:focus-visible,
 .theme-toggle:hover,
 .leaves-toggle:hover,
 .leaves-toggle:focus-visible,
@@ -378,11 +378,14 @@ main {
 	transform: translateY(-1px);
 }
 
-.nav-links a:hover::after,
-.nav-links a:focus-visible::after,
+.nav-links a:focus-visible {
+	color: var(--accent);
+	outline: 3px solid color-mix(in srgb, var(--accent) 42%, transparent);
+	outline-offset: 3px;
+}
+
 .nav-links a[aria-current="page"]::after {
 	opacity: 1;
-	transform: scaleX(1);
 }
 
 .theme-toggle,
