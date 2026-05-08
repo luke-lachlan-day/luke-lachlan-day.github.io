@@ -27,6 +27,11 @@ export type ImageAsset = {
 	alt: string;
 };
 
+export type ThemeImageAssets = {
+	light: ImageAsset;
+	dark: ImageAsset;
+};
+
 export type CompanyId = 'daytime-devs' | 'catalyst-games' | 'solo';
 
 export type Company = {
@@ -214,10 +219,16 @@ export const profile = {
 				'Choose your preferred way to get in touch!',
 			],
 		} satisfies ContactHeroContent,
-		heroImage: {
-			src: '/assets/images/contact-pigeon.webp',
-			alt: 'Pixel art pigeon illustration for the contact page.',
-		} satisfies ImageAsset,
+		heroImages: {
+			light: {
+				src: '/assets/images/contact-mailbox-light.webp',
+				alt: 'Pixel art traveler reading a letter beside a mailbox under a leafy tree.',
+			},
+			dark: {
+				src: '/assets/images/contact-mailbox-dark.webp',
+				alt: 'Pixel art traveler reading a letter by lantern light beside a mailbox under a leafy tree.',
+			},
+		} satisfies ThemeImageAssets,
 		links: [
 			{
 				label: 'Email',

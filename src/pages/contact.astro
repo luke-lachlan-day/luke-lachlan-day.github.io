@@ -20,13 +20,22 @@ const isExternalLink = (href: string) => href.startsWith('http://') || href.star
 			</p>
 		</div>
 
-		<div class="contact-hero-art">
+		<div class="contact-hero-art" role="img" aria-label={contact.heroImages.light.alt}>
 			<img
-				class="contact-hero-image"
-				src={contact.heroImage.src}
-				alt={contact.heroImage.alt}
-				width="1038"
-				height="887"
+				class="contact-hero-image theme-asset-light"
+				src={contact.heroImages.light.src}
+				alt=""
+				width="1390"
+				height="1132"
+				aria-hidden="true"
+			/>
+			<img
+				class="contact-hero-image theme-asset-dark"
+				src={contact.heroImages.dark.src}
+				alt=""
+				width="1390"
+				height="1132"
+				aria-hidden="true"
 			/>
 		</div>
 	</section>

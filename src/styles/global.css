@@ -847,16 +847,21 @@ h3 {
 }
 
 .contact-hero-art {
+	position: relative;
 	justify-self: end;
 	width: min(100%, 460px);
+	aspect-ratio: 1390 / 1132;
 }
 
 .contact-hero-image {
+	position: absolute;
+	inset: 0;
 	width: 100%;
-	height: auto;
+	height: 100%;
 	object-fit: contain;
 	filter: var(--image-filter);
 	image-rendering: pixelated;
+	opacity: 0;
 }
 
 .page-hero h1 {
