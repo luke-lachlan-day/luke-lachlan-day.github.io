@@ -30,6 +30,8 @@ const leafAmount = Math.max(0, Math.floor(config.goalAmount));
 		if (!root) return;
 
 		const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+		let animationFrame = 0;
+
 		if (motionQuery.matches) {
 			root.setAttribute('hidden', '');
 			return;
@@ -42,8 +44,9 @@ const leafAmount = Math.max(0, Math.floor(config.goalAmount));
 				share: 0.36,
 				minSize: 28,
 				maxSize: 40,
-				duration: [24, 34],
-				sway: [26, 48],
+				fallSpeed: [18, 28],
+				swayAmplitude: [16, 32],
+				swayRate: [0.42, 0.66],
 				scrollDepth: 0.1,
 				windDepth: 0.35,
 			},
@@ -52,8 +55,9 @@ const leafAmount = Math.max(0, Math.floor(config.goalAmount));
 				share: 0.42,
 				minSize: 40,
 				maxSize: 56,
-				duration: [18, 27],
-				sway: [34, 66],
+				fallSpeed: [26, 40],
+				swayAmplitude: [26, 48],
+				swayRate: [0.5, 0.78],
 				scrollDepth: 0.25,
 				windDepth: 0.68,
 			},
@@ -62,20 +66,20 @@ const leafAmount = Math.max(0, Math.floor(config.goalAmount));
 				share: 0.22,
 				minSize: 58,
 				maxSize: 82,
-				duration: [14, 21],
-				sway: [48, 88],
+				fallSpeed: [34, 52],
+				swayAmplitude: [38, 70],
+				swayRate: [0.58, 0.88],
 				scrollDepth: 0.45,
 				windDepth: 1,
 			},
 		];
 
+		const windSpeed = 10;
 		const random = (min, max) => min + Math.random() * (max - min);
-		const getPageHeight = () =>
-			Math.max(
-				document.documentElement.scrollHeight,
-				document.body.scrollHeight,
-				window.innerHeight || 0
-			);
+		const getViewport = () => ({
+			width: window.innerWidth || document.documentElement.clientWidth || 1,
+			height: window.innerHeight || document.documentElement.clientHeight || 1,
+		});
 
 		const layers = layerSettings.map((settings, index) => ({
 			...settings,
@@ -89,63 +93,97 @@ const leafAmount = Math.max(0, Math.floor(config.goalAmount));
 		const assignedCount = layers.reduce((sum, layer) => sum + layer.count, 0);
 		layers[layers.length - 1].count = Math.max(0, leafCount - assignedCount);
 		const leaves = [];
+		let scrollY = window.scrollY;
+		let viewport = getViewport();
+
+		const getLeafPosition = (leaf, age) => {
+			// Depth increases from back to front: screenY = worldY - scrollY * scrollDepth.
+			const x =
+				leaf.startX +
+				Math.sin(age * leaf.swayRate + leaf.phase) * leaf.swayAmplitude +
+				age * windSpeed * leaf.layer.windDepth;
+			const worldY = leaf.startY + age * leaf.fallSpeed;
+			const screenY = worldY - scrollY * leaf.layer.scrollDepth;
+
+			return { x, screenY };
+		};
+
+		const resetLeaf = (leaf, now, seedOnscreen = false) => {
+			const viewportScale = Math.min(1, Math.max(0.72, viewport.width / 720));
+			const size = random(leaf.layer.minSize, leaf.layer.maxSize) * viewportScale;
+			const fallSpeed = random(leaf.layer.fallSpeed[0], leaf.layer.fallSpeed[1]);
+			const swayAmplitude = random(leaf.layer.swayAmplitude[0], leaf.layer.swayAmplitude[1]);
+			const swayRate = random(leaf.layer.swayRate[0], leaf.layer.swayRate[1]);
+			const phase = random(0, Math.PI * 2);
+			const spinRate = random(-26, 38);
+			const startRotation = random(0, 360);
+			const tilt = random(-12, 12);
+			const age = seedOnscreen ? random(0, Math.max(8, viewport.height / fallSpeed)) : 0;
+			const targetY = seedOnscreen
+				? random(-size, viewport.height + size)
+				: random(-viewport.height * 0.24 - size, -size);
+			const targetX = seedOnscreen
+				? random(-size * 0.5, viewport.width - size * 0.2)
+				: random(-viewport.width * 0.18 - size, viewport.width * 0.9);
+
+			Object.assign(leaf, {
+				size,
+				fallSpeed,
+				swayAmplitude,
+				swayRate,
+				phase,
+				spinRate,
+				startRotation,
+				tilt,
+				bornAt: now - age * 1000,
+				startX:
+					targetX -
+					Math.sin(age * swayRate + phase) * swayAmplitude -
+					age * windSpeed * leaf.layer.windDepth,
+				startY: targetY + scrollY * leaf.layer.scrollDepth - age * fallSpeed,
+			});
+
+			leaf.element.style.setProperty('--leaf-size', `${size.toFixed(2)}px`);
+		};
 
 		layers.forEach((layer) => {
 			if (!layer.element) return;
-			layer.element.style.setProperty('--leaf-wind-depth', layer.windDepth.toFixed(2));
 
 			for (let index = 0; index < layer.count; index += 1) {
 				const leaf = document.createElement('span');
 				leaf.className = 'falling-leaf';
-				leaf.style.setProperty('--leaf-x', `${random(-8, 102).toFixed(2)}vw`);
-				leaf.style.setProperty('--leaf-size', `${random(layer.minSize, layer.maxSize).toFixed(2)}px`);
-				leaf.style.setProperty('--leaf-duration', `${random(layer.duration[0], layer.duration[1]).toFixed(2)}s`);
-				leaf.style.setProperty('--leaf-delay', `${random(-layer.duration[1], -1).toFixed(2)}s`);
-				leaf.style.setProperty('--leaf-sway', `${random(layer.sway[0], layer.sway[1]).toFixed(2)}px`);
-				leaf.style.setProperty('--leaf-drift', `${random(-22, 22).toFixed(2)}px`);
-				leaf.style.setProperty('--leaf-spin', `${random(220, 620).toFixed(2)}deg`);
-				leaf.style.setProperty('--leaf-start-rotation', `${random(0, 360).toFixed(2)}deg`);
-				leaf.style.setProperty('--leaf-tilt', `${random(-34, 34).toFixed(2)}deg`);
-				leaf.style.setProperty('--leaf-fall-distance', `${random(92, 136).toFixed(2)}vh`);
 				layer.element.append(leaf);
-				leaves.push({ element: leaf, yRatio: Math.random() });
+
+				const leafState = { element: leaf, layer };
+				resetLeaf(leafState, performance.now(), true);
+				leaves.push(leafState);
 			}
 		});
 
-		let scrollY = window.scrollY;
-		let frame = 0;
-		let pageHeight = getPageHeight();
-
-		const updateLeafPositions = () => {
-			const viewportHeight = window.innerHeight || 1;
-			pageHeight = getPageHeight();
-			root.style.setProperty('--leaf-page-height', `${pageHeight + viewportHeight}px`);
-
+		const render = (now) => {
 			leaves.forEach((leaf) => {
-				const y = leaf.yRatio * (pageHeight + viewportHeight * 2) - viewportHeight;
-				leaf.element.style.setProperty('--leaf-y', `${y.toFixed(2)}px`);
+				const age = Math.max(0, (now - leaf.bornAt) / 1000);
+				let { x, screenY } = getLeafPosition(leaf, age);
+
+				if (screenY > viewport.height + leaf.size || x > viewport.width + leaf.size) {
+					resetLeaf(leaf, now);
+					({ x, screenY } = getLeafPosition(leaf, 0));
+				}
+
+				const rotation = leaf.startRotation + age * leaf.spinRate;
+				const tilt = Math.sin(age * leaf.swayRate + leaf.phase) * leaf.tilt;
+				leaf.element.style.transform = `translate3d(${x.toFixed(2)}px, ${screenY.toFixed(
+					2
+				)}px, 0) rotate(${rotation.toFixed(2)}deg) skewX(${tilt.toFixed(2)}deg)`;
 			});
-		};
 
-		const updateParallax = () => {
-			frame = 0;
-
-			layers.forEach((layer) => {
-				if (!layer.element) return;
-				const y = scrollY * -layer.scrollDepth;
-				layer.element.style.setProperty('--leaf-parallax-y', `${y.toFixed(2)}px`);
-			});
-		};
-
-		const requestUpdate = () => {
-			if (!frame) frame = window.requestAnimationFrame(updateParallax);
+			animationFrame = window.requestAnimationFrame(render);
 		};
 
 		window.addEventListener(
 			'scroll',
 			() => {
 				scrollY = window.scrollY;
-				requestUpdate();
 			},
 			{ passive: true }
 		);
@@ -153,24 +191,20 @@ const leafAmount = Math.max(0, Math.floor(config.goalAmount));
 		window.addEventListener(
 			'resize',
 			() => {
-				updateLeafPositions();
+				viewport = getViewport();
 				scrollY = window.scrollY;
-				requestUpdate();
 			},
 			{ passive: true }
 		);
 
-		window.addEventListener(
-			'load',
-			() => {
-				updateLeafPositions();
-				scrollY = window.scrollY;
-				requestUpdate();
-			},
-			{ once: true }
-		);
+		const handleMotionChange = () => {
+			if (!motionQuery.matches) return;
+			root.setAttribute('hidden', '');
+			window.cancelAnimationFrame(animationFrame);
+		};
 
-		updateLeafPositions();
-		updateParallax();
+		motionQuery.addEventListener('change', handleMotionChange);
+
+		animationFrame = window.requestAnimationFrame(render);
 	})();
 </script>

@@ -50,7 +50,7 @@ export const profile = {
 	effects: {
 		fallingLeaves: {
 			enabled: true,
-			goalAmount: 14,
+			goalAmount: 28,
 		} satisfies FallingLeavesEffect,
 	},
 	home: {

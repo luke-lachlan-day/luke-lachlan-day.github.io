@@ -142,8 +142,6 @@ main {
 }
 
 .falling-leaves {
-	--leaf-page-height: 100vh;
-	--leaf-wind: 14px;
 	position: fixed;
 	inset: 0;
 	z-index: 0;
@@ -153,155 +151,55 @@ main {
 }
 
 .falling-leaves-layer {
-	--leaf-parallax-x: 0px;
-	--leaf-parallax-y: 0px;
-	--leaf-wind-depth: 1;
 	position: absolute;
-	top: 0;
-	right: -12vw;
-	left: -12vw;
-	height: var(--leaf-page-height);
-	transform: translate3d(
-		calc(var(--leaf-parallax-x) + var(--leaf-wind) * var(--leaf-wind-depth)),
-		var(--leaf-parallax-y),
-		0
-	);
-	will-change: transform;
+	inset: 0;
 }
 
 .falling-leaf {
-	--leaf-fill: color-mix(in srgb, var(--accent-3) 36%, var(--bg));
+	--leaf-tint: color-mix(in srgb, var(--accent-3) 34%, transparent);
+	--leaf-opacity: 0.46;
 	position: absolute;
-	top: var(--leaf-y);
-	left: var(--leaf-x);
+	top: 0;
+	left: 0;
 	width: var(--leaf-size);
 	aspect-ratio: 1;
-	background-color: var(--leaf-fill);
+	background: url("/assets/images/leaf.webp") center / contain no-repeat;
+	filter: saturate(0.94) contrast(1.08);
 	image-rendering: pixelated;
-	-webkit-mask: url("/assets/images/leaf.webp") center / contain no-repeat;
-	mask: url("/assets/images/leaf.webp") center / contain no-repeat;
 	transform-origin: 50% 56%;
-	animation: leaf-fall var(--leaf-duration) linear infinite;
-	animation-delay: var(--leaf-delay);
-	transition: background-color var(--theme-transition);
+	opacity: var(--leaf-opacity);
 	will-change: transform;
 }
 
-.falling-leaves-layer-back {
-	--leaf-wind-depth: 0.35;
+.falling-leaf::after {
+	position: absolute;
+	inset: 0;
+	background-color: var(--leaf-tint);
+	content: "";
+	mix-blend-mode: color;
+	-webkit-mask: url("/assets/images/leaf.webp") center / contain no-repeat;
+	mask: url("/assets/images/leaf.webp") center / contain no-repeat;
+	pointer-events: none;
+	transition: background-color var(--theme-transition);
 }
 
-.falling-leaves-layer-mid {
-	--leaf-wind-depth: 0.68;
-}
-
-.falling-leaves-layer-front {
-	--leaf-wind-depth: 1;
+:root[data-theme="dark"] .falling-leaf {
+	filter: saturate(0.88) contrast(1.12) brightness(0.82);
 }
 
 .falling-leaves-layer-back .falling-leaf {
-	--leaf-fill: color-mix(in srgb, var(--bg) 88%, var(--accent-3));
+	--leaf-opacity: 0.26;
+	--leaf-tint: color-mix(in srgb, var(--bg) 70%, var(--accent-3));
 }
 
 .falling-leaves-layer-mid .falling-leaf {
-	--leaf-fill: color-mix(in srgb, var(--bg) 76%, var(--accent-3));
+	--leaf-opacity: 0.36;
+	--leaf-tint: color-mix(in srgb, var(--bg) 56%, var(--accent-3));
 }
 
 .falling-leaves-layer-front .falling-leaf {
-	--leaf-fill: color-mix(in srgb, var(--bg) 62%, var(--accent-3));
-}
-
-@keyframes leaf-fall {
-	0% {
-		transform:
-			translate3d(0, -16vh, 0)
-			rotate(calc(var(--leaf-start-rotation) - var(--leaf-spin) * 0.2))
-			skewX(var(--leaf-tilt));
-	}
-
-	12.5% {
-		transform:
-			translate3d(
-				calc(var(--leaf-drift) + var(--leaf-sway) * 0.38),
-				calc(var(--leaf-fall-distance) * 0.125),
-				0
-			)
-			rotate(calc(var(--leaf-start-rotation) + var(--leaf-spin) * 0.04))
-			skewX(calc(var(--leaf-tilt) * 0.72));
-	}
-
-	25% {
-		transform:
-			translate3d(
-				calc(var(--leaf-drift) + var(--leaf-sway) * 0.7),
-				calc(var(--leaf-fall-distance) * 0.25),
-				0
-			)
-			rotate(calc(var(--leaf-start-rotation) + var(--leaf-spin) * 0.16))
-			skewX(calc(var(--leaf-tilt) * 0.28));
-	}
-
-	37.5% {
-		transform:
-			translate3d(
-				calc(var(--leaf-drift) + var(--leaf-sway) * 0.92),
-				calc(var(--leaf-fall-distance) * 0.375),
-				0
-			)
-			rotate(calc(var(--leaf-start-rotation) + var(--leaf-spin) * 0.3))
-			skewX(calc(var(--leaf-tilt) * -0.16));
-	}
-
-	50% {
-		transform:
-			translate3d(
-				calc(var(--leaf-drift) + var(--leaf-sway) * 0.7),
-				calc(var(--leaf-fall-distance) * 0.5),
-				0
-			)
-			rotate(calc(var(--leaf-start-rotation) + var(--leaf-spin) * 0.46))
-			skewX(calc(var(--leaf-tilt) * -0.5));
-	}
-
-	62.5% {
-		transform:
-			translate3d(
-				calc(var(--leaf-drift) + var(--leaf-sway) * 0.1),
-				calc(var(--leaf-fall-distance) * 0.625),
-				0
-			)
-			rotate(calc(var(--leaf-start-rotation) + var(--leaf-spin) * 0.62))
-			skewX(calc(var(--leaf-tilt) * -0.76));
-	}
-
-	75% {
-		transform:
-			translate3d(
-				calc(var(--leaf-drift) - var(--leaf-sway) * 0.55),
-				calc(var(--leaf-fall-distance) * 0.75),
-				0
-			)
-			rotate(calc(var(--leaf-start-rotation) + var(--leaf-spin) * 0.78))
-			skewX(calc(var(--leaf-tilt) * -0.34));
-	}
-
-	87.5% {
-		transform:
-			translate3d(
-				calc(var(--leaf-drift) - var(--leaf-sway) * 0.82),
-				calc(var(--leaf-fall-distance) * 0.875),
-				0
-			)
-			rotate(calc(var(--leaf-start-rotation) + var(--leaf-spin) * 0.9))
-			skewX(calc(var(--leaf-tilt) * 0.22));
-	}
-
-	100% {
-		transform:
-			translate3d(var(--leaf-drift), var(--leaf-fall-distance), 0)
-			rotate(calc(var(--leaf-start-rotation) + var(--leaf-spin)))
-			skewX(var(--leaf-tilt));
-	}
+	--leaf-opacity: 0.5;
+	--leaf-tint: color-mix(in srgb, var(--bg) 38%, var(--accent-3));
 }
 
 @media (prefers-reduced-motion: reduce) {
