@@ -759,7 +759,7 @@ h3 {
 .contact-card {
 	border: 1px solid var(--border);
 	border-radius: var(--radius);
-	background: var(--surface-glass);
+	background: var(--bg);
 	box-shadow: var(--shadow);
 }
 
