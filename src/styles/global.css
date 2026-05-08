@@ -1082,12 +1082,38 @@ h3 {
 }
 
 .footer-heart {
+	position: relative;
 	width: 34px;
 	height: 28px;
-	background: var(--footer-heart-color);
-	image-rendering: pixelated;
-	-webkit-mask: url("/assets/images/footer-heart.webp") center / 100% 100% no-repeat;
-	mask: url("/assets/images/footer-heart.webp") center / 100% 100% no-repeat;
+}
+
+.footer-heart::before,
+.footer-heart::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	transition: opacity var(--theme-transition);
+}
+
+.footer-heart::before {
+	background-image: url("/assets/images/footer-heart-light.webp");
+	opacity: 1;
+}
+
+.footer-heart::after {
+	background-image: url("/assets/images/footer-heart-dark.webp");
+	opacity: 0;
+}
+
+:root[data-theme="dark"] .footer-heart::before {
+	opacity: 0;
+}
+
+:root[data-theme="dark"] .footer-heart::after {
+	opacity: 1;
 }
 
 .footer-inner p:first-of-type {
