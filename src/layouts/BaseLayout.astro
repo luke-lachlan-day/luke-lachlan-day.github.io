@@ -21,9 +21,11 @@ const navItems = [
 ];
 
 const currentPath = Astro.url.pathname;
-const footerLinks = profile.contact.links.filter((link) =>
-	profile.footer.linkLabels.includes(link.label)
-);
+const contactLinkByLabel = new Map(profile.contact.links.map((link) => [link.label, link]));
+const footerLinks = profile.footer.linkLabels.flatMap((label) => {
+	const link = contactLinkByLabel.get(label);
+	return link ? [link] : [];
+});
 ---
 
 <!doctype html>

@@ -2,7 +2,6 @@ export type Link = {
 	label: string;
 	href: string;
 	display: string;
-	copy: string;
 	icon: string;
 };
 
@@ -190,61 +189,52 @@ export const profile = {
 	contact: {
 		title: 'Contact | Luke Lachlan Day',
 		description: 'Contact links for Luke Lachlan Day.',
-		hero: {
-			title: 'Links and ways to connect.',
-			lead: 'Reach out about projects, prototypes, tools, or game-development work.',
-		} satisfies HeroContent,
-		channels: {
-			eyebrow: 'Channels',
-			title: 'Contact',
-		},
+		heading: 'Contact',
+		heroImage: {
+			src: '/assets/images/contact-pigeon.webp',
+			alt: 'Pixel art pigeon illustration for the contact page.',
+		} satisfies ImageAsset,
 		links: [
 			{
 				label: 'Email',
-				href: 'mailto:hello@example.com',
-				display: 'hello@example.com',
-				copy: 'Placeholder email for direct contact.',
+				href: 'mailto:luke@lukelachlanday.dev',
+				display: 'luke@lukelachlanday.dev',
 				icon: '/assets/icons/email.svg',
 			},
 			{
-				label: 'GitHub',
-				href: '#',
-				display: 'github.com/placeholder',
-				copy: 'Future home for public repositories and project source.',
-				icon: '/assets/icons/github.svg',
+				label: 'LinkedIn',
+				href: 'https://www.linkedin.com/in/luke-day-b400771b5/',
+				display: 'https://www.linkedin.com/in/luke-day-b400771b5/',
+				icon: '/assets/icons/linkedin.svg',
 			},
 			{
-				label: 'LinkedIn',
-				href: '#',
-				display: 'linkedin.com/in/placeholder',
-				copy: 'Placeholder professional profile link.',
-				icon: '/assets/icons/linkedin.svg',
+				label: 'GitHub',
+				href: 'https://github.com/luke-lachlan-day',
+				display: 'https://github.com/luke-lachlan-day',
+				icon: '/assets/icons/github.svg',
 			},
 			{
 				label: 'YouTube',
 				href: '#',
-				display: 'youtube.com/@placeholder',
-				copy: 'Placeholder video channel link.',
+				display: '#',
 				icon: '/assets/icons/youtube.svg',
 			},
 			{
 				label: 'Instagram',
 				href: '#',
-				display: 'instagram.com/placeholder',
-				copy: 'Placeholder social profile link.',
+				display: '#',
 				icon: '/assets/icons/instagram.svg',
 			},
 			{
 				label: 'Discord',
-				href: '#',
-				display: 'discord.gg/placeholder',
-				copy: 'Placeholder Discord community link.',
+				href: 'https://discord.com/invite/R79ShQzvBX',
+				display: 'https://discord.com/invite/R79ShQzvBX',
 				icon: '/assets/icons/discord.svg',
 			},
 		] satisfies Link[],
 	},
 	footer: {
 		message: 'Thanks for stopping by!',
-		linkLabels: ['Email', 'GitHub', 'LinkedIn', 'YouTube', 'Instagram', 'Discord'],
+		linkLabels: ['Email', 'LinkedIn', 'GitHub', 'YouTube', 'Instagram', 'Discord'],
 	},
 } as const;

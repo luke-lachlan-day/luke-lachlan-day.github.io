@@ -4,35 +4,41 @@ import AssetIcon from '../components/AssetIcon.astro';
 import { profile } from '../data/profile';
 
 const { contact } = profile;
+const isExternalLink = (href: string) => href.startsWith('http://') || href.startsWith('https://');
 ---
 
 <BaseLayout
 	title={contact.title}
 	description={contact.description}
 >
-	<section class="page-hero" aria-labelledby="contact-title">
-		<h1 id="contact-title">{contact.hero.title}</h1>
-		<p>{contact.hero.lead}</p>
+	<section class="contact-hero" aria-labelledby="contact-title">
+		<img
+			class="contact-hero-image"
+			src={contact.heroImage.src}
+			alt={contact.heroImage.alt}
+			width="1038"
+			height="887"
+		/>
+		<h1 id="contact-title">{contact.heading}</h1>
 	</section>
 
-	<section class="section" aria-labelledby="contact-links-title">
-		<div class="section-heading">
-			<p class="eyebrow">{contact.channels.eyebrow}</p>
-			<h2 id="contact-links-title">{contact.channels.title}</h2>
-		</div>
-
+	<section class="section contact-section" aria-label="Contact links">
 		<div class="contact-grid">
 			{
 				contact.links.map((link) => (
-					<article class="contact-card">
+					<a
+						class="contact-card"
+						href={link.href}
+						target={isExternalLink(link.href) ? '_blank' : undefined}
+						rel={isExternalLink(link.href) ? 'noreferrer' : undefined}
+						aria-label={`Open ${link.label}`}
+					>
 						<div class="contact-card-header">
 							<AssetIcon src={link.icon} class="contact-card-icon" />
 							<p class="meta-label">{link.label}</p>
 						</div>
-						<h3>{link.display}</h3>
-						<p>{link.copy}</p>
-						<a href={link.href}>{link.display}</a>
-					</article>
+						<p class="contact-card-link">{link.display}</p>
+					</a>
 				))
 			}
 		</div>
