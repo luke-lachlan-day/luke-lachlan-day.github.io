@@ -16,6 +16,12 @@ export type HeroContent = {
 	lead: string;
 };
 
+export type ContactHeroContent = {
+	title: string;
+	subtitle: string;
+	summary: string[];
+};
+
 export type ImageAsset = {
 	src: string;
 	alt: string;
@@ -189,7 +195,15 @@ export const profile = {
 	contact: {
 		title: 'Contact | Luke Lachlan Day',
 		description: 'Contact links for Luke Lachlan Day.',
-		heading: 'Contact',
+		hero: {
+			title: 'Get in Touch',
+			subtitle: 'Simple ways to reach me',
+			summary: [
+				"I'm always happy to connect, collaborate,",
+				'or chat about interesting ideas.',
+				'Choose your preferred way to get in touch!',
+			],
+		} satisfies ContactHeroContent,
 		heroImage: {
 			src: '/assets/images/contact-pigeon.webp',
 			alt: 'Pixel art pigeon illustration for the contact page.',

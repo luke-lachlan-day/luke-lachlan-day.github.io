@@ -12,14 +12,23 @@ const isExternalLink = (href: string) => href.startsWith('http://') || href.star
 	description={contact.description}
 >
 	<section class="contact-hero" aria-labelledby="contact-title">
-		<img
-			class="contact-hero-image"
-			src={contact.heroImage.src}
-			alt={contact.heroImage.alt}
-			width="1038"
-			height="887"
-		/>
-		<h1 id="contact-title">{contact.heading}</h1>
+		<div class="contact-hero-content">
+			<h1 id="contact-title" class="hero-title">{contact.hero.title}</h1>
+			<p class="hero-role">{contact.hero.subtitle}</p>
+			<p class="hero-intro">
+				{contact.hero.summary.map((summaryLine) => <span class="hero-intro-line">{summaryLine}</span>)}
+			</p>
+		</div>
+
+		<div class="contact-hero-art">
+			<img
+				class="contact-hero-image"
+				src={contact.heroImage.src}
+				alt={contact.heroImage.alt}
+				width="1038"
+				height="887"
+			/>
+		</div>
 	</section>
 
 	<section class="section contact-section" aria-label="Contact links">
