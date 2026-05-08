@@ -823,8 +823,8 @@ h3 {
 	grid-template-columns: minmax(0, 0.95fr) minmax(250px, 0.85fr);
 	align-items: center;
 	gap: clamp(26px, 6vw, 88px);
-	min-height: 500px;
-	padding: 34px 0 20px;
+	min-height: 460px;
+	padding: 34px 0 8px;
 	text-align: left;
 }
 
@@ -887,7 +887,7 @@ h3 {
 }
 
 .contact-section {
-	padding-top: 10px;
+	padding-top: 0;
 }
 
 .section-heading {
@@ -1083,12 +1083,18 @@ h3 {
 }
 
 .contact-card:hover {
+	border-color: color-mix(in srgb, var(--accent) 32%, var(--border));
+	background-color: color-mix(in srgb, var(--accent) 4%, var(--bg));
+	box-shadow: 0 20px 46px color-mix(in srgb, var(--accent) 12%, transparent);
 	transform: translateY(-2px);
-	transition: transform 140ms ease;
+	transition:
+		background-color 140ms ease,
+		border-color 140ms ease,
+		box-shadow 140ms ease,
+		transform 140ms ease;
 }
 
 .contact-card:hover .contact-card-link {
-	border-color: color-mix(in srgb, var(--accent-2) 84%, transparent);
 	color: var(--accent-strong);
 }
 
@@ -1122,7 +1128,6 @@ h3 {
 	gap: 8px;
 	width: fit-content;
 	margin-top: auto;
-	border-bottom: 2px solid color-mix(in srgb, var(--accent-2) 56%, transparent);
 	font-family: var(--font-body);
 	font-size: 0.92rem;
 	font-weight: 800;
@@ -1408,7 +1413,7 @@ h3 {
 	.contact-hero {
 		grid-template-columns: minmax(0, 1fr) minmax(210px, 0.62fr);
 		gap: clamp(18px, 4vw, 34px);
-		min-height: 460px;
+		min-height: 430px;
 	}
 
 	.contact-hero-art {
@@ -1559,7 +1564,7 @@ h3 {
 	.contact-hero {
 		display: block;
 		min-height: 0;
-		padding: 12px 0 18px;
+		padding: 12px 0 8px;
 	}
 
 	.contact-hero-content {
@@ -1571,7 +1576,7 @@ h3 {
 
 	.contact-hero-art {
 		width: clamp(238px, 72vw, 330px);
-		margin: 22px auto 0;
+		margin: 18px auto 0;
 	}
 }
 
