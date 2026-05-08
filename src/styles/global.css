@@ -338,6 +338,12 @@ main {
 	justify-content: flex-end;
 }
 
+@media (min-width: 900px) {
+	.nav-links {
+		transform: translateY(3px);
+	}
+}
+
 .nav-links a {
 	position: relative;
 	border-radius: 8px;
@@ -353,7 +359,7 @@ main {
 	content: "";
 	position: absolute;
 	left: 50%;
-	bottom: 4px;
+	bottom: 1px;
 	width: 70%;
 	height: 4px;
 	background: var(--paint);
