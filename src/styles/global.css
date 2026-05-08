@@ -395,17 +395,17 @@ main {
 	align-items: center;
 	flex: 0 0 auto;
 	height: 40px;
+	cursor: pointer;
+	padding: 0;
+}
+
+.theme-toggle {
 	border: 1px solid var(--border);
 	border-radius: 999px;
 	background: color-mix(in srgb, var(--surface) 90%, var(--bg));
 	box-shadow:
 		inset 0 1px 2px color-mix(in srgb, #ffffff 24%, transparent),
 		0 2px 7px var(--toggle-shadow-color);
-	cursor: pointer;
-	padding: 0;
-}
-
-.theme-toggle {
 	display: inline-grid;
 	grid-template-columns: 1fr 1fr;
 	width: 80px;
@@ -414,7 +414,9 @@ main {
 .leaves-toggle {
 	display: inline-flex;
 	justify-content: center;
-	width: 40px;
+	width: 32px;
+	border: 0;
+	background: transparent;
 	color: color-mix(in srgb, var(--accent-3) 76%, var(--text));
 }
 
@@ -1307,7 +1309,7 @@ h3 {
 	}
 
 	.leaves-toggle {
-		width: 38px;
+		width: 32px;
 		height: 38px;
 	}
 
