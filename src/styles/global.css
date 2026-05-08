@@ -156,6 +156,10 @@ main {
 	contain: paint;
 }
 
+:root[data-leaves="off"] .falling-leaves {
+	display: none;
+}
+
 .falling-leaves-layer {
 	position: absolute;
 	inset: 0;
@@ -228,6 +232,8 @@ main {
 .theme-toggle,
 .theme-toggle::before,
 .theme-icon,
+.leaves-toggle,
+.leaf-icon,
 .asset-icon,
 .hero-role,
 .button,
@@ -314,6 +320,7 @@ main {
 }
 
 .nav-cluster,
+.control-cluster,
 .nav-links {
 	display: flex;
 	align-items: center;
@@ -323,6 +330,10 @@ main {
 .nav-cluster {
 	min-width: 0;
 	justify-content: flex-end;
+}
+
+.control-cluster {
+	flex: 0 0 auto;
 }
 
 .nav-links {
@@ -365,6 +376,8 @@ main {
 .nav-links a:hover,
 .nav-links a:focus-visible,
 .theme-toggle:hover,
+.leaves-toggle:hover,
+.leaves-toggle:focus-visible,
 .theme-toggle:focus-visible {
 	transform: translateY(-1px);
 }
@@ -376,13 +389,11 @@ main {
 	transform: scaleX(1);
 }
 
-.theme-toggle {
+.theme-toggle,
+.leaves-toggle {
 	position: relative;
-	display: inline-grid;
-	grid-template-columns: 1fr 1fr;
 	align-items: center;
 	flex: 0 0 auto;
-	width: 80px;
 	height: 40px;
 	border: 1px solid var(--border);
 	border-radius: 999px;
@@ -394,11 +405,26 @@ main {
 	padding: 0;
 }
 
-.theme-toggle:focus {
+.theme-toggle {
+	display: inline-grid;
+	grid-template-columns: 1fr 1fr;
+	width: 80px;
+}
+
+.leaves-toggle {
+	display: inline-flex;
+	justify-content: center;
+	width: 40px;
+	color: color-mix(in srgb, var(--accent-3) 76%, var(--text));
+}
+
+.theme-toggle:focus,
+.leaves-toggle:focus {
 	outline: none;
 }
 
-.theme-toggle:focus-visible {
+.theme-toggle:focus-visible,
+.leaves-toggle:focus-visible {
 	outline: 2px solid color-mix(in srgb, var(--toggle-accent) 70%, transparent);
 	outline-offset: 3px;
 }
@@ -419,6 +445,29 @@ main {
 :root[data-theme="dark"] .theme-toggle::before {
 	background: var(--surface-soft);
 	transform: translateX(100%);
+}
+
+.leaves-toggle[aria-pressed="false"] {
+	color: color-mix(in srgb, var(--muted) 68%, var(--surface));
+}
+
+.leaf-icon {
+	display: block;
+	width: 22px;
+	height: 22px;
+	background-color: currentColor;
+	-webkit-mask: url("/assets/icons/leaf.svg") center / contain no-repeat;
+	mask: url("/assets/icons/leaf.svg") center / contain no-repeat;
+}
+
+.leaves-toggle[aria-pressed="true"] .leaf-icon {
+	opacity: 1;
+	transform: scale(1.07);
+}
+
+.leaves-toggle[aria-pressed="false"] .leaf-icon {
+	opacity: 0.48;
+	transform: scale(0.9);
 }
 
 .theme-icon {
@@ -1254,6 +1303,11 @@ h3 {
 
 	.theme-toggle {
 		width: 76px;
+		height: 38px;
+	}
+
+	.leaves-toggle {
+		width: 38px;
 		height: 38px;
 	}
 

@@ -29,8 +29,10 @@ const leafAmount = Math.max(0, Math.floor(config.goalAmount));
 		const root = document.querySelector('[data-falling-leaves]');
 		if (!root) return;
 
+		const pageRoot = document.documentElement;
 		const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 		let animationFrame = 0;
+		let isRunning = false;
 
 		if (motionQuery.matches) {
 			root.setAttribute('hidden', '');
@@ -179,6 +181,29 @@ const leafAmount = Math.max(0, Math.floor(config.goalAmount));
 
 			animationFrame = window.requestAnimationFrame(render);
 		};
+		const stop = () => {
+			if (!isRunning) return;
+			window.cancelAnimationFrame(animationFrame);
+			animationFrame = 0;
+			isRunning = false;
+		};
+		const start = () => {
+			if (isRunning || motionQuery.matches || pageRoot.dataset.leaves === 'off') return;
+			root.removeAttribute('hidden');
+			scrollY = window.scrollY;
+			viewport = getViewport();
+			isRunning = true;
+			animationFrame = window.requestAnimationFrame(render);
+		};
+		const syncLeavesState = () => {
+			if (motionQuery.matches || pageRoot.dataset.leaves === 'off') {
+				root.setAttribute('hidden', '');
+				stop();
+				return;
+			}
+
+			start();
+		};
 
 		window.addEventListener(
 			'scroll',
@@ -198,13 +223,16 @@ const leafAmount = Math.max(0, Math.floor(config.goalAmount));
 		);
 
 		const handleMotionChange = () => {
-			if (!motionQuery.matches) return;
-			root.setAttribute('hidden', '');
-			window.cancelAnimationFrame(animationFrame);
+			syncLeavesState();
 		};
 
 		motionQuery.addEventListener('change', handleMotionChange);
+		const leavesObserver = new MutationObserver(syncLeavesState);
+		leavesObserver.observe(pageRoot, {
+			attributes: true,
+			attributeFilter: ['data-leaves'],
+		});
 
-		animationFrame = window.requestAnimationFrame(render);
+		syncLeavesState();
 	})();
 </script>

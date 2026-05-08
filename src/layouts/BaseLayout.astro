@@ -43,18 +43,23 @@ const footerLinks = profile.contact.links.filter((link) =>
 		/>
 		<script is:inline>
 			(() => {
-				const storageKey = 'luke-lachlan-day.theme';
+				const themeStorageKey = 'luke-lachlan-day.theme';
+				const leavesStorageKey = 'luke-lachlan-day.fallingLeaves';
 				const root = document.documentElement;
-				let saved = null;
+				let savedTheme = null;
+				let savedLeaves = null;
 				try {
-					saved = localStorage.getItem(storageKey);
+					savedTheme = localStorage.getItem(themeStorageKey);
+					savedLeaves = localStorage.getItem(leavesStorageKey);
 				} catch {
-					saved = null;
+					savedTheme = null;
+					savedLeaves = null;
 				}
 				const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
 					? 'dark'
 					: 'light';
-				root.dataset.theme = saved === 'light' || saved === 'dark' ? saved : systemTheme;
+				root.dataset.theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : systemTheme;
+				root.dataset.leaves = savedLeaves === 'off' ? 'off' : 'on';
 			})();
 		</script>
 		<title>{title}</title>
@@ -85,10 +90,21 @@ const footerLinks = profile.contact.links.filter((link) =>
 							})
 						}
 					</div>
-					<button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
-						<span class="theme-icon theme-icon-light" aria-hidden="true"></span>
-						<span class="theme-icon theme-icon-dark" aria-hidden="true"></span>
-					</button>
+					<div class="control-cluster">
+						<button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+							<span class="theme-icon theme-icon-light" aria-hidden="true"></span>
+							<span class="theme-icon theme-icon-dark" aria-hidden="true"></span>
+						</button>
+						<button
+							class="leaves-toggle"
+							type="button"
+							data-leaves-toggle
+							aria-label="Turn leaves off"
+							aria-pressed="true"
+						>
+							<span class="leaf-icon" aria-hidden="true"></span>
+						</button>
+					</div>
 				</div>
 			</nav>
 		</header>
@@ -116,15 +132,17 @@ const footerLinks = profile.contact.links.filter((link) =>
 
 		<script is:inline>
 			(() => {
-				const storageKey = 'luke-lachlan-day.theme';
+				const themeStorageKey = 'luke-lachlan-day.theme';
+				const leavesStorageKey = 'luke-lachlan-day.fallingLeaves';
 				const root = document.documentElement;
-				const toggle = document.querySelector('[data-theme-toggle]');
+				const themeToggle = document.querySelector('[data-theme-toggle]');
+				const leavesToggle = document.querySelector('[data-leaves-toggle]');
 				const systemQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
 				const systemTheme = () => (systemQuery.matches ? 'dark' : 'light');
 				const getSavedTheme = () => {
 					try {
-						const saved = localStorage.getItem(storageKey);
+						const saved = localStorage.getItem(themeStorageKey);
 						return saved === 'light' || saved === 'dark' ? saved : null;
 					} catch {
 						return null;
@@ -132,13 +150,37 @@ const footerLinks = profile.contact.links.filter((link) =>
 				};
 				const setTheme = (theme, persist) => {
 					root.dataset.theme = theme;
-					toggle?.setAttribute('aria-pressed', String(theme === 'dark'));
-					toggle?.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`);
+					themeToggle?.setAttribute('aria-pressed', String(theme === 'dark'));
+					themeToggle?.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`);
 					if (persist) {
 						try {
-							localStorage.setItem(storageKey, theme);
+							localStorage.setItem(themeStorageKey, theme);
 						} catch {
 							// Keep the live theme change even if browser storage is unavailable.
+						}
+					}
+				};
+				const getSavedLeaves = () => {
+					try {
+						const saved = localStorage.getItem(leavesStorageKey);
+						return saved === 'on' || saved === 'off' ? saved : null;
+					} catch {
+						return null;
+					}
+				};
+				const setLeaves = (state, persist) => {
+					const leavesState = state === 'off' ? 'off' : 'on';
+					root.dataset.leaves = leavesState;
+					leavesToggle?.setAttribute('aria-pressed', String(leavesState === 'on'));
+					leavesToggle?.setAttribute(
+						'aria-label',
+						leavesState === 'on' ? 'Turn leaves off' : 'Turn leaves on'
+					);
+					if (persist) {
+						try {
+							localStorage.setItem(leavesStorageKey, leavesState);
+						} catch {
+							// Keep the live leaves change even if browser storage is unavailable.
 						}
 					}
 				};
@@ -156,11 +198,17 @@ const footerLinks = profile.contact.links.filter((link) =>
 				};
 
 				setTheme(getSavedTheme() ?? systemTheme(), false);
+				setLeaves(getSavedLeaves() ?? root.dataset.leaves, false);
 				enableTransitionsAfterInitialPaint();
 
-				toggle?.addEventListener('click', () => {
+				themeToggle?.addEventListener('click', () => {
 					enableThemeTransitions();
 					setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark', true);
+				});
+
+				leavesToggle?.addEventListener('click', () => {
+					enableThemeTransitions();
+					setLeaves(root.dataset.leaves === 'off' ? 'on' : 'off', true);
 				});
 
 				systemQuery.addEventListener('change', () => {
