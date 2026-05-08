@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import AssetIcon from '../components/AssetIcon.astro';
 import { profile } from '../data/profile';
 
 const { contact } = profile;
@@ -51,10 +50,17 @@ const isExternalLink = (href: string) => href.startsWith('http://') || href.star
 						rel={isExternalLink(link.href) ? 'noreferrer' : undefined}
 						aria-label={`Open ${link.label}`}
 					>
-						<div class="contact-card-header">
-							<AssetIcon src={link.icon} class="contact-card-icon" />
-							<p class="meta-label">{link.label}</p>
-						</div>
+						<img
+							class="contact-card-icon"
+							src={link.contactIcon ?? link.icon}
+							alt=""
+							width="320"
+							height="320"
+							loading="lazy"
+							decoding="async"
+						/>
+						<h2 class="contact-card-title">{link.label}</h2>
+						{link.description && <p class="contact-card-description">{link.description}</p>}
 						<p class="contact-card-link">{link.display}</p>
 					</a>
 				))
