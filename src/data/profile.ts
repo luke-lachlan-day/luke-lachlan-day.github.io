@@ -5,7 +5,7 @@ export type Link = {
 	icon: string;
 };
 
-export type TimelineItem = {
+export type ExperienceItem = {
 	date: string;
 	title: string;
 	copy: string;
@@ -77,7 +77,7 @@ export const profile = {
 			},
 		},
 		actions: [
-			{ label: 'View Projects', href: '/timeline/', icon: '/assets/icons/gamepad.svg' },
+			{ label: 'View Projects', href: '/projects/', icon: '/assets/icons/gamepad.svg' },
 			{ label: 'Get In Touch', href: '/contact/', icon: '/assets/icons/email.svg' },
 		],
 		featuredProjectIds: ['petes-place', 'coop-climbing', 'awbw-opening-analyzer'],
@@ -109,10 +109,16 @@ export const profile = {
 		},
 	] satisfies Company[],
 	projects: {
+		title: 'Projects | Luke Lachlan Day',
+		description: 'Featured projects, prototypes, games, and tools by Luke Lachlan Day.',
+		hero: {
+			title: 'Projects and prototypes',
+			lead: 'A data-backed collection of games, tools, and experiments.',
+		} satisfies HeroContent,
 		eyebrow: 'Featured Projects',
-		title: 'Projects and prototypes',
+		listTitle: 'Featured work',
 		copy: 'A data-backed collection of games, tools, and experiments. Add or edit entries here and the cards update across the site.',
-		href: '/timeline/',
+		href: '/projects/',
 		items: [
 			{
 				id: 'petes-place',
@@ -158,16 +164,16 @@ export const profile = {
 			},
 		] satisfies Project[],
 	},
-	timeline: {
-		title: 'Timeline | Luke Lachlan Day',
-		description: 'Project and work timeline for Luke Lachlan Day.',
+	experience: {
+		title: 'Experience | Luke Lachlan Day',
+		description: 'Work history, places worked, project milestones, and selected life events for Luke Lachlan Day.',
 		hero: {
-			title: 'Work in progress, logged clearly.',
-			lead: 'A lightweight chronology for past work, current projects, and experiments.',
+			title: 'Places, work, and life notes.',
+			lead: 'A lightweight chronology for places I have worked, projects that shaped me, and selected life events.',
 		} satisfies HeroContent,
 		history: {
-			eyebrow: 'History',
-			title: 'Past work and project notes',
+			eyebrow: 'Experience',
+			title: 'Work, places, and milestones',
 		},
 		items: [
 			{
@@ -190,7 +196,11 @@ export const profile = {
 				title: 'Early experiments',
 				copy: 'A future home for smaller builds, notes, and experiments worth keeping visible.',
 			},
-		] satisfies TimelineItem[],
+		] satisfies ExperienceItem[],
+	},
+	feed: {
+		title: 'Feed | Luke Lachlan Day',
+		description: 'Latest updates and activity feed for Luke Lachlan Day.',
 	},
 	contact: {
 		title: 'Contact | Luke Lachlan Day',

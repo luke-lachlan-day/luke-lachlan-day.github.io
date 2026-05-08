@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile } from '../data/profile';
+
+const { feed } = profile;
+---
+
+<BaseLayout
+	title={feed.title}
+	description={feed.description}
+/>

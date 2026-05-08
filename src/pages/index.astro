@@ -49,7 +49,7 @@ const featuredProjects = home.featuredProjectIds
 			<div>
 				<h2 id="featured-projects-title">Featured Projects</h2>
 			</div>
-			<a class="text-link" href="/timeline/">See all projects</a>
+			<a class="text-link" href="/projects/">See all projects</a>
 		</div>
 		<div class="project-grid">
 			{
@@ -61,7 +61,7 @@ const featuredProjects = home.featuredProjectIds
 						<a
 							class="project-card"
 							href={projects.href}
-							aria-label={`View ${project.product} on the timeline`}
+							aria-label={`View ${project.product} in projects`}
 						>
 							<img class="project-image" src={picture.src} alt={picture.alt} loading="lazy" />
 							<div class="project-body">

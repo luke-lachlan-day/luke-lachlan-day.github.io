@@ -2,24 +2,24 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { profile } from '../data/profile';
 
-const { timeline, projects, companies } = profile;
+const { projects, companies } = profile;
 const companyById = new Map(companies.map((company) => [company.id, company]));
 ---
 
 <BaseLayout
-	title={timeline.title}
-	description={timeline.description}
+	title={projects.title}
+	description={projects.description}
 >
-	<section class="page-hero" aria-labelledby="timeline-title">
-		<h1 id="timeline-title">{timeline.hero.title}</h1>
-		<p>{timeline.hero.lead}</p>
+	<section class="page-hero" aria-labelledby="projects-title">
+		<h1 id="projects-title">{projects.hero.title}</h1>
+		<p>{projects.hero.lead}</p>
 	</section>
 
-	<section class="section" aria-labelledby="projects-title">
+	<section class="section" aria-labelledby="project-list-title">
 		<div class="section-heading split">
 			<div>
 				<p class="eyebrow">{projects.eyebrow}</p>
-				<h2 id="projects-title">{projects.title}</h2>
+				<h2 id="project-list-title">{projects.listTitle}</h2>
 			</div>
 			<p>{projects.copy}</p>
 		</div>
@@ -34,7 +34,7 @@ const companyById = new Map(companies.map((company) => [company.id, company]));
 						<a
 							class="project-card"
 							href={projects.href}
-							aria-label={`View ${project.product} on the timeline`}
+							aria-label={`View ${project.product} in projects`}
 						>
 							<img class="project-image" src={picture.src} alt={picture.alt} loading="lazy" />
 							<div class="project-body">
@@ -51,25 +51,6 @@ const companyById = new Map(companies.map((company) => [company.id, company]));
 						</a>
 					);
 				})
-			}
-		</div>
-	</section>
-
-	<section class="section" aria-labelledby="history-title">
-		<div class="section-heading">
-			<p class="eyebrow">{timeline.history.eyebrow}</p>
-			<h2 id="history-title">{timeline.history.title}</h2>
-		</div>
-
-		<div class="timeline">
-			{
-				timeline.items.map((item) => (
-					<article class="timeline-item">
-						<p class="timeline-date">{item.date}</p>
-						<h3>{item.title}</h3>
-						<p>{item.copy}</p>
-					</article>
-				))
 			}
 		</div>
 	</section>

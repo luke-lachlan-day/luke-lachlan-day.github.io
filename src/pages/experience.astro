@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile } from '../data/profile';
+
+const { experience } = profile;
+---
+
+<BaseLayout
+	title={experience.title}
+	description={experience.description}
+>
+	<section class="page-hero" aria-labelledby="experience-title">
+		<h1 id="experience-title">{experience.hero.title}</h1>
+		<p>{experience.hero.lead}</p>
+	</section>
+
+	<section class="section" aria-labelledby="history-title">
+		<div class="section-heading">
+			<p class="eyebrow">{experience.history.eyebrow}</p>
+			<h2 id="history-title">{experience.history.title}</h2>
+		</div>
+
+		<div class="timeline">
+			{
+				experience.items.map((item) => (
+					<article class="timeline-item">
+						<p class="timeline-date">{item.date}</p>
+						<h3>{item.title}</h3>
+						<p>{item.copy}</p>
+					</article>
+				))
+			}
+		</div>
+	</section>
+</BaseLayout>
