@@ -16,10 +16,12 @@ This file is the repo-level source of truth for future agent work on this Astro 
 ## Commands
 
 - `npm run dev` starts the development server.
-- `npm run build` builds the site and is required before UI or content changes are considered shippable.
+- `npm run build` builds the site.
 - `npm run preview` previews the production build.
 
-Run `npm run build` as the baseline validation step for implementation work governed by this file. For visual or UI changes, also review the result in a browser at phone, tablet, and desktop/PC widths.
+Do not run tests, builds, Playwright checks, browser validation, dev servers, previews, or other validation commands unless the user explicitly asks for them. When validation would normally be appropriate, tell the user which command or visual check is recommended and leave execution to them unless requested.
+
+For visual or UI changes, describe the recommended review at phone, tablet, and desktop/PC widths, but do not start a dev server, open a browser, or run Playwright/browser review unless the user explicitly asks.
 
 ## Playwright
 
@@ -32,7 +34,7 @@ Common commands:
 - `npm exec playwright -- test --ui`
 - `npm exec playwright -- codegen http://localhost:4321`
 
-For visual or UI review, start the Astro dev server first with `npm run dev`, then use Playwright against the local URL. The repo currently does not define a dedicated Playwright npm script or committed test suite, so use `npm exec playwright -- ...` unless scripts are added later.
+The repo currently does not define a dedicated Playwright npm script or committed test suite, so use `npm exec playwright -- ...` unless scripts are added later. Treat these commands as reference only and do not run them unless the user explicitly asks.
 
 ## Engineering Standards
 
@@ -50,7 +52,7 @@ For visual or UI review, start the Astro dev server first with `npm run dev`, th
 - Prefer WebP for photos, illustrations, decorative images, and alpha-capable raster assets unless PNG is required for exact lossless output.
 - Use the repo-local ImageMagick executable under `.tools/` for conversions.
 - Do not reference oversized source PNGs from pages or CSS when an optimized WebP is suitable.
-- After asset changes, run `npm run build` and visually verify affected pages.
+- After asset changes, recommend `npm run build` and visual verification of affected pages, but do not run them unless the user explicitly asks.
 
 ## ImageMagick
 
