@@ -31,7 +31,11 @@ const companyById = new Map(companies.map((company) => [company.id, company]));
 					const picture = project.pictures[0];
 
 					return (
-						<article class="project-card">
+						<a
+							class="project-card"
+							href={projects.href}
+							aria-label={`View ${project.product} on the timeline`}
+						>
 							<img class="project-image" src={picture.src} alt={picture.alt} loading="lazy" />
 							<div class="project-body">
 								<div class="project-company">
@@ -44,7 +48,7 @@ const companyById = new Map(companies.map((company) => [company.id, company]));
 									{project.tools.map((tool) => <span>{tool}</span>)}
 								</div>
 							</div>
-						</article>
+						</a>
 					);
 				})
 			}

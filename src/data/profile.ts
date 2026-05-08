@@ -107,6 +107,7 @@ export const profile = {
 		eyebrow: 'Featured Projects',
 		title: 'Projects and prototypes',
 		copy: 'A data-backed collection of games, tools, and experiments. Add or edit entries here and the cards update across the site.',
+		href: '/timeline/',
 		items: [
 			{
 				id: 'petes-place',

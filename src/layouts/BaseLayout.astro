@@ -55,7 +55,6 @@ const footerLinks = profile.contact.links.filter((link) =>
 					? 'dark'
 					: 'light';
 				root.dataset.theme = saved === 'light' || saved === 'dark' ? saved : systemTheme;
-				root.dataset.themeReady = 'true';
 			})();
 		</script>
 		<title>{title}</title>
@@ -133,7 +132,6 @@ const footerLinks = profile.contact.links.filter((link) =>
 				};
 				const setTheme = (theme, persist) => {
 					root.dataset.theme = theme;
-					root.dataset.themeReady = 'true';
 					toggle?.setAttribute('aria-pressed', String(theme === 'dark'));
 					toggle?.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`);
 					if (persist) {
@@ -144,15 +142,30 @@ const footerLinks = profile.contact.links.filter((link) =>
 						}
 					}
 				};
+				const enableThemeTransitions = () => {
+					root.dataset.themeReady = 'true';
+				};
+				const enableTransitionsAfterInitialPaint = () => {
+					if (!('requestAnimationFrame' in window)) {
+						window.setTimeout(enableThemeTransitions, 0);
+						return;
+					}
+					window.requestAnimationFrame(() => {
+						window.requestAnimationFrame(enableThemeTransitions);
+					});
+				};
 
 				setTheme(getSavedTheme() ?? systemTheme(), false);
+				enableTransitionsAfterInitialPaint();
 
 				toggle?.addEventListener('click', () => {
+					enableThemeTransitions();
 					setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark', true);
 				});
 
 				systemQuery.addEventListener('change', () => {
 					if (!getSavedTheme()) {
+						enableThemeTransitions();
 						setTheme(systemTheme(), false);
 					}
 				});
