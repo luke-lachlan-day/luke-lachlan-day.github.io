@@ -156,50 +156,57 @@ main {
 }
 
 .falling-leaf {
-	--leaf-tint: color-mix(in srgb, var(--accent-3) 34%, transparent);
-	--leaf-opacity: 0.46;
+	--leaf-detail-image: url("/assets/images/leaf.webp");
+	--leaf-detail-opacity: 0.58;
+	--leaf-fill: color-mix(in srgb, var(--bg) 38%, var(--accent-3));
+	--leaf-filter: saturate(0.94) contrast(1.08);
+	--leaf-mask: url("/assets/images/leaf.webp") center / contain no-repeat;
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: var(--leaf-size);
 	aspect-ratio: 1;
-	background: url("/assets/images/leaf.webp") center / contain no-repeat;
-	filter: saturate(0.94) contrast(1.08);
-	image-rendering: pixelated;
+	background-color: var(--leaf-fill);
+	filter: var(--leaf-filter);
+	isolation: isolate;
 	transform-origin: 50% 56%;
-	opacity: var(--leaf-opacity);
+	-webkit-mask: var(--leaf-mask);
+	mask: var(--leaf-mask);
+	transition: background-color var(--theme-transition), filter var(--theme-transition);
 	will-change: transform;
 }
 
 .falling-leaf::after {
 	position: absolute;
 	inset: 0;
-	background-color: var(--leaf-tint);
+	background: var(--leaf-detail-image) center / contain no-repeat;
 	content: "";
-	mix-blend-mode: color;
-	-webkit-mask: url("/assets/images/leaf.webp") center / contain no-repeat;
-	mask: url("/assets/images/leaf.webp") center / contain no-repeat;
+	mix-blend-mode: luminosity;
+	opacity: var(--leaf-detail-opacity);
 	pointer-events: none;
-	transition: background-color var(--theme-transition);
+	transition: opacity var(--theme-transition);
 }
 
 :root[data-theme="dark"] .falling-leaf {
-	filter: saturate(0.88) contrast(1.12) brightness(0.82);
+	--leaf-filter: saturate(0.88) contrast(1.12) brightness(0.82);
 }
 
 .falling-leaves-layer-back .falling-leaf {
-	--leaf-opacity: 0.26;
-	--leaf-tint: color-mix(in srgb, var(--bg) 70%, var(--accent-3));
+	--leaf-detail-image: url("/assets/images/leaf-blur-back.webp");
+	--leaf-detail-opacity: 0.16;
+	--leaf-fill: color-mix(in srgb, var(--bg) 76%, var(--accent-3));
 }
 
 .falling-leaves-layer-mid .falling-leaf {
-	--leaf-opacity: 0.36;
-	--leaf-tint: color-mix(in srgb, var(--bg) 56%, var(--accent-3));
+	--leaf-detail-image: url("/assets/images/leaf-blur-mid.webp");
+	--leaf-detail-opacity: 0.28;
+	--leaf-fill: color-mix(in srgb, var(--bg) 60%, var(--accent-3));
 }
 
 .falling-leaves-layer-front .falling-leaf {
-	--leaf-opacity: 0.5;
-	--leaf-tint: color-mix(in srgb, var(--bg) 38%, var(--accent-3));
+	--leaf-detail-image: url("/assets/images/leaf.webp");
+	--leaf-detail-opacity: 0.5;
+	--leaf-fill: color-mix(in srgb, var(--bg) 36%, var(--accent-3));
 }
 
 @media (prefers-reduced-motion: reduce) {
