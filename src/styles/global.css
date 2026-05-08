@@ -182,7 +182,6 @@ main {
 	transform-origin: 50% 56%;
 	-webkit-mask: var(--leaf-mask);
 	mask: var(--leaf-mask);
-	transition: background-color var(--theme-transition), filter var(--theme-transition);
 	will-change: transform;
 }
 
@@ -194,7 +193,6 @@ main {
 	mix-blend-mode: luminosity;
 	opacity: var(--leaf-detail-opacity);
 	pointer-events: none;
-	transition: opacity var(--theme-transition);
 }
 
 :root[data-theme="dark"] .falling-leaf {
@@ -232,8 +230,6 @@ main {
 .theme-toggle,
 .theme-toggle::before,
 .theme-icon,
-.leaves-toggle,
-.leaf-icon,
 .asset-icon,
 .hero-role,
 .button,
@@ -426,6 +422,7 @@ main {
 	border: 0;
 	background: transparent;
 	color: color-mix(in srgb, var(--accent-3) 76%, var(--text));
+	transition: transform 140ms ease;
 }
 
 .theme-toggle:focus,
@@ -470,6 +467,7 @@ main {
 	background-color: currentColor;
 	-webkit-mask: url("/assets/icons/leaf.svg") center / contain no-repeat;
 	mask: url("/assets/icons/leaf.svg") center / contain no-repeat;
+	transition: opacity 140ms ease, transform 140ms ease;
 }
 
 .leaves-toggle[aria-pressed="true"] .leaf-icon {
