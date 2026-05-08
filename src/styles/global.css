@@ -933,6 +933,7 @@ h3 {
 .site-footer {
 	--footer-frame-width: min(100% - 32px, var(--hero-max-width));
 	--footer-frame-trim: 0px;
+	--footer-visual-offset-x: -18px;
 	position: relative;
 	isolation: isolate;
 	z-index: 2;
@@ -951,7 +952,7 @@ h3 {
 	width: var(--footer-frame-width);
 	image-rendering: pixelated;
 	pointer-events: none;
-	transform: translateX(-50%);
+	transform: translateX(calc(-50% + var(--footer-visual-offset-x)));
 }
 
 .site-footer::before {
@@ -980,6 +981,7 @@ h3 {
 	gap: 10px;
 	padding: 0 22px;
 	text-align: center;
+	transform: translateX(var(--footer-visual-offset-x));
 }
 
 .footer-heart {
@@ -1176,6 +1178,7 @@ h3 {
 
 	.site-footer {
 		--footer-frame-width: min(100% - 22px, var(--hero-max-width));
+		--footer-visual-offset-x: -8px;
 	}
 
 	.site-nav,

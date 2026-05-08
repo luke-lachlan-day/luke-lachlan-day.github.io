@@ -234,16 +234,16 @@ export const profile = {
 				icon: '/assets/icons/instagram.svg',
 			},
 			{
-				label: 'Projects / Social',
+				label: 'Discord',
 				href: '#',
-				display: 'project-link-placeholder',
-				copy: 'Space for a project hub, social profile, or community link.',
-				icon: '/assets/icons/gamepad.svg',
+				display: 'discord.gg/placeholder',
+				copy: 'Placeholder Discord community link.',
+				icon: '/assets/icons/discord.svg',
 			},
 		] satisfies Link[],
 	},
 	footer: {
 		message: 'Thanks for stopping by!',
-		linkLabels: ['Email', 'GitHub', 'LinkedIn', 'YouTube', 'Instagram'],
+		linkLabels: ['Email', 'GitHub', 'LinkedIn', 'YouTube', 'Instagram', 'Discord'],
 	},
 } as const;
