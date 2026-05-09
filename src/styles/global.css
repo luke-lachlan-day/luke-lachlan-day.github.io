@@ -1155,24 +1155,24 @@ h3 {
 
 .project-wheel-company-badge {
 	position: absolute;
-	right: 8px;
-	bottom: 8px;
+	right: 9px;
+	bottom: 9px;
 	display: grid;
 	place-items: center;
-	width: 34px;
-	height: 34px;
-	border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
+	width: 46px;
+	height: 46px;
 	border-radius: 999px;
-	background: color-mix(in srgb, var(--surface-glass) 86%, var(--bg));
-	box-shadow: 0 5px 14px rgba(0, 0, 0, 0.16);
+	overflow: hidden;
+	background: transparent;
+	box-shadow: none;
 	color: var(--accent);
 }
 
 .project-wheel-company-badge img {
-	width: 23px;
-	height: 23px;
-	border-radius: 6px;
-	filter: var(--image-filter);
+	width: 100%;
+	height: 100%;
+	border-radius: inherit;
+	filter: var(--image-filter) drop-shadow(0 3px 5px rgba(0, 0, 0, 0.24));
 	image-rendering: pixelated;
 	object-fit: cover;
 }
@@ -1185,20 +1185,28 @@ h3 {
 
 .project-wheel-status-ribbon {
 	position: absolute;
-	top: 12px;
-	right: -30px;
-	width: 132px;
-	border: 1px solid color-mix(in srgb, var(--accent-2) 34%, var(--border));
-	background: color-mix(in srgb, var(--surface-glass) 88%, var(--accent-2));
-	box-shadow: 0 5px 14px rgba(0, 0, 0, 0.14);
-	color: color-mix(in srgb, var(--heading) 84%, var(--accent));
-	font-size: 0.72rem;
-	font-weight: 900;
+	top: 8px;
+	right: 8px;
+	border-radius: 7px;
+	background: #f5cc79;
+	color: #7a5105;
+	font-family: var(--font-body);
+	font-size: 0.78rem;
+	font-weight: 800;
 	line-height: 1;
-	padding: 5px 8px 6px;
+	padding: 7px 10px;
 	text-align: center;
-	text-transform: uppercase;
-	transform: rotate(14deg);
+	white-space: nowrap;
+}
+
+.project-wheel-status-ribbon[data-status="released"] {
+	background: #d7e5bf;
+	color: #2f4b22;
+}
+
+.project-wheel-status-ribbon[data-status="shelved"] {
+	background: #d8cbed;
+	color: #4f3e68;
 }
 
 .project-wheel-body {
@@ -1216,6 +1224,32 @@ h3 {
 	font-weight: 400;
 	line-height: 1.05;
 	overflow-wrap: anywhere;
+}
+
+.project-wheel-year {
+	color: var(--muted);
+	font-family: var(--font-display);
+	font-size: 1.08rem;
+	font-weight: 400;
+	line-height: 1.05;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+:root[data-theme="dark"] .project-wheel-status-ribbon {
+	background: #4b3a72;
+	color: #f7edff;
+}
+
+:root[data-theme="dark"] .project-wheel-status-ribbon[data-status="released"] {
+	background: #425f43;
+	color: #f1ffe8;
+}
+
+:root[data-theme="dark"] .project-wheel-status-ribbon[data-status="shelved"] {
+	background: #304b78;
+	color: #edf0ff;
 }
 
 .project-wheel-company,

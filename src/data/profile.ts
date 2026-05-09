@@ -54,7 +54,7 @@ export type Company = {
 	icon: ImageAsset;
 };
 
-export type ProjectReleaseStage = 'released' | 'early-access' | 'beta' | 'alpha';
+export type ProjectReleaseStage = 'dev' | 'released' | 'shelved';
 
 export type ProjectAward = {
 	name: string;
@@ -71,8 +71,8 @@ export type Project = {
 	tools: string[];
 	sortDate: string;
 	dateLabel: string;
+	yearLabel: string;
 	releaseStage: ProjectReleaseStage;
-	inDevelopment: boolean;
 	awards: ProjectAward[];
 	projectUrl?: string;
 	sourceUrl?: string;
@@ -165,8 +165,8 @@ export const profile = {
 				tools: ['Life Sim', 'Cozy', 'Management'],
 				sortDate: '2026-04-01',
 				dateLabel: 'Apr 2026',
-				releaseStage: 'alpha',
-				inDevelopment: true,
+				yearLabel: '2026–Present',
+				releaseStage: 'dev',
 				awards: [
 					{
 						name: 'Best Cozy Prototype',
@@ -193,8 +193,8 @@ export const profile = {
 				tools: ['Prototype', 'Co-op', 'Physics'],
 				sortDate: '2026-03-01',
 				dateLabel: 'Mar 2026',
-				releaseStage: 'beta',
-				inDevelopment: true,
+				yearLabel: '2026',
+				releaseStage: 'dev',
 				awards: [
 					{
 						name: 'Best Multiplayer Feel',
@@ -221,8 +221,8 @@ export const profile = {
 				tools: ['Tool', 'Data', 'Strategy'],
 				sortDate: '2025-11-01',
 				dateLabel: 'Nov 2025',
+				yearLabel: '2025',
 				releaseStage: 'released',
-				inDevelopment: true,
 				awards: [
 					{
 						name: 'Strategy Tool Pick',
@@ -249,8 +249,8 @@ export const profile = {
 				tools: ['Adventure', 'Exploration', 'Mock'],
 				sortDate: '2026-02-01',
 				dateLabel: 'Feb 2026',
-				releaseStage: 'early-access',
-				inDevelopment: true,
+				yearLabel: '2026–Present',
+				releaseStage: 'dev',
 				awards: [
 					{
 						name: 'Audience Favorite',
@@ -277,8 +277,8 @@ export const profile = {
 				tools: ['Roguelite', 'Systems', 'Mock'],
 				sortDate: '2026-01-01',
 				dateLabel: 'Jan 2026',
-				releaseStage: 'alpha',
-				inDevelopment: true,
+				yearLabel: '2026–Present',
+				releaseStage: 'dev',
 				awards: [],
 			},
 			{
@@ -296,8 +296,8 @@ export const profile = {
 				tools: ['Tool', 'Productivity', 'Mock'],
 				sortDate: '2025-09-01',
 				dateLabel: 'Sep 2025',
-				releaseStage: 'beta',
-				inDevelopment: true,
+				yearLabel: '2025–Present',
+				releaseStage: 'dev',
 				awards: [
 					{
 						name: 'Developer Utility Mention',
@@ -324,8 +324,8 @@ export const profile = {
 				tools: ['Puzzle', 'Narrative', 'Mock'],
 				sortDate: '2025-07-01',
 				dateLabel: 'Jul 2025',
+				yearLabel: '2025',
 				releaseStage: 'released',
-				inDevelopment: false,
 				awards: [
 					{
 						name: 'Wholesome Design Award',
@@ -352,8 +352,8 @@ export const profile = {
 				tools: ['Tactics', 'Space', 'Mock'],
 				sortDate: '2025-05-01',
 				dateLabel: 'May 2025',
-				releaseStage: 'beta',
-				inDevelopment: false,
+				yearLabel: '2025',
+				releaseStage: 'dev',
 				awards: [],
 			},
 			{
@@ -371,8 +371,8 @@ export const profile = {
 				tools: ['Editor', 'Design', 'Mock'],
 				sortDate: '2025-03-01',
 				dateLabel: 'Mar 2025',
+				yearLabel: '2025',
 				releaseStage: 'released',
-				inDevelopment: true,
 				awards: [
 					{
 						name: 'Best Tabletop Helper',
@@ -399,8 +399,8 @@ export const profile = {
 				tools: ['Toy', 'Creative', 'Mock'],
 				sortDate: '2024-11-01',
 				dateLabel: 'Nov 2024',
-				releaseStage: 'alpha',
-				inDevelopment: false,
+				yearLabel: '2024–2025',
+				releaseStage: 'shelved',
 				awards: [],
 			},
 			{
@@ -418,8 +418,8 @@ export const profile = {
 				tools: ['Audio', 'Tool', 'Mock'],
 				sortDate: '2024-09-01',
 				dateLabel: 'Sep 2024',
-				releaseStage: 'early-access',
-				inDevelopment: false,
+				yearLabel: '2024',
+				releaseStage: 'dev',
 				awards: [
 					{
 						name: 'Creative Tech Pick',
@@ -446,8 +446,8 @@ export const profile = {
 				tools: ['Puzzle', 'Logistics', 'Mock'],
 				sortDate: '2024-06-01',
 				dateLabel: 'Jun 2024',
-				releaseStage: 'released',
-				inDevelopment: false,
+				yearLabel: '2024–2025',
+				releaseStage: 'shelved',
 				awards: [
 					{
 						name: 'Best Short Puzzle',
@@ -474,8 +474,8 @@ export const profile = {
 				tools: ['Pixel Art', 'Editor', 'Mock'],
 				sortDate: '2024-03-01',
 				dateLabel: 'Mar 2024',
-				releaseStage: 'beta',
-				inDevelopment: false,
+				yearLabel: '2024',
+				releaseStage: 'dev',
 				awards: [],
 			},
 		] satisfies Project[],
@@ -493,73 +493,109 @@ export const profile = {
 		items: [
 			{
 				id: 'daytime-devs',
-				role: 'Co-Founder / Programmer',
+				role: 'Co-Founder',
 				company: 'Daytime Devs Pty Ltd',
 				companyId: 'daytime-devs',
 				dateLabel: 'Mar 2022 - Present',
 				sortDate: '2026-05-01',
 				context: 'Independent studio',
 				summary:
-					'Co-founded an independent game studio and led programming and design work on Super BAWK BAWK Chicken across PC and mobile releases.',
+					'Co-founded an independent game studio with my brothers and helped self-publish Super BAWK BAWK Chicken across PC and mobile platforms.',
 				highlights: [
-					'Released Super BAWK BAWK Chicken on Steam, then brought it to Android and iOS.',
-					'Helped grow the title to 25,500+ Google Play downloads and delivered 15+ post-launch updates.',
-					'Built gameplay features, internal tools, reusable C# libraries, shaders, release pipelines, store builds, and demo materials.',
-					'Worked across design, art feedback, QA, conventions, and interviews with a player-first production mindset.',
+					'Self-published Super BAWK BAWK Chicken on Steam for Windows and Mac in 2023, followed by Google Play and App Store releases in 2024.',
+					'Helped grow the title to 25,500+ Google Play downloads and deliver 15 updates since the 2023 demo launch.',
+					'Worked across design documentation, prototyping, C# tools and libraries, shaders, debugging, release management, and mobile porting.',
+					'Supported store publishing, marketing, conventions, and interviews while representing the studio publicly.',
 				],
 				tools: ['Unity', 'C#', 'Steam', 'Google Play', 'App Store', 'Shaders', 'Tooling'],
 			},
 			{
 				id: 'catalyst-games',
-				role: 'Programmer / Technical Director',
+				role: 'Programmer & Technical Director',
 				company: 'Catalyst Games',
 				companyId: 'catalyst-games',
 				dateLabel: 'Jan 2025 - Mar 2026',
 				sortDate: '2026-03-01',
 				context: 'Client and studio projects',
 				summary:
-					'Built production systems, mobile app features, and VR training experiences while helping scope, quote, and guide projects from concept to release.',
+					'Delivered production systems, client applications, and VR training experiences before moving into a Technical Director role supporting project delivery.',
 				highlights: [
-					'Built a vertical slice within the first month while quickly understanding and extending existing project systems.',
+					'Developed a SAGE vertical slice within my first month as the studio transitioned to a new project.',
 					'Introduced scene management, asynchronous loading, Addressables, a UI framework, and a decoration system.',
 					'Delivered a Firebase-authenticated mobile app and multiple VR training experiences for clients.',
-					'Promoted to Technical Director, supporting delivery planning, opportunity pitching, project scoping, and quoting.',
+					'Quoted and oversaw client projects, pitched opportunities to publishers, taught game development in schools, and presented in weekly show-and-tell sessions.',
 				],
-				tools: ['Unity', 'C#', 'Addressables', 'Firebase', 'VR', 'UI Frameworks', 'Async Loading'],
+				tools: ['Unity', 'C#', 'Addressables', 'Firebase', 'VR', 'Teaching', 'Technical Direction'],
 			},
 			{
-				id: 'coastal-derrieres',
+				id: 'self-employed-unity-developer',
 				role: 'Unity Developer',
-				company: 'Coastal Derrieres Pty Ltd / Self-Employed',
+				company: 'Self Employed',
+				companyId: 'solo',
 				dateLabel: 'Jun 2024 - Oct 2024',
 				sortDate: '2024-10-01',
 				context: 'Contract vertical slice',
 				summary:
-					'Translated a design document into a playable Beach Bums vertical slice and helped shape a practical production approach for funding opportunities.',
+					'Worked with Coastal Derrieres Pty Ltd to turn the Beach Bums design document into a playable vertical slice for funding opportunities.',
 				highlights: [
-					'Built a playable vertical slice from design documentation and production constraints.',
-					'Integrated FMOD and collaborated with an artist to prepare assets for game use.',
-					'Created a robust level editor to support the design workflow.',
-					'Helped a small multidisciplinary team prioritise practical tasks and maintain momentum.',
+					'Provided senior Unity development support inside a small multidisciplinary team of four.',
+					'Translated the design into a practical production plan and helped keep the scope achievable.',
+					'Integrated FMOD into Unity to support the project audio requirements.',
+					'Helped adapt art assets for game use and built an intuitive level editor for the design workflow.',
 				],
 				tools: ['Unity', 'C#', 'FMOD', 'Level Editor', 'Vertical Slice', 'Production Planning'],
 			},
 			{
-				id: 'earlier-technical',
-				role: 'Earlier Technical Experience',
-				company: 'Power-Net IT Solutions / Australian Army',
-				dateLabel: 'Jul 2016 - Mar 2022',
-				sortDate: '2022-03-01',
-				context: 'IT support and systems technician roles',
+				id: 'maths-tutor',
+				role: 'Maths Tutor',
+				company: 'Self Employed',
+				companyId: 'solo',
+				dateLabel: 'Feb 2014 - Nov 2023',
+				sortDate: '2023-11-01',
+				context: 'Mathematics tutoring',
 				summary:
-					'Developed troubleshooting, customer support, communication, and technical discipline through IT service and Information Systems Technician roles.',
+					'Taught mathematics to high school students from years 8 to 12, adapting explanations to different confidence levels and learning styles.',
 				highlights: [
-					'Built confidence supporting users, managing technical systems, and communicating clearly with different audiences.',
-					'Worked under pressure in operational technical environments.',
-					'Developed practical troubleshooting habits that carry into software development work.',
-					'Strengthened the communication and delivery discipline needed for collaborative technical teams.',
+					'Supported students across year 8 to year 12 mathematics.',
+					'Built clear communication habits by breaking complex topics into approachable steps.',
+					'Adapted lessons to each student\'s goals, pace, and curriculum needs.',
+					'Developed mentoring skills that continue to support teaching, teamwork, and client communication.',
 				],
-				tools: ['Troubleshooting', 'IT Support', 'Technical Systems', 'Communication', 'User Support'],
+				tools: ['Tutoring', 'Mathematics', 'Teaching', 'Mentoring', 'Communication'],
+			},
+			{
+				id: 'power-net-it-solutions',
+				role: 'Customer Service Function Consultant (IT)',
+				company: 'Power-Net IT Solutions',
+				dateLabel: 'Mar 2021 - Mar 2022',
+				sortDate: '2022-03-01',
+				context: 'IT customer service',
+				summary:
+					'Maintained high levels of customer service for high profile clients during urgent IT support situations.',
+				highlights: [
+					'Supported urgent client-facing technical situations with calm, clear communication.',
+					'Balanced customer service expectations with practical troubleshooting and escalation.',
+					'Worked with high profile clients where responsiveness and professionalism were essential.',
+					'Strengthened the service mindset and communication discipline I bring to software teams.',
+				],
+				tools: ['IT Support', 'Customer Service', 'Troubleshooting', 'Client Support', 'Communication'],
+			},
+			{
+				id: 'australian-army',
+				role: 'Information Systems Technician',
+				company: 'Australian Army',
+				dateLabel: 'Jul 2016 - Jul 2021',
+				sortDate: '2021-07-01',
+				context: 'Army Reserve communications',
+				summary:
+					'Served as an Information Systems Technician across 144 Signal Squadron in South Australia and 108 Signal Squadron in Victoria.',
+				highlights: [
+					'Worked across unit parades, exercises, online and local courses, network administration, and equipment operation.',
+					'Built technical discipline through communications systems work and operational training.',
+					'Handled weapons training and worked within structured team environments.',
+					'Deployed on Bushfire Assist at Kangaroo Island and Covid-19 Assist.',
+				],
+				tools: ['Network Administration', 'Technical Systems', 'Equipment Operation', 'Training', 'Teamwork'],
 			},
 		] satisfies ExperienceItem[],
 		credentials: [
