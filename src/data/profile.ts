@@ -12,6 +12,7 @@ export type ExperienceItem = {
 	role: string;
 	company: string;
 	companyId?: Company['id'];
+	picture?: ImageAsset;
 	dateLabel: string;
 	sortDate: string;
 	context: string;
@@ -46,7 +47,7 @@ export type ThemeImageAssets = {
 	dark: ImageAsset;
 };
 
-export type CompanyId = 'daytime-devs' | 'catalyst-games' | 'solo';
+export type CompanyId = 'daytime-devs' | 'catalyst-games' | 'solo' | 'australian-army' | 'power-net-it-solutions';
 
 export type Company = {
 	id: CompanyId;
@@ -141,9 +142,25 @@ export const profile = {
 				alt: 'Pixel art solo developer avatar icon.',
 			},
 		},
+		{
+			id: 'australian-army',
+			name: 'Australian Army',
+			icon: {
+				src: '/assets/images/company-australian-army.webp',
+				alt: 'Australian Army rising sun badge.',
+			},
+		},
+		{
+			id: 'power-net-it-solutions',
+			name: 'Power-Net IT Solutions',
+			icon: {
+				src: '/assets/images/company-power-net-it-solutions.webp',
+				alt: 'Power-Net IT Solutions circular logo.',
+			},
+		},
 	] satisfies Company[],
 	projects: {
-		title: 'Projects | Luke Lachlan Day',
+		title: 'Luke Lachlan Day | Projects',
 		description: 'Featured projects, prototypes, games, and tools by Luke Lachlan Day.',
 		hero: {
 			title: 'Projects',
@@ -179,8 +196,28 @@ export const profile = {
 				],
 			},
 			{
-				id: 'coop-climbing',
+				id: 'dungeons-and-dining-tables',
 				companyId: 'catalyst-games',
+				product: 'Dungeons and Dining Tables',
+				pictures: [
+					{
+						src: '/assets/images/project-dungeons-and-dining-tables.webp',
+						alt: 'Steam header art for Dungeons and Dining Tables.',
+					},
+				],
+				description:
+					'A cozy fantasy adventure about running a tavern, feeding heroes, and managing the chaos between dungeon runs.',
+				tools: ['Adventure', 'Management', 'Cozy'],
+				sortDate: '2026-03-01',
+				dateLabel: 'TBA',
+				yearLabel: 'TBA',
+				releaseStage: 'dev',
+				awards: [],
+				projectUrl: 'https://store.steampowered.com/app/2941630/Dungeons_and_Dining_Tables/',
+			},
+			{
+				id: 'coop-climbing',
+				companyId: 'solo',
 				product: 'Co-op Climbing Prototype',
 				pictures: [
 					{
@@ -208,7 +245,7 @@ export const profile = {
 			},
 			{
 				id: 'awbw-opening-analyzer',
-				companyId: 'daytime-devs',
+				companyId: 'solo',
 				product: 'AWBW Opening Analyzer',
 				pictures: [
 					{
@@ -233,6 +270,26 @@ export const profile = {
 						},
 					},
 				],
+			},
+			{
+				id: 'super-bawk-bawk-chicken',
+				companyId: 'daytime-devs',
+				product: 'Super BAWK BAWK Chicken',
+				pictures: [
+					{
+						src: '/assets/images/project-super-bawk-bawk-chicken.webp',
+						alt: 'Steam header art for Super BAWK BAWK Chicken.',
+					},
+				],
+				description:
+					'A precision platformer about a chicken racing through dangerous levels, dodging traps, and chasing fast clears.',
+				tools: ['Platformer', 'Unity', 'Steam'],
+				sortDate: '2023-07-17',
+				dateLabel: 'Jul 2023',
+				yearLabel: '2023',
+				releaseStage: 'released',
+				awards: [],
+				projectUrl: 'https://store.steampowered.com/app/2054850/Super_BAWK_BAWK_Chicken/',
 			},
 			{
 				id: 'skybound-isles',
@@ -283,7 +340,7 @@ export const profile = {
 			},
 			{
 				id: 'indie-toolkit',
-				companyId: 'daytime-devs',
+				companyId: 'solo',
 				product: 'Indie Toolkit',
 				pictures: [
 					{
@@ -311,7 +368,7 @@ export const profile = {
 			},
 			{
 				id: 'garden-quest',
-				companyId: 'catalyst-games',
+				companyId: 'solo',
 				product: 'Garden Quest',
 				pictures: [
 					{
@@ -358,7 +415,7 @@ export const profile = {
 			},
 			{
 				id: 'dungeon-desk',
-				companyId: 'daytime-devs',
+				companyId: 'solo',
 				product: 'Dungeon Desk',
 				pictures: [
 					{
@@ -405,7 +462,7 @@ export const profile = {
 			},
 			{
 				id: 'melody-forge',
-				companyId: 'catalyst-games',
+				companyId: 'solo',
 				product: 'Melody Forge',
 				pictures: [
 					{
@@ -461,7 +518,7 @@ export const profile = {
 			},
 			{
 				id: 'sprite-smith',
-				companyId: 'daytime-devs',
+				companyId: 'solo',
 				product: 'Sprite Smith',
 				pictures: [
 					{
@@ -481,7 +538,7 @@ export const profile = {
 		] satisfies Project[],
 	},
 	experience: {
-		title: 'Experience | Luke Lachlan Day',
+		title: 'Luke Lachlan Day | Experience',
 		description: 'Work history and selected experience for Luke Lachlan Day.',
 		hero: {
 			title: 'Experience',
@@ -567,6 +624,11 @@ export const profile = {
 				id: 'power-net-it-solutions',
 				role: 'Customer Service Function Consultant (IT)',
 				company: 'Power-Net IT Solutions',
+				companyId: 'power-net-it-solutions',
+				picture: {
+					src: '/assets/images/experience-power-net-it-solutions.webp',
+					alt: 'Power-Net IT Solutions office frontage.',
+				},
 				dateLabel: 'Mar 2021 - Mar 2022',
 				sortDate: '2022-03-01',
 				context: 'IT customer service',
@@ -584,6 +646,11 @@ export const profile = {
 				id: 'australian-army',
 				role: 'Information Systems Technician',
 				company: 'Australian Army',
+				companyId: 'australian-army',
+				picture: {
+					src: '/assets/images/experience-australian-army.webp',
+					alt: 'Royal Australian Corps of Signals Jimmy emblem.',
+				},
 				dateLabel: 'Jul 2016 - Jul 2021',
 				sortDate: '2021-07-01',
 				context: 'Army Reserve communications',
@@ -618,11 +685,11 @@ export const profile = {
 		] satisfies ExperienceCredential[],
 	},
 	feed: {
-		title: 'Feed | Luke Lachlan Day',
+		title: 'Luke Lachlan Day | Feed',
 		description: 'Latest updates and activity feed for Luke Lachlan Day.',
 	},
 	contact: {
-		title: 'Contact | Luke Lachlan Day',
+		title: 'Luke Lachlan Day | Contact',
 		description: 'Contact links for Luke Lachlan Day.',
 		hero: {
 			title: 'Get in Touch',

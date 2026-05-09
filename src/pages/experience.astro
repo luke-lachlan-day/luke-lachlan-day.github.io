@@ -102,6 +102,11 @@ const getCompanyIcon = (item: ExperienceItem) => (item.companyId ? companyById.g
 								<div class="experience-detail-emblem" aria-hidden="true">
 									{icon ? <img src={icon.src} alt="" loading={index === 0 ? 'eager' : 'lazy'} /> : <span>{item.company.slice(0, 1)}</span>}
 								</div>
+								{item.picture && (
+									<div class="experience-detail-picture">
+										<img src={item.picture.src} alt={item.picture.alt} loading={index === 0 ? 'eager' : 'lazy'} />
+									</div>
+								)}
 								<dl class="experience-fact-list">
 									<div>
 										<dt>Company</dt>

@@ -1643,6 +1643,22 @@ h3 {
 	line-height: 1;
 }
 
+.experience-detail-picture {
+	overflow: hidden;
+	border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--border));
+	border-radius: 12px;
+	background: var(--surface-soft);
+	box-shadow: var(--shadow-soft);
+}
+
+.experience-detail-picture img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 16 / 10;
+	filter: var(--image-filter);
+	object-fit: cover;
+}
+
 .experience-fact-list {
 	display: grid;
 	gap: 12px;
