@@ -65,7 +65,8 @@ const getCompanyIcon = (item: ExperienceItem) => (item.companyId ? companyById.g
 								<span class="project-wheel-media experience-wheel-mark" aria-hidden="true">
 									<span class="experience-wheel-mark-initial">{item.company.slice(0, 1)}</span>
 									<span class="project-wheel-company-badge">
-										{icon ? <img src={icon.src} alt="" loading={isActive ? 'eager' : 'lazy'} /> : <span>{item.company.slice(0, 1)}</span>}
+										<span class="project-wheel-company-badge-back"></span>
+										{icon ? <img src={icon.src} alt="" loading={isActive ? 'eager' : 'lazy'} /> : <span class="project-wheel-company-badge-label">{item.company.slice(0, 1)}</span>}
 									</span>
 								</span>
 								<span class="project-wheel-body">

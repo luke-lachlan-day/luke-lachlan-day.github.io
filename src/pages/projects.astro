@@ -80,6 +80,7 @@ const getInitialWheelSlot = (index: number) => {
 									<img class="project-wheel-image" src={picture.src} alt={picture.alt} loading={isActive ? 'eager' : 'lazy'} />
 									{company && (
 										<span class="project-wheel-company-badge" aria-hidden="true">
+											<span class="project-wheel-company-badge-back"></span>
 											<img src={company.icon.src} alt="" loading="lazy" />
 										</span>
 									)}
