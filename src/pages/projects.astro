@@ -27,16 +27,9 @@ const releaseStageLabels = {
 >
 	<section class="page-hero projects-hero" aria-labelledby="projects-title">
 		<h1 id="projects-title">{projects.hero.title}</h1>
-		<p>{projects.hero.lead}</p>
 	</section>
 
-	<section class="section project-showcase" id="project-showcase" aria-labelledby="project-list-title">
-		<div class="section-heading project-showcase-heading">
-			<p class="eyebrow">{projects.eyebrow}</p>
-			<h2 id="project-list-title">{projects.listTitle}</h2>
-			<p>{projects.copy}</p>
-		</div>
-
+	<section class="section project-showcase" id="project-showcase" aria-label="Project selector">
 		<div class="project-wheel" data-project-wheel data-active-index="0" role="group" aria-label="Project selector">
 			<button class="project-wheel-nav project-wheel-nav-prev" type="button" data-wheel-prev aria-label="Previous project">
 				<span aria-hidden="true">&lsaquo;</span>
@@ -84,6 +77,8 @@ const releaseStageLabels = {
 				<span aria-hidden="true">&rsaquo;</span>
 			</button>
 		</div>
+
+		<img class="project-wheel-chest" src="/assets/images/project-chest.webp" alt="" loading="lazy" aria-hidden="true" />
 
 		<div class="project-detail-panel" data-project-detail aria-live="polite">
 			{
@@ -177,12 +172,23 @@ const releaseStageLabels = {
 			const desktopQuery = window.matchMedia('(min-width: 821px)');
 			const phoneQuery = window.matchMedia('(max-width: 460px)');
 
-			const getVisibleRange = () => {
+			const getSlotRanges = () => {
 				if (phoneQuery.matches) {
-					return 0;
+					return {
+						interactive: 0,
+						transition: 1,
+					};
 				}
 
-				return desktopQuery.matches ? 2 : 1;
+				return desktopQuery.matches
+					? {
+							interactive: 2,
+							transition: 3,
+						}
+					: {
+							interactive: 1,
+							transition: 2,
+						};
 			};
 
 			const wrapIndex = (index) => ((index % total) + total) % total;
@@ -197,24 +203,27 @@ const releaseStageLabels = {
 			};
 
 			const updateWheel = () => {
-				const visibleRange = getVisibleRange();
+				const { interactive, transition } = getSlotRanges();
 
 				wheel.setAttribute('data-active-index', String(activeIndex));
 
 				cards.forEach((card) => {
 					const projectIndex = Number(card.getAttribute('data-project-index'));
 					const slot = shortestOffset(projectIndex, activeIndex);
-					const visibleSlot = Math.abs(slot) <= visibleRange ? String(slot) : '';
+					const slotDistance = Math.abs(slot);
+					const transitionSlot = slotDistance <= transition ? String(slot) : '';
+					const isInteractive = slotDistance <= interactive;
 					const isActive = projectIndex === activeIndex;
 
-					if (visibleSlot) {
-						card.setAttribute('data-slot', visibleSlot);
+					if (transitionSlot) {
+						card.setAttribute('data-slot', transitionSlot);
 					} else {
 						card.removeAttribute('data-slot');
 					}
 
 					card.setAttribute('aria-pressed', String(isActive));
-					card.tabIndex = Math.abs(slot) <= visibleRange ? 0 : -1;
+					card.setAttribute('aria-hidden', String(!isInteractive));
+					card.tabIndex = isInteractive ? 0 : -1;
 				});
 
 				details.forEach((detail) => {

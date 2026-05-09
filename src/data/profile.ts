@@ -134,12 +134,8 @@ export const profile = {
 		title: 'Projects | Luke Lachlan Day',
 		description: 'Featured projects, prototypes, games, and tools by Luke Lachlan Day.',
 		hero: {
-			title: 'Projects and prototypes',
-			lead: 'A data-backed collection of games, tools, and experiments.',
-		} satisfies HeroContent,
-		eyebrow: 'Featured Projects',
-		listTitle: 'Featured work',
-		copy: 'A rotating collection of games, tools, and experiments, with featured and newest work brought forward.',
+			title: 'Projects',
+		},
 		href: '/projects/',
 		items: [
 			{
