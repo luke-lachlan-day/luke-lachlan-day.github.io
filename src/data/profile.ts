@@ -168,6 +168,27 @@ export const profile = {
 		href: '/projects/',
 		items: [
 			{
+				id: 'luke-lachlan-day-website',
+				companyId: 'solo',
+				product: 'Luke Lachlan Day Website',
+				pictures: [
+					{
+						src: '/assets/images/project-luke-lachlan-day-website.webp',
+						alt: 'Pixel art traveler overlooking a bright mountain valley for the Luke Lachlan Day website.',
+					},
+				],
+				description:
+					'A personal Astro portfolio site for sharing projects, experience, contact links, and playful pixel-art presentation.',
+				tools: ['Astro', 'TypeScript', 'Portfolio'],
+				sortDate: '2026-05-09',
+				dateLabel: 'May 2026',
+				yearLabel: '2026',
+				releaseStage: 'dev',
+				awards: [],
+				projectUrl: 'https://luke-lachlan-day.github.io/',
+				sourceUrl: 'https://github.com/luke-lachlan-day/luke-lachlan-day.github.io',
+			},
+			{
 				id: 'petes-place',
 				companyId: 'solo',
 				product: "Pete's Place",
@@ -182,18 +203,9 @@ export const profile = {
 				tools: ['Life Sim', 'Cozy', 'Management'],
 				sortDate: '2026-04-01',
 				dateLabel: 'Apr 2026',
-				yearLabel: '2026–Present',
+				yearLabel: '2026',
 				releaseStage: 'dev',
-				awards: [
-					{
-						name: 'Best Cozy Prototype',
-						awardedFrom: 'Mock Indie Showcase',
-						emblem: {
-							src: '/assets/icons/sun.svg',
-							alt: 'Sun emblem.',
-						},
-					},
-				],
+				awards: [],
 			},
 			{
 				id: 'dungeons-and-dining-tables',
@@ -208,40 +220,31 @@ export const profile = {
 				description:
 					'A cozy fantasy adventure about running a tavern, feeding heroes, and managing the chaos between dungeon runs.',
 				tools: ['Adventure', 'Management', 'Cozy'],
-				sortDate: '2026-03-01',
-				dateLabel: 'TBA',
-				yearLabel: 'TBA',
-				releaseStage: 'dev',
+				sortDate: '2025-01-01',
+				dateLabel: '2025-2026',
+				yearLabel: '2025-2026',
+				releaseStage: 'contributed',
 				awards: [],
 				projectUrl: 'https://store.steampowered.com/app/2941630/Dungeons_and_Dining_Tables/',
 			},
 			{
 				id: 'coop-climbing',
-				companyId: 'solo',
-				product: 'Co-op Climbing Prototype',
+				companyId: 'daytime-devs',
+				product: 'Co-op Cat Temple Escape',
 				pictures: [
 					{
-						src: '/assets/images/project-climbing.webp',
-						alt: 'Pixel art co-op climbers roped together on a sunny cliff face.',
+						src: '/assets/images/project-coop-cat-temple-escape.webp',
+						alt: 'Pixel art cats fleeing a collapsing Egyptian temple corridor.',
 					},
 				],
 				description:
 					'A co-op climbing game built around communication, trust, and smart movement.',
 				tools: ['Prototype', 'Co-op', 'Physics'],
 				sortDate: '2026-03-01',
-				dateLabel: 'Mar 2026',
+				dateLabel: '2026',
 				yearLabel: '2026',
 				releaseStage: 'dev',
-				awards: [
-					{
-						name: 'Best Multiplayer Feel',
-						awardedFrom: 'Mock Game Jam Awards',
-						emblem: {
-							src: '/assets/icons/gamepad.svg',
-							alt: 'Gamepad emblem.',
-						},
-					},
-				],
+				awards: [],
 			},
 			{
 				id: 'awbw-opening-analyzer',
@@ -256,20 +259,11 @@ export const profile = {
 				description:
 					'Analyze Advance Wars By Web openings with win rates, data views, and strategy insights.',
 				tools: ['Tool', 'Data', 'Strategy'],
-				sortDate: '2025-11-01',
-				dateLabel: 'Nov 2025',
-				yearLabel: '2025',
-				releaseStage: 'released',
-				awards: [
-					{
-						name: 'Strategy Tool Pick',
-						awardedFrom: 'Mock Tactics Lab',
-						emblem: {
-							src: '/assets/icons/leaf.svg',
-							alt: 'Leaf emblem.',
-						},
-					},
-				],
+				sortDate: '2026-04-01',
+				dateLabel: '2026',
+				yearLabel: '2026',
+				releaseStage: 'dev',
+				awards: [],
 			},
 			{
 				id: 'super-bawk-bawk-chicken',
@@ -290,250 +284,6 @@ export const profile = {
 				releaseStage: 'released',
 				awards: [],
 				projectUrl: 'https://store.steampowered.com/app/2054850/Super_BAWK_BAWK_Chicken/',
-			},
-			{
-				id: 'skybound-isles',
-				companyId: 'solo',
-				product: 'Skybound Isles',
-				pictures: [
-					{
-						src: '/assets/images/project-climbing.webp',
-						alt: 'Pixel art floating islands and cliffs used as mock project art.',
-					},
-				],
-				description:
-					'A mock exploration game about charting floating islands, repairing gliders, and finding wind routes.',
-				tools: ['Adventure', 'Exploration', 'Mock'],
-				sortDate: '2026-02-01',
-				dateLabel: 'Feb 2026',
-				yearLabel: '2026–Present',
-				releaseStage: 'dev',
-				awards: [
-					{
-						name: 'Audience Favorite',
-						awardedFrom: 'Mock Sky Fair',
-						emblem: {
-							src: '/assets/icons/sun.svg',
-							alt: 'Sun emblem.',
-						},
-					},
-				],
-			},
-			{
-				id: 'rogue-camp',
-				companyId: 'solo',
-				product: 'Rogue Camp',
-				pictures: [
-					{
-						src: '/assets/images/project-petes-place.webp',
-						alt: 'Pixel art forest building scene used as mock camp project art.',
-					},
-				],
-				description:
-					'A mock roguelite camp manager where each run expands the base, unlocks supplies, and changes the forest.',
-				tools: ['Roguelite', 'Systems', 'Mock'],
-				sortDate: '2026-01-01',
-				dateLabel: 'Jan 2026',
-				yearLabel: '2026–Present',
-				releaseStage: 'dev',
-				awards: [],
-			},
-			{
-				id: 'indie-toolkit',
-				companyId: 'solo',
-				product: 'Indie Toolkit',
-				pictures: [
-					{
-						src: '/assets/images/project-awbw.webp',
-						alt: 'Pixel art strategy grid used as mock toolkit project art.',
-					},
-				],
-				description:
-					'A mock dashboard of reusable production helpers for task tracking, build notes, and release checklists.',
-				tools: ['Tool', 'Productivity', 'Mock'],
-				sortDate: '2025-09-01',
-				dateLabel: 'Sep 2025',
-				yearLabel: '2025–Present',
-				releaseStage: 'dev',
-				awards: [
-					{
-						name: 'Developer Utility Mention',
-						awardedFrom: 'Mock Tools Expo',
-						emblem: {
-							src: '/assets/icons/github.svg',
-							alt: 'Code hosting emblem.',
-						},
-					},
-				],
-			},
-			{
-				id: 'garden-quest',
-				companyId: 'solo',
-				product: 'Garden Quest',
-				pictures: [
-					{
-						src: '/assets/images/project-petes-place.webp',
-						alt: 'Pixel art garden shop scene used as mock garden project art.',
-					},
-				],
-				description:
-					'A mock puzzle adventure about restoring gardens, trading seeds, and learning local folklore.',
-				tools: ['Puzzle', 'Narrative', 'Mock'],
-				sortDate: '2025-07-01',
-				dateLabel: 'Jul 2025',
-				yearLabel: '2025',
-				releaseStage: 'released',
-				awards: [
-					{
-						name: 'Wholesome Design Award',
-						awardedFrom: 'Mock Garden Jam',
-						emblem: {
-							src: '/assets/icons/leaf.svg',
-							alt: 'Leaf emblem.',
-						},
-					},
-				],
-			},
-			{
-				id: 'stellar-shepherds',
-				companyId: 'solo',
-				product: 'Stellar Shepherds',
-				pictures: [
-					{
-						src: '/assets/images/project-climbing.webp',
-						alt: 'Pixel art mountain sky scene used as mock space project art.',
-					},
-				],
-				description:
-					'A mock tactics prototype about guiding small fleets through storms, hazards, and strange constellations.',
-				tools: ['Tactics', 'Space', 'Mock'],
-				sortDate: '2025-05-01',
-				dateLabel: 'May 2025',
-				yearLabel: '2025',
-				releaseStage: 'dev',
-				awards: [],
-			},
-			{
-				id: 'dungeon-desk',
-				companyId: 'solo',
-				product: 'Dungeon Desk',
-				pictures: [
-					{
-						src: '/assets/images/project-awbw.webp',
-						alt: 'Pixel art grid scene used as mock dungeon desk project art.',
-					},
-				],
-				description:
-					'A mock encounter builder that turns small design notes into printable rooms, tables, and balance sheets.',
-				tools: ['Editor', 'Design', 'Mock'],
-				sortDate: '2025-03-01',
-				dateLabel: 'Mar 2025',
-				yearLabel: '2025',
-				releaseStage: 'released',
-				awards: [
-					{
-						name: 'Best Tabletop Helper',
-						awardedFrom: 'Mock Creator Con',
-						emblem: {
-							src: '/assets/icons/gamepad.svg',
-							alt: 'Gamepad emblem.',
-						},
-					},
-				],
-			},
-			{
-				id: 'atlas-of-autumn',
-				companyId: 'solo',
-				product: 'Atlas of Autumn',
-				pictures: [
-					{
-						src: '/assets/images/project-petes-place.webp',
-						alt: 'Pixel art woodland scene used as mock autumn atlas project art.',
-					},
-				],
-				description:
-					'A mock map-making toy for building tiny seasonal worlds with paths, landmarks, and hidden notes.',
-				tools: ['Toy', 'Creative', 'Mock'],
-				sortDate: '2024-11-01',
-				dateLabel: 'Nov 2024',
-				yearLabel: '2024–2025',
-				releaseStage: 'shelved',
-				awards: [],
-			},
-			{
-				id: 'melody-forge',
-				companyId: 'solo',
-				product: 'Melody Forge',
-				pictures: [
-					{
-						src: '/assets/images/project-climbing.webp',
-						alt: 'Pixel art cliff scene used as mock music project art.',
-					},
-				],
-				description:
-					'A mock music toy where players assemble short loops, moods, and reactive sound cues for prototypes.',
-				tools: ['Audio', 'Tool', 'Mock'],
-				sortDate: '2024-09-01',
-				dateLabel: 'Sep 2024',
-				yearLabel: '2024',
-				releaseStage: 'contributed',
-				awards: [
-					{
-						name: 'Creative Tech Pick',
-						awardedFrom: 'Mock Audio Arcade',
-						emblem: {
-							src: '/assets/icons/sun.svg',
-							alt: 'Sun emblem.',
-						},
-					},
-				],
-			},
-			{
-				id: 'tiny-trains',
-				companyId: 'solo',
-				product: 'Tiny Trains',
-				pictures: [
-					{
-						src: '/assets/images/project-awbw.webp',
-						alt: 'Pixel art grid scene used as mock tiny trains project art.',
-					},
-				],
-				description:
-					'A mock logistics puzzle about drawing compact rail lines, moving parcels, and keeping stations happy.',
-				tools: ['Puzzle', 'Logistics', 'Mock'],
-				sortDate: '2024-06-01',
-				dateLabel: 'Jun 2024',
-				yearLabel: '2024–2025',
-				releaseStage: 'shelved',
-				awards: [
-					{
-						name: 'Best Short Puzzle',
-						awardedFrom: 'Mock Micro Jam',
-						emblem: {
-							src: '/assets/icons/leaf.svg',
-							alt: 'Leaf emblem.',
-						},
-					},
-				],
-			},
-			{
-				id: 'sprite-smith',
-				companyId: 'solo',
-				product: 'Sprite Smith',
-				pictures: [
-					{
-						src: '/assets/images/project-petes-place.webp',
-						alt: 'Pixel art shop scene used as mock sprite editor project art.',
-					},
-				],
-				description:
-					'A mock pixel-art helper for creating tiny characters, exporting sheets, and testing animation loops.',
-				tools: ['Pixel Art', 'Editor', 'Mock'],
-				sortDate: '2024-03-01',
-				dateLabel: 'Mar 2024',
-				yearLabel: '2024',
-				releaseStage: 'dev',
-				awards: [],
 			},
 		] satisfies Project[],
 	},

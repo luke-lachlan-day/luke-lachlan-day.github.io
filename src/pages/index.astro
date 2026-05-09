@@ -60,7 +60,7 @@ const featuredProjects = home.featuredProjectIds
 					return (
 						<a
 							class="project-card"
-							href={projects.href}
+							href={`${projects.href}#${project.id}`}
 							aria-label={`View ${project.product} in projects`}
 						>
 							<img class="project-image" src={picture.src} alt={picture.alt} loading="lazy" />

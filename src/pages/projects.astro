@@ -113,7 +113,7 @@ const getInitialWheelSlot = (index: number) => {
 					return (
 						<article
 							class="project-detail"
-							id={project.id}
+							id={`project-detail-${project.id}`}
 							data-project-detail-item
 							data-project-index={index}
 							hidden={index === 0 ? undefined : true}
@@ -193,6 +193,7 @@ const getInitialWheelSlot = (index: number) => {
 			let activeIndex = Number(wheel.getAttribute('data-active-index')) || 0;
 			const desktopQuery = window.matchMedia('(min-width: 821px)');
 			const phoneQuery = window.matchMedia('(max-width: 460px)');
+			const projectHashPrefix = '#';
 
 			const getSlotRanges = () => {
 				if (phoneQuery.matches) {
@@ -214,6 +215,19 @@ const getInitialWheelSlot = (index: number) => {
 			};
 
 			const wrapIndex = (index) => ((index % total) + total) % total;
+			const getProjectIdFromHash = () => {
+				const hash = window.location.hash.slice(projectHashPrefix.length);
+
+				if (!hash) {
+					return '';
+				}
+
+				try {
+					return decodeURIComponent(hash);
+				} catch {
+					return hash;
+				}
+			};
 			const shortestOffset = (index, active) => {
 				const rawOffset = index - active;
 				const forwardOffset = rawOffset + total;
@@ -254,14 +268,45 @@ const getInitialWheelSlot = (index: number) => {
 				});
 			};
 
-			const setActiveIndex = (index) => {
+			const setActiveIndex = (index, updateHash = false) => {
 				activeIndex = wrapIndex(index);
 				updateWheel();
+
+				if (!updateHash) {
+					return;
+				}
+
+				const activeCard = cards[activeIndex];
+				const projectId = activeCard?.getAttribute('data-project-id');
+
+				if (!projectId) {
+					return;
+				}
+
+				const nextHash = `${projectHashPrefix}${encodeURIComponent(projectId)}`;
+				if (window.location.hash !== nextHash) {
+					window.history.replaceState(null, '', nextHash);
+				}
+			};
+			const setActiveProjectFromHash = () => {
+				const projectId = getProjectIdFromHash();
+
+				if (!projectId) {
+					return;
+				}
+
+				const matchingCard = cards.find((card) => card.getAttribute('data-project-id') === projectId);
+
+				if (!matchingCard) {
+					return;
+				}
+
+				setActiveIndex(Number(matchingCard.getAttribute('data-project-index')));
 			};
 
 			cards.forEach((card) => {
 				card.addEventListener('click', () => {
-					setActiveIndex(Number(card.getAttribute('data-project-index')));
+					setActiveIndex(Number(card.getAttribute('data-project-index')), true);
 				});
 
 				card.addEventListener('keydown', (event) => {
@@ -281,7 +326,9 @@ const getInitialWheelSlot = (index: number) => {
 			nextButton?.addEventListener('click', () => setActiveIndex(activeIndex + 1));
 			desktopQuery.addEventListener('change', updateWheel);
 			phoneQuery.addEventListener('change', updateWheel);
+			window.addEventListener('hashchange', setActiveProjectFromHash);
 
+			setActiveProjectFromHash();
 			updateWheel();
 
 			const enableWheelTransitions = () => {
