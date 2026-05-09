@@ -1032,7 +1032,7 @@ h3 {
 
 .project-wheel-viewport {
 	position: relative;
-	min-height: 342px;
+	min-height: 300px;
 	overflow: visible;
 	isolation: isolate;
 }
@@ -1043,9 +1043,9 @@ h3 {
 	left: 50%;
 	z-index: 0;
 	display: grid;
-	gap: 10px;
+	gap: 8px;
 	width: clamp(174px, 17vw, 228px);
-	height: 300px;
+	height: 260px;
 	border: 1px solid var(--border);
 	border-radius: 14px;
 	background: color-mix(in srgb, var(--bg) 88%, var(--surface));
@@ -1053,7 +1053,7 @@ h3 {
 	color: inherit;
 	cursor: pointer;
 	opacity: 0;
-	padding: 9px;
+	padding: 8px;
 	pointer-events: none;
 	text-align: left;
 	transform: translate(-50%, -50%) scale(0.68);
@@ -1080,19 +1080,19 @@ h3 {
 	z-index: 0;
 	opacity: 0;
 	pointer-events: none;
-	transform: translate(-345%, -32%) rotate(-17deg) scale(0.62);
+	transform: translate(-281%, -32%) rotate(-17deg) scale(0.62);
 }
 
 .project-wheel-card[data-slot="-2"] {
 	z-index: 1;
 	opacity: 0.42;
-	transform: translate(-230%, -42%) rotate(-10deg) scale(0.76);
+	transform: translate(-218%, -42%) rotate(-10deg) scale(0.76);
 }
 
 .project-wheel-card[data-slot="-1"] {
 	z-index: 2;
 	opacity: 0.76;
-	transform: translate(-135%, -51%) rotate(-4deg) scale(0.9);
+	transform: translate(-139%, -51%) rotate(-4deg) scale(0.9);
 }
 
 .project-wheel-card[data-slot="0"] {
@@ -1106,20 +1106,20 @@ h3 {
 .project-wheel-card[data-slot="1"] {
 	z-index: 2;
 	opacity: 0.76;
-	transform: translate(35%, -51%) rotate(4deg) scale(0.9);
+	transform: translate(39%, -51%) rotate(4deg) scale(0.9);
 }
 
 .project-wheel-card[data-slot="2"] {
 	z-index: 1;
 	opacity: 0.42;
-	transform: translate(130%, -42%) rotate(10deg) scale(0.76);
+	transform: translate(118%, -42%) rotate(10deg) scale(0.76);
 }
 
 .project-wheel-card[data-slot="3"] {
 	z-index: 0;
 	opacity: 0;
 	pointer-events: none;
-	transform: translate(245%, -32%) rotate(17deg) scale(0.62);
+	transform: translate(181%, -32%) rotate(17deg) scale(0.62);
 }
 
 .project-wheel-card:hover {
@@ -1145,7 +1145,7 @@ h3 {
 
 .project-wheel-body {
 	display: grid;
-	gap: 7px;
+	gap: 6px;
 	min-width: 0;
 }
 
@@ -1238,7 +1238,7 @@ h3 {
 	z-index: 3;
 	display: block;
 	width: clamp(140px, 18vw, 230px);
-	margin: -42px auto -22px;
+	margin: -36px auto -22px;
 	filter: var(--image-filter);
 	image-rendering: pixelated;
 	pointer-events: none;
@@ -1410,34 +1410,34 @@ h3 {
 	}
 
 	.project-wheel-viewport {
-		min-height: 318px;
+		min-height: 292px;
 	}
 
 	.project-wheel-card {
 		width: clamp(172px, 34vw, 220px);
-		height: 300px;
+		height: 258px;
 	}
 
 	.project-wheel-card[data-slot="-2"] {
 		opacity: 0;
 		pointer-events: none;
-		transform: translate(-210%, -38%) rotate(-13deg) scale(0.66);
+		transform: translate(-201%, -38%) rotate(-13deg) scale(0.66);
 	}
 
 	.project-wheel-card[data-slot="-1"] {
 		opacity: 0.54;
-		transform: translate(-102%, -47%) rotate(-7deg) scale(0.82);
+		transform: translate(-135%, -47%) rotate(-7deg) scale(0.82);
 	}
 
 	.project-wheel-card[data-slot="1"] {
 		opacity: 0.54;
-		transform: translate(2%, -47%) rotate(7deg) scale(0.82);
+		transform: translate(35%, -47%) rotate(7deg) scale(0.82);
 	}
 
 	.project-wheel-card[data-slot="2"] {
 		opacity: 0;
 		pointer-events: none;
-		transform: translate(110%, -38%) rotate(13deg) scale(0.66);
+		transform: translate(101%, -38%) rotate(13deg) scale(0.66);
 	}
 
 	.project-wheel-nav {
@@ -1448,7 +1448,7 @@ h3 {
 
 	.project-wheel-chest {
 		width: clamp(132px, 25vw, 190px);
-		margin-top: -44px;
+		margin-top: -34px;
 		margin-bottom: -18px;
 	}
 
@@ -1465,12 +1465,12 @@ h3 {
 	}
 
 	.project-wheel-viewport {
-		min-height: 300px;
+		min-height: 270px;
 	}
 
 	.project-wheel-card {
 		width: min(230px, calc(100vw - 122px));
-		height: 300px;
+		height: 256px;
 	}
 
 	.project-wheel-card[data-slot="0"] {
@@ -1480,18 +1480,18 @@ h3 {
 	.project-wheel-card[data-slot="-1"] {
 		opacity: 0;
 		pointer-events: none;
-		transform: translate(-165%, -40%) rotate(-10deg) scale(0.72);
+		transform: translate(-132%, -40%) rotate(-10deg) scale(0.72);
 	}
 
 	.project-wheel-card[data-slot="1"] {
 		opacity: 0;
 		pointer-events: none;
-		transform: translate(65%, -40%) rotate(10deg) scale(0.72);
+		transform: translate(32%, -40%) rotate(10deg) scale(0.72);
 	}
 
 	.project-wheel-chest {
 		width: clamp(118px, 38vw, 162px);
-		margin-top: -36px;
+		margin-top: -28px;
 		margin-bottom: -14px;
 	}
 
