@@ -1043,9 +1043,11 @@ h3 {
 	left: 50%;
 	z-index: 0;
 	display: grid;
+	align-content: start;
 	gap: 8px;
+	grid-template-rows: auto minmax(0, 1fr);
 	width: clamp(174px, 17vw, 228px);
-	height: 260px;
+	height: 232px;
 	border: 1px solid var(--border);
 	border-radius: 14px;
 	background: color-mix(in srgb, var(--bg) 88%, var(--surface));
@@ -1133,20 +1135,78 @@ h3 {
 	outline-offset: 4px;
 }
 
-.project-wheel-image {
+.project-wheel-media {
+	position: relative;
+	display: block;
 	width: 100%;
 	aspect-ratio: 16 / 10;
+	overflow: hidden;
 	border-radius: 9px;
 	background: var(--surface-soft);
+}
+
+.project-wheel-image {
+	width: 100%;
+	height: 100%;
 	filter: var(--image-filter);
 	image-rendering: pixelated;
 	object-fit: cover;
 }
 
+.project-wheel-company-badge {
+	position: absolute;
+	right: 8px;
+	bottom: 8px;
+	display: grid;
+	place-items: center;
+	width: 34px;
+	height: 34px;
+	border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--surface-glass) 86%, var(--bg));
+	box-shadow: 0 5px 14px rgba(0, 0, 0, 0.16);
+	color: var(--accent);
+}
+
+.project-wheel-company-badge img {
+	width: 23px;
+	height: 23px;
+	border-radius: 6px;
+	filter: var(--image-filter);
+	image-rendering: pixelated;
+	object-fit: cover;
+}
+
+.project-wheel-company-badge span {
+	font-family: var(--font-display);
+	font-size: 1.15rem;
+	line-height: 1;
+}
+
+.project-wheel-status-ribbon {
+	position: absolute;
+	top: 12px;
+	right: -30px;
+	width: 132px;
+	border: 1px solid color-mix(in srgb, var(--accent-2) 34%, var(--border));
+	background: color-mix(in srgb, var(--surface-glass) 88%, var(--accent-2));
+	box-shadow: 0 5px 14px rgba(0, 0, 0, 0.14);
+	color: color-mix(in srgb, var(--heading) 84%, var(--accent));
+	font-size: 0.72rem;
+	font-weight: 900;
+	line-height: 1;
+	padding: 5px 8px 6px;
+	text-align: center;
+	text-transform: uppercase;
+	transform: rotate(14deg);
+}
+
 .project-wheel-body {
 	display: grid;
+	align-content: center;
 	gap: 6px;
 	min-width: 0;
+	text-align: center;
 }
 
 .project-wheel-title {
@@ -1410,22 +1470,14 @@ h3 {
 	background:
 		radial-gradient(circle at 50% 38%, color-mix(in srgb, var(--accent-2) 22%, transparent), transparent 58%),
 		color-mix(in srgb, var(--surface-soft) 82%, var(--bg));
-	overflow: hidden;
 }
 
-.experience-wheel-mark img {
-	width: clamp(58px, 42%, 86px);
-	height: auto;
-	filter: var(--image-filter);
-	image-rendering: pixelated;
-	object-fit: contain;
-}
-
-.experience-wheel-mark span {
+.experience-wheel-mark-initial {
 	color: var(--accent);
 	font-family: var(--font-display);
 	font-size: 4rem;
 	line-height: 1;
+	opacity: 0.82;
 }
 
 .experience-wheel-book {
@@ -1604,7 +1656,7 @@ h3 {
 
 	.project-wheel-card {
 		width: clamp(172px, 34vw, 220px);
-		height: 258px;
+		height: 230px;
 	}
 
 	.project-wheel-card[data-slot="-2"] {
@@ -1665,7 +1717,7 @@ h3 {
 
 	.project-wheel-card {
 		width: min(230px, calc(100vw - 122px));
-		height: 256px;
+		height: 228px;
 	}
 
 	.project-wheel-card[data-slot="0"] {

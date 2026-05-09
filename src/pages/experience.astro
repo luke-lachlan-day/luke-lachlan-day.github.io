@@ -62,19 +62,14 @@ const getCompanyIcon = (item: ExperienceItem) => (item.companyId ? companyById.g
 								aria-label={`Select ${item.role} at ${item.company}`}
 								tabindex={isActive ? undefined : -1}
 							>
-								<span class="experience-wheel-mark" aria-hidden="true">
-									{icon ? <img src={icon.src} alt="" loading={isActive ? 'eager' : 'lazy'} /> : <span>{item.company.slice(0, 1)}</span>}
+								<span class="project-wheel-media experience-wheel-mark" aria-hidden="true">
+									<span class="experience-wheel-mark-initial">{item.company.slice(0, 1)}</span>
+									<span class="project-wheel-company-badge">
+										{icon ? <img src={icon.src} alt="" loading={isActive ? 'eager' : 'lazy'} /> : <span>{item.company.slice(0, 1)}</span>}
+									</span>
 								</span>
 								<span class="project-wheel-body">
 									<span class="project-wheel-title">{item.role}</span>
-									<span class="project-wheel-company">
-										{icon && <img src={icon.src} alt="" loading="lazy" />}
-										<span>{item.company}</span>
-									</span>
-									<span class="project-wheel-meta">
-										<span>{item.dateLabel}</span>
-										<span>{item.context}</span>
-									</span>
 								</span>
 							</button>
 						);

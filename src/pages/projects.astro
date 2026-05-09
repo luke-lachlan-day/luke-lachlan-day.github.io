@@ -19,6 +19,20 @@ const releaseStageLabels = {
 	beta: 'Beta',
 	alpha: 'Alpha',
 };
+const wheelReleaseStageLabels: Record<string, 'Released' | 'In Development' | 'Shelved'> = {
+	released: 'Released',
+	'early-access': 'In Development',
+	beta: 'In Development',
+	alpha: 'In Development',
+	prototype: 'In Development',
+	wip: 'In Development',
+	'in-progress': 'In Development',
+	shelved: 'Shelved',
+	paused: 'Shelved',
+	cancelled: 'Shelved',
+};
+const getWheelReleaseStageLabel = (project: Project) =>
+	wheelReleaseStageLabels[project.releaseStage] ?? (project.inDevelopment ? 'In Development' : 'Released');
 const initialActiveProjectIndex = 0;
 const initialTransitionSlotRange = 3;
 const getInitialWheelSlot = (index: number) => {
@@ -60,7 +74,7 @@ const getInitialWheelSlot = (index: number) => {
 					wheelProjects.map((project, index) => {
 						const company = companyById.get(project.companyId);
 						const picture = project.pictures[0];
-						const releaseStageLabel = releaseStageLabels[project.releaseStage];
+						const wheelReleaseStageLabel = getWheelReleaseStageLabel(project);
 						const isActive = index === initialActiveProjectIndex;
 						const initialSlot = getInitialWheelSlot(index);
 
@@ -76,17 +90,17 @@ const getInitialWheelSlot = (index: number) => {
 								aria-label={`Select ${project.product}`}
 								tabindex={isActive ? undefined : -1}
 							>
-								<img class="project-wheel-image" src={picture.src} alt={picture.alt} loading={isActive ? 'eager' : 'lazy'} />
+								<span class="project-wheel-media">
+									<img class="project-wheel-image" src={picture.src} alt={picture.alt} loading={isActive ? 'eager' : 'lazy'} />
+									{company && (
+										<span class="project-wheel-company-badge" aria-hidden="true">
+											<img src={company.icon.src} alt="" loading="lazy" />
+										</span>
+									)}
+									<span class="project-wheel-status-ribbon">{wheelReleaseStageLabel}</span>
+								</span>
 								<span class="project-wheel-body">
 									<span class="project-wheel-title">{project.product}</span>
-									<span class="project-wheel-company">
-										{company && <img src={company.icon.src} alt="" loading="lazy" />}
-										<span>{company?.name}</span>
-									</span>
-									<span class="project-wheel-meta">
-										<span>{project.dateLabel}</span>
-										<span>{releaseStageLabel}</span>
-									</span>
 								</span>
 							</button>
 						);
