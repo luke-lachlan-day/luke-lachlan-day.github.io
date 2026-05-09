@@ -419,7 +419,7 @@ export const profile = {
 				sortDate: '2024-09-01',
 				dateLabel: 'Sep 2024',
 				yearLabel: '2024',
-				releaseStage: 'dev',
+				releaseStage: 'contributed',
 				awards: [
 					{
 						name: 'Creative Tech Pick',
