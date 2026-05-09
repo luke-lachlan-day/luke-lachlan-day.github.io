@@ -19,6 +19,19 @@ const releaseStageLabels = {
 	beta: 'Beta',
 	alpha: 'Alpha',
 };
+const initialActiveProjectIndex = 0;
+const initialTransitionSlotRange = 3;
+const getInitialWheelSlot = (index: number) => {
+	const total = wheelProjects.length;
+	const rawOffset = index - initialActiveProjectIndex;
+	const forwardOffset = rawOffset + total;
+	const backwardOffset = rawOffset - total;
+	const slot = [rawOffset, forwardOffset, backwardOffset].reduce((best, offset) =>
+		Math.abs(offset) < Math.abs(best) ? offset : best
+	);
+
+	return Math.abs(slot) <= initialTransitionSlotRange ? String(slot) : undefined;
+};
 ---
 
 <BaseLayout
@@ -30,7 +43,14 @@ const releaseStageLabels = {
 	</section>
 
 	<section class="section project-showcase" id="project-showcase" aria-label="Project selector">
-		<div class="project-wheel" data-project-wheel data-active-index="0" role="group" aria-label="Project selector">
+		<div
+			class="project-wheel"
+			data-project-wheel
+			data-wheel-initializing="true"
+			data-active-index={initialActiveProjectIndex}
+			role="group"
+			aria-label="Project selector"
+		>
 			<button class="project-wheel-nav project-wheel-nav-prev" type="button" data-wheel-prev aria-label="Previous project">
 				<span aria-hidden="true">&lsaquo;</span>
 			</button>
@@ -41,7 +61,8 @@ const releaseStageLabels = {
 						const company = companyById.get(project.companyId);
 						const picture = project.pictures[0];
 						const releaseStageLabel = releaseStageLabels[project.releaseStage];
-						const isActive = index === 0;
+						const isActive = index === initialActiveProjectIndex;
+						const initialSlot = getInitialWheelSlot(index);
 
 						return (
 							<button
@@ -50,7 +71,7 @@ const releaseStageLabels = {
 								data-project-card
 								data-project-index={index}
 								data-project-id={project.id}
-								data-slot={isActive ? '0' : undefined}
+								data-slot={initialSlot}
 								aria-pressed={isActive ? 'true' : 'false'}
 								aria-label={`Select ${project.product}`}
 								tabindex={isActive ? undefined : -1}
@@ -261,6 +282,19 @@ const releaseStageLabels = {
 			phoneQuery.addEventListener('change', updateWheel);
 
 			updateWheel();
+
+			const enableWheelTransitions = () => {
+				wheel.removeAttribute('data-wheel-initializing');
+			};
+
+			if (!('requestAnimationFrame' in window)) {
+				window.setTimeout(enableWheelTransitions, 0);
+				return;
+			}
+
+			window.requestAnimationFrame(() => {
+				window.requestAnimationFrame(enableWheelTransitions);
+			});
 		})();
 	</script>
 </BaseLayout>

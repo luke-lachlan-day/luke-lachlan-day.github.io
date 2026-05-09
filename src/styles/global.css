@@ -1045,7 +1045,7 @@ h3 {
 	display: grid;
 	gap: 10px;
 	width: clamp(174px, 17vw, 228px);
-	min-height: 260px;
+	height: 300px;
 	border: 1px solid var(--border);
 	border-radius: 14px;
 	background: color-mix(in srgb, var(--bg) 88%, var(--surface));
@@ -1066,6 +1066,10 @@ h3 {
 		filter var(--theme-transition),
 		opacity 220ms ease,
 		transform 220ms ease;
+}
+
+.project-wheel[data-wheel-initializing] .project-wheel-card {
+	transition: none;
 }
 
 .project-wheel-card[data-slot] {
@@ -1411,7 +1415,7 @@ h3 {
 
 	.project-wheel-card {
 		width: clamp(172px, 34vw, 220px);
-		min-height: 254px;
+		height: 300px;
 	}
 
 	.project-wheel-card[data-slot="-2"] {
@@ -1466,7 +1470,7 @@ h3 {
 
 	.project-wheel-card {
 		width: min(230px, calc(100vw - 122px));
-		min-height: 246px;
+		height: 300px;
 	}
 
 	.project-wheel-card[data-slot="0"] {
