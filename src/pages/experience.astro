@@ -1,35 +1,287 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { profile } from '../data/profile';
+import { profile, type ExperienceItem } from '../data/profile';
 
-const { experience } = profile;
+const { experience, companies } = profile;
+const companyById = new Map(companies.map((company) => [company.id, company]));
+const wheelExperience = [...experience.items].sort((itemA, itemB) => itemB.sortDate.localeCompare(itemA.sortDate));
+const initialActiveExperienceIndex = 0;
+const initialTransitionSlotRange = 3;
+const getInitialWheelSlot = (index: number) => {
+	const total = wheelExperience.length;
+	const rawOffset = index - initialActiveExperienceIndex;
+	const forwardOffset = rawOffset + total;
+	const backwardOffset = rawOffset - total;
+	const slot = [rawOffset, forwardOffset, backwardOffset].reduce((best, offset) =>
+		Math.abs(offset) < Math.abs(best) ? offset : best
+	);
+
+	return Math.abs(slot) <= initialTransitionSlotRange ? String(slot) : undefined;
+};
+const getCompanyIcon = (item: ExperienceItem) => (item.companyId ? companyById.get(item.companyId)?.icon : undefined);
 ---
 
 <BaseLayout
 	title={experience.title}
 	description={experience.description}
 >
-	<section class="page-hero" aria-labelledby="experience-title">
+	<section class="page-hero projects-hero" aria-labelledby="experience-title">
 		<h1 id="experience-title">{experience.hero.title}</h1>
-		<p>{experience.hero.lead}</p>
+		{experience.hero.lead && <p>{experience.hero.lead}</p>}
 	</section>
 
-	<section class="section" aria-labelledby="history-title">
-		<div class="section-heading">
-			<p class="eyebrow">{experience.history.eyebrow}</p>
-			<h2 id="history-title">{experience.history.title}</h2>
+	<section class="section project-showcase experience-showcase" id="experience-showcase" aria-label="Experience selector">
+		<div
+			class="project-wheel experience-wheel"
+			data-experience-wheel
+			data-wheel-initializing="true"
+			data-active-index={initialActiveExperienceIndex}
+			role="group"
+			aria-label="Experience selector"
+		>
+			<button class="project-wheel-nav project-wheel-nav-prev" type="button" data-wheel-prev aria-label="Previous experience">
+				<span aria-hidden="true">&lsaquo;</span>
+			</button>
+
+			<div class="project-wheel-viewport">
+				{
+					wheelExperience.map((item, index) => {
+						const icon = getCompanyIcon(item);
+						const isActive = index === initialActiveExperienceIndex;
+						const initialSlot = getInitialWheelSlot(index);
+
+						return (
+							<button
+								class="project-wheel-card experience-wheel-card"
+								type="button"
+								data-experience-card
+								data-experience-index={index}
+								data-experience-id={item.id}
+								data-slot={initialSlot}
+								aria-pressed={isActive ? 'true' : 'false'}
+								aria-label={`Select ${item.role} at ${item.company}`}
+								tabindex={isActive ? undefined : -1}
+							>
+								<span class="experience-wheel-mark" aria-hidden="true">
+									{icon ? <img src={icon.src} alt="" loading={isActive ? 'eager' : 'lazy'} /> : <span>{item.company.slice(0, 1)}</span>}
+								</span>
+								<span class="project-wheel-body">
+									<span class="project-wheel-title">{item.role}</span>
+									<span class="project-wheel-company">
+										{icon && <img src={icon.src} alt="" loading="lazy" />}
+										<span>{item.company}</span>
+									</span>
+									<span class="project-wheel-meta">
+										<span>{item.dateLabel}</span>
+										<span>{item.context}</span>
+									</span>
+								</span>
+							</button>
+						);
+					})
+				}
+			</div>
+
+			<button class="project-wheel-nav project-wheel-nav-next" type="button" data-wheel-next aria-label="Next experience">
+				<span aria-hidden="true">&rsaquo;</span>
+			</button>
 		</div>
 
-		<div class="timeline">
+		<img class="project-wheel-chest experience-wheel-book" src="/assets/images/experience-book.webp" alt="" loading="lazy" aria-hidden="true" />
+
+		<div class="project-detail-panel experience-detail-panel" data-experience-detail aria-live="polite">
 			{
-				experience.items.map((item) => (
-					<article class="timeline-item">
-						<p class="timeline-date">{item.date}</p>
-						<h3>{item.title}</h3>
-						<p>{item.copy}</p>
-					</article>
-				))
+				wheelExperience.map((item, index) => {
+					const icon = getCompanyIcon(item);
+
+					return (
+						<article
+							class="project-detail experience-detail"
+							id={item.id}
+							data-experience-detail-item
+							data-experience-index={index}
+							hidden={index === initialActiveExperienceIndex ? undefined : true}
+						>
+							<div class="experience-detail-overview" aria-label={`${item.role} overview`}>
+								<div class="experience-detail-emblem" aria-hidden="true">
+									{icon ? <img src={icon.src} alt="" loading={index === 0 ? 'eager' : 'lazy'} /> : <span>{item.company.slice(0, 1)}</span>}
+								</div>
+								<dl class="experience-fact-list">
+									<div>
+										<dt>Company</dt>
+										<dd>{item.company}</dd>
+									</div>
+									<div>
+										<dt>Dates</dt>
+										<dd>{item.dateLabel}</dd>
+									</div>
+									<div>
+										<dt>Focus</dt>
+										<dd>{item.context}</dd>
+									</div>
+								</dl>
+							</div>
+
+							<div class="project-detail-content experience-detail-content">
+								<div class="project-detail-kicker">
+									<span>{item.context}</span>
+									<span>{item.dateLabel}</span>
+								</div>
+								<h3>{item.role}</h3>
+								<div class="project-detail-meta">
+									<span class="project-detail-company">
+										{icon && <img src={icon.src} alt="" loading="lazy" />}
+										<span>{item.company}</span>
+									</span>
+								</div>
+								<p class="project-detail-description">{item.summary}</p>
+								<div class="tool-list" aria-label={`${item.role} tools and skills`}>
+									{item.tools.map((tool) => <span>{tool}</span>)}
+								</div>
+								<div class="experience-highlights" aria-label={`${item.role} highlights`}>
+									<p class="experience-highlights-title">Highlights</p>
+									<ul>
+										{item.highlights.map((highlight) => <li>{highlight}</li>)}
+									</ul>
+								</div>
+							</div>
+						</article>
+					);
+				})
 			}
+
+			<div class="experience-credentials" aria-label="Selected achievements and background">
+				{
+					experience.credentials.map((credential) => (
+						<div class="experience-credential">
+							<strong>{credential.label}</strong>
+							<span>{credential.value}</span>
+						</div>
+					))
+				}
+			</div>
 		</div>
 	</section>
+
+	<script is:inline>
+		(() => {
+			const wheel = document.querySelector('[data-experience-wheel]');
+			const cards = Array.from(document.querySelectorAll('[data-experience-card]'));
+			const details = Array.from(document.querySelectorAll('[data-experience-detail-item]'));
+			const previousButton = document.querySelector('[data-wheel-prev]');
+			const nextButton = document.querySelector('[data-wheel-next]');
+
+			if (!wheel || cards.length === 0) {
+				return;
+			}
+
+			const total = cards.length;
+			let activeIndex = Number(wheel.getAttribute('data-active-index')) || 0;
+			const desktopQuery = window.matchMedia('(min-width: 821px)');
+			const phoneQuery = window.matchMedia('(max-width: 460px)');
+
+			const getSlotRanges = () => {
+				if (phoneQuery.matches) {
+					return {
+						interactive: 0,
+						transition: 1,
+					};
+				}
+
+				return desktopQuery.matches
+					? {
+							interactive: 2,
+							transition: 3,
+						}
+					: {
+							interactive: 1,
+							transition: 2,
+						};
+			};
+
+			const wrapIndex = (index) => ((index % total) + total) % total;
+			const shortestOffset = (index, active) => {
+				const rawOffset = index - active;
+				const forwardOffset = rawOffset + total;
+				const backwardOffset = rawOffset - total;
+
+				return [rawOffset, forwardOffset, backwardOffset].reduce((best, offset) =>
+					Math.abs(offset) < Math.abs(best) ? offset : best
+				);
+			};
+
+			const updateWheel = () => {
+				const { interactive, transition } = getSlotRanges();
+
+				wheel.setAttribute('data-active-index', String(activeIndex));
+
+				cards.forEach((card) => {
+					const experienceIndex = Number(card.getAttribute('data-experience-index'));
+					const slot = shortestOffset(experienceIndex, activeIndex);
+					const slotDistance = Math.abs(slot);
+					const transitionSlot = slotDistance <= transition ? String(slot) : '';
+					const isInteractive = slotDistance <= interactive;
+					const isActive = experienceIndex === activeIndex;
+
+					if (transitionSlot) {
+						card.setAttribute('data-slot', transitionSlot);
+					} else {
+						card.removeAttribute('data-slot');
+					}
+
+					card.setAttribute('aria-pressed', String(isActive));
+					card.setAttribute('aria-hidden', String(!isInteractive));
+					card.tabIndex = isInteractive ? 0 : -1;
+				});
+
+				details.forEach((detail) => {
+					const experienceIndex = Number(detail.getAttribute('data-experience-index'));
+					detail.hidden = experienceIndex !== activeIndex;
+				});
+			};
+
+			const setActiveIndex = (index) => {
+				activeIndex = wrapIndex(index);
+				updateWheel();
+			};
+
+			cards.forEach((card) => {
+				card.addEventListener('click', () => {
+					setActiveIndex(Number(card.getAttribute('data-experience-index')));
+				});
+
+				card.addEventListener('keydown', (event) => {
+					if (event.key === 'ArrowLeft') {
+						event.preventDefault();
+						setActiveIndex(activeIndex - 1);
+					}
+
+					if (event.key === 'ArrowRight') {
+						event.preventDefault();
+						setActiveIndex(activeIndex + 1);
+					}
+				});
+			});
+
+			previousButton?.addEventListener('click', () => setActiveIndex(activeIndex - 1));
+			nextButton?.addEventListener('click', () => setActiveIndex(activeIndex + 1));
+			desktopQuery.addEventListener('change', updateWheel);
+			phoneQuery.addEventListener('change', updateWheel);
+
+			updateWheel();
+
+			const enableWheelTransitions = () => {
+				wheel.removeAttribute('data-wheel-initializing');
+			};
+
+			if (!('requestAnimationFrame' in window)) {
+				window.setTimeout(enableWheelTransitions, 0);
+				return;
+			}
+
+			window.requestAnimationFrame(() => {
+				window.requestAnimationFrame(enableWheelTransitions);
+			});
+		})();
+	</script>
 </BaseLayout>

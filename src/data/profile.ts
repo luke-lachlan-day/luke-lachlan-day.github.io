@@ -8,14 +8,26 @@ export type Link = {
 };
 
 export type ExperienceItem = {
-	date: string;
-	title: string;
-	copy: string;
+	id: string;
+	role: string;
+	company: string;
+	companyId?: Company['id'];
+	dateLabel: string;
+	sortDate: string;
+	context: string;
+	summary: string;
+	highlights: string[];
+	tools: string[];
+};
+
+export type ExperienceCredential = {
+	label: string;
+	value: string;
 };
 
 export type HeroContent = {
 	title: string;
-	lead: string;
+	lead?: string;
 };
 
 export type ContactHeroContent = {
@@ -470,37 +482,104 @@ export const profile = {
 	},
 	experience: {
 		title: 'Experience | Luke Lachlan Day',
-		description: 'Work history, places worked, project milestones, and selected life events for Luke Lachlan Day.',
+		description: 'Work history and selected experience for Luke Lachlan Day.',
 		hero: {
-			title: 'Places, work, and life notes.',
-			lead: 'A lightweight chronology for places I have worked, projects that shaped me, and selected life events.',
+			title: 'Experience',
 		} satisfies HeroContent,
 		history: {
 			eyebrow: 'Experience',
-			title: 'Work, places, and milestones',
+			title: 'Work history',
 		},
 		items: [
 			{
-				date: 'Now',
-				title: 'Pixel portfolio refresh',
-				copy: 'Turning the site into a themed portfolio with data-backed projects, companies, and visual assets.',
+				id: 'daytime-devs',
+				role: 'Co-Founder / Programmer',
+				company: 'Daytime Devs Pty Ltd',
+				companyId: 'daytime-devs',
+				dateLabel: 'Mar 2022 - Present',
+				sortDate: '2026-05-01',
+				context: 'Independent studio',
+				summary:
+					'Co-founded an independent game studio and led programming and design work on Super BAWK BAWK Chicken across PC and mobile releases.',
+				highlights: [
+					'Released Super BAWK BAWK Chicken on Steam, then brought it to Android and iOS.',
+					'Helped grow the title to 25,500+ Google Play downloads and delivered 15+ post-launch updates.',
+					'Built gameplay features, internal tools, reusable C# libraries, shaders, release pipelines, store builds, and demo materials.',
+					'Worked across design, art feedback, QA, conventions, and interviews with a player-first production mindset.',
+				],
+				tools: ['Unity', 'C#', 'Steam', 'Google Play', 'App Store', 'Shaders', 'Tooling'],
 			},
 			{
-				date: 'Recent',
-				title: 'Prototype and systems work',
-				copy: 'Gameplay prototypes, technical experiments, and tooling improvements across Unity and web projects.',
+				id: 'catalyst-games',
+				role: 'Programmer / Technical Director',
+				company: 'Catalyst Games',
+				companyId: 'catalyst-games',
+				dateLabel: 'Jan 2025 - Mar 2026',
+				sortDate: '2026-03-01',
+				context: 'Client and studio projects',
+				summary:
+					'Built production systems, mobile app features, and VR training experiences while helping scope, quote, and guide projects from concept to release.',
+				highlights: [
+					'Built a vertical slice within the first month while quickly understanding and extending existing project systems.',
+					'Introduced scene management, asynchronous loading, Addressables, a UI framework, and a decoration system.',
+					'Delivered a Firebase-authenticated mobile app and multiple VR training experiences for clients.',
+					'Promoted to Technical Director, supporting delivery planning, opportunity pitching, project scoping, and quoting.',
+				],
+				tools: ['Unity', 'C#', 'Addressables', 'Firebase', 'VR', 'UI Frameworks', 'Async Loading'],
 			},
 			{
-				date: 'Past',
-				title: 'Learning and shipped pieces',
-				copy: 'Previous projects, collaboration, production milestones, and practical development notes.',
+				id: 'coastal-derrieres',
+				role: 'Unity Developer',
+				company: 'Coastal Derrieres Pty Ltd / Self-Employed',
+				dateLabel: 'Jun 2024 - Oct 2024',
+				sortDate: '2024-10-01',
+				context: 'Contract vertical slice',
+				summary:
+					'Translated a design document into a playable Beach Bums vertical slice and helped shape a practical production approach for funding opportunities.',
+				highlights: [
+					'Built a playable vertical slice from design documentation and production constraints.',
+					'Integrated FMOD and collaborated with an artist to prepare assets for game use.',
+					'Created a robust level editor to support the design workflow.',
+					'Helped a small multidisciplinary team prioritise practical tasks and maintain momentum.',
+				],
+				tools: ['Unity', 'C#', 'FMOD', 'Level Editor', 'Vertical Slice', 'Production Planning'],
 			},
 			{
-				date: 'Archive',
-				title: 'Early experiments',
-				copy: 'A future home for smaller builds, notes, and experiments worth keeping visible.',
+				id: 'earlier-technical',
+				role: 'Earlier Technical Experience',
+				company: 'Power-Net IT Solutions / Australian Army',
+				dateLabel: 'Jul 2016 - Mar 2022',
+				sortDate: '2022-03-01',
+				context: 'IT support and systems technician roles',
+				summary:
+					'Developed troubleshooting, customer support, communication, and technical discipline through IT service and Information Systems Technician roles.',
+				highlights: [
+					'Built confidence supporting users, managing technical systems, and communicating clearly with different audiences.',
+					'Worked under pressure in operational technical environments.',
+					'Developed practical troubleshooting habits that carry into software development work.',
+					'Strengthened the communication and delivery discipline needed for collaborative technical teams.',
+				],
+				tools: ['Troubleshooting', 'IT Support', 'Technical Systems', 'Communication', 'User Support'],
 			},
 		] satisfies ExperienceItem[],
+		credentials: [
+			{
+				label: 'Selected Achievement',
+				value: 'South Australian Screen Awards 2024 - Best Game for Super BAWK BAWK Chicken.',
+			},
+			{
+				label: 'Shipped Platforms',
+				value: 'Steam for Windows and Mac, Google Play, and the Apple App Store.',
+			},
+			{
+				label: 'Education',
+				value: 'Bachelor of Science, University of Adelaide - Genetics, Microbiology and Immunology.',
+			},
+			{
+				label: 'Team Fit',
+				value: 'Comfortable with programmers, artists, designers, clients, demos, teaching, and stakeholder communication.',
+			},
+		] satisfies ExperienceCredential[],
 	},
 	feed: {
 		title: 'Feed | Luke Lachlan Day',
