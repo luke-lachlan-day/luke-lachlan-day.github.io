@@ -684,10 +684,6 @@ export const profile = {
 			},
 		] satisfies ExperienceCredential[],
 	},
-	feed: {
-		title: 'Luke Lachlan Day | Feed',
-		description: 'Latest updates and activity feed for Luke Lachlan Day.',
-	},
 	contact: {
 		title: 'Luke Lachlan Day | Contact',
 		description: 'Contact links for Luke Lachlan Day.',
