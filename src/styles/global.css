@@ -1201,7 +1201,7 @@ h3 {
 }
 
 .project-wheel-company-badge {
-	--project-wheel-company-badge-padding: 5px;
+	--project-wheel-company-badge-padding: 4px;
 	position: absolute;
 	right: 9px;
 	bottom: 9px;
