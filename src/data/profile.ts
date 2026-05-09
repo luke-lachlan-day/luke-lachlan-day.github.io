@@ -54,7 +54,7 @@ export type Company = {
 	icon: ImageAsset;
 };
 
-export type ProjectReleaseStage = 'dev' | 'released' | 'shelved';
+export type ProjectReleaseStage = 'dev' | 'released' | 'shelved' | 'contributed';
 
 export type ProjectAward = {
 	name: string;

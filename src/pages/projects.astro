@@ -13,10 +13,11 @@ const remainingProjects = projects.items
 	.filter((project) => !boostedProjectIds.has(project.id))
 	.sort((projectA, projectB) => projectB.sortDate.localeCompare(projectA.sortDate));
 const wheelProjects = [...boostedProjects, ...remainingProjects];
-const releaseStageLabels: Record<Project['releaseStage'], 'In Dev' | 'Released' | 'Shelved'> = {
+const releaseStageLabels: Record<Project['releaseStage'], 'In Dev' | 'Released' | 'Shelved' | 'Contributed'> = {
 	dev: 'In Dev',
 	released: 'Released',
 	shelved: 'Shelved',
+	contributed: 'Contributed',
 };
 const initialActiveProjectIndex = 0;
 const initialTransitionSlotRange = 3;
@@ -121,7 +122,7 @@ const getInitialWheelSlot = (index: number) => {
 							</div>
 							<div class="project-detail-content">
 								<div class="project-detail-kicker">
-									<span>{releaseStageLabel}</span>
+									<span data-status={project.releaseStage}>{releaseStageLabel}</span>
 								</div>
 								<h3>{project.product}</h3>
 								<div class="project-detail-meta">

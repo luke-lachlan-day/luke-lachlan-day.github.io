@@ -17,6 +17,14 @@
 	--accent-strong: #173f75;
 	--accent-2: #eda21a;
 	--accent-3: #6f8b47;
+	--project-status-dev-bg: #f5cc79;
+	--project-status-dev-text: #7a5105;
+	--project-status-released-bg: #d7e5bf;
+	--project-status-released-text: #2f4b22;
+	--project-status-shelved-bg: #d8d4cc;
+	--project-status-shelved-text: #4b4f55;
+	--project-status-contributed-bg: #eadcff;
+	--project-status-contributed-text: #54347a;
 	--paint: #285590;
 	--paint-fill: color-mix(in srgb, var(--accent) 88%, #000000);
 	--border: #ded2c2;
@@ -54,6 +62,14 @@
 	--accent-strong: #173f75;
 	--accent-2: #eda21a;
 	--accent-3: #6f8b47;
+	--project-status-dev-bg: #f5cc79;
+	--project-status-dev-text: #7a5105;
+	--project-status-released-bg: #d7e5bf;
+	--project-status-released-text: #2f4b22;
+	--project-status-shelved-bg: #d8d4cc;
+	--project-status-shelved-text: #4b4f55;
+	--project-status-contributed-bg: #eadcff;
+	--project-status-contributed-text: #54347a;
 	--paint: #285590;
 	--border: #ded2c2;
 	--border-strong: #cbbca9;
@@ -80,6 +96,14 @@
 	--accent-strong: #8f6cff;
 	--accent-2: #b995ff;
 	--accent-3: #6d58d5;
+	--project-status-dev-bg: #5d4321;
+	--project-status-dev-text: #ffe2a3;
+	--project-status-released-bg: #425f43;
+	--project-status-released-text: #f1ffe8;
+	--project-status-shelved-bg: #3f4652;
+	--project-status-shelved-text: #f2f0e9;
+	--project-status-contributed-bg: #523a76;
+	--project-status-contributed-text: #f6ecff;
 	--paint: #7f58e8;
 	--border: #293a56;
 	--border-strong: #405474;
@@ -1211,8 +1235,8 @@ h3 {
 	top: 8px;
 	right: 8px;
 	border-radius: 7px;
-	background: #f5cc79;
-	color: #7a5105;
+	background: var(--project-status-dev-bg);
+	color: var(--project-status-dev-text);
 	font-family: var(--font-body);
 	font-size: 0.78rem;
 	font-weight: 800;
@@ -1223,13 +1247,18 @@ h3 {
 }
 
 .project-wheel-status-ribbon[data-status="released"] {
-	background: #d7e5bf;
-	color: #2f4b22;
+	background: var(--project-status-released-bg);
+	color: var(--project-status-released-text);
 }
 
 .project-wheel-status-ribbon[data-status="shelved"] {
-	background: #d8cbed;
-	color: #4f3e68;
+	background: var(--project-status-shelved-bg);
+	color: var(--project-status-shelved-text);
+}
+
+.project-wheel-status-ribbon[data-status="contributed"] {
+	background: var(--project-status-contributed-bg);
+	color: var(--project-status-contributed-text);
 }
 
 .project-wheel-body {
@@ -1258,21 +1287,6 @@ h3 {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-}
-
-:root[data-theme="dark"] .project-wheel-status-ribbon {
-	background: #4b3a72;
-	color: #f7edff;
-}
-
-:root[data-theme="dark"] .project-wheel-status-ribbon[data-status="released"] {
-	background: #425f43;
-	color: #f1ffe8;
-}
-
-:root[data-theme="dark"] .project-wheel-status-ribbon[data-status="shelved"] {
-	background: #304b78;
-	color: #edf0ff;
 }
 
 .project-wheel-company,
@@ -1422,6 +1436,26 @@ h3 {
 .project-detail-kicker span:nth-child(2) {
 	background: color-mix(in srgb, var(--accent-2) 18%, var(--surface));
 	color: color-mix(in srgb, var(--accent-2) 72%, var(--text));
+}
+
+.project-detail-kicker span[data-status="dev"] {
+	background: var(--project-status-dev-bg);
+	color: var(--project-status-dev-text);
+}
+
+.project-detail-kicker span[data-status="released"] {
+	background: var(--project-status-released-bg);
+	color: var(--project-status-released-text);
+}
+
+.project-detail-kicker span[data-status="shelved"] {
+	background: var(--project-status-shelved-bg);
+	color: var(--project-status-shelved-text);
+}
+
+.project-detail-kicker span[data-status="contributed"] {
+	background: var(--project-status-contributed-bg);
+	color: var(--project-status-contributed-text);
 }
 
 .project-detail h3 {
