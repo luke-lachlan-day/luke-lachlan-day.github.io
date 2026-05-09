@@ -1042,6 +1042,7 @@ h3 {
 }
 
 .project-wheel-card {
+	--project-wheel-card-background: color-mix(in srgb, var(--bg) 88%, var(--surface));
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -1054,7 +1055,7 @@ h3 {
 	height: 232px;
 	border: 1px solid var(--border);
 	border-radius: 14px;
-	background: color-mix(in srgb, var(--bg) 88%, var(--surface));
+	background: var(--project-wheel-card-background);
 	box-shadow: var(--shadow-soft);
 	color: inherit;
 	cursor: pointer;
@@ -1163,12 +1164,12 @@ h3 {
 	bottom: 9px;
 	display: grid;
 	place-items: center;
-	width: 46px;
-	height: 46px;
+	width: 52px;
+	height: 52px;
 	border-radius: 999px;
 	overflow: hidden;
 	background: transparent;
-	box-shadow: none;
+	box-shadow: 0 0 0 3px var(--project-wheel-card-background);
 	color: var(--accent);
 }
 
