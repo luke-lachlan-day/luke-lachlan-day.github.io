@@ -13,8 +13,8 @@ const remainingProjects = projects.items
 	.filter((project) => !boostedProjectIds.has(project.id))
 	.sort((projectA, projectB) => projectB.sortDate.localeCompare(projectA.sortDate));
 const wheelProjects = [...boostedProjects, ...remainingProjects];
-const releaseStageLabels: Record<Project['releaseStage'], 'Dev' | 'Released' | 'Shelved'> = {
-	dev: 'Dev',
+const releaseStageLabels: Record<Project['releaseStage'], 'In Dev' | 'Released' | 'Shelved'> = {
+	dev: 'In Dev',
 	released: 'Released',
 	shelved: 'Shelved',
 };
