@@ -1238,7 +1238,7 @@ h3 {
 	z-index: 3;
 	display: block;
 	width: clamp(140px, 18vw, 230px);
-	margin: -36px auto -22px;
+	margin: -12px auto -22px;
 	filter: var(--image-filter);
 	image-rendering: pixelated;
 	pointer-events: none;
@@ -1430,7 +1430,7 @@ h3 {
 
 .experience-wheel-book {
 	width: clamp(190px, 25vw, 318px);
-	margin-top: -52px;
+	margin-top: -22px;
 	margin-bottom: -30px;
 }
 
@@ -1637,13 +1637,13 @@ h3 {
 
 	.project-wheel-chest {
 		width: clamp(132px, 25vw, 190px);
-		margin-top: -34px;
+		margin-top: -12px;
 		margin-bottom: -18px;
 	}
 
 	.experience-wheel-book {
 		width: clamp(176px, 38vw, 266px);
-		margin-top: -46px;
+		margin-top: -22px;
 		margin-bottom: -22px;
 	}
 
@@ -1686,13 +1686,13 @@ h3 {
 
 	.project-wheel-chest {
 		width: clamp(118px, 38vw, 162px);
-		margin-top: -28px;
+		margin-top: -8px;
 		margin-bottom: -14px;
 	}
 
 	.experience-wheel-book {
 		width: clamp(166px, 58vw, 236px);
-		margin-top: -38px;
+		margin-top: -18px;
 		margin-bottom: -18px;
 	}
 
