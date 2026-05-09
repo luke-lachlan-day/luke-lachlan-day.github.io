@@ -54,6 +54,23 @@ The repo currently does not define a dedicated Playwright npm script or committe
 - Do not reference oversized source PNGs from pages or CSS when an optimized WebP is suitable.
 - After asset changes, recommend `npm run build` and visual verification of affected pages, but do not run them unless the user explicitly asks.
 
+### Pixel-Art Cutout Cleanup
+
+When cleaning pixel-art cutouts with transparent backgrounds:
+
+- Prefer surgical pixel edits over full regeneration when the asset quality is already good.
+- Work from the current shipped asset first if the user wants to preserve visual quality.
+- For matte/fringe cleanup, target opaque pixels that touch transparent pixels.
+- Recolor stray light, grey, or neutral border pixels to nearby dark outline colors instead of deleting them, unless the user specifically asks for transparency.
+- Preserve intentional interior whites and shading such as logo marks, highlights, letters, and brand shapes.
+- For embedded one-off artifacts, patch exact coordinates or tiny local regions rather than broadening global cleanup rules.
+- Keep filenames, dimensions, alpha channels, and consuming data/CSS unchanged unless the user asks otherwise.
+- Use high-zoom previews composited on dark and light backgrounds, because dark mode exposes matte artifacts most clearly.
+
+The contact icon cleanup used `sharp` for pixel-level RGBA inspection/editing and the repo-local ImageMagick executable for dark-background composites, zoom crops, dimension checks, and alpha checks. A safe workflow is: write patched candidates to `Temp/`, inspect zoom previews, then move approved WebPs over the existing assets.
+
+After raster asset changes, recommend `npm run build` and visual review at phone, tablet, and desktop/PC widths, but do not run those checks unless the user explicitly asks.
+
 ## ImageMagick
 
 ImageMagick is available as a portable repo-local install:
