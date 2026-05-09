@@ -1030,6 +1030,10 @@ h3 {
 	margin-top: 8px;
 }
 
+.project-showcase {
+	overflow-anchor: none;
+}
+
 .project-wheel-viewport {
 	position: relative;
 	min-height: 300px;
@@ -1332,6 +1336,8 @@ h3 {
 	z-index: 3;
 	display: block;
 	width: clamp(140px, 18vw, 230px);
+	aspect-ratio: 672 / 602;
+	height: auto;
 	margin: -12px auto -22px;
 	filter: var(--image-filter);
 	image-rendering: pixelated;
@@ -1516,6 +1522,7 @@ h3 {
 
 .experience-wheel-book {
 	width: clamp(190px, 25vw, 318px);
+	aspect-ratio: 760 / 478;
 	margin-top: -22px;
 	margin-bottom: -30px;
 }
