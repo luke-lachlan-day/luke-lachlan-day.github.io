@@ -189,6 +189,139 @@ export const profile = {
 				sourceUrl: 'https://github.com/luke-lachlan-day/luke-lachlan-day.github.io',
 			},
 			{
+				id: 'three-hearted-octopus',
+				companyId: 'solo',
+				product: 'Three Hearted Octopus',
+				pictures: [
+					{
+						src: '/assets/images/project-three-hearted-octopus.webp',
+						alt: 'Pixel art octopus underwater with three floating hearts for Three Hearted Octopus.',
+					},
+				],
+				description:
+					'An educational science video explaining why octopuses have three hearts and how their oxygen transport differs from humans.',
+				tools: ['Educational Video', 'Science Communication', 'Biology'],
+				sortDate: '2026-05-09',
+				dateLabel: '2026',
+				yearLabel: '2026',
+				releaseStage: 'dev',
+				awards: [],
+			},
+			{
+				id: 'trusty-battles',
+				companyId: 'daytime-devs',
+				product: 'Trusty Battles',
+				pictures: [
+					{
+						src: '/assets/images/project-trusty-battles.webp',
+						alt: 'Pixel art crossed weapons over a battle arena for Trusty Battles.',
+					},
+				],
+				description:
+					'A Daytime Devs battle prototype focused on readable fights, quick decisions, and satisfying moment-to-moment combat.',
+				tools: ['Action', 'Combat', 'Prototype'],
+				sortDate: '2026-05-08',
+				dateLabel: '2026',
+				yearLabel: '2026',
+				releaseStage: 'dev',
+				awards: [],
+			},
+			{
+				id: 'rogue-hands',
+				companyId: 'daytime-devs',
+				product: 'Rogue Hands',
+				pictures: [
+					{
+						src: '/assets/images/project-rogue-hands.webp',
+						alt: 'Pixel art rogue hands reaching toward a glowing gem for Rogue Hands.',
+					},
+				],
+				description:
+					'A Daytime Devs prototype exploring roguelike combat ideas, short runs, and expressive player choices.',
+				tools: ['Roguelike', 'Combat', 'Prototype'],
+				sortDate: '2026-05-07',
+				dateLabel: '2026',
+				yearLabel: '2026',
+				releaseStage: 'dev',
+				awards: [],
+			},
+			{
+				id: 'pon-revised',
+				companyId: 'solo',
+				product: 'Pon (Revised)',
+				pictures: [
+					{
+						src: '/assets/images/project-pon-revised.webp',
+						alt: 'Pixel art revised paddle-and-ball arcade scene for Pon Revised.',
+					},
+				],
+				description:
+					'A revised solo version of Pon, refining the original arcade rules, feedback, and moment-to-moment feel.',
+				tools: ['Arcade', 'Iteration', 'Prototype'],
+				sortDate: '2026-05-06',
+				dateLabel: '2026',
+				yearLabel: '2026',
+				releaseStage: 'dev',
+				awards: [],
+			},
+			{
+				id: 'pon',
+				companyId: 'solo',
+				product: 'Pon',
+				pictures: [
+					{
+						src: '/assets/images/project-pon.webp',
+						alt: 'Pixel art paddle-and-ball arcade scene for Pon.',
+					},
+				],
+				description:
+					'A solo arcade prototype inspired by paddle-and-ball play, clean controls, and fast scoring loops.',
+				tools: ['Arcade', 'Prototype', 'Game Feel'],
+				sortDate: '2026-05-05',
+				dateLabel: '2026',
+				yearLabel: '2026',
+				releaseStage: 'dev',
+				awards: [],
+			},
+			{
+				id: 'creature-sim',
+				companyId: 'solo',
+				product: 'Creature Sim',
+				pictures: [
+					{
+						src: '/assets/images/project-creature-sim.webp',
+						alt: 'Pixel art creature in a small habitat for Creature Sim.',
+					},
+				],
+				description:
+					'A solo simulation prototype about observing creatures, tuning behaviours, and experimenting with systemic interactions.',
+				tools: ['Simulation', 'Systems', 'Prototype'],
+				sortDate: '2026-05-04',
+				dateLabel: '2026',
+				yearLabel: '2026',
+				releaseStage: 'dev',
+				awards: [],
+			},
+			{
+				id: 'norse-quiz',
+				companyId: 'solo',
+				product: 'Norse Quiz',
+				pictures: [
+					{
+						src: '/assets/images/project-norse-quiz.webp',
+						alt: 'Pixel art rune stone and snowy mountains for Norse Quiz.',
+					},
+				],
+				description:
+					'A solo quiz project built around Norse mythology questions, learning, and fast answer feedback.',
+				tools: ['Quiz', 'Education', 'Mythology'],
+				sortDate: '2026-05-03',
+				dateLabel: '2026',
+				yearLabel: '2026',
+				releaseStage: 'dev',
+				awards: [],
+			},
+			{
 				id: 'petes-place',
 				companyId: 'solo',
 				product: "Pete's Place",
