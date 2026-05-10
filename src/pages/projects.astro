@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/pages/showcase.css';
-import ArrowButton from '../components/ArrowButton.astro';
-import AwardMedals from '../components/AwardMedals.astro';
 import ButtonLink from '../components/ButtonLink.astro';
+import DetailGallery from '../components/DetailGallery.astro';
 import PortfolioWheelCard from '../components/PortfolioWheelCard.astro';
-import ProjectImageFrame from '../components/ProjectImageFrame.astro';
+import ShowcaseDetail from '../components/ShowcaseDetail.astro';
+import ShowcaseWheel from '../components/ShowcaseWheel.astro';
 import { profile, type Project } from '../data/profile';
 import { getProjectActionLinks } from '../data/projectActions';
 import { getProjectTagRenderGroups } from '../data/projectTags';
@@ -39,66 +39,62 @@ const initialActiveProjectIndex = 0;
 const initialTransitionSlotRange = 3;
 ---
 
-<BaseLayout
-	title={projects.title}
-	description={projects.description}
->
+<BaseLayout title={projects.title} description={projects.description}>
 	<section class="page-hero projects-hero" aria-labelledby="projects-title">
 		<h1 id="projects-title">{projects.hero.title}</h1>
 	</section>
 
 	<section class="section project-showcase" id="project-showcase" aria-labelledby="project-selector-title">
 		<h2 id="project-selector-title" class="visually-hidden">Project selector</h2>
-		<div
-			class="project-wheel"
-			data-project-wheel
-			data-wheel-controller
-			data-wheel-card-selector="[data-project-card]"
-			data-wheel-detail-selector="[data-project-detail-item]"
-			data-wheel-index-attr="data-project-index"
-			data-wheel-id-attr="data-project-id"
-			data-wheel-change-event="project-detail-change"
-			data-wheel-initializing="true"
-			data-active-index={initialActiveProjectIndex}
-			role="group"
-			aria-labelledby="project-selector-title"
+		<ShowcaseWheel
+			labelledBy="project-selector-title"
+			previousLabel="Previous project"
+			nextLabel="Next project"
+			activeIndex={initialActiveProjectIndex}
+			cardSelector="[data-project-card]"
+			detailSelector="[data-project-detail-item]"
+			indexAttr="data-project-index"
+			idAttr="data-project-id"
+			changeEvent="project-detail-change"
+			dataAttrs={{ 'data-project-wheel': '' }}
 		>
-			<ArrowButton class="project-wheel-nav project-wheel-nav-prev" direction="prev" label="Previous project" data-wheel-prev="" />
+			{
+				wheelProjects.map((project, index) => {
+					const company = companyById.get(project.companyId);
+					const picture = project.pictures[0];
+					const releaseStageLabel = releaseStageLabels[project.releaseStage];
+					const isActive = index === initialActiveProjectIndex;
+					const initialSlot = getInitialWheelSlot(index, wheelProjects.length, initialActiveProjectIndex, initialTransitionSlotRange);
 
-			<div class="project-wheel-viewport">
-				{
-					wheelProjects.map((project, index) => {
-						const company = companyById.get(project.companyId);
-						const picture = project.pictures[0];
-						const releaseStageLabel = releaseStageLabels[project.releaseStage];
-						const isActive = index === initialActiveProjectIndex;
-						const initialSlot = getInitialWheelSlot(index, wheelProjects.length, initialActiveProjectIndex, initialTransitionSlotRange);
+					return (
+						<PortfolioWheelCard
+							title={project.product}
+							subtitle={project.yearLabel}
+							media={picture}
+							badge={company ? { icon: company.icon } : undefined}
+							status={{ label: releaseStageLabel, value: project.releaseStage }}
+							ariaLabel={`Select ${project.product}`}
+							isActive={isActive}
+							initialSlot={initialSlot}
+							dataAttrs={{
+								'data-project-card': '',
+								'data-project-index': index,
+								'data-project-id': project.id,
+							}}
+						/>
+					);
+				})
+			}
+		</ShowcaseWheel>
 
-						return (
-							<PortfolioWheelCard
-								title={project.product}
-								subtitle={project.yearLabel}
-								media={picture}
-								badge={company ? { icon: company.icon } : undefined}
-								status={{ label: releaseStageLabel, value: project.releaseStage }}
-								ariaLabel={`Select ${project.product}`}
-								isActive={isActive}
-								initialSlot={initialSlot}
-								dataAttrs={{
-									'data-project-card': '',
-									'data-project-index': index,
-									'data-project-id': project.id,
-								}}
-							/>
-						);
-					})
-				}
-			</div>
-
-			<ArrowButton class="project-wheel-nav project-wheel-nav-next" direction="next" label="Next project" data-wheel-next="" />
-		</div>
-
-		<img class="project-wheel-chest" src="/assets/images/project-chest.webp" alt="" loading="lazy" {...getImageAttrs('/assets/images/project-chest.webp')} aria-hidden="true" />
+		<img
+			class="project-wheel-chest"
+			src="/assets/images/project-chest.webp"
+			alt=""
+			loading="lazy"
+			{...getImageAttrs('/assets/images/project-chest.webp')}
+			aria-hidden="true"
+		/>
 
 		<div class="project-detail-panel" data-project-detail aria-live="polite">
 			{
@@ -107,77 +103,37 @@ const initialTransitionSlotRange = 3;
 					const companyExperience = experienceByCompanyId.get(project.companyId);
 					const companyExperienceHref = companyExperience ? `/experience/#${encodeURIComponent(companyExperience.id)}` : undefined;
 					const releaseStageLabel = releaseStageLabels[project.releaseStage];
-					const hasMultiplePictures = project.pictures.length > 1;
 					const actionLinks = getProjectActionLinks(project.actions);
 					const tagGroups = getProjectTagRenderGroups(project.projectTags);
 
 					return (
-						<article
-							class="project-detail"
+						<ShowcaseDetail
 							id={`project-detail-${project.id}`}
-							data-project-detail-item
-							data-project-index={index}
-							hidden={index === 0 ? undefined : true}
+							index={index}
+							activeIndex={initialActiveProjectIndex}
+							itemAttr="data-project-detail-item"
+							indexAttr="data-project-index"
+							awards={project.awards}
+							awardsAriaLabel={`${project.product} awards`}
 						>
-							<AwardMedals awards={project.awards} ariaLabel={`${project.product} awards`} />
-							<div class="project-detail-media">
-								<div
-									class="project-detail-gallery"
-									data-project-gallery
-									data-gallery-index="0"
-									role="group"
-									aria-label={`${project.product} images`}
-								>
-									{project.pictures.map((picture, pictureIndex) => (
-										<ProjectImageFrame
-											class="project-detail-gallery-image"
-											src={picture.src}
-											alt={picture.alt}
-											loading={index === 0 && pictureIndex === 0 ? 'eager' : 'lazy'}
-											data-gallery-image
-											data-gallery-image-index={pictureIndex}
-											data-gallery-state={pictureIndex === 0 ? 'active' : undefined}
-											aria-hidden={pictureIndex === 0 ? 'false' : 'true'}
-										/>
-									))}
-									{hasMultiplePictures && (
-										<>
-											<ArrowButton
-												class="project-detail-gallery-control project-detail-gallery-control-prev"
-												direction="prev"
-												data-gallery-step="-1"
-												label={`Show previous ${project.product} image`}
-											/>
-											<ArrowButton
-												class="project-detail-gallery-control project-detail-gallery-control-next"
-												direction="next"
-												data-gallery-step="1"
-												label={`Show next ${project.product} image`}
-											/>
-											<div class="project-detail-gallery-dots" role="group" aria-label={`${project.product} image selector`}>
-												{project.pictures.map((_, pictureIndex) => (
-													<button
-														class="project-detail-gallery-dot"
-														type="button"
-														data-gallery-dot
-														data-gallery-dot-index={pictureIndex}
-														aria-label={`Show ${project.product} image ${pictureIndex + 1} of ${project.pictures.length}`}
-														aria-current={pictureIndex === 0 ? 'true' : undefined}
-													></button>
-												))}
-											</div>
-										</>
-									)}
-								</div>
-							</div>
-							<div class="project-detail-content">
+							<DetailGallery
+								slot="media"
+								pictures={project.pictures}
+								galleryAttr="data-project-gallery"
+								galleryLabel={`${project.product} images`}
+								imageLabel={project.product}
+								firstImageEager={index === initialActiveProjectIndex}
+							/>
+							<Fragment slot="content">
 								<div class="project-detail-kicker project-detail-topline">
-									<span class="project-detail-status" data-status={project.releaseStage}>{releaseStageLabel}</span>
+									<span class="project-detail-status" data-status={project.releaseStage}>
+										{releaseStageLabel}
+									</span>
 								</div>
 								<h3>{project.product}</h3>
 								<div class="project-detail-meta">
-									{company && (
-										companyExperienceHref ? (
+									{company &&
+										(companyExperienceHref ? (
 											<a class="project-detail-company project-detail-company-link" href={companyExperienceHref}>
 												<img src={company.icon.src} alt="" loading="lazy" {...getImageAttrs(company.icon)} />
 												<span>{company.name}</span>
@@ -188,8 +144,7 @@ const initialTransitionSlotRange = 3;
 												<img src={company.icon.src} alt="" loading="lazy" {...getImageAttrs(company.icon)} />
 												<span>{company.name}</span>
 											</span>
-										)
-									)}
+										))}
 									<span>{project.dateLabel}</span>
 								</div>
 								<p class="project-detail-description">{project.description}</p>
@@ -197,7 +152,9 @@ const initialTransitionSlotRange = 3;
 									{tagGroups.map((tagGroup) => (
 										<span class="project-tag-group" data-tag-group={tagGroup.group}>
 											{tagGroup.tags.map((tag) => (
-												<span class="project-tag" data-tag-style={tag.styleKey}>{tag.label}</span>
+												<span class="project-tag" data-tag-style={tag.styleKey}>
+													{tag.label}
+												</span>
 											))}
 										</span>
 									))}
@@ -205,17 +162,12 @@ const initialTransitionSlotRange = 3;
 								{actionLinks.length > 0 && (
 									<div class="project-detail-actions">
 										{actionLinks.map((action) => (
-											<ButtonLink
-												href={action.href}
-												label={action.label}
-												icon={action.icon}
-												variant={action.variant}
-											/>
+											<ButtonLink href={action.href} label={action.label} icon={action.icon} variant={action.variant} />
 										))}
 									</div>
 								)}
-							</div>
-						</article>
+							</Fragment>
+						</ShowcaseDetail>
 					);
 				})
 			}

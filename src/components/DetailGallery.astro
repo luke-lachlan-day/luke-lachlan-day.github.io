@@ -1,0 +1,66 @@
+---
+import ArrowButton from './ArrowButton.astro';
+import ProjectImageFrame from './ProjectImageFrame.astro';
+import type { ImageAsset } from '../data/types';
+
+type Props = {
+	pictures: ImageAsset[];
+	galleryAttr: string;
+	galleryLabel: string;
+	imageLabel: string;
+	firstImageEager?: boolean;
+};
+
+const { pictures, galleryAttr, galleryLabel, imageLabel, firstImageEager = false } = Astro.props as Props;
+const hasMultiplePictures = pictures.length > 1;
+const galleryAttrs = {
+	[galleryAttr]: '',
+};
+---
+
+<div {...galleryAttrs} class="project-detail-gallery" data-gallery-index="0" role="group" aria-label={galleryLabel}>
+	{
+		pictures.map((picture, pictureIndex) => (
+			<ProjectImageFrame
+				class="project-detail-gallery-image"
+				src={picture.src}
+				alt={picture.alt}
+				loading={firstImageEager && pictureIndex === 0 ? 'eager' : 'lazy'}
+				data-gallery-image
+				data-gallery-image-index={pictureIndex}
+				data-gallery-state={pictureIndex === 0 ? 'active' : undefined}
+				aria-hidden={pictureIndex === 0 ? 'false' : 'true'}
+			/>
+		))
+	}
+	{
+		hasMultiplePictures && (
+			<>
+				<ArrowButton
+					class="project-detail-gallery-control project-detail-gallery-control-prev"
+					direction="prev"
+					data-gallery-step="-1"
+					label={`Show previous ${imageLabel} image`}
+				/>
+				<ArrowButton
+					class="project-detail-gallery-control project-detail-gallery-control-next"
+					direction="next"
+					data-gallery-step="1"
+					label={`Show next ${imageLabel} image`}
+				/>
+				<div class="project-detail-gallery-dots" role="group" aria-label={`${imageLabel} image selector`}>
+					{pictures.map((_, pictureIndex) => (
+						<button
+							class="project-detail-gallery-dot"
+							type="button"
+							data-gallery-dot
+							data-gallery-dot-index={pictureIndex}
+							aria-label={`Show ${imageLabel} image ${pictureIndex + 1} of ${pictures.length}`}
+							aria-current={pictureIndex === 0 ? 'true' : undefined}
+						/>
+					))}
+				</div>
+			</>
+		)
+	}
+</div>

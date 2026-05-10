@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/pages/showcase.css';
-import ArrowButton from '../components/ArrowButton.astro';
-import AwardMedals from '../components/AwardMedals.astro';
+import DetailGallery from '../components/DetailGallery.astro';
 import PortfolioWheelCard from '../components/PortfolioWheelCard.astro';
 import ProjectImageFrame from '../components/ProjectImageFrame.astro';
+import ShowcaseDetail from '../components/ShowcaseDetail.astro';
+import ShowcaseWheel from '../components/ShowcaseWheel.astro';
 import { profile, type ExperienceItem } from '../data/profile';
 import { getImageAttrs } from '../utils/images';
 import { getInitialWheelSlot } from '../utils/wheelSlots';
@@ -20,10 +21,7 @@ const getExperiencePictures = (item: ExperienceItem) => item.pictures ?? [];
 const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)[0] ?? getCompanyIcon(item);
 ---
 
-<BaseLayout
-	title={experience.title}
-	description={experience.description}
->
+<BaseLayout title={experience.title} description={experience.description}>
 	<section class="page-hero projects-hero" aria-labelledby="experience-title">
 		<h1 id="experience-title">{experience.hero.title}</h1>
 		{experienceHeroLead && <p>{experienceHeroLead}</p>}
@@ -31,141 +29,103 @@ const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)
 
 	<section class="section project-showcase experience-showcase" id="experience-showcase" aria-labelledby="experience-selector-title">
 		<h2 id="experience-selector-title" class="visually-hidden">Experience selector</h2>
-		<div
-			class="project-wheel experience-wheel"
-			data-experience-wheel
-			data-wheel-controller
-			data-wheel-card-selector="[data-experience-card]"
-			data-wheel-detail-selector="[data-experience-detail-item]"
-			data-wheel-index-attr="data-experience-index"
-			data-wheel-id-attr="data-experience-id"
-			data-wheel-change-event="experience-detail-change"
-			data-wheel-initializing="true"
-			data-active-index={initialActiveExperienceIndex}
-			role="group"
-			aria-labelledby="experience-selector-title"
+		<ShowcaseWheel
+			class="experience-wheel"
+			labelledBy="experience-selector-title"
+			previousLabel="Previous experience"
+			nextLabel="Next experience"
+			activeIndex={initialActiveExperienceIndex}
+			cardSelector="[data-experience-card]"
+			detailSelector="[data-experience-detail-item]"
+			indexAttr="data-experience-index"
+			idAttr="data-experience-id"
+			changeEvent="experience-detail-change"
+			dataAttrs={{ 'data-experience-wheel': '' }}
 		>
-			<ArrowButton class="project-wheel-nav project-wheel-nav-prev" direction="prev" label="Previous experience" data-wheel-prev="" />
+			{
+				wheelExperience.map((item, index) => {
+					const icon = getCompanyIcon(item);
+					const media = getExperienceMedia(item);
+					const isActive = index === initialActiveExperienceIndex;
+					const initialSlot = getInitialWheelSlot(index, wheelExperience.length, initialActiveExperienceIndex, initialTransitionSlotRange);
 
-			<div class="project-wheel-viewport">
-				{
-					wheelExperience.map((item, index) => {
-						const icon = getCompanyIcon(item);
-						const media = getExperienceMedia(item);
-						const isActive = index === initialActiveExperienceIndex;
-						const initialSlot = getInitialWheelSlot(index, wheelExperience.length, initialActiveExperienceIndex, initialTransitionSlotRange);
+					return (
+						<PortfolioWheelCard
+							class="experience-wheel-card"
+							title={item.cardRole ?? item.role}
+							subtitle={item.cardDateLabel}
+							media={media}
+							mediaDecorative={true}
+							badge={icon ? { icon } : { label: item.company.slice(0, 1) }}
+							ariaLabel={`Select ${item.role} at ${item.company}`}
+							isActive={isActive}
+							initialSlot={initialSlot}
+							fallbackClass="experience-wheel-media-fallback"
+							fallbackLabel={item.company.slice(0, 1)}
+							dataAttrs={{
+								'data-experience-card': '',
+								'data-experience-index': index,
+								'data-experience-id': item.id,
+							}}
+						/>
+					);
+				})
+			}
+		</ShowcaseWheel>
 
-						return (
-							<PortfolioWheelCard
-								class="experience-wheel-card"
-								title={item.cardRole ?? item.role}
-								subtitle={item.cardDateLabel}
-								media={media}
-								mediaDecorative={true}
-								badge={icon ? { icon } : { label: item.company.slice(0, 1) }}
-								ariaLabel={`Select ${item.role} at ${item.company}`}
-								isActive={isActive}
-								initialSlot={initialSlot}
-								fallbackClass="experience-wheel-media-fallback"
-								fallbackLabel={item.company.slice(0, 1)}
-								dataAttrs={{
-									'data-experience-card': '',
-									'data-experience-index': index,
-									'data-experience-id': item.id,
-								}}
-							/>
-						);
-					})
-				}
-			</div>
-
-			<ArrowButton class="project-wheel-nav project-wheel-nav-next" direction="next" label="Next experience" data-wheel-next="" />
-		</div>
-
-		<img class="project-wheel-chest experience-wheel-book" src="/assets/images/experience-book.webp" alt="" loading="lazy" {...getImageAttrs('/assets/images/experience-book.webp')} aria-hidden="true" />
+		<img
+			class="project-wheel-chest experience-wheel-book"
+			src="/assets/images/experience-book.webp"
+			alt=""
+			loading="lazy"
+			{...getImageAttrs('/assets/images/experience-book.webp')}
+			aria-hidden="true"
+		/>
 
 		<div class="project-detail-panel experience-detail-panel" data-experience-detail aria-live="polite">
 			{
 				wheelExperience.map((item, index) => {
 					const icon = getCompanyIcon(item);
 					const pictures = getExperiencePictures(item);
-					const hasMultiplePictures = pictures.length > 1;
 
 					return (
-						<article
-							class="project-detail experience-detail"
+						<ShowcaseDetail
 							id={`experience-detail-${item.id}`}
-							data-experience-detail-item
-							data-experience-index={index}
-							hidden={index === initialActiveExperienceIndex ? undefined : true}
+							index={index}
+							activeIndex={initialActiveExperienceIndex}
+							itemAttr="data-experience-detail-item"
+							indexAttr="data-experience-index"
+							awards={item.recognition ?? []}
+							awardsAriaLabel={`${item.role} recognition`}
+							class="experience-detail"
+							awardClass="experience-recognition-compact"
+							mediaClass="experience-detail-media"
+							contentClass="experience-detail-content"
 						>
-							<AwardMedals
-								awards={item.recognition ?? []}
-								ariaLabel={`${item.role} recognition`}
-								class="experience-recognition-compact"
-							/>
-							<div class="project-detail-media experience-detail-media">
-								{
-									pictures.length > 0 ? (
-										<div
-											class="project-detail-gallery"
-											data-experience-gallery
-											data-gallery-index="0"
-											role="group"
-											aria-label={`${item.role} at ${item.company} images`}
-										>
-											{pictures.map((picture, pictureIndex) => (
-												<ProjectImageFrame
-													class="project-detail-gallery-image"
-													src={picture.src}
-													alt={picture.alt}
-													loading={index === 0 && pictureIndex === 0 ? 'eager' : 'lazy'}
-													data-gallery-image
-													data-gallery-image-index={pictureIndex}
-													data-gallery-state={pictureIndex === 0 ? 'active' : undefined}
-													aria-hidden={pictureIndex === 0 ? 'false' : 'true'}
-												/>
-											))}
-											{hasMultiplePictures && (
-												<>
-													<ArrowButton
-														class="project-detail-gallery-control project-detail-gallery-control-prev"
-														direction="prev"
-														data-gallery-step="-1"
-														label={`Show previous ${item.role} image`}
-													/>
-													<ArrowButton
-														class="project-detail-gallery-control project-detail-gallery-control-next"
-														direction="next"
-														data-gallery-step="1"
-														label={`Show next ${item.role} image`}
-													/>
-													<div class="project-detail-gallery-dots" role="group" aria-label={`${item.role} image selector`}>
-														{pictures.map((_, pictureIndex) => (
-															<button
-																class="project-detail-gallery-dot"
-																type="button"
-																data-gallery-dot
-																data-gallery-dot-index={pictureIndex}
-																aria-label={`Show ${item.role} image ${pictureIndex + 1} of ${pictures.length}`}
-																aria-current={pictureIndex === 0 ? 'true' : undefined}
-															></button>
-														))}
-													</div>
-												</>
-											)}
-										</div>
-									) : icon ? (
-										<ProjectImageFrame class="project-detail-gallery" src={icon.src} alt={icon.alt} loading={index === 0 ? 'eager' : 'lazy'} />
-									) : (
-										<div class="experience-detail-media-fallback" aria-hidden="true">
-											<span class="experience-media-fallback-initial">{item.company.slice(0, 1)}</span>
-										</div>
-									)
-								}
-							</div>
+							<Fragment slot="media">
+								{pictures.length > 0 ? (
+									<DetailGallery
+										pictures={pictures}
+										galleryAttr="data-experience-gallery"
+										galleryLabel={`${item.role} at ${item.company} images`}
+										imageLabel={item.role}
+										firstImageEager={index === initialActiveExperienceIndex}
+									/>
+								) : icon ? (
+									<ProjectImageFrame
+										class="project-detail-gallery"
+										src={icon.src}
+										alt={icon.alt}
+										loading={index === initialActiveExperienceIndex ? 'eager' : 'lazy'}
+									/>
+								) : (
+									<div class="experience-detail-media-fallback" aria-hidden="true">
+										<span class="experience-media-fallback-initial">{item.company.slice(0, 1)}</span>
+									</div>
+								)}
+							</Fragment>
 
-							<div class="project-detail-content experience-detail-content">
+							<Fragment slot="content">
 								<h3>{item.role}</h3>
 								<div class="project-detail-meta">
 									<span class="project-detail-company">
@@ -178,11 +138,13 @@ const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)
 								<div class="experience-highlights" aria-label={`${item.role} highlights`}>
 									<p class="experience-highlights-title">Highlights</p>
 									<ul>
-										{item.highlights.map((highlight) => <li>{highlight}</li>)}
+										{item.highlights.map((highlight) => (
+											<li>{highlight}</li>
+										))}
 									</ul>
 								</div>
-							</div>
-						</article>
+							</Fragment>
+						</ShowcaseDetail>
 					);
 				})
 			}

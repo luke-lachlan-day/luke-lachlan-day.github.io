@@ -1,0 +1,53 @@
+---
+import ArrowButton from './ArrowButton.astro';
+
+type Props = {
+	labelledBy: string;
+	previousLabel: string;
+	nextLabel: string;
+	activeIndex: number;
+	cardSelector: string;
+	detailSelector: string;
+	indexAttr: string;
+	idAttr: string;
+	changeEvent: string;
+	class?: string;
+	dataAttrs?: Record<string, string | number | undefined>;
+};
+
+const {
+	labelledBy,
+	previousLabel,
+	nextLabel,
+	activeIndex,
+	cardSelector,
+	detailSelector,
+	indexAttr,
+	idAttr,
+	changeEvent,
+	class: className,
+	dataAttrs = {},
+} = Astro.props as Props;
+const wheelClass = ['project-wheel', className].filter(Boolean).join(' ');
+const wheelAttrs = {
+	...dataAttrs,
+	'data-wheel-controller': '',
+	'data-wheel-card-selector': cardSelector,
+	'data-wheel-detail-selector': detailSelector,
+	'data-wheel-index-attr': indexAttr,
+	'data-wheel-id-attr': idAttr,
+	'data-wheel-change-event': changeEvent,
+	'data-wheel-initializing': 'true',
+	'data-active-index': activeIndex,
+};
+---
+
+<div {...wheelAttrs} class={wheelClass} role="group" aria-labelledby={labelledBy}>
+	<ArrowButton class="project-wheel-nav project-wheel-nav-prev" direction="prev" label={previousLabel} data-wheel-prev="" />
+
+	<div class="project-wheel-viewport">
+		<slot />
+	</div>
+
+	<ArrowButton class="project-wheel-nav project-wheel-nav-next" direction="next" label={nextLabel} data-wheel-next="" />
+</div>

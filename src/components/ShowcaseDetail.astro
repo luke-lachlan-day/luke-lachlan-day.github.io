@@ -1,0 +1,60 @@
+---
+import AwardMedals from './AwardMedals.astro';
+import type { ImageAsset } from '../data/types';
+
+type ShowcaseAward = {
+	name: string;
+	awardedFrom: string;
+	detail?: string;
+	year: string;
+	emblem: ImageAsset;
+};
+
+type Props = {
+	id: string;
+	index: number;
+	activeIndex: number;
+	itemAttr: string;
+	indexAttr: string;
+	awards: ShowcaseAward[];
+	awardsAriaLabel: string;
+	class?: string;
+	awardClass?: string;
+	mediaClass?: string;
+	contentClass?: string;
+	dataAttrs?: Record<string, string | number | undefined>;
+};
+
+const {
+	id,
+	index,
+	activeIndex,
+	itemAttr,
+	indexAttr,
+	awards,
+	awardsAriaLabel,
+	class: className,
+	awardClass,
+	mediaClass,
+	contentClass,
+	dataAttrs = {},
+} = Astro.props as Props;
+const articleClass = ['project-detail', className].filter(Boolean).join(' ');
+const mediaWrapperClass = ['project-detail-media', mediaClass].filter(Boolean).join(' ');
+const contentWrapperClass = ['project-detail-content', contentClass].filter(Boolean).join(' ');
+const articleAttrs = {
+	[itemAttr]: '',
+	[indexAttr]: index,
+	...dataAttrs,
+};
+---
+
+<article {...articleAttrs} class={articleClass} id={id} hidden={index === activeIndex ? undefined : true}>
+	<AwardMedals awards={awards} ariaLabel={awardsAriaLabel} class={awardClass} />
+	<div class={mediaWrapperClass}>
+		<slot name="media" />
+	</div>
+	<div class={contentWrapperClass}>
+		<slot name="content" />
+	</div>
+</article>
