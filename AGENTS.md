@@ -21,6 +21,7 @@ This file is the repo-level source of truth for future agent work on this Astro 
 - `npm run dev` starts the development server.
 - `npm run check` runs Astro's type and content validation.
 - `npm run build` builds the site.
+- `npm run check:assets` verifies tracked image dimensions and project tag style coverage.
 - `npm run format` formats the repository with Prettier.
 - `npm run format:check` checks Prettier formatting without writing changes.
 - `npm run preview` previews the production build.
@@ -77,6 +78,7 @@ For every relevant change, verify the affected phase against these checks before
 - External links use safe external-link attributes through `getExternalLinkAttrs`.
 - Image dimensions are present where possible to reduce layout shift.
 - Only critical assets are preloaded.
+- Resource hints are not asset references; removing a preload must not remove the underlying asset from the UI.
 - Mobile, tablet, and desktop/PC layouts remain usable with no text overflow or incoherent overlap.
 - Prefer native HTML semantics before ARIA; use ARIA only when native HTML cannot express the required semantics, state, or accessible name.
 - Do not put `aria-hidden="true"` on focusable elements.
@@ -112,6 +114,7 @@ Before finishing a change, check for:
 - Avoid adding new rules to large CSS files when a focused file already exists.
 - Remove unused selectors and custom properties when confidently unused.
 - Each reusable selector should have one owning stylesheet. Search with `rg` before adding or deleting selectors, and do not duplicate the same selector block across component and showcase CSS.
+- When changing project tags, run `npm run check:assets` so missing tag style selectors are caught. Unused tag style warnings should be reviewed, not automatically deleted.
 
 ## Script Ownership
 
@@ -142,6 +145,7 @@ Before finishing a change, check for:
 - Lazy-load non-critical images.
 - Include image width and height where possible.
 - Preload only assets needed for the first meaningful view.
+- After adding, replacing, or resizing shipped image assets, update `src/utils/images.ts` and run `npm run check:assets`.
 - Avoid large inline scripts or SVG registries inside Astro components unless there is a clear reason. Shared inline SVG icon registries should stay in focused TypeScript modules such as `src/components/icons/iconSvgBySrc.ts`.
 - Avoid shipping unused CSS or JavaScript.
 - After asset changes, recommend `npm run build` and visual review at phone, tablet, and desktop/PC widths, but do not run those checks unless the user explicitly asks.

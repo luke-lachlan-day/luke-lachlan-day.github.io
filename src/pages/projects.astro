@@ -7,35 +7,18 @@ import PortfolioWheelCard from '../components/PortfolioWheelCard.astro';
 import ProjectTagList from '../components/ProjectTagList.astro';
 import ShowcaseDetail from '../components/ShowcaseDetail.astro';
 import ShowcaseWheel from '../components/ShowcaseWheel.astro';
-import { profile, type Project } from '../data/profile';
-import { getProjectActionLinks } from '../data/projectActions';
-import { getProjectTagRenderGroups } from '../data/projectTags';
+import { profile } from '../data/profile';
+import { getProjectShowcaseItems } from '../data/projectShowcase';
 import { getImageAttrs } from '../utils/images';
 import { getInitialWheelSlot } from '../utils/wheelSlots';
 
 const { home, projects, companies, experience } = profile;
-const companyById = new Map(companies.map((company) => [company.id, company]));
-const experienceByCompanyId = new Map<string, (typeof experience.items)[number]>();
-for (const item of [...experience.items].sort((itemA, itemB) => itemB.sortDate.localeCompare(itemA.sortDate))) {
-	if (item.companyId && !experienceByCompanyId.has(item.companyId)) {
-		experienceByCompanyId.set(item.companyId, item);
-	}
-}
-const boostedProjectIds = new Set<string>(home.featuredProjectIds);
-const projectItems: Project[] = [...projects.items];
-const boostedProjects = home.featuredProjectIds
-	.map((projectId) => projectItems.find((project) => project.id === projectId))
-	.filter((project): project is Project => Boolean(project));
-const remainingProjects = projectItems
-	.filter((project) => !boostedProjectIds.has(project.id))
-	.sort((projectA, projectB) => projectB.sortDate.localeCompare(projectA.sortDate));
-const wheelProjects = [...boostedProjects, ...remainingProjects];
-const releaseStageLabels: Record<Project['releaseStage'], 'In Dev' | 'Released' | 'Shelved' | 'Contributed'> = {
-	dev: 'In Dev',
-	released: 'Released',
-	shelved: 'Shelved',
-	contributed: 'Contributed',
-};
+const showcaseItems = getProjectShowcaseItems({
+	featuredProjectIds: home.featuredProjectIds,
+	projects: projects.items,
+	companies,
+	experienceItems: experience.items,
+});
 const initialActiveProjectIndex = 0;
 const initialTransitionSlotRange = 3;
 ---
@@ -55,18 +38,15 @@ const initialTransitionSlotRange = 3;
 			dataAttrs={{ 'data-project-wheel': '' }}
 		>
 			{
-				wheelProjects.map((project, index) => {
-					const company = companyById.get(project.companyId);
-					const picture = project.pictures[0];
-					const releaseStageLabel = releaseStageLabels[project.releaseStage];
+				showcaseItems.map(({ project, company, primaryPicture, releaseStageLabel }, index) => {
 					const isActive = index === initialActiveProjectIndex;
-					const initialSlot = getInitialWheelSlot(index, wheelProjects.length, initialActiveProjectIndex, initialTransitionSlotRange);
+					const initialSlot = getInitialWheelSlot(index, showcaseItems.length, initialActiveProjectIndex, initialTransitionSlotRange);
 
 					return (
 						<PortfolioWheelCard
 							title={project.product}
 							subtitle={project.yearLabel}
-							media={picture}
+							media={primaryPicture}
 							badge={company ? { icon: company.icon } : undefined}
 							status={{ label: releaseStageLabel, value: project.releaseStage }}
 							ariaLabel={`Select ${project.product}`}
@@ -94,14 +74,7 @@ const initialTransitionSlotRange = 3;
 
 		<div class="project-detail-panel" data-project-detail aria-live="polite">
 			{
-				wheelProjects.map((project, index) => {
-					const company = companyById.get(project.companyId);
-					const companyExperience = experienceByCompanyId.get(project.companyId);
-					const companyExperienceHref = companyExperience ? `/experience/#${encodeURIComponent(companyExperience.id)}` : undefined;
-					const releaseStageLabel = releaseStageLabels[project.releaseStage];
-					const actionLinks = getProjectActionLinks(project.actions);
-					const tagGroups = getProjectTagRenderGroups(project.projectTags);
-
+				showcaseItems.map(({ project, company, companyExperienceHref, releaseStageLabel, actionLinks, tagGroups }, index) => {
 					return (
 						<ShowcaseDetail
 							id={`project-detail-${project.id}`}

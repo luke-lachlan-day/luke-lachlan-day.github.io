@@ -8,15 +8,14 @@ interface Props {
 }
 
 const { title, description, canonicalUrl, socialImageUrl, generator } = Astro.props;
+const criticalImagePreloads = [{ href: '/assets/textures/nav-brush.webp', type: 'image/webp' }] as const;
 ---
 
 <head>
 	<meta charset="utf-8" />
 	<link rel="icon" type="image/webp" href="/assets/images/company-solo-clear.webp?v=20260510" />
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=20260510" />
-	<link rel="preload" as="image" type="image/webp" href="/assets/textures/nav-brush.webp" />
-	<link rel="preload" as="image" type="image/webp" href="/assets/images/footer-heart-light.webp" />
-	<link rel="preload" as="image" type="image/webp" href="/assets/images/footer-heart-dark.webp" />
+	{criticalImagePreloads.map((asset) => <link rel="preload" as="image" type={asset.type} href={asset.href} />)}
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content={description} />
 	<meta name="generator" content={generator} />
