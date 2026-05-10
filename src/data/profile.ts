@@ -21,7 +21,7 @@ export type ExperienceItem = {
 	cardRole?: string;
 	company: string;
 	companyId?: Company['id'];
-	picture?: ImageAsset;
+	pictures?: ImageAsset[];
 	dateLabel: string;
 	dateHeading?: string;
 	sortDate: string;
@@ -803,6 +803,16 @@ export const profile = {
 				role: 'Co-Founder',
 				company: 'Daytime Devs Pty Ltd',
 				companyId: 'daytime-devs',
+				pictures: [
+					{
+						src: '/assets/images/project-super-bawk-bawk-chicken.webp',
+						alt: 'Steam header art for Super BAWK BAWK Chicken.',
+					},
+					{
+						src: '/assets/images/project-coop-cat-temple-escape.webp',
+						alt: 'Pixel art cats fleeing a collapsing Egyptian temple corridor reused as a Daytime Devs gallery test image.',
+					},
+				],
 				dateLabel: 'Mar 2022 - Present',
 				sortDate: '2026-05-01',
 				context: 'Independent studio',
@@ -821,6 +831,16 @@ export const profile = {
 				role: 'Programmer & Technical Director',
 				company: 'Catalyst Games',
 				companyId: 'catalyst-games',
+				pictures: [
+					{
+						src: '/assets/images/project-dungeons-and-dining-tables.webp',
+						alt: 'Steam header art for Dungeons and Dining Tables reused as a Catalyst Games gallery test image.',
+					},
+					{
+						src: '/assets/images/project-quizmas-quizes-and-games.webp',
+						alt: 'Pixel art festive quiz board reused as a Catalyst Games gallery test image.',
+					},
+				],
 				dateLabel: 'Jan 2025 - Mar 2026',
 				sortDate: '2026-03-01',
 				context: 'Client and studio projects',
@@ -857,6 +877,16 @@ export const profile = {
 				role: 'Unity Developer',
 				company: 'Coastal Derrieres',
 				companyId: 'coastal-derrieres',
+				pictures: [
+					{
+						src: '/assets/images/project-beach-bums.webp',
+						alt: 'Steam header art for Beach Bums.',
+					},
+					{
+						src: '/assets/images/project-beach-bums-capsule.webp',
+						alt: 'Steam capsule art for Beach Bums.',
+					},
+				],
 				dateLabel: 'Jun 2024 - Oct 2024',
 				sortDate: '2024-10-01',
 				context: 'Contract vertical slice',
@@ -875,10 +905,20 @@ export const profile = {
 				role: 'Solo Dev',
 				company: 'Self Employed',
 				companyId: 'solo',
-				picture: {
-					src: '/assets/images/experience-solo-dev.webp',
-					alt: 'Pixel art solo developer overlooking a bright mountain valley.',
-				},
+				pictures: [
+					{
+						src: '/assets/images/experience-solo-dev.webp',
+						alt: 'Pixel art solo developer overlooking a bright mountain valley.',
+					},
+					{
+						src: '/assets/images/project-luke-lachlan-day-website.webp',
+						alt: 'Pixel art traveler overlooking a bright mountain valley reused as a Solo Dev gallery test image.',
+					},
+					{
+						src: '/assets/images/project-petes-place.webp',
+						alt: "Pixel art cozy forest shop scene reused as a Solo Dev gallery test image.",
+					},
+				],
 				dateLabel: 'Nov 2023 - Present',
 				sortDate: '2026-05-10',
 				context: 'Independent games, tools, and web projects',
@@ -897,10 +937,12 @@ export const profile = {
 				role: 'Maths Tutor',
 				company: 'Self Employed',
 				companyId: 'solo',
-				picture: {
-					src: '/assets/images/experience-solo-dev.webp',
-					alt: 'Pixel art solo developer overlooking a bright mountain valley.',
-				},
+				pictures: [
+					{
+						src: '/assets/images/experience-solo-dev.webp',
+						alt: 'Pixel art solo developer overlooking a bright mountain valley.',
+					},
+				],
 				dateLabel: 'Feb 2014 - Nov 2023',
 				sortDate: '2023-11-01',
 				context: 'Mathematics tutoring',
@@ -919,10 +961,12 @@ export const profile = {
 				role: 'Graduate',
 				company: 'University of Adelaide',
 				companyId: 'university-of-adelaide',
-				picture: {
-					src: '/assets/images/experience-university-of-adelaide.webp',
-					alt: 'Aerial view of the University of Adelaide North Terrace campus.',
-				},
+				pictures: [
+					{
+						src: '/assets/images/experience-university-of-adelaide.webp',
+						alt: 'Aerial view of the University of Adelaide North Terrace campus.',
+					},
+				],
 				dateLabel: 'Bachelor of Science',
 				dateHeading: 'Degree',
 				sortDate: '2013-01-01',
@@ -943,10 +987,12 @@ export const profile = {
 				cardRole: 'IT Service Consultant',
 				company: 'Power-Net IT Solutions',
 				companyId: 'power-net-it-solutions',
-				picture: {
-					src: '/assets/images/experience-power-net-it-solutions.webp',
-					alt: 'Power-Net IT Solutions office frontage.',
-				},
+				pictures: [
+					{
+						src: '/assets/images/experience-power-net-it-solutions.webp',
+						alt: 'Power-Net IT Solutions office frontage.',
+					},
+				],
 				dateLabel: 'Mar 2021 - Mar 2022',
 				sortDate: '2022-03-01',
 				context: 'IT customer service',
@@ -965,10 +1011,12 @@ export const profile = {
 				role: 'Information Systems Technician',
 				company: 'Australian Army Reserve',
 				companyId: 'australian-army',
-				picture: {
-					src: '/assets/images/experience-australian-army.webp',
-					alt: 'Royal Australian Corps of Signals Jimmy emblem.',
-				},
+				pictures: [
+					{
+						src: '/assets/images/experience-australian-army.webp',
+						alt: 'Royal Australian Corps of Signals Jimmy emblem.',
+					},
+				],
 				dateLabel: 'Jul 2016 - Jul 2021',
 				sortDate: '2021-07-01',
 				context: 'Army Reserve communications',

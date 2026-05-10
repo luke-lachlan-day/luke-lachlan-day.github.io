@@ -12,7 +12,8 @@ const wheelExperience = [...experience.items].sort((itemA, itemB) => itemB.sortD
 const initialActiveExperienceIndex = 0;
 const initialTransitionSlotRange = 3;
 const getCompanyIcon = (item: ExperienceItem) => (item.companyId ? companyById.get(item.companyId)?.icon : undefined);
-const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyIcon(item);
+const getExperiencePictures = (item: ExperienceItem) => item.pictures ?? [];
+const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)[0] ?? getCompanyIcon(item);
 ---
 
 <BaseLayout
@@ -33,6 +34,7 @@ const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyI
 			data-wheel-detail-selector="[data-experience-detail-item]"
 			data-wheel-index-attr="data-experience-index"
 			data-wheel-id-attr="data-experience-id"
+			data-wheel-change-event="experience-detail-change"
 			data-wheel-initializing="true"
 			data-active-index={initialActiveExperienceIndex}
 			role="group"
@@ -85,7 +87,8 @@ const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyI
 			{
 				wheelExperience.map((item, index) => {
 					const icon = getCompanyIcon(item);
-					const media = getExperienceMedia(item);
+					const pictures = getExperiencePictures(item);
+					const hasMultiplePictures = pictures.length > 1;
 
 					return (
 						<article
@@ -102,8 +105,61 @@ const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyI
 							/>
 							<div class="project-detail-media experience-detail-media">
 								{
-									media ? (
-										<ProjectImageFrame class="project-detail-gallery" src={media.src} alt={media.alt} loading={index === 0 ? 'eager' : 'lazy'} />
+									pictures.length > 0 ? (
+										<div
+											class="project-detail-gallery"
+											data-experience-gallery
+											data-gallery-index="0"
+											role="group"
+											aria-label={`${item.role} at ${item.company} images`}
+										>
+											{pictures.map((picture, pictureIndex) => (
+												<ProjectImageFrame
+													class="project-detail-gallery-image"
+													src={picture.src}
+													alt={picture.alt}
+													loading={index === 0 && pictureIndex === 0 ? 'eager' : 'lazy'}
+													data-gallery-image
+													data-gallery-image-index={pictureIndex}
+													data-gallery-state={pictureIndex === 0 ? 'active' : undefined}
+													aria-hidden={pictureIndex === 0 ? 'false' : 'true'}
+												/>
+											))}
+											{hasMultiplePictures && (
+												<>
+													<button
+														class="project-detail-gallery-control project-detail-gallery-control-prev"
+														type="button"
+														data-gallery-step="-1"
+														aria-label={`Show previous ${item.role} image`}
+													>
+														<span aria-hidden="true">&lsaquo;</span>
+													</button>
+													<button
+														class="project-detail-gallery-control project-detail-gallery-control-next"
+														type="button"
+														data-gallery-step="1"
+														aria-label={`Show next ${item.role} image`}
+													>
+														<span aria-hidden="true">&rsaquo;</span>
+													</button>
+													<div class="project-detail-gallery-dots" role="group" aria-label={`${item.role} image selector`}>
+														{pictures.map((_, pictureIndex) => (
+															<button
+																class="project-detail-gallery-dot"
+																type="button"
+																data-gallery-dot
+																data-gallery-dot-index={pictureIndex}
+																aria-label={`Show ${item.role} image ${pictureIndex + 1} of ${pictures.length}`}
+																aria-current={pictureIndex === 0 ? 'true' : undefined}
+															></button>
+														))}
+													</div>
+												</>
+											)}
+										</div>
+									) : icon ? (
+										<ProjectImageFrame class="project-detail-gallery" src={icon.src} alt={icon.alt} loading={index === 0 ? 'eager' : 'lazy'} />
 									) : (
 										<div class="experience-detail-media-fallback" aria-hidden="true">
 											<span class="experience-media-fallback-initial">{item.company.slice(0, 1)}</span>
@@ -137,8 +193,13 @@ const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyI
 	</section>
 
 	<script>
+		import { setupDetailGalleries } from '../scripts/detailGallery';
 		import { setupWheelControllers } from '../scripts/wheelController';
 
 		setupWheelControllers();
+		setupDetailGalleries({
+			gallerySelector: '[data-experience-gallery]',
+			detailChangeEvent: 'experience-detail-change',
+		});
 	</script>
 </BaseLayout>
