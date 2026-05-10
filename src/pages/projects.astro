@@ -7,8 +7,14 @@ import { profile, type Project } from '../data/profile';
 import { getProjectActionLinks } from '../data/projectActions';
 import { getProjectTagRenderGroups, getProjectTagStyleVars } from '../data/projectTags';
 
-const { home, projects, companies } = profile;
+const { home, projects, companies, experience } = profile;
 const companyById = new Map(companies.map((company) => [company.id, company]));
+const experienceByCompanyId = new Map<string, (typeof experience.items)[number]>();
+for (const item of [...experience.items].sort((itemA, itemB) => itemB.sortDate.localeCompare(itemA.sortDate))) {
+	if (item.companyId && !experienceByCompanyId.has(item.companyId)) {
+		experienceByCompanyId.set(item.companyId, item);
+	}
+}
 const boostedProjectIds = new Set<string>(home.featuredProjectIds);
 const boostedProjects = home.featuredProjectIds
 	.map((projectId) => projects.items.find((project) => project.id === projectId))
@@ -101,6 +107,8 @@ const getInitialWheelSlot = (index: number) => {
 			{
 				wheelProjects.map((project, index) => {
 					const company = companyById.get(project.companyId);
+					const companyExperience = experienceByCompanyId.get(project.companyId);
+					const companyExperienceHref = companyExperience ? `/experience/#${encodeURIComponent(companyExperience.id)}` : undefined;
 					const releaseStageLabel = releaseStageLabels[project.releaseStage];
 					const hasMultiplePictures = project.pictures.length > 1;
 					const actionLinks = getProjectActionLinks(project.actions);
@@ -202,10 +210,17 @@ const getInitialWheelSlot = (index: number) => {
 								<h3>{project.product}</h3>
 								<div class="project-detail-meta">
 									{company && (
-										<span class="project-detail-company">
-											<img src={company.icon.src} alt="" loading="lazy" />
-											<span>{company.name}</span>
-										</span>
+										companyExperienceHref ? (
+											<a class="project-detail-company project-detail-company-link" href={companyExperienceHref} aria-label={`View ${company.name} experience`}>
+												<img src={company.icon.src} alt="" loading="lazy" />
+												<span>{company.name}</span>
+											</a>
+										) : (
+											<span class="project-detail-company">
+												<img src={company.icon.src} alt="" loading="lazy" />
+												<span>{company.name}</span>
+											</span>
+										)
 									)}
 									<span>{project.dateLabel}</span>
 								</div>

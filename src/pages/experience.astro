@@ -94,7 +94,7 @@ const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyI
 					return (
 						<article
 							class="project-detail experience-detail"
-							id={item.id}
+							id={`experience-detail-${item.id}`}
 							data-experience-detail-item
 							data-experience-index={index}
 							hidden={index === initialActiveExperienceIndex ? undefined : true}
@@ -194,6 +194,7 @@ const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyI
 			let activeIndex = Number(wheel.getAttribute('data-active-index')) || 0;
 			const desktopQuery = window.matchMedia('(min-width: 821px)');
 			const phoneQuery = window.matchMedia('(max-width: 460px)');
+			const experienceHashPrefix = '#';
 
 			const getSlotRanges = () => {
 				if (phoneQuery.matches) {
@@ -215,6 +216,19 @@ const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyI
 			};
 
 			const wrapIndex = (index) => ((index % total) + total) % total;
+			const getExperienceIdFromHash = () => {
+				const hash = window.location.hash.slice(experienceHashPrefix.length);
+
+				if (!hash) {
+					return '';
+				}
+
+				try {
+					return decodeURIComponent(hash);
+				} catch {
+					return hash;
+				}
+			};
 			const shortestOffset = (index, active) => {
 				const rawOffset = index - active;
 				const forwardOffset = rawOffset + total;
@@ -255,14 +269,45 @@ const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyI
 				});
 			};
 
-			const setActiveIndex = (index) => {
+			const setActiveIndex = (index, updateHash = false) => {
 				activeIndex = wrapIndex(index);
 				updateWheel();
+
+				if (!updateHash) {
+					return;
+				}
+
+				const activeCard = cards[activeIndex];
+				const experienceId = activeCard?.getAttribute('data-experience-id');
+
+				if (!experienceId) {
+					return;
+				}
+
+				const nextHash = `${experienceHashPrefix}${encodeURIComponent(experienceId)}`;
+				if (window.location.hash !== nextHash) {
+					window.history.replaceState(null, '', nextHash);
+				}
+			};
+			const setActiveExperienceFromHash = () => {
+				const experienceId = getExperienceIdFromHash();
+
+				if (!experienceId) {
+					return;
+				}
+
+				const matchingCard = cards.find((card) => card.getAttribute('data-experience-id') === experienceId);
+
+				if (!matchingCard) {
+					return;
+				}
+
+				setActiveIndex(Number(matchingCard.getAttribute('data-experience-index')));
 			};
 
 			cards.forEach((card) => {
 				card.addEventListener('click', () => {
-					setActiveIndex(Number(card.getAttribute('data-experience-index')));
+					setActiveIndex(Number(card.getAttribute('data-experience-index')), true);
 				});
 
 				card.addEventListener('keydown', (event) => {
@@ -282,7 +327,9 @@ const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyI
 			nextButton?.addEventListener('click', () => setActiveIndex(activeIndex + 1));
 			desktopQuery.addEventListener('change', updateWheel);
 			phoneQuery.addEventListener('change', updateWheel);
+			window.addEventListener('hashchange', setActiveExperienceFromHash);
 
+			setActiveExperienceFromHash();
 			updateWheel();
 
 			const enableWheelTransitions = () => {

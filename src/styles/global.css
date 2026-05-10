@@ -1444,6 +1444,22 @@ h3 {
 	font-weight: 800;
 }
 
+.project-detail-company-link {
+	border-radius: 8px;
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+.project-detail-company-link:hover {
+	color: var(--accent-strong);
+}
+
+.project-detail-company-link:focus-visible {
+	color: var(--accent-strong);
+	outline: 3px solid color-mix(in srgb, var(--accent) 42%, transparent);
+	outline-offset: 4px;
+}
+
 .project-wheel-company img,
 .project-detail-company img {
 	flex: 0 0 auto;
