@@ -876,10 +876,36 @@ export const profile = {
 				tools: ['Unity', 'C#', 'FMOD', 'Level Editor', 'Vertical Slice', 'Production Planning'],
 			},
 			{
+				id: 'solo-dev',
+				role: 'Solo Dev',
+				company: 'Self Employed',
+				companyId: 'solo',
+				picture: {
+					src: '/assets/images/experience-solo-dev.webp',
+					alt: 'Pixel art solo developer overlooking a bright mountain valley.',
+				},
+				dateLabel: 'Nov 2023 - Present',
+				sortDate: '2026-05-10',
+				context: 'Independent games, tools, and web projects',
+				summary:
+					'Built independent games, prototypes, creative tools, and web projects across solo development cycles from idea through playable delivery.',
+				highlights: [
+					'Developed and maintained solo game prototypes across cozy, puzzle, physics, arcade, action, simulation, quiz, and party-game ideas.',
+					'Built web-facing projects and tooling with attention to responsive presentation, accessible content, and clear project documentation.',
+					'Used solo development workflows to strengthen scope control, technical problem-solving, iteration, and production follow-through.',
+					'Connected game development, teaching, science communication, and portfolio work into a practical independent development practice.',
+				],
+				tools: ['Unity', 'C#', 'Astro', 'TypeScript', 'Game Prototyping', 'Web Tools'],
+			},
+			{
 				id: 'maths-tutor',
 				role: 'Maths Tutor',
 				company: 'Self Employed',
 				companyId: 'solo',
+				picture: {
+					src: '/assets/images/experience-solo-dev.webp',
+					alt: 'Pixel art solo developer overlooking a bright mountain valley.',
+				},
 				dateLabel: 'Feb 2014 - Nov 2023',
 				sortDate: '2023-11-01',
 				context: 'Mathematics tutoring',
