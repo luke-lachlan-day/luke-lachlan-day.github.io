@@ -11,8 +11,9 @@ This file is the repo-level source of truth for future agent work on this Astro 
 - Source code lives under `src/`.
 - Static assets live under `public/assets/`.
 - Shared data types live in `src/data/types.ts`.
-- Portfolio data lives in focused modules such as `src/data/projects.ts`, `src/data/experience.ts`, `src/data/companies.ts`, `src/data/contact.ts`, `src/data/home.ts`, and `src/data/site.ts`.
-- `src/data/profile.ts` aggregates shared data exports for convenience.
+- Portfolio data lives in focused source-of-truth modules: `src/data/site.ts`, `src/data/home.ts`, `src/data/contact.ts`, `src/data/companies.ts`, `src/data/projects.ts`, and `src/data/experience.ts`.
+- Project rendering helpers live in `src/data/projectActions.ts` and `src/data/projectTags.ts`.
+- `src/data/profile.ts` is a small aggregate convenience export. Do not put canonical project, experience, company, contact, home, or site content there.
 - Global styles are composed through `src/styles/global.css`.
 
 ## Commands and Validation
@@ -24,7 +25,7 @@ This file is the repo-level source of truth for future agent work on this Astro 
 - `npm run format:check` checks Prettier formatting without writing changes.
 - `npm run preview` previews the production build.
 
-After code changes, run the smallest relevant validation available. Default to `npm run check`, `npm run build`, and `npm run format:check` unless the user explicitly asks not to. Use `npm run format` only when intentionally applying formatting changes. Report any commands that were not run.
+After code, data, tooling, or documentation changes, run the smallest relevant command-line validation available. Default to `npm run check`, `npm run build`, and `npm run format:check` unless the user explicitly asks not to. Use `npm run format` only when intentionally applying formatting changes. Report any commands that were not run.
 
 Do not run Playwright checks, browser validation, dev servers, previews, or other visual validation commands unless the user explicitly asks for them. For visual or UI changes, describe the recommended review at phone, tablet, and desktop/PC widths instead.
 
@@ -109,11 +110,15 @@ Before finishing a change, check for:
 ## Data Ownership
 
 - Shared data types live in `src/data/types.ts`.
+- Site-wide identity, footer, and effect settings live in `src/data/site.ts`.
+- Home page data lives in `src/data/home.ts`.
+- Contact page data lives in `src/data/contact.ts`.
 - Project data lives in `src/data/projects.ts`.
 - Experience data lives in `src/data/experience.ts`.
 - Company data lives in `src/data/companies.ts`.
-- Contact, home, and site-wide data live in their focused modules.
-- `src/data/profile.ts` may aggregate exports for convenience.
+- Project action and tag rendering helpers live in `src/data/projectActions.ts` and `src/data/projectTags.ts`.
+- `src/data/profile.ts` aggregates focused data exports for convenience only.
+- Do not duplicate the same project, experience, company, contact, home, or site data across multiple modules.
 - Do not hard-code portfolio content in page components when it belongs in typed data.
 
 ## Performance and Assets
@@ -125,7 +130,7 @@ Before finishing a change, check for:
 - Lazy-load non-critical images.
 - Include image width and height where possible.
 - Preload only assets needed for the first meaningful view.
-- Avoid large inline scripts or SVG registries inside Astro components unless there is a clear reason.
+- Avoid large inline scripts or SVG registries inside Astro components unless there is a clear reason. Shared inline SVG icon registries should stay in focused TypeScript modules such as `src/components/icons/iconSvgBySrc.ts`.
 - Avoid shipping unused CSS or JavaScript.
 - After asset changes, recommend `npm run build` and visual review at phone, tablet, and desktop/PC widths, but do not run those checks unless the user explicitly asks.
 

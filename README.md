@@ -9,7 +9,7 @@ Live site: [luke-lachlan-day.github.io](https://luke-lachlan-day.github.io/)
 - Astro 6 site with TypeScript-powered content and components.
 - Responsive portfolio pages for home, projects, experience, and contact.
 - Light and dark theme support with a custom pixel-art visual direction.
-- Shared profile data for project details, experience history, links, and page content.
+- Focused typed data modules for project details, experience history, links, and page content.
 
 ## Local Setup
 
@@ -22,11 +22,14 @@ npm run dev
 
 Useful commands:
 
-| Command           | Action                                 |
-| :---------------- | :------------------------------------- |
-| `npm run dev`     | Start the local development server     |
-| `npm run build`   | Build the production site to `./dist/` |
-| `npm run preview` | Preview the production build locally   |
+| Command                | Action                                              |
+| :--------------------- | :-------------------------------------------------- |
+| `npm run dev`          | Start the local development server                  |
+| `npm run check`        | Run Astro type and content validation               |
+| `npm run build`        | Build the production site to `./dist/`              |
+| `npm run format`       | Format the repository with Prettier                 |
+| `npm run format:check` | Check repository formatting without writing changes |
+| `npm run preview`      | Preview the production build locally                |
 
 ## License
 
