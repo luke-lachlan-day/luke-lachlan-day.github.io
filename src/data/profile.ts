@@ -14,6 +14,7 @@ export type ExperienceItem = {
 	companyId?: Company['id'];
 	picture?: ImageAsset;
 	dateLabel: string;
+	dateHeading?: string;
 	sortDate: string;
 	context: string;
 	summary: string;
@@ -872,6 +873,24 @@ export const profile = {
 					'Developed mentoring skills that continue to support teaching, teamwork, and client communication.',
 				],
 				tools: ['Tutoring', 'Mathematics', 'Teaching', 'Mentoring', 'Communication'],
+			},
+			{
+				id: 'uni-student',
+				role: 'Uni Student',
+				company: 'University of Adelaide',
+				dateLabel: 'Bachelor of Science',
+				dateHeading: 'Degree',
+				sortDate: '2013-01-01',
+				context: 'Genetics, Microbiology and Immunology',
+				summary:
+					'Studied a Bachelor of Science at the University of Adelaide, focusing on genetics, microbiology, and immunology.',
+				highlights: [
+					'Built a broad scientific foundation across genetics, microbiology, and immunology.',
+					'Developed research, analysis, and evidence-based reasoning skills through university science study.',
+					'Strengthened the learning habits and curiosity that continue to support technical problem-solving.',
+					'Connected a long-running interest in science with later work in teaching, STEM outreach, and software development.',
+				],
+				tools: ['Science', 'Genetics', 'Microbiology', 'Immunology', 'Research', 'Analysis'],
 			},
 			{
 				id: 'power-net-it-solutions',

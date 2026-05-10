@@ -1472,6 +1472,20 @@ h3 {
 	font-weight: 800;
 }
 
+.project-detail .project-detail-meta {
+	font-size: 1rem;
+}
+
+.project-detail .project-detail-company {
+	gap: 9px;
+}
+
+.project-detail .project-detail-company img {
+	width: 24px;
+	height: 24px;
+	border-radius: 6px;
+}
+
 .project-wheel-nav {
 	position: relative;
 	z-index: 5;

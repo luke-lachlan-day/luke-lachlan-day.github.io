@@ -113,7 +113,7 @@ const getCompanyIcon = (item: ExperienceItem) => (item.companyId ? companyById.g
 										<dd>{item.company}</dd>
 									</div>
 									<div>
-										<dt>Dates</dt>
+										<dt>{item.dateHeading ?? 'Dates'}</dt>
 										<dd>{item.dateLabel}</dd>
 									</div>
 									<div>
