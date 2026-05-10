@@ -1546,12 +1546,21 @@ h3 {
 }
 
 .project-detail-panel {
+	--project-detail-panel-pad-bottom: clamp(14px, 2.4vw, 28px);
+	--project-detail-panel-pad-top: clamp(32px, 3.4vw, 44px);
+	--project-detail-panel-pad-x: clamp(14px, 2.4vw, 28px);
+	position: relative;
+	overflow: visible;
 	margin-top: 0;
 	border: 1px solid var(--border);
 	border-radius: 18px;
 	background-color: var(--bg);
 	box-shadow: var(--shadow);
-	padding: clamp(32px, 3.4vw, 44px) clamp(14px, 2.4vw, 28px) clamp(14px, 2.4vw, 28px);
+	padding: var(--project-detail-panel-pad-top) var(--project-detail-panel-pad-x) var(--project-detail-panel-pad-bottom);
+}
+
+.project-detail-panel:has(> .project-detail:not([hidden]) > .project-awards-medal-rack) {
+	--project-detail-panel-pad-top: clamp(58px, 5.4vw, 72px);
 }
 
 .project-detail {
@@ -1815,70 +1824,36 @@ h3 {
 .project-awards {
 	display: grid;
 	gap: 10px;
-	margin-top: 6px;
-	padding-top: 14px;
-	border-top: 1px solid var(--border);
 }
 
-.project-awards-compact {
-	align-items: center;
-	justify-content: end;
-	margin: 0 0 0 auto;
-	padding-top: 0;
-	border-top: 0;
-}
-
-.project-awards-title {
-	color: var(--heading);
-	font-family: var(--font-accent);
-	font-size: 1.08rem;
-	font-weight: 400;
-	line-height: 1;
+.project-awards-medal-rack {
+	position: absolute;
+	top: clamp(-56px, -5vw, -38px);
+	right: clamp(12px, 2vw, 28px);
+	z-index: 6;
+	pointer-events: none;
 }
 
 .project-award-list {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 10px;
-}
-
-.project-awards-compact .project-award-list {
 	justify-content: flex-end;
 	gap: 8px;
 }
 
 .project-award {
+	--award-medal-width: clamp(58px, 6vw, 76px);
 	position: relative;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	width: 58px;
-	height: 58px;
-	border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--border));
-	border-radius: 12px;
-	background: color-mix(in srgb, var(--surface) 72%, var(--bg));
-	box-shadow: var(--shadow-soft);
-	padding: 8px;
-	transition:
-		background-color var(--theme-transition),
-		border-color var(--theme-transition),
-		box-shadow var(--theme-transition),
-		color var(--theme-transition),
-		transform 140ms ease;
-}
-
-.project-awards-compact .project-award {
-	width: 52px;
-	height: 52px;
-	border: 0;
-	background: transparent;
-	box-shadow: none;
-	padding: 0;
+	display: inline-block;
+	width: var(--award-medal-width);
+	height: calc(var(--award-medal-width) * 1.7778);
+	outline-offset: 3px;
+	pointer-events: auto;
+	transition: transform 140ms ease;
 }
 
 .project-award:hover {
-	border-color: color-mix(in srgb, var(--accent) 46%, var(--border));
-	transform: translateY(-1px);
+	transform: translateY(-2px) rotate(-1deg);
 }
 
 .project-award:focus {
@@ -1886,28 +1861,34 @@ h3 {
 }
 
 .project-award:focus-visible {
-	border-color: color-mix(in srgb, var(--accent) 56%, var(--border));
 	outline: 3px solid color-mix(in srgb, var(--accent) 42%, transparent);
-	outline-offset: 3px;
+}
+
+.project-award-medal-base {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	filter: drop-shadow(0 8px 12px color-mix(in srgb, var(--heading) 24%, transparent));
+	image-rendering: pixelated;
+	object-fit: contain;
 }
 
 .project-award-emblem {
-	flex: 0 0 auto;
-	width: 100%;
-	height: 100%;
-	background: var(--accent);
-	-webkit-mask: var(--award-emblem-url) center / contain no-repeat;
-	mask: var(--award-emblem-url) center / contain no-repeat;
-}
-
-.project-awards-compact .project-award-emblem {
-	transform: translateY(-4px);
+	position: absolute;
+	top: 69%;
+	left: 50%;
+	width: 38%;
+	height: 19%;
+	filter: drop-shadow(0 1px 1px color-mix(in srgb, var(--heading) 26%, transparent));
+	object-fit: contain;
+	transform: translate(-50%, -50%);
 }
 
 .project-award-details {
 	position: absolute;
-	left: 50%;
-	bottom: calc(100% + 10px);
+	top: calc(100% + 10px);
+	right: 0;
 	z-index: 5;
 	display: grid;
 	gap: 4px;
@@ -1925,7 +1906,7 @@ h3 {
 	padding: 10px 12px;
 	pointer-events: none;
 	text-align: left;
-	transform: translate(-50%, 4px);
+	transform: translateY(-4px);
 	transition:
 		background-color var(--theme-transition),
 		border-color var(--theme-transition),
@@ -1935,39 +1916,22 @@ h3 {
 		transform 140ms ease;
 }
 
-.project-awards-compact .project-award-details {
-	right: 0;
-	left: auto;
-	transform: translateY(4px);
-}
-
 .project-award-details::after {
 	position: absolute;
-	left: 50%;
-	bottom: -6px;
+	top: -6px;
+	right: 25px;
 	width: 10px;
 	height: 10px;
-	border-right: 1px solid color-mix(in srgb, var(--accent) 24%, var(--border));
-	border-bottom: 1px solid color-mix(in srgb, var(--accent) 24%, var(--border));
+	border-top: 1px solid color-mix(in srgb, var(--accent) 24%, var(--border));
+	border-left: 1px solid color-mix(in srgb, var(--accent) 24%, var(--border));
 	background: color-mix(in srgb, var(--surface) 94%, var(--bg));
 	content: "";
-	transform: translateX(-50%) rotate(45deg);
-}
-
-.project-awards-compact .project-award-details::after {
-	right: 25px;
-	left: auto;
 	transform: rotate(45deg);
 }
 
 .project-award:hover .project-award-details,
 .project-award:focus-visible .project-award-details {
 	opacity: 1;
-	transform: translate(-50%, 0);
-}
-
-.project-awards-compact .project-award:hover .project-award-details,
-.project-awards-compact .project-award:focus-visible .project-award-details {
 	transform: translateY(0);
 }
 
@@ -1990,88 +1954,19 @@ h3 {
 	line-height: 1;
 }
 
-@media (hover: none), (max-width: 560px) {
-	.project-awards:not(.project-awards-compact) .project-award-list {
-		display: grid;
-	}
-
-	.project-awards:not(.project-awards-compact) .project-award {
-		display: grid;
-		grid-template-columns: 46px minmax(0, 1fr);
-		justify-content: stretch;
-		gap: 10px;
-		width: 100%;
-		height: auto;
-		min-height: 62px;
-		padding: 8px 10px;
-	}
-
-	.project-awards:not(.project-awards-compact) .project-award-emblem {
-		width: 46px;
-		height: 46px;
-	}
-
-	.project-awards:not(.project-awards-compact) .project-award-details {
-		position: static;
-		width: auto;
-		max-width: none;
-		border: 0;
-		background: transparent;
-		box-shadow: none;
-		opacity: 1;
-		padding: 0;
-		transform: none;
-	}
-
-	.project-awards:not(.project-awards-compact) .project-award-details::after {
-		content: none;
-	}
-
-	.project-awards:not(.project-awards-compact) .project-award:hover .project-award-details,
-	.project-awards:not(.project-awards-compact) .project-award:focus-visible .project-award-details {
-		transform: none;
-	}
-}
-
 @media (max-width: 560px) {
-	.project-awards-compact {
-		flex-basis: 100%;
-		justify-content: start;
-		margin-left: 0;
+	.project-awards-medal-rack {
+		top: -42px;
+		right: 10px;
 	}
 
-	.project-detail-topline .project-awards-compact {
-		flex-basis: auto;
-		justify-content: end;
-		margin-left: auto;
+	.project-award {
+		--award-medal-width: 54px;
 	}
 
-	.project-awards-compact .project-award-list {
-		justify-content: flex-start;
-	}
-
-	.project-detail-topline .project-awards-compact .project-award-list {
-		justify-content: flex-end;
-	}
-
-	.project-awards-compact .project-award-details {
-		right: auto;
-		left: 0;
-	}
-
-	.project-detail-topline .project-awards-compact .project-award-details {
-		right: 0;
-		left: auto;
-	}
-
-	.project-awards-compact .project-award-details::after {
-		right: auto;
-		left: 25px;
-	}
-
-	.project-detail-topline .project-awards-compact .project-award-details::after {
-		right: 25px;
-		left: auto;
+	.project-award-details {
+		right: -8px;
+		max-width: min(240px, calc(100vw - 28px));
 	}
 }
 
@@ -2128,18 +2023,6 @@ h3 {
 .experience-detail-company-badge {
 	width: 64px;
 	height: 64px;
-}
-
-.experience-detail-topline {
-	justify-content: flex-end;
-}
-
-.experience-recognition-compact .experience-recognition-award img {
-	width: 100%;
-	height: 100%;
-	filter: drop-shadow(0 4px 10px color-mix(in srgb, var(--heading) 18%, transparent));
-	object-fit: contain;
-	transform: translateY(-4px);
 }
 
 .experience-highlights {
@@ -2275,7 +2158,7 @@ h3 {
 
 	.project-detail-panel {
 		margin-top: 0;
-		padding-top: 34px;
+		--project-detail-panel-pad-top: 34px;
 	}
 }
 
@@ -2324,8 +2207,14 @@ h3 {
 	}
 
 	.project-detail-panel {
+		--project-detail-panel-pad-bottom: 12px;
+		--project-detail-panel-pad-top: 28px;
+		--project-detail-panel-pad-x: 12px;
 		border-radius: 14px;
-		padding: 28px 12px 12px;
+	}
+
+	.project-detail-panel:has(> .project-detail:not([hidden]) > .project-awards-medal-rack) {
+		--project-detail-panel-pad-top: 54px;
 	}
 
 	.project-detail h3 {

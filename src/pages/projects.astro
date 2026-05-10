@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AssetIcon from '../components/AssetIcon.astro';
+import AwardMedals from '../components/AwardMedals.astro';
 import PortfolioWheelCard from '../components/PortfolioWheelCard.astro';
 import ProjectImageFrame from '../components/ProjectImageFrame.astro';
 import { profile, type Project } from '../data/profile';
@@ -122,6 +123,7 @@ const getInitialWheelSlot = (index: number) => {
 							data-project-index={index}
 							hidden={index === 0 ? undefined : true}
 						>
+							<AwardMedals awards={project.awards} ariaLabel={`${project.product} awards`} />
 							<div class="project-detail-media">
 								<div
 									class="project-detail-gallery"
@@ -179,33 +181,6 @@ const getInitialWheelSlot = (index: number) => {
 							<div class="project-detail-content">
 								<div class="project-detail-kicker project-detail-topline">
 									<span class="project-detail-status" data-status={project.releaseStage}>{releaseStageLabel}</span>
-									{
-										project.awards.length > 0 && (
-											<div class="project-awards project-awards-compact" aria-label={`${project.product} awards`}>
-												<div class="project-award-list">
-													{project.awards.map((award) => (
-														<span
-															class="project-award"
-															role="img"
-															tabindex="0"
-															aria-label={`${award.year} ${award.name}, awarded by ${award.awardedFrom}`}
-														>
-															<span
-																class="project-award-emblem"
-																style={`--award-emblem-url: url("${award.emblem.src}")`}
-																aria-hidden="true"
-															></span>
-															<span class="project-award-details" aria-hidden="true">
-																<strong>{award.name}</strong>
-																<span>{award.awardedFrom}</span>
-																<small>{award.year}</small>
-															</span>
-														</span>
-													))}
-												</div>
-											</div>
-										)
-									}
 								</div>
 								<h3>{project.product}</h3>
 								<div class="project-detail-meta">

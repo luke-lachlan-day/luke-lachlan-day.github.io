@@ -1,0 +1,54 @@
+---
+import type { ImageAsset } from '../data/profile';
+
+type AwardMedal = {
+	name: string;
+	awardedFrom: string;
+	detail?: string;
+	year: string;
+	emblem: ImageAsset;
+};
+
+type Props = {
+	awards: AwardMedal[];
+	ariaLabel: string;
+	class?: string;
+};
+
+const { awards, ariaLabel, class: className } = Astro.props;
+const medalBaseSrc = '/assets/emblems/award-medal-base.webp';
+---
+
+{
+	awards.length > 0 && (
+		<div class:list={['project-awards', 'project-awards-medal-rack', className]} role="group" aria-label={ariaLabel}>
+			<div class="project-award-list">
+				{awards.map((award) => {
+					const itemLabel = award.detail
+						? `${award.year} ${award.name}, ${award.detail}, ${award.awardedFrom}`
+						: `${award.year} ${award.name}, awarded by ${award.awardedFrom}`;
+					const detailLine = award.detail ?? award.awardedFrom;
+					const dateLine = award.detail ? `${award.awardedFrom} - ${award.year}` : award.year;
+
+					return (
+						<span class="project-award" role="img" tabindex="0" aria-label={itemLabel}>
+							<img class="project-award-medal-base" src={medalBaseSrc} alt="" loading="lazy" aria-hidden="true" />
+							<img
+								class="project-award-emblem"
+								src={award.emblem.src}
+								alt=""
+								loading="lazy"
+								aria-hidden="true"
+							/>
+							<span class="project-award-details" aria-hidden="true">
+								<strong>{award.name}</strong>
+								<span>{detailLine}</span>
+								<small>{dateLine}</small>
+							</span>
+						</span>
+					);
+				})}
+			</div>
+		</div>
+	)
+}
