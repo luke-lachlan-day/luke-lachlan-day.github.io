@@ -1,0 +1,93 @@
+---
+import ProjectImageFrame from './ProjectImageFrame.astro';
+import type { ImageAsset } from '../data/profile';
+
+type WheelCardBadge = {
+	icon?: ImageAsset;
+	label?: string;
+};
+
+type WheelCardStatus = {
+	label: string;
+	value: string;
+};
+
+type Props = {
+	title: string;
+	subtitle: string;
+	media?: ImageAsset;
+	mediaAlt?: string;
+	mediaDecorative?: boolean;
+	badge?: WheelCardBadge;
+	status?: WheelCardStatus;
+	ariaLabel: string;
+	isActive: boolean;
+	initialSlot?: string;
+	fallbackClass?: string;
+	fallbackLabel?: string;
+	class?: string;
+	dataAttrs?: Record<string, string | number | undefined>;
+};
+
+const {
+	title,
+	subtitle,
+	media,
+	mediaAlt,
+	mediaDecorative = false,
+	badge,
+	status,
+	ariaLabel,
+	isActive,
+	initialSlot,
+	fallbackClass,
+	fallbackLabel,
+	class: className,
+	dataAttrs = {},
+} = Astro.props as Props;
+
+const cardClass = ['project-wheel-card', className].filter(Boolean).join(' ');
+const mediaAttrs = mediaDecorative ? { 'aria-hidden': 'true' } : {};
+---
+
+<button
+	class={cardClass}
+	type="button"
+	data-slot={initialSlot}
+	aria-pressed={isActive ? 'true' : 'false'}
+	aria-label={ariaLabel}
+	tabindex={isActive ? undefined : -1}
+	{...dataAttrs}
+>
+	{
+		media ? (
+			<ProjectImageFrame
+				class="project-wheel-media"
+				src={media.src}
+				alt={mediaDecorative ? '' : (mediaAlt ?? media.alt)}
+				loading={isActive ? 'eager' : 'lazy'}
+				{...mediaAttrs}
+			>
+				{badge && (
+					<span class="project-wheel-company-badge" aria-hidden="true">
+						<span class="project-wheel-company-badge-back"></span>
+						{badge.icon ? (
+							<span class="project-wheel-company-badge-icon" style={`--company-icon-url: url("${badge.icon.src}")`}></span>
+						) : (
+							badge.label && <span class="project-wheel-company-badge-label">{badge.label}</span>
+						)}
+					</span>
+				)}
+				{status && <span class="project-wheel-status-ribbon" data-status={status.value}>{status.label}</span>}
+			</ProjectImageFrame>
+		) : (
+			<span class={['project-wheel-media', fallbackClass].filter(Boolean).join(' ')} aria-hidden="true">
+				{fallbackLabel && <span class="experience-media-fallback-initial">{fallbackLabel}</span>}
+			</span>
+		)
+	}
+	<span class="project-wheel-body">
+		<span class="project-wheel-title">{title}</span>
+		<span class="project-wheel-year">{subtitle}</span>
+	</span>
+</button>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PortfolioWheelCard from '../components/PortfolioWheelCard.astro';
 import ProjectImageFrame from '../components/ProjectImageFrame.astro';
 import { profile, type ExperienceItem } from '../data/profile';
 
@@ -54,36 +55,24 @@ const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyI
 						const initialSlot = getInitialWheelSlot(index);
 
 						return (
-							<button
-								class="project-wheel-card experience-wheel-card"
-								type="button"
-								data-experience-card
-								data-experience-index={index}
-								data-experience-id={item.id}
-								data-slot={initialSlot}
-								aria-pressed={isActive ? 'true' : 'false'}
-								aria-label={`Select ${item.role} at ${item.company}`}
-								tabindex={isActive ? undefined : -1}
-							>
-								{
-									media ? (
-										<ProjectImageFrame class="project-wheel-media" src={media.src} alt="" loading={isActive ? 'eager' : 'lazy'} aria-hidden="true">
-											<span class="project-wheel-company-badge">
-												<span class="project-wheel-company-badge-back"></span>
-												{icon ? <span class="project-wheel-company-badge-icon" style={`--company-icon-url: url("${icon.src}")`}></span> : <span class="project-wheel-company-badge-label">{item.company.slice(0, 1)}</span>}
-											</span>
-										</ProjectImageFrame>
-									) : (
-										<span class="project-wheel-media experience-wheel-media-fallback" aria-hidden="true">
-											<span class="experience-media-fallback-initial">{item.company.slice(0, 1)}</span>
-										</span>
-									)
-								}
-								<span class="project-wheel-body">
-									<span class="project-wheel-title">{item.role}</span>
-									<span class="project-wheel-year">{item.dateLabel}</span>
-								</span>
-							</button>
+							<PortfolioWheelCard
+								class="experience-wheel-card"
+								title={item.role}
+								subtitle={item.dateLabel}
+								media={media}
+								mediaDecorative={true}
+								badge={icon ? { icon } : { label: item.company.slice(0, 1) }}
+								ariaLabel={`Select ${item.role} at ${item.company}`}
+								isActive={isActive}
+								initialSlot={initialSlot}
+								fallbackClass="experience-wheel-media-fallback"
+								fallbackLabel={item.company.slice(0, 1)}
+								dataAttrs={{
+									'data-experience-card': '',
+									'data-experience-index': index,
+									'data-experience-id': item.id,
+								}}
+							/>
 						);
 					})
 				}

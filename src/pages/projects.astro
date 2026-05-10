@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AssetIcon from '../components/AssetIcon.astro';
+import PortfolioWheelCard from '../components/PortfolioWheelCard.astro';
 import ProjectImageFrame from '../components/ProjectImageFrame.astro';
 import { profile, type Project } from '../data/profile';
 import { getProjectActionLinks } from '../data/projectActions';
@@ -69,31 +70,21 @@ const getInitialWheelSlot = (index: number) => {
 						const initialSlot = getInitialWheelSlot(index);
 
 						return (
-							<button
-								class="project-wheel-card"
-								type="button"
-								data-project-card
-								data-project-index={index}
-								data-project-id={project.id}
-								data-slot={initialSlot}
-								aria-pressed={isActive ? 'true' : 'false'}
-								aria-label={`Select ${project.product}`}
-								tabindex={isActive ? undefined : -1}
-							>
-								<ProjectImageFrame class="project-wheel-media" src={picture.src} alt={picture.alt} loading={isActive ? 'eager' : 'lazy'}>
-									{company && (
-										<span class="project-wheel-company-badge" aria-hidden="true">
-											<span class="project-wheel-company-badge-back"></span>
-											<span class="project-wheel-company-badge-icon" style={`--company-icon-url: url("${company.icon.src}")`}></span>
-										</span>
-									)}
-									<span class="project-wheel-status-ribbon" data-status={project.releaseStage}>{releaseStageLabel}</span>
-								</ProjectImageFrame>
-								<span class="project-wheel-body">
-									<span class="project-wheel-title">{project.product}</span>
-									<span class="project-wheel-year">{project.yearLabel}</span>
-								</span>
-							</button>
+							<PortfolioWheelCard
+								title={project.product}
+								subtitle={project.yearLabel}
+								media={picture}
+								badge={company ? { icon: company.icon } : undefined}
+								status={{ label: releaseStageLabel, value: project.releaseStage }}
+								ariaLabel={`Select ${project.product}`}
+								isActive={isActive}
+								initialSlot={initialSlot}
+								dataAttrs={{
+									'data-project-card': '',
+									'data-project-index': index,
+									'data-project-id': project.id,
+								}}
+							/>
 						);
 					})
 				}
