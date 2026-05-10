@@ -267,6 +267,29 @@ main {
 .contact-card-title,
 .contact-card-description,
 .contact-hero-image,
+.project-detail-panel,
+.project-detail-media,
+.project-detail-gallery,
+.project-detail-gallery-control,
+.project-detail-gallery-control span,
+.project-detail-gallery-dot,
+.project-detail-kicker > span,
+.project-detail-meta,
+.project-detail-company,
+.project-detail-description,
+.project-awards,
+.project-award,
+.project-award-emblem,
+.project-award-details,
+.project-award-details::after,
+.experience-detail,
+.experience-detail-overview,
+.experience-detail-emblem,
+.experience-detail-picture,
+.experience-highlights,
+.experience-highlights-title,
+.experience-highlights li,
+.experience-credential,
 .project-tag,
 .site-footer,
 .site-footer::before,
@@ -1462,7 +1485,7 @@ h3 {
 	margin-top: -8px;
 	border: 1px solid var(--border);
 	border-radius: 18px;
-	background: color-mix(in srgb, var(--surface-glass) 78%, var(--bg));
+	background-color: var(--bg);
 	box-shadow: var(--shadow);
 	padding: clamp(14px, 2.4vw, 28px);
 }
@@ -1633,10 +1656,11 @@ h3 {
 .project-detail-kicker {
 	display: flex;
 	flex-wrap: wrap;
+	align-items: flex-start;
 	gap: 8px;
 }
 
-.project-detail-kicker span {
+.project-detail-kicker > span {
 	border-radius: 8px;
 	background: color-mix(in srgb, var(--accent) 14%, var(--surface));
 	color: var(--accent);
@@ -1646,27 +1670,27 @@ h3 {
 	padding: 8px 10px;
 }
 
-.project-detail-kicker span:nth-child(2) {
+.project-detail-kicker > span:nth-child(2) {
 	background: color-mix(in srgb, var(--accent-2) 18%, var(--surface));
 	color: color-mix(in srgb, var(--accent-2) 72%, var(--text));
 }
 
-.project-detail-kicker span[data-status="dev"] {
+.project-detail-kicker > span[data-status="dev"] {
 	background: var(--project-status-dev-bg);
 	color: var(--project-status-dev-text);
 }
 
-.project-detail-kicker span[data-status="released"] {
+.project-detail-kicker > span[data-status="released"] {
 	background: var(--project-status-released-bg);
 	color: var(--project-status-released-text);
 }
 
-.project-detail-kicker span[data-status="shelved"] {
+.project-detail-kicker > span[data-status="shelved"] {
 	background: var(--project-status-shelved-bg);
 	color: var(--project-status-shelved-text);
 }
 
-.project-detail-kicker span[data-status="contributed"] {
+.project-detail-kicker > span[data-status="contributed"] {
 	background: var(--project-status-contributed-bg);
 	color: var(--project-status-contributed-text);
 }
@@ -1696,6 +1720,13 @@ h3 {
 	border-top: 1px solid var(--border);
 }
 
+.project-awards-compact {
+	justify-content: end;
+	margin: 0 0 0 auto;
+	padding-top: 0;
+	border-top: 0;
+}
+
 .project-awards-title {
 	color: var(--heading);
 	font-family: var(--font-accent);
@@ -1710,6 +1741,11 @@ h3 {
 	gap: 10px;
 }
 
+.project-awards-compact .project-award-list {
+	justify-content: flex-end;
+	gap: 8px;
+}
+
 .project-award {
 	position: relative;
 	display: inline-flex;
@@ -1722,6 +1758,19 @@ h3 {
 	background: color-mix(in srgb, var(--surface) 72%, var(--bg));
 	box-shadow: var(--shadow-soft);
 	padding: 8px;
+	transition:
+		background-color var(--theme-transition),
+		border-color var(--theme-transition),
+		box-shadow var(--theme-transition),
+		color var(--theme-transition),
+		transform 140ms ease;
+}
+
+.project-awards-compact .project-award {
+	width: 42px;
+	height: 42px;
+	border-radius: 10px;
+	padding: 6px;
 }
 
 .project-award:hover {
@@ -1771,8 +1820,18 @@ h3 {
 	text-align: left;
 	transform: translate(-50%, 4px);
 	transition:
+		background-color var(--theme-transition),
+		border-color var(--theme-transition),
+		box-shadow var(--theme-transition),
+		color var(--theme-transition),
 		opacity 140ms ease,
 		transform 140ms ease;
+}
+
+.project-awards-compact .project-award-details {
+	right: 0;
+	left: auto;
+	transform: translateY(4px);
 }
 
 .project-award-details::after {
@@ -1788,10 +1847,21 @@ h3 {
 	transform: translateX(-50%) rotate(45deg);
 }
 
+.project-awards-compact .project-award-details::after {
+	right: 16px;
+	left: auto;
+	transform: rotate(45deg);
+}
+
 .project-award:hover .project-award-details,
 .project-award:focus-visible .project-award-details {
 	opacity: 1;
 	transform: translate(-50%, 0);
+}
+
+.project-awards-compact .project-award:hover .project-award-details,
+.project-awards-compact .project-award:focus-visible .project-award-details {
+	transform: translateY(0);
 }
 
 .project-award-details strong {
@@ -1814,11 +1884,11 @@ h3 {
 }
 
 @media (hover: none), (max-width: 560px) {
-	.project-award-list {
+	.project-awards:not(.project-awards-compact) .project-award-list {
 		display: grid;
 	}
 
-	.project-award {
+	.project-awards:not(.project-awards-compact) .project-award {
 		display: grid;
 		grid-template-columns: 46px minmax(0, 1fr);
 		justify-content: stretch;
@@ -1829,12 +1899,12 @@ h3 {
 		padding: 8px 10px;
 	}
 
-	.project-award-emblem {
+	.project-awards:not(.project-awards-compact) .project-award-emblem {
 		width: 46px;
 		height: 46px;
 	}
 
-	.project-award-details {
+	.project-awards:not(.project-awards-compact) .project-award-details {
 		position: static;
 		width: auto;
 		max-width: none;
@@ -1846,13 +1916,35 @@ h3 {
 		transform: none;
 	}
 
-	.project-award-details::after {
+	.project-awards:not(.project-awards-compact) .project-award-details::after {
 		content: none;
 	}
 
-	.project-award:hover .project-award-details,
-	.project-award:focus-visible .project-award-details {
+	.project-awards:not(.project-awards-compact) .project-award:hover .project-award-details,
+	.project-awards:not(.project-awards-compact) .project-award:focus-visible .project-award-details {
 		transform: none;
+	}
+}
+
+@media (max-width: 560px) {
+	.project-awards-compact {
+		flex-basis: 100%;
+		justify-content: start;
+		margin-left: 0;
+	}
+
+	.project-awards-compact .project-award-list {
+		justify-content: flex-start;
+	}
+
+	.project-awards-compact .project-award-details {
+		right: auto;
+		left: 0;
+	}
+
+	.project-awards-compact .project-award-details::after {
+		right: auto;
+		left: 16px;
 	}
 }
 

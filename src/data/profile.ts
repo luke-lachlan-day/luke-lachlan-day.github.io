@@ -612,9 +612,10 @@ export const profile = {
 				releaseStage: 'contributed',
 				awards: [],
 				actions: [
+					{ type: 'website', href: 'https://www.coastalderrieres.com/' },
 					{ type: 'steam', href: 'https://store.steampowered.com/app/2858760/Beach_Bums/' },
 				],
-				projectUrl: 'https://store.steampowered.com/app/2858760/Beach_Bums/',
+				projectUrl: 'https://www.coastalderrieres.com/',
 			},
 			{
 				id: 'think-digital-vr-work',
