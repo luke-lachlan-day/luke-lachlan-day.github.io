@@ -27,8 +27,7 @@ const medalBaseSrc = '/assets/emblems/award-medal-base.webp';
 					const itemLabel = award.detail
 						? `${award.year} ${award.name}, ${award.detail}, ${award.awardedFrom}`
 						: `${award.year} ${award.name}, awarded by ${award.awardedFrom}`;
-					const detailLine = award.detail ?? award.awardedFrom;
-					const dateLine = award.detail ? `${award.awardedFrom} - ${award.year}` : award.year;
+					const detailLines = award.detail ? [award.detail, award.awardedFrom] : [award.awardedFrom];
 
 					return (
 						<span class="project-award" role="img" tabindex="0" aria-label={itemLabel}>
@@ -42,8 +41,10 @@ const medalBaseSrc = '/assets/emblems/award-medal-base.webp';
 							/>
 							<span class="project-award-details" aria-hidden="true">
 								<strong>{award.name}</strong>
-								<span>{detailLine}</span>
-								<small>{dateLine}</small>
+								{detailLines.map((line) => (
+									<span>{line}</span>
+								))}
+								<small>{award.year}</small>
 							</span>
 						</span>
 					);
