@@ -63,25 +63,21 @@ const headingId = `${ariaLabel.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace
 	)
 }
 
-{
-	awards.length > 0 && (
-		<script is:inline>
-			(() => {
-				const enableAwardInteractions = () => {
-					document.querySelectorAll('[data-awards-initializing]').forEach((rack) => {
-						rack.removeAttribute('data-awards-initializing');
-					});
-				};
+<script is:inline>
+	(() => {
+		const enableAwardInteractions = () => {
+			document.querySelectorAll('[data-awards-initializing]').forEach((rack) => {
+				rack.removeAttribute('data-awards-initializing');
+			});
+		};
 
-				if (!('requestAnimationFrame' in window)) {
-					window.setTimeout(enableAwardInteractions, 0);
-					return;
-				}
+		if (!('requestAnimationFrame' in window)) {
+			window.setTimeout(enableAwardInteractions, 0);
+			return;
+		}
 
-				window.requestAnimationFrame(() => {
-					window.requestAnimationFrame(enableAwardInteractions);
-				});
-			})();
-		</script>
-	)
-}
+		window.requestAnimationFrame(() => {
+			window.requestAnimationFrame(enableAwardInteractions);
+		});
+	})();
+</script>

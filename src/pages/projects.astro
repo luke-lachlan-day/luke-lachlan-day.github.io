@@ -21,10 +21,11 @@ for (const item of [...experience.items].sort((itemA, itemB) => itemB.sortDate.l
 	}
 }
 const boostedProjectIds = new Set<string>(home.featuredProjectIds);
+const projectItems: Project[] = [...projects.items];
 const boostedProjects = home.featuredProjectIds
-	.map((projectId) => projects.items.find((project) => project.id === projectId))
+	.map((projectId) => projectItems.find((project) => project.id === projectId))
 	.filter((project): project is Project => Boolean(project));
-const remainingProjects = projects.items
+const remainingProjects = projectItems
 	.filter((project) => !boostedProjectIds.has(project.id))
 	.sort((projectA, projectB) => projectB.sortDate.localeCompare(projectA.sortDate));
 const wheelProjects = [...boostedProjects, ...remainingProjects];

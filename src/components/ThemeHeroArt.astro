@@ -25,8 +25,8 @@ const {
 } = Astro.props as Props;
 
 const wrapperAttrs = decorative
-	? { 'aria-hidden': 'true' }
-	: { role: 'img', 'aria-label': ariaLabel ?? light.alt };
+	? { 'aria-hidden': true }
+	: { role: 'img' as const, 'aria-label': ariaLabel ?? light.alt };
 const getAssetClassName = (themeClass: string) =>
 	['theme-asset', imageClass, themeClass].filter(Boolean).join(' ');
 const lightFallbackAttrs = getImageAttrs(light);

@@ -27,7 +27,7 @@ const enableTransitionsAfterPaint = (wheel: HTMLElement) => {
 	};
 
 	if (!('requestAnimationFrame' in window)) {
-		window.setTimeout(enableWheelTransitions, 0);
+		setTimeout(enableWheelTransitions, 0);
 		return;
 	}
 

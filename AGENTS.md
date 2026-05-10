@@ -16,10 +16,15 @@ This file is the repo-level source of truth for future agent work on this Astro 
 ## Commands
 
 - `npm run dev` starts the development server.
+- `npm run check` runs Astro's type and content validation.
 - `npm run build` builds the site.
+- `npm run format` formats the repository with Prettier.
+- `npm run format:check` checks Prettier formatting without writing changes.
 - `npm run preview` previews the production build.
 
-Do not run tests, builds, Playwright checks, browser validation, dev servers, previews, or other validation commands unless the user explicitly asks for them. When validation would normally be appropriate, tell the user which command or visual check is recommended and leave execution to them unless requested.
+After code changes, run `npm run check`, `npm run build`, and `npm run format:check` unless the user explicitly asks not to. Use `npm run format` only when intentionally applying formatting changes. Report any commands that were not run.
+
+Do not run Playwright checks, browser validation, dev servers, previews, or other visual validation commands unless the user explicitly asks for them. When visual validation would normally be appropriate, tell the user which visual check is recommended and leave execution to them unless requested.
 
 For visual or UI changes, describe the recommended review at phone, tablet, and desktop/PC widths, but do not start a dev server, open a browser, or run Playwright/browser review unless the user explicitly asks.
 

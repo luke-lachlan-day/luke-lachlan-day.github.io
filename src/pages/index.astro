@@ -12,8 +12,9 @@ const [heroFirstName, ...heroRemainingNames] = profile.name.split(' ');
 const heroLastLine = heroRemainingNames.join(' ');
 const heroTitleLines = [heroFirstName, heroLastLine];
 const companyById = new Map(companies.map((company) => [company.id, company]));
+const projectItems: Project[] = [...projects.items];
 const featuredProjects = home.featuredProjectIds
-	.map((projectId) => projects.items.find((project) => project.id === projectId))
+	.map((projectId) => projectItems.find((project) => project.id === projectId))
 	.filter((project): project is Project => Boolean(project));
 ---
 

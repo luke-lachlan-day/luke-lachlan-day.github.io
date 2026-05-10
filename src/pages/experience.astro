@@ -12,6 +12,7 @@ import { getInitialWheelSlot } from '../utils/wheelSlots';
 const { experience, companies } = profile;
 const companyById = new Map(companies.map((company) => [company.id, company]));
 const wheelExperience = [...experience.items].sort((itemA, itemB) => itemB.sortDate.localeCompare(itemA.sortDate));
+const experienceHeroLead = 'lead' in experience.hero ? experience.hero.lead : undefined;
 const initialActiveExperienceIndex = 0;
 const initialTransitionSlotRange = 3;
 const getCompanyIcon = (item: ExperienceItem) => (item.companyId ? companyById.get(item.companyId)?.icon : undefined);
@@ -25,7 +26,7 @@ const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)
 >
 	<section class="page-hero projects-hero" aria-labelledby="experience-title">
 		<h1 id="experience-title">{experience.hero.title}</h1>
-		{experience.hero.lead && <p>{experience.hero.lead}</p>}
+		{experienceHeroLead && <p>{experienceHeroLead}</p>}
 	</section>
 
 	<section class="section project-showcase experience-showcase" id="experience-showcase" aria-labelledby="experience-selector-title">
