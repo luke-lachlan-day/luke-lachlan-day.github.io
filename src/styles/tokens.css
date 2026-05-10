@@ -1,12 +1,11 @@
-﻿:root {
+:root {
 	--max-width: 1216px;
 	--hero-max-width: 1168px;
 	--radius: 14px;
-	--font-body: "Nunito", "Trebuchet MS", "Segoe UI", sans-serif;
-	--font-display: "Balsamiq Sans", "Trebuchet MS", cursive;
-	--font-accent: "Balsamiq Sans", "Trebuchet MS", "Segoe UI", sans-serif;
+	--font-body: 'Nunito', 'Trebuchet MS', 'Segoe UI', sans-serif;
+	--font-display: 'Balsamiq Sans', 'Trebuchet MS', cursive;
+	--font-accent: 'Balsamiq Sans', 'Trebuchet MS', 'Segoe UI', sans-serif;
 	--bg: #fff9f0;
-	--bg-soft: #fffdf7;
 	--surface: #fffaf1;
 	--surface-soft: #f3eadc;
 	--surface-glass: rgba(255, 250, 241, 0.78);
@@ -54,10 +53,9 @@
 	--toggle-accent: #eda21a;
 	--toggle-thumb-border: #eda21a;
 	--toggle-shadow-color: rgba(52, 42, 28, 0.08);
-	--footer-heart-color: #eda21a;
-	--brush-mask: url("/assets/textures/role-brush.webp") center / 100% 100% no-repeat;
-	--nav-brush-mask: url("/assets/textures/nav-brush.webp") center / 100% 100% no-repeat;
-	--paint-texture: url("/assets/textures/paint-texture.webp");
+	--brush-mask: url('/assets/textures/role-brush.webp') center / 100% 100% no-repeat;
+	--nav-brush-mask: url('/assets/textures/nav-brush.webp') center / 100% 100% no-repeat;
+	--paint-texture: url('/assets/textures/paint-texture.webp');
 	--theme-transition: 0ms;
 	color-scheme: light;
 	font-family: var(--font-body);
@@ -67,9 +65,8 @@
 	--theme-transition: var(--motion-slow);
 }
 
-:root[data-theme="light"] {
+:root[data-theme='light'] {
 	--bg: #fff9f0;
-	--bg-soft: #fffdf7;
 	--surface: #fffaf1;
 	--surface-soft: #f3eadc;
 	--surface-glass: rgba(255, 250, 241, 0.8);
@@ -100,13 +97,11 @@
 	--toggle-accent: #eda21a;
 	--toggle-thumb-border: #eda21a;
 	--toggle-shadow-color: rgba(52, 42, 28, 0.08);
-	--footer-heart-color: #eda21a;
 	color-scheme: light;
 }
 
-:root[data-theme="dark"] {
+:root[data-theme='dark'] {
 	--bg: #06111f;
-	--bg-soft: #081729;
 	--surface: #0a1729;
 	--surface-soft: #101f36;
 	--surface-glass: rgba(10, 23, 41, 0.84);
@@ -137,7 +132,5 @@
 	--toggle-accent: #a885ff;
 	--toggle-thumb-border: color-mix(in srgb, #a885ff 70%, #405474);
 	--toggle-shadow-color: rgba(0, 0, 0, 0.24);
-	--footer-heart-color: #a885ff;
 	color-scheme: dark;
 }
-

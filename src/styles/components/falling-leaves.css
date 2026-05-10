@@ -1,4 +1,4 @@
-﻿.falling-leaves {
+.falling-leaves {
 	position: fixed;
 	inset: 0;
 	z-index: 0;
@@ -7,7 +7,7 @@
 	contain: paint;
 }
 
-:root[data-leaves="off"] .falling-leaves {
+:root[data-leaves='off'] .falling-leaves {
 	display: none;
 }
 
@@ -17,11 +17,11 @@
 }
 
 .falling-leaf {
-	--leaf-texture-image: url("/assets/images/leaf.webp");
+	--leaf-texture-image: url('/assets/images/leaf.webp');
 	--leaf-texture-opacity: 0.58;
 	--leaf-fill: color-mix(in srgb, var(--bg) 38%, var(--accent-3));
 	--leaf-filter: saturate(0.94) contrast(1.08);
-	--leaf-shape-mask: url("/assets/images/leaf.webp") center / contain no-repeat;
+	--leaf-shape-mask: url('/assets/images/leaf.webp') center / contain no-repeat;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -40,30 +40,30 @@
 	position: absolute;
 	inset: 0;
 	background: var(--leaf-texture-image) center / contain no-repeat;
-	content: "";
+	content: '';
 	mix-blend-mode: luminosity;
 	opacity: var(--leaf-texture-opacity);
 	pointer-events: none;
 }
 
-:root[data-theme="dark"] .falling-leaf {
+:root[data-theme='dark'] .falling-leaf {
 	--leaf-filter: saturate(0.88) contrast(1.12) brightness(0.82);
 }
 
 .falling-leaves-layer-back .falling-leaf {
-	--leaf-texture-image: url("/assets/images/leaf-blur-back.webp");
+	--leaf-texture-image: url('/assets/images/leaf-blur-back.webp');
 	--leaf-texture-opacity: 0.16;
 	--leaf-fill: color-mix(in srgb, var(--bg) 76%, var(--accent-3));
 }
 
 .falling-leaves-layer-mid .falling-leaf {
-	--leaf-texture-image: url("/assets/images/leaf-blur-mid.webp");
+	--leaf-texture-image: url('/assets/images/leaf-blur-mid.webp');
 	--leaf-texture-opacity: 0.28;
 	--leaf-fill: color-mix(in srgb, var(--bg) 60%, var(--accent-3));
 }
 
 .falling-leaves-layer-front .falling-leaf {
-	--leaf-texture-image: url("/assets/images/leaf.webp");
+	--leaf-texture-image: url('/assets/images/leaf.webp');
 	--leaf-texture-opacity: 0.5;
 	--leaf-fill: color-mix(in srgb, var(--bg) 36%, var(--accent-3));
 }
@@ -83,4 +83,3 @@
 		display: none;
 	}
 }
-

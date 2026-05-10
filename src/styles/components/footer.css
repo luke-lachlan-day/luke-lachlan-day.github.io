@@ -1,4 +1,4 @@
-﻿.site-footer {
+.site-footer {
 	--footer-frame-width: min(100% - 32px, var(--hero-max-width));
 	--footer-frame-trim: 0px;
 	--footer-visual-offset-x: -18px;
@@ -11,7 +11,7 @@
 
 .site-footer::before,
 .site-footer::after {
-	content: "";
+	content: '';
 	position: absolute;
 	left: 50%;
 	top: 0;
@@ -26,19 +26,21 @@
 }
 
 .site-footer::before {
-	background: url("/assets/images/footer-frame-light.webp") center bottom / contain no-repeat;
+	background: url('/assets/images/footer-frame-light.webp') center bottom / contain no-repeat;
 }
 
 .site-footer::after {
-	background: url("/assets/images/footer-frame-dark.webp") center bottom / contain no-repeat;
+	background: url('/assets/images/footer-frame-dark.webp') center bottom / contain no-repeat;
 }
 
-:root[data-theme="light"] .site-footer::before,
-:root[data-theme="dark"] .site-footer::after {
+:root[data-theme='light'] .site-footer::before,
+:root[data-theme='dark'] .site-footer::after {
 	opacity: 1;
 }
 
 .footer-inner {
+	width: min(100% - 32px, var(--hero-max-width));
+	margin-inline: auto;
 	position: relative;
 	z-index: 1;
 	display: grid;
@@ -57,7 +59,7 @@
 
 .footer-heart::before,
 .footer-heart::after {
-	content: "";
+	content: '';
 	position: absolute;
 	inset: 0;
 	background-position: center;
@@ -67,20 +69,20 @@
 }
 
 .footer-heart::before {
-	background-image: url("/assets/images/footer-heart-light.webp");
+	background-image: url('/assets/images/footer-heart-light.webp');
 	opacity: 1;
 }
 
 .footer-heart::after {
-	background-image: url("/assets/images/footer-heart-dark.webp");
+	background-image: url('/assets/images/footer-heart-dark.webp');
 	opacity: 0;
 }
 
-:root[data-theme="dark"] .footer-heart::before {
+:root[data-theme='dark'] .footer-heart::before {
 	opacity: 0;
 }
 
-:root[data-theme="dark"] .footer-heart::after {
+:root[data-theme='dark'] .footer-heart::after {
 	opacity: 1;
 }
 
@@ -143,3 +145,13 @@
 	font-weight: 700;
 }
 
+@media (max-width: 560px) {
+	.site-footer {
+		--footer-frame-width: min(100% - 22px, var(--hero-max-width));
+		--footer-visual-offset-x: -8px;
+	}
+
+	.footer-inner {
+		width: min(100% - 22px, var(--hero-max-width));
+	}
+}
