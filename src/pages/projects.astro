@@ -159,8 +159,8 @@ const getInitialWheelSlot = (index: number) => {
 								</div>
 								<div class="project-detail-actions">
 									<a class="button" href={project.projectUrl ?? `#${project.id}`}>
-										<AssetIcon src="/assets/icons/gamepad.svg" class="button-icon" />
-										View Project
+										<AssetIcon src={project.projectUrlIcon ?? '/assets/icons/gamepad.svg'} class="button-icon" />
+										{project.projectUrlLabel ?? 'View Project'}
 									</a>
 									{project.sourceUrl && (
 										<a class="button button-2" href={project.sourceUrl}>

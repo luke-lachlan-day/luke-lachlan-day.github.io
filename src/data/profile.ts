@@ -76,6 +76,8 @@ export type Project = {
 	releaseStage: ProjectReleaseStage;
 	awards: ProjectAward[];
 	projectUrl?: string;
+	projectUrlLabel?: string;
+	projectUrlIcon?: string;
 	sourceUrl?: string;
 };
 
@@ -208,8 +210,86 @@ export const profile = {
 				awards: [],
 			},
 			{
+				id: 'float-goat',
+				companyId: 'solo',
+				product: 'Float Goat',
+				pictures: [
+					{
+						src: '/assets/images/project-float-goat.webp',
+						alt: 'Pixel art goat floating over water for Float Goat.',
+					},
+				],
+				description:
+					'A solo game prototype built around buoyant movement, light physics, and playful traversal challenges.',
+				tools: ['Game Prototype', 'Physics', 'Solo'],
+				sortDate: '2026-05-06',
+				dateLabel: '2026',
+				yearLabel: '2026',
+				releaseStage: 'dev',
+				awards: [],
+			},
+			{
+				id: 'ponder',
+				companyId: 'solo',
+				product: 'Ponder',
+				pictures: [
+					{
+						src: '/assets/images/project-ponder.webp',
+						alt: 'Pixel art thinking block with candlelight for Ponder.',
+					},
+				],
+				description:
+					'A solo prototype exploring quiet puzzle ideas, reflective pacing, and small moments of discovery.',
+				tools: ['Puzzle', 'Prototype', 'Solo'],
+				sortDate: '2026-05-06',
+				dateLabel: '2026',
+				yearLabel: '2026',
+				releaseStage: 'dev',
+				awards: [],
+			},
+			{
+				id: 'quizmas-quizes-and-games',
+				companyId: 'solo',
+				product: 'Quizmas Quizes & Games',
+				pictures: [
+					{
+						src: '/assets/images/project-quizmas-quizes-and-games.webp',
+						alt: 'Pixel art festive quiz board with wrapped gifts for Quizmas Quizes & Games.',
+					},
+				],
+				description:
+					'A festive quiz and games project for quick questions, party rounds, and light group play.',
+				tools: ['Quiz', 'Party Game', 'Solo'],
+				sortDate: '2026-05-06',
+				dateLabel: '2026',
+				yearLabel: '2026',
+				releaseStage: 'dev',
+				awards: [],
+			},
+			{
+				id: 'x-men-video',
+				companyId: 'solo',
+				product: 'X men',
+				pictures: [
+					{
+						src: '/assets/images/project-x-men.webp',
+						alt: 'YouTube thumbnail for the X men video.',
+					},
+				],
+				description: "A video project in flash that I made in primary school and released on my brother's YouTube.",
+				tools: ['Video', 'YouTube', 'Solo'],
+				sortDate: '2008-06-01',
+				dateLabel: 'June 2008',
+				yearLabel: '2008',
+				releaseStage: 'released',
+				awards: [],
+				projectUrl: 'https://www.youtube.com/watch?v=C39TrymUclw',
+				projectUrlLabel: 'Watch Video',
+				projectUrlIcon: '/assets/icons/youtube.svg',
+			},
+			{
 				id: 'trusty-battles',
-				companyId: 'daytime-devs',
+				companyId: 'solo',
 				product: 'Trusty Battles',
 				pictures: [
 					{
@@ -218,7 +298,7 @@ export const profile = {
 					},
 				],
 				description:
-					'A Daytime Devs battle prototype focused on readable fights, quick decisions, and satisfying moment-to-moment combat.',
+					'A prototype focused on readable fights, quick decisions, and satisfying moment-to-moment combat.',
 				tools: ['Action', 'Combat', 'Prototype'],
 				sortDate: '2026-05-08',
 				dateLabel: '2026',
@@ -228,7 +308,7 @@ export const profile = {
 			},
 			{
 				id: 'rogue-hands',
-				companyId: 'daytime-devs',
+				companyId: 'solo',
 				product: 'Rogue Hands',
 				pictures: [
 					{
@@ -237,7 +317,7 @@ export const profile = {
 					},
 				],
 				description:
-					'A Daytime Devs prototype exploring roguelike combat ideas, short runs, and expressive player choices.',
+					'A prototype exploring roguelike combat ideas, short runs, and expressive player choices.',
 				tools: ['Roguelike', 'Combat', 'Prototype'],
 				sortDate: '2026-05-07',
 				dateLabel: '2026',
