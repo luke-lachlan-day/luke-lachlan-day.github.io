@@ -270,10 +270,6 @@
 }
 
 @media (max-width: 560px) {
-	.project-showcase .project-wheel {
-		overflow: hidden;
-	}
-
 	.project-wheel {
 		grid-template-columns: 38px minmax(0, 1fr) 38px;
 		width: calc(100% + 10px);
