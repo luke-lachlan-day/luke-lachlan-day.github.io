@@ -10,10 +10,7 @@ import { getExternalLinkAttrs } from '../utils/links';
 const { contact } = profile;
 ---
 
-<BaseLayout
-	title={contact.title}
-	description={contact.description}
->
+<BaseLayout title={contact.title} description={contact.description}>
 	<section class="contact-hero" aria-labelledby="contact-title">
 		<HeroContent
 			class="contact-hero-content"
@@ -40,11 +37,7 @@ const { contact } = profile;
 		<div class="contact-grid">
 			{
 				contact.links.map((link) => (
-					<a
-						class="contact-card"
-						href={link.href}
-						{...getExternalLinkAttrs(link.href)}
-					>
+					<a class="contact-card" href={link.href} {...getExternalLinkAttrs(link.href)}>
 						<img
 							class="contact-card-icon"
 							src={link.contactIcon ?? link.icon}

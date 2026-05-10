@@ -22,11 +22,11 @@ npm run dev
 
 Useful commands:
 
-| Command           | Action                                      |
-| :---------------- | :------------------------------------------ |
-| `npm run dev`     | Start the local development server          |
-| `npm run build`   | Build the production site to `./dist/`      |
-| `npm run preview` | Preview the production build locally        |
+| Command           | Action                                 |
+| :---------------- | :------------------------------------- |
+| `npm run dev`     | Start the local development server     |
+| `npm run build`   | Build the production site to `./dist/` |
+| `npm run preview` | Preview the production build locally   |
 
 ## License
 

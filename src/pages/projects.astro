@@ -170,10 +170,9 @@ const initialTransitionSlotRange = 3;
 	</section>
 
 	<script>
-		import { setupDetailGalleries } from '../scripts/detailGallery';
-		import { setupWheelControllers } from '../scripts/wheelController';
+		import { setupShowcaseControllers } from '../scripts/showcaseController';
 
-		setupWheelControllers({
+		setupShowcaseControllers({
 			wheelSelector: '[data-project-wheel]',
 			cardSelector: '[data-project-card]',
 			detailSelector: '[data-project-detail-item]',
@@ -181,11 +180,7 @@ const initialTransitionSlotRange = 3;
 			idAttr: 'data-project-id',
 			changeEvent: 'project-detail-change',
 			detailRootSelector: '#project-showcase',
-		});
-		setupDetailGalleries({
 			gallerySelector: '[data-project-gallery]',
-			detailItemSelector: '[data-project-detail-item]',
-			detailChangeEvent: 'project-detail-change',
 		});
 	</script>
 </BaseLayout>

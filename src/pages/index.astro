@@ -18,10 +18,7 @@ const featuredProjects = home.featuredProjectIds
 	.filter((project): project is Project => Boolean(project));
 ---
 
-<BaseLayout
-	title={home.title}
-	description={home.description}
->
+<BaseLayout title={home.title} description={home.description}>
 	<section class="hero" aria-labelledby="home-title">
 		<HeroContent
 			class="hero-content"
@@ -52,16 +49,18 @@ const featuredProjects = home.featuredProjectIds
 					const tagGroups = getProjectTagRenderGroups(project.projectTags);
 
 					return (
-						<a
-							class="project-card"
-							href={`${projects.href}#${project.id}`}
-							aria-label={`View ${project.product} in projects`}
-						>
+						<a class="project-card" href={`${projects.href}#${project.id}`} aria-label={`View ${project.product} in projects`}>
 							<ProjectImageFrame class="project-image" src={picture.src} alt={picture.alt} loading="lazy">
 								{company && (
 									<span class="project-wheel-company-badge project-card-company-badge" aria-hidden="true">
-										<span class="project-wheel-company-badge-back"></span>
-										<img class="project-wheel-company-badge-icon" src={company.icon.src} alt="" loading="lazy" {...getImageAttrs(company.icon)} />
+										<span class="project-wheel-company-badge-back" />
+										<img
+											class="project-wheel-company-badge-icon"
+											src={company.icon.src}
+											alt=""
+											loading="lazy"
+											{...getImageAttrs(company.icon)}
+										/>
 									</span>
 								)}
 							</ProjectImageFrame>
@@ -76,7 +75,9 @@ const featuredProjects = home.featuredProjectIds
 									{tagGroups.map((tagGroup) => (
 										<span class="project-tag-group" data-tag-group={tagGroup.group}>
 											{tagGroup.tags.map((tag) => (
-												<span class="project-tag" data-tag-style={tag.styleKey}>{tag.label}</span>
+												<span class="project-tag" data-tag-style={tag.styleKey}>
+													{tag.label}
+												</span>
 											))}
 										</span>
 									))}

@@ -147,10 +147,9 @@ const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)
 	</section>
 
 	<script>
-		import { setupDetailGalleries } from '../scripts/detailGallery';
-		import { setupWheelControllers } from '../scripts/wheelController';
+		import { setupShowcaseControllers } from '../scripts/showcaseController';
 
-		setupWheelControllers({
+		setupShowcaseControllers({
 			wheelSelector: '[data-experience-wheel]',
 			cardSelector: '[data-experience-card]',
 			detailSelector: '[data-experience-detail-item]',
@@ -158,11 +157,7 @@ const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)
 			idAttr: 'data-experience-id',
 			changeEvent: 'experience-detail-change',
 			detailRootSelector: '#experience-showcase',
-		});
-		setupDetailGalleries({
 			gallerySelector: '[data-experience-gallery]',
-			detailItemSelector: '[data-experience-detail-item]',
-			detailChangeEvent: 'experience-detail-change',
 		});
 	</script>
 </BaseLayout>
