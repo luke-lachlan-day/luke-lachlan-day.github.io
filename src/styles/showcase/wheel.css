@@ -281,7 +281,7 @@
 	}
 
 	.project-wheel-card {
-		width: min(230px, calc(100vw - 122px));
+		width: clamp(186px, 62vw, 222px);
 		height: 220px;
 	}
 
@@ -290,15 +290,17 @@
 	}
 
 	.project-wheel-card[data-slot='-1'] {
-		opacity: 0;
+		--project-wheel-card-fade: 0.68;
+		opacity: 1;
 		pointer-events: none;
-		transform: translate(-132%, -40%) rotate(-10deg) scale(0.72);
+		transform: translate(-122%, -43%) rotate(-9deg) scale(0.72);
 	}
 
 	.project-wheel-card[data-slot='1'] {
-		opacity: 0;
+		--project-wheel-card-fade: 0.68;
+		opacity: 1;
 		pointer-events: none;
-		transform: translate(32%, -40%) rotate(10deg) scale(0.72);
+		transform: translate(22%, -43%) rotate(9deg) scale(0.72);
 	}
 
 	.project-wheel-chest {

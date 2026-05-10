@@ -1,7 +1,7 @@
 import { getShortestWheelOffset } from '../utils/wheelSlots';
 
 const desktopQueryText = '(min-width: 821px)';
-const phoneQueryText = '(max-width: 460px)';
+const phoneQueryText = '(max-width: 560px)';
 
 type WheelSlotRanges = {
 	interactive: number;
