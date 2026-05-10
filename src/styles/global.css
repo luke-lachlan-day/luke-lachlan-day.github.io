@@ -2480,6 +2480,7 @@ h3 {
 	z-index: 0;
 	width: var(--footer-frame-width);
 	image-rendering: pixelated;
+	opacity: 0;
 	pointer-events: none;
 	transform: translateX(calc(-50% + var(--footer-visual-offset-x)));
 	transition: opacity var(--theme-transition);
@@ -2487,18 +2488,13 @@ h3 {
 
 .site-footer::before {
 	background: url("/assets/images/footer-frame-light.webp") center bottom / contain no-repeat;
-	opacity: 1;
 }
 
 .site-footer::after {
 	background: url("/assets/images/footer-frame-dark.webp") center bottom / contain no-repeat;
-	opacity: 0;
 }
 
-:root[data-theme="dark"] .site-footer::before {
-	opacity: 0;
-}
-
+:root[data-theme="light"] .site-footer::before,
 :root[data-theme="dark"] .site-footer::after {
 	opacity: 1;
 }
