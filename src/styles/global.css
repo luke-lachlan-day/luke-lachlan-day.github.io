@@ -1656,7 +1656,7 @@ h3 {
 .project-detail-kicker {
 	display: flex;
 	flex-wrap: wrap;
-	align-items: flex-start;
+	align-items: center;
 	gap: 8px;
 }
 
@@ -1721,6 +1721,7 @@ h3 {
 }
 
 .project-awards-compact {
+	align-items: center;
 	justify-content: end;
 	margin: 0 0 0 auto;
 	padding-top: 0;
@@ -1767,10 +1768,12 @@ h3 {
 }
 
 .project-awards-compact .project-award {
-	width: 42px;
-	height: 42px;
-	border-radius: 10px;
-	padding: 6px;
+	width: 54px;
+	height: 54px;
+	border: 0;
+	background: transparent;
+	box-shadow: none;
+	padding: 0;
 }
 
 .project-award:hover {
@@ -1848,7 +1851,7 @@ h3 {
 }
 
 .project-awards-compact .project-award-details::after {
-	right: 16px;
+	right: 22px;
 	left: auto;
 	transform: rotate(45deg);
 }
@@ -1944,7 +1947,7 @@ h3 {
 
 	.project-awards-compact .project-award-details::after {
 		right: auto;
-		left: 16px;
+		left: 22px;
 	}
 }
 
