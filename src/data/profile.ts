@@ -155,7 +155,7 @@ export const profile = {
 		},
 		actions: [
 			{ label: 'View Projects', href: '/projects/', icon: '/assets/icons/gamepad.svg' },
-			{ label: 'Get In Touch', href: '/contact/', icon: '/assets/icons/email.svg' },
+			{ label: 'Get in Touch', href: '/contact/', icon: '/assets/icons/email.svg' },
 		],
 		featuredProjectIds: ['petes-place', 'coop-climbing', 'super-bawk-bawk-chicken'],
 	},

@@ -1,0 +1,38 @@
+---
+import AssetIcon from './AssetIcon.astro';
+
+type ButtonVariant = 'primary' | 'secondary';
+
+type Props = {
+	href: string;
+	label: string;
+	icon?: string;
+	variant?: ButtonVariant;
+	class?: string;
+	target?: string;
+	rel?: string;
+};
+
+const {
+	href,
+	label,
+	icon,
+	variant = 'primary',
+	class: className,
+	target,
+	rel,
+} = Astro.props as Props;
+const isExternalLink = href.startsWith('http://') || href.startsWith('https://');
+const linkTarget = target ?? (isExternalLink ? '_blank' : undefined);
+const linkRel = rel ?? (isExternalLink ? 'noreferrer' : undefined);
+---
+
+<a
+	class:list={['button', variant === 'secondary' && 'button-2', className]}
+	href={href}
+	target={linkTarget}
+	rel={linkRel}
+>
+	{icon && <AssetIcon src={icon} class="button-icon" />}
+	{label}
+</a>

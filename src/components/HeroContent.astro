@@ -1,5 +1,5 @@
 ---
-import AssetIcon from './AssetIcon.astro';
+import ButtonLink from './ButtonLink.astro';
 
 type HeroAction = {
 	label: string;
@@ -52,10 +52,12 @@ const headingAttrs = titleAriaLabel ? { 'aria-label': titleAriaLabel } : {};
 		actions.length > 0 && (
 			<div class="hero-actions">
 				{actions.map((action, index) => (
-					<a class={`button button-${index + 1}`} href={action.href}>
-						<AssetIcon src={action.icon} class="button-icon" />
-						{action.label}
-					</a>
+					<ButtonLink
+						href={action.href}
+						label={action.label}
+						icon={action.icon}
+						variant={index === 0 ? 'primary' : 'secondary'}
+					/>
 				))}
 			</div>
 		)
