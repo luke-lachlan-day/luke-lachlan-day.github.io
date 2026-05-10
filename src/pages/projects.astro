@@ -175,9 +175,10 @@ const initialTransitionSlotRange = 3;
 								<div class="project-detail-meta">
 									{company && (
 										companyExperienceHref ? (
-											<a class="project-detail-company project-detail-company-link" href={companyExperienceHref} aria-label={`View ${company.name} experience`}>
+											<a class="project-detail-company project-detail-company-link" href={companyExperienceHref}>
 												<img src={company.icon.src} alt="" loading="lazy" {...getImageAttrs(company.icon)} />
 												<span>{company.name}</span>
+												<span class="visually-hidden"> experience</span>
 											</a>
 										) : (
 											<span class="project-detail-company">

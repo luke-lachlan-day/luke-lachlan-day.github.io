@@ -96,7 +96,6 @@ const footerLinks = profile.footer.linkLabels.flatMap((label) => {
 				<a
 					class="brand"
 					href="/"
-					aria-label="Luke Lachlan Day home"
 					data-current-page-link={currentPath === '/' ? 'true' : undefined}
 				>
 					<img src="/assets/images/company-solo-clear.webp" alt="" {...getImageAttrs('/assets/images/company-solo-clear.webp')} />
@@ -153,8 +152,9 @@ const footerLinks = profile.footer.linkLabels.flatMap((label) => {
 				<div class="footer-links" aria-label="Social links">
 					{
 						footerLinks.map((link) => (
-							<a href={link.href} {...getExternalLinkAttrs(link.href)} aria-label={link.label} title={link.label}>
+							<a href={link.href} {...getExternalLinkAttrs(link.href)} title={link.label}>
 								<AssetIcon src={link.icon} />
+								<span class="visually-hidden">{link.label}</span>
 							</a>
 						))
 					}

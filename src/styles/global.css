@@ -181,6 +181,19 @@ img {
 	max-width: 100%;
 }
 
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
 .asset-icon {
 	display: inline-block;
 	flex: 0 0 auto;
@@ -215,11 +228,11 @@ main {
 }
 
 .falling-leaf {
-	--leaf-detail-image: url("/assets/images/leaf.webp");
-	--leaf-detail-opacity: 0.58;
+	--leaf-texture-image: url("/assets/images/leaf.webp");
+	--leaf-texture-opacity: 0.58;
 	--leaf-fill: color-mix(in srgb, var(--bg) 38%, var(--accent-3));
 	--leaf-filter: saturate(0.94) contrast(1.08);
-	--leaf-mask: url("/assets/images/leaf.webp") center / contain no-repeat;
+	--leaf-shape-mask: url("/assets/images/leaf.webp") center / contain no-repeat;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -229,18 +242,18 @@ main {
 	filter: var(--leaf-filter);
 	isolation: isolate;
 	transform-origin: 50% 56%;
-	-webkit-mask: var(--leaf-mask);
-	mask: var(--leaf-mask);
+	-webkit-mask: var(--leaf-shape-mask);
+	mask: var(--leaf-shape-mask);
 	will-change: transform;
 }
 
 .falling-leaf::after {
 	position: absolute;
 	inset: 0;
-	background: var(--leaf-detail-image) center / contain no-repeat;
+	background: var(--leaf-texture-image) center / contain no-repeat;
 	content: "";
 	mix-blend-mode: luminosity;
-	opacity: var(--leaf-detail-opacity);
+	opacity: var(--leaf-texture-opacity);
 	pointer-events: none;
 }
 
@@ -249,20 +262,20 @@ main {
 }
 
 .falling-leaves-layer-back .falling-leaf {
-	--leaf-detail-image: url("/assets/images/leaf-blur-back.webp");
-	--leaf-detail-opacity: 0.16;
+	--leaf-texture-image: url("/assets/images/leaf-blur-back.webp");
+	--leaf-texture-opacity: 0.16;
 	--leaf-fill: color-mix(in srgb, var(--bg) 76%, var(--accent-3));
 }
 
 .falling-leaves-layer-mid .falling-leaf {
-	--leaf-detail-image: url("/assets/images/leaf-blur-mid.webp");
-	--leaf-detail-opacity: 0.28;
+	--leaf-texture-image: url("/assets/images/leaf-blur-mid.webp");
+	--leaf-texture-opacity: 0.28;
 	--leaf-fill: color-mix(in srgb, var(--bg) 60%, var(--accent-3));
 }
 
 .falling-leaves-layer-front .falling-leaf {
-	--leaf-detail-image: url("/assets/images/leaf.webp");
-	--leaf-detail-opacity: 0.5;
+	--leaf-texture-image: url("/assets/images/leaf.webp");
+	--leaf-texture-opacity: 0.5;
 	--leaf-fill: color-mix(in srgb, var(--bg) 36%, var(--accent-3));
 }
 
@@ -392,7 +405,7 @@ main {
 	width: 48px;
 	height: 48px;
 	border: 0px solid transparent;
-	border-radius: 999px;
+	border-radius: 50%;
 	background: transparent;
 	filter: var(--image-filter);
 	image-rendering: pixelated;
@@ -425,7 +438,7 @@ main {
 
 @media (min-width: 900px) {
 	.nav-links {
-		transform: translateY(3px);
+		padding-block-start: 3px;
 	}
 }
 
@@ -593,12 +606,11 @@ main {
 	justify-self: center;
 	width: 22px;
 	height: 22px;
-	--theme-icon-offset-x: 0;
 	--theme-icon-scale: 1;
 	background-color: var(--muted);
 	-webkit-mask: var(--theme-icon-mask) center / contain no-repeat;
 	mask: var(--theme-icon-mask) center / contain no-repeat;
-	transform: translateX(var(--theme-icon-offset-x)) scale(var(--theme-icon-scale));
+	transform: scale(var(--theme-icon-scale));
 	transition:
 		background-color var(--theme-transition),
 		opacity var(--motion-fast),
@@ -685,7 +697,7 @@ h1 {
 	font-weight: 700;
 	line-height: 0.94;
 	padding-block: 0.04em 0.08em;
-	width: max-content;
+	width: fit-content;
 	max-width: min(calc(100vw - 32px), 680px);
 	text-wrap: initial;
 }

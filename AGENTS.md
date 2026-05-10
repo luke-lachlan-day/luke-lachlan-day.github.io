@@ -46,6 +46,16 @@ The repo currently does not define a dedicated Playwright npm script or committe
 - Preserve the current visual direction: pixel-art assets, playful portfolio styling, responsive layouts, light/dark theme support, and consistent card, button, and section treatment.
 - Treat accessibility and shipping quality as mandatory: semantic HTML, useful alt text, keyboard-operable controls, no broken links or placeholders in shipped content unless explicitly intentional, responsive/adaptive layouts that display well on phone, tablet, and desktop/PC screens, and no text overflow or incoherent overlap.
 
+## Semantic Frontend Guardrails
+
+- Prefer native HTML semantics before adding ARIA. Use ARIA only when native HTML cannot express the required semantics, state, or accessible name.
+- Prefer visible text or `.visually-hidden` text before `aria-label` when a control or link can reasonably contain text.
+- Use `<img>` with useful `alt` text for meaningful images, logos, screenshots, badges, and content-bearing assets. Use `alt=""` only for decorative images.
+- Reserve CSS masks for decorative one-color icons, texture/shape effects, or cases where inheriting `currentColor` is the core requirement.
+- Prefer inline SVG with `currentColor` for simple monochrome UI icons when practical.
+- Avoid unused CSS custom properties, broad manually maintained selector lists, and layout nudges via `transform` unless the transform is explicitly for animation or optical adjustment.
+- Keep `src/styles/global.css` focused on tokens, reset/base elements, shared layout primitives, and truly shared components. Avoid growing it with page-specific styling when scoped component or page styles would be clearer.
+
 ## Asset Optimization
 
 - Optimize web-facing raster assets before shipping.
