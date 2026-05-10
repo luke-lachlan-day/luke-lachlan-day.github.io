@@ -828,6 +828,16 @@ h3 {
 	white-space: nowrap;
 }
 
+.text-link:hover,
+.text-link:focus-visible {
+	transform: translateY(-1px);
+}
+
+.text-link:focus-visible {
+	outline: 3px solid color-mix(in srgb, var(--accent) 42%, transparent);
+	outline-offset: 3px;
+}
+
 .text-link::after {
 	content: "";
 	flex: 0 0 auto;
@@ -1887,7 +1897,7 @@ h3 {
 	transition: transform 140ms ease;
 }
 
-.project-award:hover {
+.project-awards-medal-rack:not([data-awards-initializing]) .project-award:hover {
 	transform: translateY(-4px);
 }
 
@@ -1969,8 +1979,8 @@ h3 {
 	transform: rotate(45deg);
 }
 
-.project-award:hover .project-award-details,
-.project-award:focus-visible .project-award-details {
+.project-awards-medal-rack:not([data-awards-initializing]) .project-award:hover .project-award-details,
+.project-awards-medal-rack:not([data-awards-initializing]) .project-award:focus-visible .project-award-details {
 	opacity: 1;
 	transform: translateY(0);
 }

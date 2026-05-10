@@ -21,7 +21,12 @@ const medalBaseSrc = '/assets/emblems/award-medal-base.webp';
 
 {
 	awards.length > 0 && (
-		<div class:list={['project-awards', 'project-awards-medal-rack', className]} role="group" aria-label={ariaLabel}>
+		<div
+			class:list={['project-awards', 'project-awards-medal-rack', className]}
+			data-awards-initializing="true"
+			role="group"
+			aria-label={ariaLabel}
+		>
 			<div class="project-award-list">
 				{awards.map((award) => {
 					const itemLabel = award.detail
@@ -51,5 +56,28 @@ const medalBaseSrc = '/assets/emblems/award-medal-base.webp';
 				})}
 			</div>
 		</div>
+	)
+}
+
+{
+	awards.length > 0 && (
+		<script is:inline>
+			(() => {
+				const enableAwardInteractions = () => {
+					document.querySelectorAll('[data-awards-initializing]').forEach((rack) => {
+						rack.removeAttribute('data-awards-initializing');
+					});
+				};
+
+				if (!('requestAnimationFrame' in window)) {
+					window.setTimeout(enableAwardInteractions, 0);
+					return;
+				}
+
+				window.requestAnimationFrame(() => {
+					window.requestAnimationFrame(enableAwardInteractions);
+				});
+			})();
+		</script>
 	)
 }
