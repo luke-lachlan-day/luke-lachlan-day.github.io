@@ -23,6 +23,7 @@ export type ExperienceItem = {
 	companyId?: Company['id'];
 	pictures?: ImageAsset[];
 	dateLabel: string;
+	cardDateLabel: string;
 	dateHeading?: string;
 	sortDate: string;
 	context: string;
@@ -814,6 +815,7 @@ export const profile = {
 					},
 				],
 				dateLabel: 'Mar 2022 - Present',
+				cardDateLabel: '2022 - Present',
 				sortDate: '2026-05-01',
 				context: 'Independent studio',
 				summary:
@@ -842,6 +844,7 @@ export const profile = {
 					},
 				],
 				dateLabel: 'Jan 2025 - Mar 2026',
+				cardDateLabel: '2025 - 2026',
 				sortDate: '2026-03-01',
 				context: 'Client and studio projects',
 				summary:
@@ -860,6 +863,7 @@ export const profile = {
 				company: 'SciWorld',
 				companyId: 'sciworld',
 				dateLabel: '2026',
+				cardDateLabel: '2026',
 				sortDate: '2026-01-01',
 				context: 'Science outreach and STEM education',
 				summary:
@@ -888,6 +892,7 @@ export const profile = {
 					},
 				],
 				dateLabel: 'Jun 2024 - Oct 2024',
+				cardDateLabel: '2024',
 				sortDate: '2024-10-01',
 				context: 'Contract vertical slice',
 				summary:
@@ -920,6 +925,7 @@ export const profile = {
 					},
 				],
 				dateLabel: 'Nov 2023 - Present',
+				cardDateLabel: '2023 - Present',
 				sortDate: '2026-05-10',
 				context: 'Independent games, tools, and web projects',
 				summary:
@@ -944,6 +950,7 @@ export const profile = {
 					},
 				],
 				dateLabel: 'Feb 2014 - Nov 2023',
+				cardDateLabel: '2014 - 2023',
 				sortDate: '2023-11-01',
 				context: 'Mathematics tutoring',
 				summary:
@@ -967,7 +974,8 @@ export const profile = {
 						alt: 'Aerial view of the University of Adelaide North Terrace campus.',
 					},
 				],
-				dateLabel: 'Bachelor of Science',
+				dateLabel: '2019',
+				cardDateLabel: '2019',
 				dateHeading: 'Degree',
 				sortDate: '2013-01-01',
 				context: 'Genetics, Microbiology and Immunology',
@@ -994,6 +1002,7 @@ export const profile = {
 					},
 				],
 				dateLabel: 'Mar 2021 - Mar 2022',
+				cardDateLabel: '2021 - 2022',
 				sortDate: '2022-03-01',
 				context: 'IT customer service',
 				summary:
@@ -1018,6 +1027,7 @@ export const profile = {
 					},
 				],
 				dateLabel: 'Jul 2016 - Jul 2021',
+				cardDateLabel: '2016 - 2021',
 				sortDate: '2021-07-01',
 				context: 'Army Reserve communications',
 				summary:

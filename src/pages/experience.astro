@@ -55,7 +55,7 @@ const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)
 							<PortfolioWheelCard
 								class="experience-wheel-card"
 								title={item.cardRole ?? item.role}
-								subtitle={item.dateLabel}
+								subtitle={item.cardDateLabel}
 								media={media}
 								mediaDecorative={true}
 								badge={icon ? { icon } : { label: item.company.slice(0, 1) }}
