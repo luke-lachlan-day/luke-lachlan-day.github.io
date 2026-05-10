@@ -57,7 +57,7 @@ const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyI
 						return (
 							<PortfolioWheelCard
 								class="experience-wheel-card"
-								title={item.role}
+								title={item.cardRole ?? item.role}
 								subtitle={item.dateLabel}
 								media={media}
 								mediaDecorative={true}
@@ -119,6 +119,31 @@ const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyI
 							</div>
 
 							<div class="project-detail-content experience-detail-content">
+								{
+									item.recognition && item.recognition.length > 0 && (
+										<div class="project-detail-kicker project-detail-topline experience-detail-topline">
+											<div class="project-awards project-awards-compact experience-recognition-compact" aria-label={`${item.role} recognition`}>
+												<div class="project-award-list">
+													{item.recognition.map((recognition) => (
+														<span
+															class="project-award experience-recognition-award"
+															role="img"
+															tabindex="0"
+															aria-label={`${recognition.year} ${recognition.name}, ${recognition.detail ? `${recognition.detail}, ` : ''}${recognition.awardedFrom}`}
+														>
+															<img src={recognition.emblem.src} alt="" loading="lazy" aria-hidden="true" />
+															<span class="project-award-details" aria-hidden="true">
+																<strong>{recognition.name}</strong>
+																<span>{recognition.detail ?? recognition.awardedFrom}</span>
+																<small>{recognition.detail ? `${recognition.awardedFrom} - ${recognition.year}` : recognition.year}</small>
+															</span>
+														</span>
+													))}
+												</div>
+											</div>
+										</div>
+									)
+								}
 								<h3>{item.role}</h3>
 								<div class="project-detail-meta">
 									<span class="project-detail-company">

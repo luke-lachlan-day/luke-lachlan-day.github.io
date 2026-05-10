@@ -2114,6 +2114,18 @@ h3 {
 	height: 64px;
 }
 
+.experience-detail-topline {
+	justify-content: flex-end;
+}
+
+.experience-recognition-compact .experience-recognition-award img {
+	width: 100%;
+	height: 100%;
+	filter: drop-shadow(0 4px 10px color-mix(in srgb, var(--heading) 18%, transparent));
+	object-fit: contain;
+	transform: translateY(-4px);
+}
+
 .experience-highlights {
 	display: grid;
 	gap: 10px;

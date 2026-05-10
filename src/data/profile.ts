@@ -7,9 +7,18 @@ export type Link = {
 	description?: string;
 };
 
+export type ExperienceRecognition = {
+	name: string;
+	awardedFrom: string;
+	detail?: string;
+	year: string;
+	emblem: ImageAsset;
+};
+
 export type ExperienceItem = {
 	id: string;
 	role: string;
+	cardRole?: string;
 	company: string;
 	companyId?: Company['id'];
 	picture?: ImageAsset;
@@ -18,6 +27,7 @@ export type ExperienceItem = {
 	sortDate: string;
 	context: string;
 	summary: string;
+	recognition?: ExperienceRecognition[];
 	highlights: string[];
 	tools: string[];
 };
@@ -55,7 +65,8 @@ export type CompanyId =
 	| 'sciworld'
 	| 'solo'
 	| 'australian-army'
-	| 'power-net-it-solutions';
+	| 'power-net-it-solutions'
+	| 'university-of-adelaide';
 
 export type Company = {
 	id: CompanyId;
@@ -208,6 +219,14 @@ export const profile = {
 			icon: {
 				src: '/assets/images/company-power-net-it-solutions.webp',
 				alt: 'Power-Net IT Solutions circular logo.',
+			},
+		},
+		{
+			id: 'university-of-adelaide',
+			name: 'University of Adelaide',
+			icon: {
+				src: '/assets/images/company-university-of-adelaide.webp',
+				alt: 'University of Adelaide crest.',
 			},
 		},
 	] satisfies Company[],
@@ -876,8 +895,13 @@ export const profile = {
 			},
 			{
 				id: 'uni-student',
-				role: 'Uni Student',
+				role: 'Graduate',
 				company: 'University of Adelaide',
+				companyId: 'university-of-adelaide',
+				picture: {
+					src: '/assets/images/experience-university-of-adelaide.webp',
+					alt: 'Aerial view of the University of Adelaide North Terrace campus.',
+				},
 				dateLabel: 'Bachelor of Science',
 				dateHeading: 'Degree',
 				sortDate: '2013-01-01',
@@ -895,6 +919,7 @@ export const profile = {
 			{
 				id: 'power-net-it-solutions',
 				role: 'Customer Service Function Consultant (IT)',
+				cardRole: 'IT Service Consultant',
 				company: 'Power-Net IT Solutions',
 				companyId: 'power-net-it-solutions',
 				picture: {
@@ -928,11 +953,24 @@ export const profile = {
 				context: 'Army Reserve communications',
 				summary:
 					'Served as an Information Systems Technician in the Australian Army Reserve across 144 Signal Squadron in South Australia and 108 Signal Squadron in Victoria.',
+				recognition: [
+					{
+						name: 'National Emergency Medal',
+						awardedFrom: 'Operation Bushfire Assist',
+						detail: 'Bushfires 19-20 clasp',
+						year: '2019-20',
+						emblem: {
+							src: '/assets/emblems/army-bushfire-assist.webp',
+							alt: 'Neutral medal-style emblem with wattle and flame cues for National Emergency Medal recognition.',
+						},
+					},
+				],
 				highlights: [
 					'Worked across unit parades, exercises, online and local courses, network administration, and equipment operation.',
 					'Built technical discipline through communications systems work and operational training.',
 					'Handled weapons training and worked within structured team environments.',
-					'Deployed on Bushfire Assist at Kangaroo Island and Covid-19 Assist.',
+					'Awarded the National Emergency Medal for Operation Bushfire Assist service at Kangaroo Island.',
+					'Served in Operation COVID-19 Assist.',
 				],
 				tools: ['Network Administration', 'Technical Systems', 'Equipment Operation', 'Training', 'Teamwork'],
 			},
