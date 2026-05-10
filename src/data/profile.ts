@@ -183,7 +183,7 @@ export const profile = {
 				sortDate: '2026-05-09',
 				dateLabel: 'May 2026',
 				yearLabel: '2026',
-				releaseStage: 'dev',
+				releaseStage: 'released',
 				awards: [],
 				projectUrl: 'https://luke-lachlan-day.github.io/',
 				sourceUrl: 'https://github.com/luke-lachlan-day/luke-lachlan-day.github.io',
@@ -223,7 +223,7 @@ export const profile = {
 				sortDate: '2026-05-08',
 				dateLabel: '2026',
 				yearLabel: '2026',
-				releaseStage: 'dev',
+				releaseStage: 'shelved',
 				awards: [],
 			},
 			{
@@ -242,26 +242,7 @@ export const profile = {
 				sortDate: '2026-05-07',
 				dateLabel: '2026',
 				yearLabel: '2026',
-				releaseStage: 'dev',
-				awards: [],
-			},
-			{
-				id: 'pon-revised',
-				companyId: 'solo',
-				product: 'Pon (Revised)',
-				pictures: [
-					{
-						src: '/assets/images/project-pon-revised.webp',
-						alt: 'Pixel art revised paddle-and-ball arcade scene for Pon Revised.',
-					},
-				],
-				description:
-					'A revised solo version of Pon, refining the original arcade rules, feedback, and moment-to-moment feel.',
-				tools: ['Arcade', 'Iteration', 'Prototype'],
-				sortDate: '2026-05-06',
-				dateLabel: '2026',
-				yearLabel: '2026',
-				releaseStage: 'dev',
+				releaseStage: 'shelved',
 				awards: [],
 			},
 			{
@@ -280,7 +261,7 @@ export const profile = {
 				sortDate: '2026-05-05',
 				dateLabel: '2026',
 				yearLabel: '2026',
-				releaseStage: 'dev',
+				releaseStage: 'shelved',
 				awards: [],
 			},
 			{
@@ -299,7 +280,7 @@ export const profile = {
 				sortDate: '2026-05-04',
 				dateLabel: '2026',
 				yearLabel: '2026',
-				releaseStage: 'dev',
+				releaseStage: 'shelved',
 				awards: [],
 			},
 			{
