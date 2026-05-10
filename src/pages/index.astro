@@ -60,7 +60,7 @@ const featuredProjects = home.featuredProjectIds
 								{company && (
 									<span class="project-wheel-company-badge project-card-company-badge" aria-hidden="true">
 										<span class="project-wheel-company-badge-back"></span>
-										<span class="project-wheel-company-badge-icon" style={`--company-icon-url: url("${company.icon.src}")`}></span>
+										<img class="project-wheel-company-badge-icon" src={company.icon.src} alt="" loading="lazy" {...getImageAttrs(company.icon)} />
 									</span>
 								)}
 							</ProjectImageFrame>

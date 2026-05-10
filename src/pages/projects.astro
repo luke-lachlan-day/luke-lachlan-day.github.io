@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/pages/showcase.css';
 import ArrowButton from '../components/ArrowButton.astro';
 import AwardMedals from '../components/AwardMedals.astro';
 import ButtonLink from '../components/ButtonLink.astro';
@@ -45,7 +46,8 @@ const initialTransitionSlotRange = 3;
 		<h1 id="projects-title">{projects.hero.title}</h1>
 	</section>
 
-	<section class="section project-showcase" id="project-showcase" aria-label="Project selector">
+	<section class="section project-showcase" id="project-showcase" aria-labelledby="project-selector-title">
+		<h2 id="project-selector-title" class="visually-hidden">Project selector</h2>
 		<div
 			class="project-wheel"
 			data-project-wheel
@@ -58,9 +60,9 @@ const initialTransitionSlotRange = 3;
 			data-wheel-initializing="true"
 			data-active-index={initialActiveProjectIndex}
 			role="group"
-			aria-label="Project selector"
+			aria-labelledby="project-selector-title"
 		>
-			<ArrowButton class="project-wheel-nav project-wheel-nav-prev" direction="prev" ariaLabel="Previous project" data-wheel-prev="" />
+			<ArrowButton class="project-wheel-nav project-wheel-nav-prev" direction="prev" label="Previous project" data-wheel-prev="" />
 
 			<div class="project-wheel-viewport">
 				{
@@ -92,7 +94,7 @@ const initialTransitionSlotRange = 3;
 				}
 			</div>
 
-			<ArrowButton class="project-wheel-nav project-wheel-nav-next" direction="next" ariaLabel="Next project" data-wheel-next="" />
+			<ArrowButton class="project-wheel-nav project-wheel-nav-next" direction="next" label="Next project" data-wheel-next="" />
 		</div>
 
 		<img class="project-wheel-chest" src="/assets/images/project-chest.webp" alt="" loading="lazy" {...getImageAttrs('/assets/images/project-chest.webp')} aria-hidden="true" />
@@ -143,13 +145,13 @@ const initialTransitionSlotRange = 3;
 												class="project-detail-gallery-control project-detail-gallery-control-prev"
 												direction="prev"
 												data-gallery-step="-1"
-												ariaLabel={`Show previous ${project.product} image`}
+												label={`Show previous ${project.product} image`}
 											/>
 											<ArrowButton
 												class="project-detail-gallery-control project-detail-gallery-control-next"
 												direction="next"
 												data-gallery-step="1"
-												ariaLabel={`Show next ${project.product} image`}
+												label={`Show next ${project.product} image`}
 											/>
 											<div class="project-detail-gallery-dots" role="group" aria-label={`${project.product} image selector`}>
 												{project.pictures.map((_, pictureIndex) => (

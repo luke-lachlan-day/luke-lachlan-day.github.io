@@ -3,7 +3,8 @@ type ArrowButtonDirection = 'prev' | 'next';
 
 type Props = {
 	direction: ArrowButtonDirection;
-	ariaLabel: string;
+	label?: string;
+	ariaLabel?: string;
 	class?: string;
 	type?: 'button' | 'submit' | 'reset';
 	[key: string]: unknown;
@@ -11,20 +12,22 @@ type Props = {
 
 const {
 	direction,
+	label,
 	ariaLabel,
 	class: className,
 	type = 'button',
 	...attrs
 } = Astro.props as Props;
 const buttonClass = ['arrow-button', `arrow-button-${direction}`, className].filter(Boolean).join(' ');
+const accessibleLabel = label ?? ariaLabel;
 ---
 
 <button
 	{...attrs}
 	class={buttonClass}
 	type={type}
-	aria-label={ariaLabel}
 	data-arrow-direction={direction}
 >
 	<span class="arrow-button-icon" aria-hidden="true"></span>
+	{accessibleLabel && <span class="visually-hidden">{accessibleLabel}</span>}
 </button>

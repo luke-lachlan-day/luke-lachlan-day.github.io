@@ -1,6 +1,7 @@
 ---
 import ProjectImageFrame from './ProjectImageFrame.astro';
 import type { ImageAsset } from '../data/profile';
+import { getImageAttrs } from '../utils/images';
 
 type WheelCardBadge = {
 	icon?: ImageAsset;
@@ -72,7 +73,7 @@ const mediaAttrs = mediaDecorative ? { 'aria-hidden': 'true' } : {};
 					<span class="project-wheel-company-badge" aria-hidden="true">
 						<span class="project-wheel-company-badge-back"></span>
 						{badge.icon ? (
-							<span class="project-wheel-company-badge-icon" style={`--company-icon-url: url("${badge.icon.src}")`}></span>
+							<img class="project-wheel-company-badge-icon" src={badge.icon.src} alt="" loading="lazy" {...getImageAttrs(badge.icon)} />
 						) : (
 							badge.label && <span class="project-wheel-company-badge-label">{badge.label}</span>
 						)}

@@ -4,6 +4,7 @@ import { getImageAttrs, type ImageDecoding } from '../utils/images';
 type Props = {
 	src: string;
 	alt: string;
+	wrapper?: 'span' | 'div' | 'figure';
 	loading?: 'eager' | 'lazy';
 	width?: number;
 	height?: number;
@@ -17,6 +18,7 @@ type Props = {
 const {
 	src,
 	alt,
+	wrapper = 'span',
 	loading = 'lazy',
 	width,
 	height,
@@ -35,10 +37,11 @@ const imageAttrs = {
 	width: width ?? fallbackImageAttrs.width,
 	height: height ?? fallbackImageAttrs.height,
 };
+const Wrapper = wrapper;
 ---
 
-<span {...attrs} class={frameClass} style={frameStyle}>
+<Wrapper {...attrs} class={frameClass} style={frameStyle}>
 	<span class="project-image-frame-backdrop" aria-hidden="true"></span>
 	<img class={foregroundClass} src={src} alt={alt} loading={loading} {...imageAttrs} />
 	<slot />
-</span>
+</Wrapper>

@@ -1,0 +1,86 @@
+﻿.falling-leaves {
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	overflow: hidden;
+	pointer-events: none;
+	contain: paint;
+}
+
+:root[data-leaves="off"] .falling-leaves {
+	display: none;
+}
+
+.falling-leaves-layer {
+	position: absolute;
+	inset: 0;
+}
+
+.falling-leaf {
+	--leaf-texture-image: url("/assets/images/leaf.webp");
+	--leaf-texture-opacity: 0.58;
+	--leaf-fill: color-mix(in srgb, var(--bg) 38%, var(--accent-3));
+	--leaf-filter: saturate(0.94) contrast(1.08);
+	--leaf-shape-mask: url("/assets/images/leaf.webp") center / contain no-repeat;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: var(--leaf-size);
+	aspect-ratio: 1;
+	background-color: var(--leaf-fill);
+	filter: var(--leaf-filter);
+	isolation: isolate;
+	transform-origin: 50% 56%;
+	-webkit-mask: var(--leaf-shape-mask);
+	mask: var(--leaf-shape-mask);
+	will-change: transform;
+}
+
+.falling-leaf::after {
+	position: absolute;
+	inset: 0;
+	background: var(--leaf-texture-image) center / contain no-repeat;
+	content: "";
+	mix-blend-mode: luminosity;
+	opacity: var(--leaf-texture-opacity);
+	pointer-events: none;
+}
+
+:root[data-theme="dark"] .falling-leaf {
+	--leaf-filter: saturate(0.88) contrast(1.12) brightness(0.82);
+}
+
+.falling-leaves-layer-back .falling-leaf {
+	--leaf-texture-image: url("/assets/images/leaf-blur-back.webp");
+	--leaf-texture-opacity: 0.16;
+	--leaf-fill: color-mix(in srgb, var(--bg) 76%, var(--accent-3));
+}
+
+.falling-leaves-layer-mid .falling-leaf {
+	--leaf-texture-image: url("/assets/images/leaf-blur-mid.webp");
+	--leaf-texture-opacity: 0.28;
+	--leaf-fill: color-mix(in srgb, var(--bg) 60%, var(--accent-3));
+}
+
+.falling-leaves-layer-front .falling-leaf {
+	--leaf-texture-image: url("/assets/images/leaf.webp");
+	--leaf-texture-opacity: 0.5;
+	--leaf-fill: color-mix(in srgb, var(--bg) 36%, var(--accent-3));
+}
+
+@media (max-width: 560px) {
+	.falling-leaf {
+		--leaf-filter: none;
+	}
+
+	.falling-leaf::after {
+		mix-blend-mode: normal;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.falling-leaves {
+		display: none;
+	}
+}
+

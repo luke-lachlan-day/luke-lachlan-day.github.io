@@ -18,6 +18,7 @@ type Props = {
 
 const { awards, ariaLabel, class: className } = Astro.props;
 const medalBaseSrc = '/assets/emblems/award-medal-base.webp';
+const headingId = `${ariaLabel.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}-heading`;
 ---
 
 {
@@ -26,8 +27,9 @@ const medalBaseSrc = '/assets/emblems/award-medal-base.webp';
 			class:list={['project-awards', 'project-awards-medal-rack', className]}
 			data-awards-initializing="true"
 			role="group"
-			aria-label={ariaLabel}
+			aria-labelledby={headingId}
 		>
+			<h2 id={headingId} class="visually-hidden">{ariaLabel}</h2>
 			<div class="project-award-list">
 				{awards.map((award) => {
 					const itemLabel = award.detail

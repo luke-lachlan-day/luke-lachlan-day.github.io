@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/pages/contact.css';
 import HeroContent from '../components/HeroContent.astro';
 import ThemeHeroArt from '../components/ThemeHeroArt.astro';
 import { profile } from '../data/profile';
@@ -34,7 +35,8 @@ const { contact } = profile;
 		/>
 	</section>
 
-	<section class="section contact-section" aria-label="Contact links">
+	<section class="section contact-section" aria-labelledby="contact-links-title">
+		<h2 id="contact-links-title" class="visually-hidden">Contact links</h2>
 		<div class="contact-grid">
 			{
 				contact.links.map((link) => (

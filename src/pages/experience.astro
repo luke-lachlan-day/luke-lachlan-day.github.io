@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/pages/showcase.css';
 import ArrowButton from '../components/ArrowButton.astro';
 import AwardMedals from '../components/AwardMedals.astro';
 import PortfolioWheelCard from '../components/PortfolioWheelCard.astro';
@@ -27,7 +28,8 @@ const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)
 		{experience.hero.lead && <p>{experience.hero.lead}</p>}
 	</section>
 
-	<section class="section project-showcase experience-showcase" id="experience-showcase" aria-label="Experience selector">
+	<section class="section project-showcase experience-showcase" id="experience-showcase" aria-labelledby="experience-selector-title">
+		<h2 id="experience-selector-title" class="visually-hidden">Experience selector</h2>
 		<div
 			class="project-wheel experience-wheel"
 			data-experience-wheel
@@ -40,9 +42,9 @@ const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)
 			data-wheel-initializing="true"
 			data-active-index={initialActiveExperienceIndex}
 			role="group"
-			aria-label="Experience selector"
+			aria-labelledby="experience-selector-title"
 		>
-			<ArrowButton class="project-wheel-nav project-wheel-nav-prev" direction="prev" ariaLabel="Previous experience" data-wheel-prev="" />
+			<ArrowButton class="project-wheel-nav project-wheel-nav-prev" direction="prev" label="Previous experience" data-wheel-prev="" />
 
 			<div class="project-wheel-viewport">
 				{
@@ -76,7 +78,7 @@ const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)
 				}
 			</div>
 
-			<ArrowButton class="project-wheel-nav project-wheel-nav-next" direction="next" ariaLabel="Next experience" data-wheel-next="" />
+			<ArrowButton class="project-wheel-nav project-wheel-nav-next" direction="next" label="Next experience" data-wheel-next="" />
 		</div>
 
 		<img class="project-wheel-chest experience-wheel-book" src="/assets/images/experience-book.webp" alt="" loading="lazy" {...getImageAttrs('/assets/images/experience-book.webp')} aria-hidden="true" />
@@ -129,13 +131,13 @@ const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)
 														class="project-detail-gallery-control project-detail-gallery-control-prev"
 														direction="prev"
 														data-gallery-step="-1"
-														ariaLabel={`Show previous ${item.role} image`}
+														label={`Show previous ${item.role} image`}
 													/>
 													<ArrowButton
 														class="project-detail-gallery-control project-detail-gallery-control-next"
 														direction="next"
 														data-gallery-step="1"
-														ariaLabel={`Show next ${item.role} image`}
+														label={`Show next ${item.role} image`}
 													/>
 													<div class="project-detail-gallery-dots" role="group" aria-label={`${item.role} image selector`}>
 														{pictures.map((_, pictureIndex) => (
