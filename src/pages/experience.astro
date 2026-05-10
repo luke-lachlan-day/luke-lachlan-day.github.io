@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ArrowButton from '../components/ArrowButton.astro';
 import AwardMedals from '../components/AwardMedals.astro';
 import PortfolioWheelCard from '../components/PortfolioWheelCard.astro';
 import ProjectImageFrame from '../components/ProjectImageFrame.astro';
@@ -40,9 +41,7 @@ const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)
 			role="group"
 			aria-label="Experience selector"
 		>
-			<button class="project-wheel-nav project-wheel-nav-prev" type="button" data-wheel-prev aria-label="Previous experience">
-				<span aria-hidden="true">&lsaquo;</span>
-			</button>
+			<ArrowButton class="project-wheel-nav project-wheel-nav-prev" direction="prev" ariaLabel="Previous experience" data-wheel-prev="" />
 
 			<div class="project-wheel-viewport">
 				{
@@ -76,9 +75,7 @@ const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)
 				}
 			</div>
 
-			<button class="project-wheel-nav project-wheel-nav-next" type="button" data-wheel-next aria-label="Next experience">
-				<span aria-hidden="true">&rsaquo;</span>
-			</button>
+			<ArrowButton class="project-wheel-nav project-wheel-nav-next" direction="next" ariaLabel="Next experience" data-wheel-next="" />
 		</div>
 
 		<img class="project-wheel-chest experience-wheel-book" src="/assets/images/experience-book.webp" alt="" loading="lazy" aria-hidden="true" />
@@ -127,22 +124,18 @@ const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)
 											))}
 											{hasMultiplePictures && (
 												<>
-													<button
+													<ArrowButton
 														class="project-detail-gallery-control project-detail-gallery-control-prev"
-														type="button"
+														direction="prev"
 														data-gallery-step="-1"
-														aria-label={`Show previous ${item.role} image`}
-													>
-														<span aria-hidden="true">&lsaquo;</span>
-													</button>
-													<button
+														ariaLabel={`Show previous ${item.role} image`}
+													/>
+													<ArrowButton
 														class="project-detail-gallery-control project-detail-gallery-control-next"
-														type="button"
+														direction="next"
 														data-gallery-step="1"
-														aria-label={`Show next ${item.role} image`}
-													>
-														<span aria-hidden="true">&rsaquo;</span>
-													</button>
+														ariaLabel={`Show next ${item.role} image`}
+													/>
 													<div class="project-detail-gallery-dots" role="group" aria-label={`${item.role} image selector`}>
 														{pictures.map((_, pictureIndex) => (
 															<button

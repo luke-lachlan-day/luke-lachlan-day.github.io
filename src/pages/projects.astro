@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ArrowButton from '../components/ArrowButton.astro';
 import AwardMedals from '../components/AwardMedals.astro';
 import ButtonLink from '../components/ButtonLink.astro';
 import PortfolioWheelCard from '../components/PortfolioWheelCard.astro';
@@ -58,9 +59,7 @@ const initialTransitionSlotRange = 3;
 			role="group"
 			aria-label="Project selector"
 		>
-			<button class="project-wheel-nav project-wheel-nav-prev" type="button" data-wheel-prev aria-label="Previous project">
-				<span aria-hidden="true">&lsaquo;</span>
-			</button>
+			<ArrowButton class="project-wheel-nav project-wheel-nav-prev" direction="prev" ariaLabel="Previous project" data-wheel-prev="" />
 
 			<div class="project-wheel-viewport">
 				{
@@ -92,9 +91,7 @@ const initialTransitionSlotRange = 3;
 				}
 			</div>
 
-			<button class="project-wheel-nav project-wheel-nav-next" type="button" data-wheel-next aria-label="Next project">
-				<span aria-hidden="true">&rsaquo;</span>
-			</button>
+			<ArrowButton class="project-wheel-nav project-wheel-nav-next" direction="next" ariaLabel="Next project" data-wheel-next="" />
 		</div>
 
 		<img class="project-wheel-chest" src="/assets/images/project-chest.webp" alt="" loading="lazy" aria-hidden="true" />
@@ -141,22 +138,18 @@ const initialTransitionSlotRange = 3;
 									))}
 									{hasMultiplePictures && (
 										<>
-											<button
+											<ArrowButton
 												class="project-detail-gallery-control project-detail-gallery-control-prev"
-												type="button"
+												direction="prev"
 												data-gallery-step="-1"
-												aria-label={`Show previous ${project.product} image`}
-											>
-												<span aria-hidden="true">&lsaquo;</span>
-											</button>
-											<button
+												ariaLabel={`Show previous ${project.product} image`}
+											/>
+											<ArrowButton
 												class="project-detail-gallery-control project-detail-gallery-control-next"
-												type="button"
+												direction="next"
 												data-gallery-step="1"
-												aria-label={`Show next ${project.product} image`}
-											>
-												<span aria-hidden="true">&rsaquo;</span>
-											</button>
+												ariaLabel={`Show next ${project.product} image`}
+											/>
 											<div class="project-detail-gallery-dots" role="group" aria-label={`${project.product} image selector`}>
 												{project.pictures.map((_, pictureIndex) => (
 													<button
