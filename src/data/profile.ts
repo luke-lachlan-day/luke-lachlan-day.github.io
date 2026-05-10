@@ -917,7 +917,7 @@ export const profile = {
 			{
 				id: 'australian-army',
 				role: 'Information Systems Technician',
-				company: 'Australian Army',
+				company: 'Australian Army Reserve',
 				companyId: 'australian-army',
 				picture: {
 					src: '/assets/images/experience-australian-army.webp',
@@ -927,7 +927,7 @@ export const profile = {
 				sortDate: '2021-07-01',
 				context: 'Army Reserve communications',
 				summary:
-					'Served as an Information Systems Technician across 144 Signal Squadron in South Australia and 108 Signal Squadron in Victoria.',
+					'Served as an Information Systems Technician in the Australian Army Reserve across 144 Signal Squadron in South Australia and 108 Signal Squadron in Victoria.',
 				highlights: [
 					'Worked across unit parades, exercises, online and local courses, network administration, and equipment operation.',
 					'Built technical discipline through communications systems work and operational training.',

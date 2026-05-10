@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectImageFrame from '../components/ProjectImageFrame.astro';
 import { profile, type ExperienceItem } from '../data/profile';
 
 const { experience, companies } = profile;
@@ -19,6 +20,7 @@ const getInitialWheelSlot = (index: number) => {
 	return Math.abs(slot) <= initialTransitionSlotRange ? String(slot) : undefined;
 };
 const getCompanyIcon = (item: ExperienceItem) => (item.companyId ? companyById.get(item.companyId)?.icon : undefined);
+const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyIcon(item);
 ---
 
 <BaseLayout
@@ -47,6 +49,7 @@ const getCompanyIcon = (item: ExperienceItem) => (item.companyId ? companyById.g
 				{
 					wheelExperience.map((item, index) => {
 						const icon = getCompanyIcon(item);
+						const media = getExperienceMedia(item);
 						const isActive = index === initialActiveExperienceIndex;
 						const initialSlot = getInitialWheelSlot(index);
 
@@ -62,15 +65,23 @@ const getCompanyIcon = (item: ExperienceItem) => (item.companyId ? companyById.g
 								aria-label={`Select ${item.role} at ${item.company}`}
 								tabindex={isActive ? undefined : -1}
 							>
-								<span class="project-wheel-media experience-wheel-mark" aria-hidden="true">
-									<span class="experience-wheel-mark-initial">{item.company.slice(0, 1)}</span>
-									<span class="project-wheel-company-badge">
-										<span class="project-wheel-company-badge-back"></span>
-										{icon ? <span class="project-wheel-company-badge-icon" style={`--company-icon-url: url("${icon.src}")`}></span> : <span class="project-wheel-company-badge-label">{item.company.slice(0, 1)}</span>}
-									</span>
-								</span>
+								{
+									media ? (
+										<ProjectImageFrame class="project-wheel-media" src={media.src} alt="" loading={isActive ? 'eager' : 'lazy'} aria-hidden="true">
+											<span class="project-wheel-company-badge">
+												<span class="project-wheel-company-badge-back"></span>
+												{icon ? <span class="project-wheel-company-badge-icon" style={`--company-icon-url: url("${icon.src}")`}></span> : <span class="project-wheel-company-badge-label">{item.company.slice(0, 1)}</span>}
+											</span>
+										</ProjectImageFrame>
+									) : (
+										<span class="project-wheel-media experience-wheel-media-fallback" aria-hidden="true">
+											<span class="experience-media-fallback-initial">{item.company.slice(0, 1)}</span>
+										</span>
+									)
+								}
 								<span class="project-wheel-body">
 									<span class="project-wheel-title">{item.role}</span>
+									<span class="project-wheel-year">{item.dateLabel}</span>
 								</span>
 							</button>
 						);
@@ -89,6 +100,7 @@ const getCompanyIcon = (item: ExperienceItem) => (item.companyId ? companyById.g
 			{
 				wheelExperience.map((item, index) => {
 					const icon = getCompanyIcon(item);
+					const media = getExperienceMedia(item);
 
 					return (
 						<article
@@ -98,47 +110,35 @@ const getCompanyIcon = (item: ExperienceItem) => (item.companyId ? companyById.g
 							data-experience-index={index}
 							hidden={index === initialActiveExperienceIndex ? undefined : true}
 						>
-							<div class="experience-detail-overview" aria-label={`${item.role} overview`}>
-								<div class="experience-detail-emblem" aria-hidden="true">
-									{icon ? <img src={icon.src} alt="" loading={index === 0 ? 'eager' : 'lazy'} /> : <span>{item.company.slice(0, 1)}</span>}
-								</div>
-								{item.picture && (
-									<div class="experience-detail-picture">
-										<img src={item.picture.src} alt={item.picture.alt} loading={index === 0 ? 'eager' : 'lazy'} />
-									</div>
-								)}
-								<dl class="experience-fact-list">
-									<div>
-										<dt>Company</dt>
-										<dd>{item.company}</dd>
-									</div>
-									<div>
-										<dt>{item.dateHeading ?? 'Dates'}</dt>
-										<dd>{item.dateLabel}</dd>
-									</div>
-									<div>
-										<dt>Focus</dt>
-										<dd>{item.context}</dd>
-									</div>
-								</dl>
+							<div class="project-detail-media experience-detail-media">
+								{
+									media ? (
+										<ProjectImageFrame class="project-detail-gallery" src={media.src} alt={media.alt} loading={index === 0 ? 'eager' : 'lazy'}>
+											{icon && (
+												<span class="project-wheel-company-badge experience-detail-company-badge" aria-hidden="true">
+													<span class="project-wheel-company-badge-back"></span>
+													<span class="project-wheel-company-badge-icon" style={`--company-icon-url: url("${icon.src}")`}></span>
+												</span>
+											)}
+										</ProjectImageFrame>
+									) : (
+										<div class="experience-detail-media-fallback" aria-hidden="true">
+											<span class="experience-media-fallback-initial">{item.company.slice(0, 1)}</span>
+										</div>
+									)
+								}
 							</div>
 
 							<div class="project-detail-content experience-detail-content">
-								<div class="project-detail-kicker">
-									<span>{item.context}</span>
-									<span>{item.dateLabel}</span>
-								</div>
 								<h3>{item.role}</h3>
 								<div class="project-detail-meta">
 									<span class="project-detail-company">
 										{icon && <img src={icon.src} alt="" loading="lazy" />}
 										<span>{item.company}</span>
 									</span>
+									<span>{item.dateLabel}</span>
 								</div>
 								<p class="project-detail-description">{item.summary}</p>
-								<div class="tool-list" aria-label={`${item.role} tools and skills`}>
-									{item.tools.map((tool) => <span>{tool}</span>)}
-								</div>
 								<div class="experience-highlights" aria-label={`${item.role} highlights`}>
 									<p class="experience-highlights-title">Highlights</p>
 									<ul>
