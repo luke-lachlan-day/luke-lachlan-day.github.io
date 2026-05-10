@@ -298,8 +298,6 @@ main {
 .project-detail-media,
 .project-detail-gallery,
 .arrow-button,
-.arrow-button-icon,
-.arrow-button-icon::before,
 .project-detail-gallery-control,
 .project-detail-gallery-dot,
 .project-detail-kicker > span,
@@ -334,10 +332,7 @@ main {
 		background-color var(--theme-transition),
 		border-color var(--theme-transition),
 		box-shadow var(--theme-transition),
-		color var(--theme-transition),
-		filter var(--theme-transition),
-		opacity var(--theme-transition),
-		transform var(--theme-transition);
+		color var(--theme-transition);
 }
 
 .site-header {
@@ -433,6 +428,9 @@ main {
 	font-size: 1.18rem;
 	font-weight: 400;
 	line-height: 1;
+	transition:
+		color var(--theme-transition),
+		transform var(--motion-fast);
 }
 
 .nav-links a::after {
@@ -502,6 +500,10 @@ main {
 	grid-template-columns: 1fr 1fr;
 	height: var(--toggle-height);
 	width: var(--toggle-width);
+	transition:
+		background-color var(--theme-transition),
+		box-shadow var(--theme-transition),
+		transform var(--motion-fast);
 }
 
 .leaves-toggle {
@@ -538,6 +540,11 @@ main {
 	border-radius: 999px;
 	background: var(--surface);
 	box-shadow: 0 1px 4px var(--toggle-shadow-color);
+	transition:
+		background-color var(--theme-transition),
+		border-color var(--theme-transition),
+		box-shadow var(--theme-transition),
+		transform var(--motion-fast);
 }
 
 :root[data-theme="dark"] .theme-toggle::before {
@@ -582,6 +589,10 @@ main {
 	-webkit-mask: var(--theme-icon-mask) center / contain no-repeat;
 	mask: var(--theme-icon-mask) center / contain no-repeat;
 	transform: translateX(var(--theme-icon-offset-x)) scale(var(--theme-icon-scale));
+	transition:
+		background-color var(--theme-transition),
+		opacity var(--motion-fast),
+		transform var(--motion-fast);
 }
 
 .theme-icon-light {
@@ -791,8 +802,6 @@ h3 {
 		border-color var(--theme-transition),
 		box-shadow var(--theme-transition),
 		color var(--theme-transition),
-		filter var(--theme-transition),
-		opacity var(--theme-transition),
 		transform var(--motion-button);
 }
 
@@ -852,6 +861,9 @@ h3 {
 	font-weight: 400;
 	line-height: 1;
 	white-space: nowrap;
+	transition:
+		color var(--theme-transition),
+		transform var(--motion-fast);
 }
 
 .text-link:hover,
@@ -894,7 +906,7 @@ h3 {
 	filter: var(--image-filter);
 	image-rendering: pixelated;
 	opacity: 0;
-	transition: opacity var(--theme-transition), filter var(--theme-transition);
+	transition: opacity var(--theme-transition);
 }
 
 :root[data-theme="light"] .theme-asset-dark,
@@ -1023,11 +1035,11 @@ h3 {
 	padding: 9px;
 	color: inherit;
 	text-decoration: none;
+	transition: transform var(--motion-fast);
 }
 
 .project-card:hover {
 	transform: var(--hover-lift);
-	transition: transform var(--motion-fast);
 }
 
 .project-card:focus-visible,
@@ -1276,7 +1288,6 @@ h3 {
 		border-color var(--theme-transition),
 		box-shadow var(--theme-transition),
 		color var(--theme-transition),
-		filter var(--theme-transition),
 		opacity var(--motion-medium),
 		transform var(--motion-medium);
 }
@@ -1554,7 +1565,7 @@ h3 {
 .arrow-button {
 	--arrow-button-size: 48px;
 	--arrow-button-icon-size: 18px;
-	--arrow-button-icon-color: currentColor;
+	--arrow-button-icon-color: var(--accent);
 	position: relative;
 	display: inline-grid;
 	place-items: center;
@@ -1593,6 +1604,7 @@ h3 {
 	width: 100%;
 	height: 100%;
 	color: var(--arrow-button-icon-color);
+	transition: none;
 }
 
 .arrow-button-icon::before {
@@ -1602,6 +1614,7 @@ h3 {
 	background: currentColor;
 	clip-path: polygon(28% 12%, 78% 50%, 28% 88%, 20% 76%, 54% 50%, 20% 24%);
 	content: "";
+	transition: none;
 }
 
 .arrow-button-prev .arrow-button-icon::before {
@@ -1706,6 +1719,7 @@ h3 {
 }
 
 .project-detail-gallery-control {
+	--arrow-button-icon-color: var(--heading);
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -1755,7 +1769,6 @@ h3 {
 		background-color var(--theme-transition),
 		border-color var(--theme-transition),
 		box-shadow var(--theme-transition),
-		color var(--theme-transition),
 		opacity var(--motion-fast),
 		transform var(--motion-fast);
 }
@@ -1767,9 +1780,9 @@ h3 {
 }
 
 .project-detail-gallery-control:hover .arrow-button-icon {
+	--arrow-button-icon-color: var(--accent);
 	border-color: color-mix(in srgb, var(--accent) 62%, var(--surface));
 	background: var(--surface-hover-strong);
-	color: var(--accent);
 }
 
 .project-detail-gallery-control:focus-visible {
@@ -2377,6 +2390,12 @@ h3 {
 	color: inherit;
 	text-decoration: none;
 	text-align: center;
+	transition:
+		background-color var(--theme-transition),
+		border-color var(--theme-transition),
+		box-shadow var(--theme-transition),
+		color var(--theme-transition),
+		transform var(--motion-fast);
 }
 
 .contact-card:hover {
@@ -2463,6 +2482,7 @@ h3 {
 	image-rendering: pixelated;
 	pointer-events: none;
 	transform: translateX(calc(-50% + var(--footer-visual-offset-x)));
+	transition: opacity var(--theme-transition);
 }
 
 .site-footer::before {
@@ -2557,6 +2577,11 @@ h3 {
 	border-radius: 10px;
 	background-color: color-mix(in srgb, var(--surface) 84%, var(--bg));
 	color: var(--accent);
+	transition:
+		background-color var(--theme-transition),
+		border-color var(--theme-transition),
+		color var(--theme-transition),
+		transform var(--motion-fast);
 }
 
 .footer-links a:hover,
