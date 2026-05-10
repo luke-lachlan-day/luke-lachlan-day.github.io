@@ -1417,17 +1417,149 @@ h3 {
 }
 
 .project-detail-media {
+	position: relative;
 	overflow: hidden;
 	border-radius: 14px;
 	background: var(--surface-soft);
 }
 
-.project-detail-media img {
+.project-detail-gallery {
+	--project-gallery-transition-ms: 900ms;
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
 	width: 100%;
 	aspect-ratio: 16 / 10.2;
+	background: var(--surface-soft);
+}
+
+.project-detail-gallery-image {
+	position: absolute;
+	inset: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
 	filter: var(--image-filter);
 	image-rendering: pixelated;
 	object-fit: cover;
+	opacity: 0;
+	z-index: 0;
+	transition: opacity var(--project-gallery-transition-ms) ease-in-out;
+}
+
+.project-detail-gallery-image[data-gallery-state="active"] {
+	opacity: 1;
+	z-index: 2;
+}
+
+.project-detail-gallery-image[data-gallery-state="exiting"] {
+	opacity: 0;
+	z-index: 1;
+}
+
+.project-detail-gallery-control {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	width: 50%;
+	border: 0;
+	background: transparent;
+	color: var(--heading);
+	cursor: pointer;
+	padding: 0 14px;
+}
+
+.project-detail-gallery-control-prev {
+	left: 0;
+	justify-content: flex-start;
+}
+
+.project-detail-gallery-control-next {
+	right: 0;
+	justify-content: flex-end;
+}
+
+.project-detail-gallery-control span {
+	display: grid;
+	place-items: center;
+	width: 42px;
+	height: 42px;
+	border: 1px solid color-mix(in srgb, var(--surface) 70%, var(--border));
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--surface-glass) 82%, var(--bg));
+	box-shadow: var(--shadow-soft);
+	font-family: var(--font-display);
+	font-size: 2rem;
+	line-height: 1;
+	opacity: 0;
+	transform: translateY(2px);
+	transition:
+		background-color var(--theme-transition),
+		border-color var(--theme-transition),
+		box-shadow var(--theme-transition),
+		color var(--theme-transition),
+		opacity 140ms ease,
+		transform 140ms ease;
+}
+
+.project-detail-gallery:hover .project-detail-gallery-control span,
+.project-detail-gallery-control:focus-visible span {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.project-detail-gallery-control:focus-visible {
+	outline: 3px solid color-mix(in srgb, var(--accent) 48%, transparent);
+	outline-offset: -6px;
+}
+
+.project-detail-gallery-dots {
+	position: absolute;
+	right: 0;
+	bottom: 12px;
+	left: 0;
+	z-index: 3;
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+	pointer-events: none;
+}
+
+.project-detail-gallery-dot {
+	width: 11px;
+	height: 11px;
+	border: 1px solid color-mix(in srgb, var(--surface) 78%, var(--border));
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--surface-glass) 84%, var(--bg));
+	box-shadow: 0 2px 8px color-mix(in srgb, var(--heading) 22%, transparent);
+	cursor: pointer;
+	padding: 0;
+	pointer-events: auto;
+	transition:
+		background-color var(--theme-transition),
+		border-color var(--theme-transition),
+		box-shadow var(--theme-transition),
+		transform 140ms ease;
+}
+
+.project-detail-gallery-dot[aria-current="true"] {
+	border-color: color-mix(in srgb, var(--accent) 70%, var(--surface));
+	background: var(--accent);
+	transform: scale(1.16);
+}
+
+.project-detail-gallery-dot:focus-visible {
+	outline: 3px solid color-mix(in srgb, var(--accent) 48%, transparent);
+	outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.project-detail-gallery-image {
+		transition: none;
+	}
 }
 
 .project-detail-content {
@@ -1483,8 +1615,7 @@ h3 {
 	overflow-wrap: anywhere;
 }
 
-.project-detail-description,
-.project-awards-empty {
+.project-detail-description {
 	color: var(--muted);
 	font-weight: 700;
 }

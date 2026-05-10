@@ -47,7 +47,13 @@ export type ThemeImageAssets = {
 	dark: ImageAsset;
 };
 
-export type CompanyId = 'daytime-devs' | 'catalyst-games' | 'solo' | 'australian-army' | 'power-net-it-solutions';
+export type CompanyId =
+	| 'daytime-devs'
+	| 'catalyst-games'
+	| 'coastal-derrieres'
+	| 'solo'
+	| 'australian-army'
+	| 'power-net-it-solutions';
 
 export type Company = {
 	id: CompanyId;
@@ -137,6 +143,14 @@ export const profile = {
 			},
 		},
 		{
+			id: 'coastal-derrieres',
+			name: 'Coastal Derrieres',
+			icon: {
+				src: '/assets/images/company-coastal-derrieres.webp',
+				alt: 'Beach Bums app icon associated with Coastal Derrieres.',
+			},
+		},
+		{
 			id: 'solo',
 			name: 'Solo',
 			icon: {
@@ -198,6 +212,10 @@ export const profile = {
 					{
 						src: '/assets/images/project-three-hearted-octopus.webp',
 						alt: 'Pixel art octopus underwater with three floating hearts for Three Hearted Octopus.',
+					},
+					{
+						src: '/assets/images/project-x-men.webp',
+						alt: 'YouTube thumbnail artwork reused as a second gallery test image.',
 					},
 				],
 				description:
@@ -383,6 +401,25 @@ export const profile = {
 				awards: [],
 			},
 			{
+				id: 'hot-potato',
+				companyId: 'solo',
+				product: 'Hot Potato',
+				pictures: [
+					{
+						src: '/assets/images/project-quizmas-quizes-and-games.webp',
+						alt: 'Pixel art festive quiz board reused for Hot Potato.',
+					},
+				],
+				description:
+					'A shelved solo party-game prototype built around quick reactions, passing pressure, and light group chaos.',
+				tools: ['Party Game', 'Prototype', 'Solo'],
+				sortDate: '2026-05-02',
+				dateLabel: '2026',
+				yearLabel: '2026',
+				releaseStage: 'shelved',
+				awards: [],
+			},
+			{
 				id: 'petes-place',
 				companyId: 'solo',
 				product: "Pete's Place",
@@ -390,6 +427,14 @@ export const profile = {
 					{
 						src: '/assets/images/project-petes-place.webp',
 						alt: "Pixel art cozy forest shop scene for Pete's Place.",
+					},
+					{
+						src: '/assets/images/project-dungeons-and-dining-tables.webp',
+						alt: 'Steam header art reused as a second gallery test image.',
+					},
+					{
+						src: '/assets/images/project-creature-sim.webp',
+						alt: 'Pixel art creature habitat reused as a third gallery test image.',
 					},
 				],
 				description:
@@ -422,6 +467,68 @@ export const profile = {
 				projectUrl: 'https://store.steampowered.com/app/2941630/Dungeons_and_Dining_Tables/',
 			},
 			{
+				id: 'beach-bums',
+				companyId: 'coastal-derrieres',
+				product: 'Beach Bums',
+				pictures: [
+					{
+						src: '/assets/images/project-beach-bums.webp',
+						alt: 'Steam header art for Beach Bums.',
+					},
+					{
+						src: '/assets/images/project-beach-bums-capsule.webp',
+						alt: 'Steam capsule art for Beach Bums.',
+					},
+				],
+				description:
+					'A 2D hidden object memory game about finding misplaced swimsuits and restoring order after a tidal wave disrupts a beach scene.',
+				tools: ['Unity', 'C#', 'FMOD', 'Hidden Object', 'Level Editor'],
+				sortDate: '2024-10-01',
+				dateLabel: 'Jun 2024 - Oct 2024',
+				yearLabel: '2024',
+				releaseStage: 'contributed',
+				awards: [],
+				projectUrl: 'https://store.steampowered.com/app/2858760/Beach_Bums/',
+			},
+			{
+				id: 'think-digital-vr-work',
+				companyId: 'catalyst-games',
+				product: 'Think Digital VR Work',
+				pictures: [
+					{
+						src: '/assets/images/project-dungeons-and-dining-tables.webp',
+						alt: 'Steam header art reused for Think Digital VR Work.',
+					},
+				],
+				description:
+					'A Catalyst Games contribution to VR client work, supporting interactive training experiences and practical project delivery.',
+				tools: ['VR', 'Client Work', 'Unity'],
+				sortDate: '2026-02-01',
+				dateLabel: '2025-2026',
+				yearLabel: '2025-2026',
+				releaseStage: 'contributed',
+				awards: [],
+			},
+			{
+				id: 'disney-game-night',
+				companyId: 'catalyst-games',
+				product: 'Disney Game Night',
+				pictures: [
+					{
+						src: '/assets/images/project-quizmas-quizes-and-games.webp',
+						alt: 'Pixel art festive quiz board reused for Disney Game Night.',
+					},
+				],
+				description:
+					'A Catalyst Games contribution to a themed game-night experience, supporting playful group activities and event-ready presentation.',
+				tools: ['Event Game', 'Group Play', 'Unity'],
+				sortDate: '2026-01-01',
+				dateLabel: '2025-2026',
+				yearLabel: '2025-2026',
+				releaseStage: 'contributed',
+				awards: [],
+			},
+			{
 				id: 'coop-climbing',
 				companyId: 'daytime-devs',
 				product: 'Co-op Cat Temple Escape',
@@ -429,6 +536,18 @@ export const profile = {
 					{
 						src: '/assets/images/project-coop-cat-temple-escape.webp',
 						alt: 'Pixel art cats fleeing a collapsing Egyptian temple corridor.',
+					},
+					{
+						src: '/assets/images/project-climbing.webp',
+						alt: 'Pixel art climbing scene reused as a second gallery test image.',
+					},
+					{
+						src: '/assets/images/project-trusty-battles.webp',
+						alt: 'Pixel art battle arena reused as a third gallery test image.',
+					},
+					{
+						src: '/assets/images/project-rogue-hands.webp',
+						alt: 'Pixel art hands reaching toward a glowing gem reused as a fourth gallery test image.',
 					},
 				],
 				description:
@@ -531,13 +650,13 @@ export const profile = {
 			{
 				id: 'self-employed-unity-developer',
 				role: 'Unity Developer',
-				company: 'Self Employed',
-				companyId: 'solo',
+				company: 'Coastal Derrieres',
+				companyId: 'coastal-derrieres',
 				dateLabel: 'Jun 2024 - Oct 2024',
 				sortDate: '2024-10-01',
 				context: 'Contract vertical slice',
 				summary:
-					'Worked with Coastal Derrieres Pty Ltd to turn the Beach Bums design document into a playable vertical slice for funding opportunities.',
+					'Worked with Coastal Derrieres to turn the Beach Bums design document into a playable vertical slice for funding opportunities.',
 				highlights: [
 					'Provided senior Unity development support inside a small multidisciplinary team of four.',
 					'Translated the design into a practical production plan and helped keep the scope achievable.',
