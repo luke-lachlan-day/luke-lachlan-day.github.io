@@ -10,10 +10,12 @@ This file is the repo-level source of truth for future agent work on this Astro 
 - Node.js `>=22.12.0`.
 - Source code lives under `src/`.
 - Static assets live under `public/assets/`.
-- Shared portfolio content lives primarily in `src/data/profile.ts`.
-- Global styling lives in `src/styles/global.css`.
+- Shared data types live in `src/data/types.ts`.
+- Portfolio data lives in focused modules such as `src/data/projects.ts`, `src/data/experience.ts`, `src/data/companies.ts`, `src/data/contact.ts`, `src/data/home.ts`, and `src/data/site.ts`.
+- `src/data/profile.ts` aggregates shared data exports for convenience.
+- Global styles are composed through `src/styles/global.css`.
 
-## Commands
+## Commands and Validation
 
 - `npm run dev` starts the development server.
 - `npm run check` runs Astro's type and content validation.
@@ -22,11 +24,9 @@ This file is the repo-level source of truth for future agent work on this Astro 
 - `npm run format:check` checks Prettier formatting without writing changes.
 - `npm run preview` previews the production build.
 
-After code changes, run `npm run check`, `npm run build`, and `npm run format:check` unless the user explicitly asks not to. Use `npm run format` only when intentionally applying formatting changes. Report any commands that were not run.
+After code changes, run the smallest relevant validation available. Default to `npm run check`, `npm run build`, and `npm run format:check` unless the user explicitly asks not to. Use `npm run format` only when intentionally applying formatting changes. Report any commands that were not run.
 
-Do not run Playwright checks, browser validation, dev servers, previews, or other visual validation commands unless the user explicitly asks for them. When visual validation would normally be appropriate, tell the user which visual check is recommended and leave execution to them unless requested.
-
-For visual or UI changes, describe the recommended review at phone, tablet, and desktop/PC widths, but do not start a dev server, open a browser, or run Playwright/browser review unless the user explicitly asks.
+Do not run Playwright checks, browser validation, dev servers, previews, or other visual validation commands unless the user explicitly asks for them. For visual or UI changes, describe the recommended review at phone, tablet, and desktop/PC widths instead.
 
 ## Playwright
 
@@ -44,32 +44,92 @@ The repo currently does not define a dedicated Playwright npm script or committe
 ## Engineering Standards
 
 - Keep changes scoped. Do not perform unrelated refactors, dependency churn, broad restyling, or metadata cleanup while making content or feature edits.
+- Prefer simple, explicit code over clever abstractions.
+- Do not introduce a shared abstraction until it removes real duplication or names a clear domain concept.
+- Prefer deleting, tightening, or renaming code before adding new systems.
+- Keep page files focused on composition: gather data, choose components, and render the page.
+- Keep components focused: one component should have one clear rendering responsibility.
+- Keep business and content data in typed data modules, not scattered through page markup.
 - Do not add new hard-coded content, colors, spacing scales, asset paths, or repeated constants when a typed data object, CSS custom property, or shared helper is appropriate.
-- Add new portfolio data through typed data modules, primarily `src/data/profile.ts`, so pages render from data rather than page-specific one-offs.
 - Route new colors through the existing CSS variable palette in `:root`, `:root[data-theme="light"]`, and `:root[data-theme="dark"]`; both themes must remain intentional.
-- Prefer modular, reusable Astro components when markup repeats or represents a reusable concept such as project cards, contact cards, page heroes, or section headings.
 - Preserve the current visual direction: pixel-art assets, playful portfolio styling, responsive layouts, light/dark theme support, and consistent card, button, and section treatment.
-- Treat accessibility and shipping quality as mandatory: semantic HTML, useful alt text, keyboard-operable controls, no broken links or placeholders in shipped content unless explicitly intentional, responsive/adaptive layouts that display well on phone, tablet, and desktop/PC screens, and no text overflow or incoherent overlap.
 
-## Semantic Frontend Guardrails
+## Refactor Rules
 
-- Prefer native HTML semantics before adding ARIA. Use ARIA only when native HTML cannot express the required semantics, state, or accessible name.
-- Prefer visible text or `.visually-hidden` text before `aria-label` when a control or link can reasonably contain text.
-- Use `<img>` with useful `alt` text for meaningful images, logos, screenshots, badges, and content-bearing assets. Use `alt=""` only for decorative images.
+- Refactors must be behavior-preserving unless the user explicitly asks for behavior or design changes.
+- Do not mix structural refactors with visual redesigns.
+- Do not mix content rewrites with code refactors unless fixing an obvious typo.
+- Prefer small commits by concern, such as tooling, data splits, component extraction, script simplification, CSS organization, or cleanup/removal.
+
+## Frontend Acceptance Checks
+
+For every relevant change, verify the affected phase against these checks before finishing:
+
+- Every meaningful image has useful alt text.
+- Decorative images use `alt=""` or are hidden appropriately.
+- Buttons that behave like buttons remain `<button>`.
+- Links that navigate remain `<a>`.
+- Keyboard navigation works for wheel cards, gallery arrows, gallery dots, the theme toggle, and the leaves toggle.
+- Reduced-motion users do not get forced autoplay or animation; respect `prefers-reduced-motion`.
+- External links use safe external-link attributes through `getExternalLinkAttrs`.
+- Image dimensions are present where possible to reduce layout shift.
+- Only critical assets are preloaded.
+- Mobile, tablet, and desktop/PC layouts remain usable with no text overflow or incoherent overlap.
+- Prefer native HTML semantics before ARIA; use ARIA only when native HTML cannot express the required semantics, state, or accessible name.
+- Do not put `aria-hidden="true"` on focusable elements.
+- Preserve visible labels where possible; use `.visually-hidden` text before relying on `aria-label`.
 - Reserve CSS masks for decorative one-color icons, texture/shape effects, or cases where inheriting `currentColor` is the core requirement.
 - Prefer inline SVG with `currentColor` for simple monochrome UI icons when practical.
-- Avoid unused CSS custom properties, broad manually maintained selector lists, and layout nudges via `transform` unless the transform is explicitly for animation or optical adjustment.
-- Keep `src/styles/global.css` focused on tokens, reset/base elements, shared layout primitives, and truly shared components. Avoid growing it with page-specific styling when scoped component or page styles would be clearer.
 
-## Asset Optimization
+## AI-Code Smell Checklist
+
+Before finishing a change, check for:
+
+- Overly generic names such as `data`, `item`, `config`, `handler`, or `manager` where a domain name would be clearer.
+- Large inline literal tables inside components.
+- Duplicated markup that differs only by data.
+- Speculative abstractions used only once.
+- Comments that restate the code instead of explaining intent.
+- Unused props, unused CSS variables, unused selectors, and dead helper functions.
+- Broad `Record<string, unknown>` or `[key: string]: unknown` props where explicit props would be clearer.
+- Magic numbers that should be named constants or CSS tokens.
+- ARIA used where native HTML would be better.
+
+## CSS Ownership
+
+- `src/styles/tokens.css` is for design tokens only.
+- `src/styles/base.css` is for reset and base element styling.
+- `src/styles/global.css` is the shared style import entrypoint.
+- `src/styles/components/` is for reusable component classes.
+- `src/styles/pages/` is for page-specific rules.
+- `src/styles/showcase/` is for wheel, detail, and gallery systems shared by Projects and Experience.
+- Avoid adding new rules to large CSS files when a focused file already exists.
+- Remove unused selectors and custom properties when confidently unused.
+
+## Data Ownership
+
+- Shared data types live in `src/data/types.ts`.
+- Project data lives in `src/data/projects.ts`.
+- Experience data lives in `src/data/experience.ts`.
+- Company data lives in `src/data/companies.ts`.
+- Contact, home, and site-wide data live in their focused modules.
+- `src/data/profile.ts` may aggregate exports for convenience.
+- Do not hard-code portfolio content in page components when it belongs in typed data.
+
+## Performance and Assets
 
 - Optimize web-facing raster assets before shipping.
 - Prefer WebP for photos, illustrations, decorative images, and alpha-capable raster assets unless PNG is required for exact lossless output.
 - Use the repo-local ImageMagick executable under `.tools/` for conversions.
 - Do not reference oversized source PNGs from pages or CSS when an optimized WebP is suitable.
-- After asset changes, recommend `npm run build` and visual verification of affected pages, but do not run them unless the user explicitly asks.
+- Lazy-load non-critical images.
+- Include image width and height where possible.
+- Preload only assets needed for the first meaningful view.
+- Avoid large inline scripts or SVG registries inside Astro components unless there is a clear reason.
+- Avoid shipping unused CSS or JavaScript.
+- After asset changes, recommend `npm run build` and visual review at phone, tablet, and desktop/PC widths, but do not run those checks unless the user explicitly asks.
 
-### Pixel-Art Cutout Cleanup
+## Pixel-Art Cutout Cleanup
 
 When cleaning pixel-art cutouts with transparent backgrounds:
 
@@ -83,8 +143,6 @@ When cleaning pixel-art cutouts with transparent backgrounds:
 - Use high-zoom previews composited on dark and light backgrounds, because dark mode exposes matte artifacts most clearly.
 
 The contact icon cleanup used `sharp` for pixel-level RGBA inspection/editing and the repo-local ImageMagick executable for dark-background composites, zoom crops, dimension checks, and alpha checks. A safe workflow is: write patched candidates to `Temp/`, inspect zoom previews, then move approved WebPs over the existing assets.
-
-After raster asset changes, recommend `npm run build` and visual review at phone, tablet, and desktop/PC widths, but do not run those checks unless the user explicitly asks.
 
 ## ImageMagick
 
