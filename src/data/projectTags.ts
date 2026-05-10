@@ -103,6 +103,14 @@ export const projectTagStyles: Record<string, ProjectTagStyle> = {
 		darkText: '#e9fff5',
 		darkBorder: '#5b8976',
 	},
+	'Browser Extension': {
+		background: '#cfe6f2',
+		text: '#28526a',
+		border: '#afd0df',
+		darkBackground: '#2d4d61',
+		darkText: '#edfbff',
+		darkBorder: '#5d7f94',
+	},
 	Web: {
 		background: '#e8f0ff',
 		text: '#254c78',

@@ -685,7 +685,7 @@ export const profile = {
 					'Analyze Advance Wars By Web openings with win rates, data views, and strategy insights.',
 				tools: ['Tool', 'Data', 'Strategy'],
 				projectTags: {
-					format: ['Tool'],
+					format: ['Browser Extension'],
 					platform: ['Web'],
 					specialty: ['Strategy', 'Data Analysis'],
 					tech: ['TypeScript'],
