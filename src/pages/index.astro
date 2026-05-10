@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CompanyBadge from '../components/CompanyBadge.astro';
 import HeroContent from '../components/HeroContent.astro';
 import ProjectImageFrame from '../components/ProjectImageFrame.astro';
+import ProjectTagList from '../components/ProjectTagList.astro';
 import ThemeHeroArt from '../components/ThemeHeroArt.astro';
 import { profile, type Project } from '../data/profile';
 import { getProjectTagRenderGroups } from '../data/projectTags';
@@ -51,18 +53,7 @@ const featuredProjects = home.featuredProjectIds
 					return (
 						<a class="project-card" href={`${projects.href}#${project.id}`} aria-label={`View ${project.product} in projects`}>
 							<ProjectImageFrame class="project-image" src={picture.src} alt={picture.alt} loading="lazy">
-								{company && (
-									<span class="project-wheel-company-badge project-card-company-badge" aria-hidden="true">
-										<span class="project-wheel-company-badge-back" />
-										<img
-											class="project-wheel-company-badge-icon"
-											src={company.icon.src}
-											alt=""
-											loading="lazy"
-											{...getImageAttrs(company.icon)}
-										/>
-									</span>
-								)}
+								{company && <CompanyBadge icon={company.icon} class="project-card-company-badge" />}
 							</ProjectImageFrame>
 							<div class="project-body">
 								<div class="project-company">
@@ -71,17 +62,7 @@ const featuredProjects = home.featuredProjectIds
 								</div>
 								<h3>{project.product}</h3>
 								<p>{project.description}</p>
-								<div class="project-tag-list" aria-label={`${project.product} tags`}>
-									{tagGroups.map((tagGroup) => (
-										<span class="project-tag-group" data-tag-group={tagGroup.group}>
-											{tagGroup.tags.map((tag) => (
-												<span class="project-tag" data-tag-style={tag.styleKey}>
-													{tag.label}
-												</span>
-											))}
-										</span>
-									))}
-								</div>
+								<ProjectTagList tagGroups={tagGroups} ariaLabel={`${project.product} tags`} />
 							</div>
 						</a>
 					);

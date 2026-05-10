@@ -1,0 +1,24 @@
+---
+import type { ProjectTagRenderGroup } from '../data/projectTags';
+
+type Props = {
+	tagGroups: ProjectTagRenderGroup[];
+	ariaLabel: string;
+};
+
+const { tagGroups, ariaLabel } = Astro.props as Props;
+---
+
+<div class="project-tag-list" aria-label={ariaLabel}>
+	{
+		tagGroups.map((tagGroup) => (
+			<span class="project-tag-group" data-tag-group={tagGroup.group}>
+				{tagGroup.tags.map((tag) => (
+					<span class="project-tag" data-tag-style={tag.styleKey}>
+						{tag.label}
+					</span>
+				))}
+			</span>
+		))
+	}
+</div>

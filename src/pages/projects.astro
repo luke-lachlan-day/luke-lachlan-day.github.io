@@ -4,6 +4,7 @@ import '../styles/pages/showcase.css';
 import ButtonLink from '../components/ButtonLink.astro';
 import DetailGallery from '../components/DetailGallery.astro';
 import PortfolioWheelCard from '../components/PortfolioWheelCard.astro';
+import ProjectTagList from '../components/ProjectTagList.astro';
 import ShowcaseDetail from '../components/ShowcaseDetail.astro';
 import ShowcaseWheel from '../components/ShowcaseWheel.astro';
 import { profile, type Project } from '../data/profile';
@@ -143,17 +144,7 @@ const initialTransitionSlotRange = 3;
 									<span>{project.dateLabel}</span>
 								</div>
 								<p class="project-detail-description">{project.description}</p>
-								<div class="project-tag-list" aria-label={`${project.product} tags`}>
-									{tagGroups.map((tagGroup) => (
-										<span class="project-tag-group" data-tag-group={tagGroup.group}>
-											{tagGroup.tags.map((tag) => (
-												<span class="project-tag" data-tag-style={tag.styleKey}>
-													{tag.label}
-												</span>
-											))}
-										</span>
-									))}
-								</div>
+								<ProjectTagList tagGroups={tagGroups} ariaLabel={`${project.product} tags`} />
 								{actionLinks.length > 0 && (
 									<div class="project-detail-actions">
 										{actionLinks.map((action) => (

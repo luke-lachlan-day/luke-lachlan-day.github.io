@@ -61,6 +61,8 @@ The repo currently does not define a dedicated Playwright npm script or committe
 - Do not mix structural refactors with visual redesigns.
 - Do not mix content rewrites with code refactors unless fixing an obvious typo.
 - Prefer small commits by concern, such as tooling, data splits, component extraction, script simplification, CSS organization, or cleanup/removal.
+- For quality cleanup passes, work in this order: baseline validation, confirmed dead/duplicated code removal, repeated markup extraction, typed helper extraction, then final validation.
+- Before extracting a component or helper, confirm it removes real duplication or names an existing domain concept.
 
 ## Frontend Acceptance Checks
 
@@ -95,6 +97,9 @@ Before finishing a change, check for:
 - Broad `Record<string, unknown>` or `[key: string]: unknown` props where explicit props would be clearer.
 - Magic numbers that should be named constants or CSS tokens.
 - ARIA used where native HTML would be better.
+- Reusable selectors defined in more than one stylesheet.
+- Inline scripts large enough to hide state, timers, event listeners, or DOM mutation logic that belongs in `src/scripts/`.
+- Component extraction that makes call sites harder to read or introduces unused variants.
 
 ## CSS Ownership
 
@@ -106,6 +111,13 @@ Before finishing a change, check for:
 - `src/styles/showcase/` is for wheel, detail, and gallery systems shared by Projects and Experience.
 - Avoid adding new rules to large CSS files when a focused file already exists.
 - Remove unused selectors and custom properties when confidently unused.
+- Each reusable selector should have one owning stylesheet. Search with `rg` before adding or deleting selectors, and do not duplicate the same selector block across component and showcase CSS.
+
+## Script Ownership
+
+- Keep Astro component markup focused on structure and data.
+- Put non-trivial browser behavior in typed modules under `src/scripts/`, especially behavior with timers, event listeners, media queries, observers, or DOM mutation.
+- Keep inline scripts only for critical pre-paint setup or very small isolated behavior.
 
 ## Data Ownership
 

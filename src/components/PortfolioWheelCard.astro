@@ -1,7 +1,7 @@
 ---
+import CompanyBadge from './CompanyBadge.astro';
 import ProjectImageFrame from './ProjectImageFrame.astro';
 import type { ImageAsset } from '../data/types';
-import { getImageAttrs } from '../utils/images';
 
 type WheelCardBadge = {
 	icon?: ImageAsset;
@@ -48,7 +48,7 @@ const {
 } = Astro.props as Props;
 
 const cardClass = ['project-wheel-card', className].filter(Boolean).join(' ');
-const mediaAttrs = mediaDecorative ? { 'aria-hidden': 'true' } : {};
+const mediaAttrs = mediaDecorative ? { 'aria-hidden': true } : {};
 ---
 
 <button
@@ -69,16 +69,7 @@ const mediaAttrs = mediaDecorative ? { 'aria-hidden': 'true' } : {};
 				loading={isActive ? 'eager' : 'lazy'}
 				{...mediaAttrs}
 			>
-				{badge && (
-					<span class="project-wheel-company-badge" aria-hidden="true">
-						<span class="project-wheel-company-badge-back" />
-						{badge.icon ? (
-							<img class="project-wheel-company-badge-icon" src={badge.icon.src} alt="" loading="lazy" {...getImageAttrs(badge.icon)} />
-						) : (
-							badge.label && <span class="project-wheel-company-badge-label">{badge.label}</span>
-						)}
-					</span>
-				)}
+				{badge && <CompanyBadge icon={badge.icon} label={badge.label} />}
 				{status && (
 					<span class="project-wheel-status-ribbon" data-status={status.value}>
 						{status.label}

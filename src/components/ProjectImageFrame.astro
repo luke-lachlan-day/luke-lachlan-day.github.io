@@ -1,7 +1,10 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
 import { getImageAttrs, type ImageDecoding } from '../utils/images';
 
-type Props = {
+type FrameAttrs = Omit<HTMLAttributes<'span'> & HTMLAttributes<'div'> & HTMLAttributes<'figure'>, 'class' | 'style'>;
+
+type Props = FrameAttrs & {
 	src: string;
 	alt: string;
 	wrapper?: 'span' | 'div' | 'figure';
@@ -12,7 +15,6 @@ type Props = {
 	class?: string;
 	imageClass?: string;
 	style?: string;
-	[key: string]: unknown;
 };
 
 const {

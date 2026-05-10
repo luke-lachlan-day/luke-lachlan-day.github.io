@@ -1,13 +1,15 @@
 ---
-type ArrowButtonDirection = 'prev' | 'next';
+import type { HTMLAttributes } from 'astro/types';
 
-type Props = {
+type ArrowButtonDirection = 'prev' | 'next';
+type ButtonAttrs = Omit<HTMLAttributes<'button'>, 'class' | 'type' | 'aria-label'>;
+
+type Props = ButtonAttrs & {
 	direction: ArrowButtonDirection;
 	label?: string;
 	ariaLabel?: string;
 	class?: string;
 	type?: 'button' | 'submit' | 'reset';
-	[key: string]: unknown;
 };
 
 const { direction, label, ariaLabel, class: className, type = 'button', ...attrs } = Astro.props as Props;
