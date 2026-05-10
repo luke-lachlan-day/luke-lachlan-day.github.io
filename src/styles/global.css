@@ -1656,7 +1656,7 @@ h3 {
 .project-detail-kicker {
 	display: flex;
 	flex-wrap: wrap;
-	align-items: center;
+	align-items: flex-start;
 	gap: 8px;
 }
 
@@ -1768,8 +1768,8 @@ h3 {
 }
 
 .project-awards-compact .project-award {
-	width: 54px;
-	height: 54px;
+	width: 60px;
+	height: 60px;
 	border: 0;
 	background: transparent;
 	box-shadow: none;
@@ -1798,6 +1798,10 @@ h3 {
 	background: var(--accent);
 	-webkit-mask: var(--award-emblem-url) center / contain no-repeat;
 	mask: var(--award-emblem-url) center / contain no-repeat;
+}
+
+.project-awards-compact .project-award-emblem {
+	transform: translateY(-8px);
 }
 
 .project-award-details {
@@ -1851,7 +1855,7 @@ h3 {
 }
 
 .project-awards-compact .project-award-details::after {
-	right: 22px;
+	right: 25px;
 	left: auto;
 	transform: rotate(45deg);
 }
@@ -1947,7 +1951,7 @@ h3 {
 
 	.project-awards-compact .project-award-details::after {
 		right: auto;
-		left: 22px;
+		left: 25px;
 	}
 }
 
