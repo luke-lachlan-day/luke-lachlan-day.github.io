@@ -7,6 +7,7 @@ import ProjectImageFrame from '../components/ProjectImageFrame.astro';
 import { profile, type Project } from '../data/profile';
 import { getProjectActionLinks } from '../data/projectActions';
 import { getProjectTagRenderGroups, getProjectTagStyleVars } from '../data/projectTags';
+import { getInitialWheelSlot } from '../utils/wheelSlots';
 
 const { home, projects, companies, experience } = profile;
 const companyById = new Map(companies.map((company) => [company.id, company]));
@@ -33,17 +34,6 @@ const releaseStageLabels: Record<Project['releaseStage'], 'In Dev' | 'Released' 
 const isExternalLink = (href: string) => href.startsWith('http://') || href.startsWith('https://');
 const initialActiveProjectIndex = 0;
 const initialTransitionSlotRange = 3;
-const getInitialWheelSlot = (index: number) => {
-	const total = wheelProjects.length;
-	const rawOffset = index - initialActiveProjectIndex;
-	const forwardOffset = rawOffset + total;
-	const backwardOffset = rawOffset - total;
-	const slot = [rawOffset, forwardOffset, backwardOffset].reduce((best, offset) =>
-		Math.abs(offset) < Math.abs(best) ? offset : best
-	);
-
-	return Math.abs(slot) <= initialTransitionSlotRange ? String(slot) : undefined;
-};
 ---
 
 <BaseLayout
@@ -58,6 +48,12 @@ const getInitialWheelSlot = (index: number) => {
 		<div
 			class="project-wheel"
 			data-project-wheel
+			data-wheel-controller
+			data-wheel-card-selector="[data-project-card]"
+			data-wheel-detail-selector="[data-project-detail-item]"
+			data-wheel-index-attr="data-project-index"
+			data-wheel-id-attr="data-project-id"
+			data-wheel-change-event="project-detail-change"
 			data-wheel-initializing="true"
 			data-active-index={initialActiveProjectIndex}
 			role="group"
@@ -74,7 +70,7 @@ const getInitialWheelSlot = (index: number) => {
 						const picture = project.pictures[0];
 						const releaseStageLabel = releaseStageLabels[project.releaseStage];
 						const isActive = index === initialActiveProjectIndex;
-						const initialSlot = getInitialWheelSlot(index);
+						const initialSlot = getInitialWheelSlot(index, wheelProjects.length, initialActiveProjectIndex, initialTransitionSlotRange);
 
 						return (
 							<PortfolioWheelCard
@@ -232,175 +228,10 @@ const getInitialWheelSlot = (index: number) => {
 		</div>
 	</section>
 
-	<script is:inline>
-		(() => {
-			const wheel = document.querySelector('[data-project-wheel]');
-			const cards = Array.from(document.querySelectorAll('[data-project-card]'));
-			const details = Array.from(document.querySelectorAll('[data-project-detail-item]'));
-			const previousButton = document.querySelector('[data-wheel-prev]');
-			const nextButton = document.querySelector('[data-wheel-next]');
+	<script>
+		import { setupWheelControllers } from '../scripts/wheelController';
 
-			if (!wheel || cards.length === 0) {
-				return;
-			}
-
-			const total = cards.length;
-			let activeIndex = Number(wheel.getAttribute('data-active-index')) || 0;
-			const desktopQuery = window.matchMedia('(min-width: 821px)');
-			const phoneQuery = window.matchMedia('(max-width: 460px)');
-			const projectHashPrefix = '#';
-
-			const getSlotRanges = () => {
-				if (phoneQuery.matches) {
-					return {
-						interactive: 0,
-						transition: 1,
-					};
-				}
-
-				return desktopQuery.matches
-					? {
-							interactive: 2,
-							transition: 3,
-						}
-					: {
-							interactive: 1,
-							transition: 2,
-						};
-			};
-
-			const wrapIndex = (index) => ((index % total) + total) % total;
-			const getProjectIdFromHash = () => {
-				const hash = window.location.hash.slice(projectHashPrefix.length);
-
-				if (!hash) {
-					return '';
-				}
-
-				try {
-					return decodeURIComponent(hash);
-				} catch {
-					return hash;
-				}
-			};
-			const shortestOffset = (index, active) => {
-				const rawOffset = index - active;
-				const forwardOffset = rawOffset + total;
-				const backwardOffset = rawOffset - total;
-
-				return [rawOffset, forwardOffset, backwardOffset].reduce((best, offset) =>
-					Math.abs(offset) < Math.abs(best) ? offset : best
-				);
-			};
-
-			const updateWheel = () => {
-				const { interactive, transition } = getSlotRanges();
-
-				wheel.setAttribute('data-active-index', String(activeIndex));
-
-				cards.forEach((card) => {
-					const projectIndex = Number(card.getAttribute('data-project-index'));
-					const slot = shortestOffset(projectIndex, activeIndex);
-					const slotDistance = Math.abs(slot);
-					const transitionSlot = slotDistance <= transition ? String(slot) : '';
-					const isInteractive = slotDistance <= interactive;
-					const isActive = projectIndex === activeIndex;
-
-					if (transitionSlot) {
-						card.setAttribute('data-slot', transitionSlot);
-					} else {
-						card.removeAttribute('data-slot');
-					}
-
-					card.setAttribute('aria-pressed', String(isActive));
-					card.setAttribute('aria-hidden', String(!isInteractive));
-					card.tabIndex = isInteractive ? 0 : -1;
-				});
-
-				details.forEach((detail) => {
-					const projectIndex = Number(detail.getAttribute('data-project-index'));
-					detail.hidden = projectIndex !== activeIndex;
-				});
-
-				window.dispatchEvent(new CustomEvent('project-detail-change', { detail: { activeIndex } }));
-			};
-
-			const setActiveIndex = (index, updateHash = false) => {
-				activeIndex = wrapIndex(index);
-				updateWheel();
-
-				if (!updateHash) {
-					return;
-				}
-
-				const activeCard = cards[activeIndex];
-				const projectId = activeCard?.getAttribute('data-project-id');
-
-				if (!projectId) {
-					return;
-				}
-
-				const nextHash = `${projectHashPrefix}${encodeURIComponent(projectId)}`;
-				if (window.location.hash !== nextHash) {
-					window.history.replaceState(null, '', nextHash);
-				}
-			};
-			const setActiveProjectFromHash = () => {
-				const projectId = getProjectIdFromHash();
-
-				if (!projectId) {
-					return;
-				}
-
-				const matchingCard = cards.find((card) => card.getAttribute('data-project-id') === projectId);
-
-				if (!matchingCard) {
-					return;
-				}
-
-				setActiveIndex(Number(matchingCard.getAttribute('data-project-index')));
-			};
-
-			cards.forEach((card) => {
-				card.addEventListener('click', () => {
-					setActiveIndex(Number(card.getAttribute('data-project-index')), true);
-				});
-
-				card.addEventListener('keydown', (event) => {
-					if (event.key === 'ArrowLeft') {
-						event.preventDefault();
-						setActiveIndex(activeIndex - 1);
-					}
-
-					if (event.key === 'ArrowRight') {
-						event.preventDefault();
-						setActiveIndex(activeIndex + 1);
-					}
-				});
-			});
-
-			previousButton?.addEventListener('click', () => setActiveIndex(activeIndex - 1));
-			nextButton?.addEventListener('click', () => setActiveIndex(activeIndex + 1));
-			desktopQuery.addEventListener('change', updateWheel);
-			phoneQuery.addEventListener('change', updateWheel);
-			window.addEventListener('hashchange', setActiveProjectFromHash);
-
-			setActiveProjectFromHash();
-			updateWheel();
-
-			const enableWheelTransitions = () => {
-				wheel.removeAttribute('data-wheel-initializing');
-			};
-
-			if (!('requestAnimationFrame' in window)) {
-				window.setTimeout(enableWheelTransitions, 0);
-				return;
-			}
-
-			window.requestAnimationFrame(() => {
-				window.requestAnimationFrame(enableWheelTransitions);
-			});
-		})();
+		setupWheelControllers();
 	</script>
 	<script is:inline>
 		(() => {

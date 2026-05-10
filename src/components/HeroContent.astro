@@ -1,0 +1,63 @@
+---
+import AssetIcon from './AssetIcon.astro';
+
+type HeroAction = {
+	label: string;
+	href: string;
+	icon: string;
+};
+
+type Props = {
+	title: string;
+	titleId: string;
+	titleLines?: string[];
+	titleAriaLabel?: string;
+	subtitle?: string;
+	summary?: readonly string[];
+	actions?: readonly HeroAction[];
+	class?: string;
+};
+
+const {
+	title,
+	titleId,
+	titleLines,
+	titleAriaLabel,
+	subtitle,
+	summary = [],
+	actions = [],
+	class: className,
+} = Astro.props as Props;
+const headingLines = titleLines ?? [title];
+const headingAttrs = titleAriaLabel ? { 'aria-label': titleAriaLabel } : {};
+---
+
+<div class={className}>
+	<h1 id={titleId} class="hero-title" {...headingAttrs}>
+		{
+			headingLines.map((line, index) => (
+				<span class:list={['hero-title-line', index > 0 && 'hero-title-line-nowrap']}>{line}</span>
+			))
+		}
+	</h1>
+	{subtitle && <p class="hero-role">{subtitle}</p>}
+	{
+		summary.length > 0 && (
+			<p class="hero-intro">
+				{summary.map((summaryLine) => <span class="hero-intro-line">{summaryLine}</span>)}
+			</p>
+		)
+	}
+	{
+		actions.length > 0 && (
+			<div class="hero-actions">
+				{actions.map((action, index) => (
+					<a class={`button button-${index + 1}`} href={action.href}>
+						<AssetIcon src={action.icon} class="button-icon" />
+						{action.label}
+					</a>
+				))}
+			</div>
+		)
+	}
+</div>

@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroContent from '../components/HeroContent.astro';
+import ThemeHeroArt from '../components/ThemeHeroArt.astro';
 import { profile } from '../data/profile';
 
 const { contact } = profile;
@@ -11,32 +13,24 @@ const isExternalLink = (href: string) => href.startsWith('http://') || href.star
 	description={contact.description}
 >
 	<section class="contact-hero" aria-labelledby="contact-title">
-		<div class="contact-hero-content">
-			<h1 id="contact-title" class="hero-title">{contact.hero.title}</h1>
-			<p class="hero-role">{contact.hero.subtitle}</p>
-			<p class="hero-intro">
-				{contact.hero.summary.map((summaryLine) => <span class="hero-intro-line">{summaryLine}</span>)}
-			</p>
-		</div>
+		<HeroContent
+			class="contact-hero-content"
+			title={contact.hero.title}
+			titleId="contact-title"
+			subtitle={contact.hero.subtitle}
+			summary={contact.hero.summary}
+		/>
 
-		<div class="contact-hero-art" role="img" aria-label={contact.heroImages.light.alt}>
-			<img
-				class="contact-hero-image theme-asset-light"
-				src={contact.heroImages.light.src}
-				alt=""
-				width="1390"
-				height="1132"
-				aria-hidden="true"
-			/>
-			<img
-				class="contact-hero-image theme-asset-dark"
-				src={contact.heroImages.dark.src}
-				alt=""
-				width="1390"
-				height="1132"
-				aria-hidden="true"
-			/>
-		</div>
+		<ThemeHeroArt
+			class="contact-hero-art"
+			imageClass="contact-hero-image"
+			light={contact.heroImages.light}
+			dark={contact.heroImages.dark}
+			width="1390"
+			height="1132"
+			decorative={false}
+			ariaLabel={contact.heroImages.light.alt}
+		/>
 	</section>
 
 	<section class="section contact-section" aria-label="Contact links">

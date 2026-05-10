@@ -4,23 +4,13 @@ import AwardMedals from '../components/AwardMedals.astro';
 import PortfolioWheelCard from '../components/PortfolioWheelCard.astro';
 import ProjectImageFrame from '../components/ProjectImageFrame.astro';
 import { profile, type ExperienceItem } from '../data/profile';
+import { getInitialWheelSlot } from '../utils/wheelSlots';
 
 const { experience, companies } = profile;
 const companyById = new Map(companies.map((company) => [company.id, company]));
 const wheelExperience = [...experience.items].sort((itemA, itemB) => itemB.sortDate.localeCompare(itemA.sortDate));
 const initialActiveExperienceIndex = 0;
 const initialTransitionSlotRange = 3;
-const getInitialWheelSlot = (index: number) => {
-	const total = wheelExperience.length;
-	const rawOffset = index - initialActiveExperienceIndex;
-	const forwardOffset = rawOffset + total;
-	const backwardOffset = rawOffset - total;
-	const slot = [rawOffset, forwardOffset, backwardOffset].reduce((best, offset) =>
-		Math.abs(offset) < Math.abs(best) ? offset : best
-	);
-
-	return Math.abs(slot) <= initialTransitionSlotRange ? String(slot) : undefined;
-};
 const getCompanyIcon = (item: ExperienceItem) => (item.companyId ? companyById.get(item.companyId)?.icon : undefined);
 const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyIcon(item);
 ---
@@ -38,6 +28,11 @@ const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyI
 		<div
 			class="project-wheel experience-wheel"
 			data-experience-wheel
+			data-wheel-controller
+			data-wheel-card-selector="[data-experience-card]"
+			data-wheel-detail-selector="[data-experience-detail-item]"
+			data-wheel-index-attr="data-experience-index"
+			data-wheel-id-attr="data-experience-id"
 			data-wheel-initializing="true"
 			data-active-index={initialActiveExperienceIndex}
 			role="group"
@@ -53,7 +48,7 @@ const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyI
 						const icon = getCompanyIcon(item);
 						const media = getExperienceMedia(item);
 						const isActive = index === initialActiveExperienceIndex;
-						const initialSlot = getInitialWheelSlot(index);
+						const initialSlot = getInitialWheelSlot(index, wheelExperience.length, initialActiveExperienceIndex, initialTransitionSlotRange);
 
 						return (
 							<PortfolioWheelCard
@@ -141,172 +136,9 @@ const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyI
 		</div>
 	</section>
 
-	<script is:inline>
-		(() => {
-			const wheel = document.querySelector('[data-experience-wheel]');
-			const cards = Array.from(document.querySelectorAll('[data-experience-card]'));
-			const details = Array.from(document.querySelectorAll('[data-experience-detail-item]'));
-			const previousButton = document.querySelector('[data-wheel-prev]');
-			const nextButton = document.querySelector('[data-wheel-next]');
+	<script>
+		import { setupWheelControllers } from '../scripts/wheelController';
 
-			if (!wheel || cards.length === 0) {
-				return;
-			}
-
-			const total = cards.length;
-			let activeIndex = Number(wheel.getAttribute('data-active-index')) || 0;
-			const desktopQuery = window.matchMedia('(min-width: 821px)');
-			const phoneQuery = window.matchMedia('(max-width: 460px)');
-			const experienceHashPrefix = '#';
-
-			const getSlotRanges = () => {
-				if (phoneQuery.matches) {
-					return {
-						interactive: 0,
-						transition: 1,
-					};
-				}
-
-				return desktopQuery.matches
-					? {
-							interactive: 2,
-							transition: 3,
-						}
-					: {
-							interactive: 1,
-							transition: 2,
-						};
-			};
-
-			const wrapIndex = (index) => ((index % total) + total) % total;
-			const getExperienceIdFromHash = () => {
-				const hash = window.location.hash.slice(experienceHashPrefix.length);
-
-				if (!hash) {
-					return '';
-				}
-
-				try {
-					return decodeURIComponent(hash);
-				} catch {
-					return hash;
-				}
-			};
-			const shortestOffset = (index, active) => {
-				const rawOffset = index - active;
-				const forwardOffset = rawOffset + total;
-				const backwardOffset = rawOffset - total;
-
-				return [rawOffset, forwardOffset, backwardOffset].reduce((best, offset) =>
-					Math.abs(offset) < Math.abs(best) ? offset : best
-				);
-			};
-
-			const updateWheel = () => {
-				const { interactive, transition } = getSlotRanges();
-
-				wheel.setAttribute('data-active-index', String(activeIndex));
-
-				cards.forEach((card) => {
-					const experienceIndex = Number(card.getAttribute('data-experience-index'));
-					const slot = shortestOffset(experienceIndex, activeIndex);
-					const slotDistance = Math.abs(slot);
-					const transitionSlot = slotDistance <= transition ? String(slot) : '';
-					const isInteractive = slotDistance <= interactive;
-					const isActive = experienceIndex === activeIndex;
-
-					if (transitionSlot) {
-						card.setAttribute('data-slot', transitionSlot);
-					} else {
-						card.removeAttribute('data-slot');
-					}
-
-					card.setAttribute('aria-pressed', String(isActive));
-					card.setAttribute('aria-hidden', String(!isInteractive));
-					card.tabIndex = isInteractive ? 0 : -1;
-				});
-
-				details.forEach((detail) => {
-					const experienceIndex = Number(detail.getAttribute('data-experience-index'));
-					detail.hidden = experienceIndex !== activeIndex;
-				});
-			};
-
-			const setActiveIndex = (index, updateHash = false) => {
-				activeIndex = wrapIndex(index);
-				updateWheel();
-
-				if (!updateHash) {
-					return;
-				}
-
-				const activeCard = cards[activeIndex];
-				const experienceId = activeCard?.getAttribute('data-experience-id');
-
-				if (!experienceId) {
-					return;
-				}
-
-				const nextHash = `${experienceHashPrefix}${encodeURIComponent(experienceId)}`;
-				if (window.location.hash !== nextHash) {
-					window.history.replaceState(null, '', nextHash);
-				}
-			};
-			const setActiveExperienceFromHash = () => {
-				const experienceId = getExperienceIdFromHash();
-
-				if (!experienceId) {
-					return;
-				}
-
-				const matchingCard = cards.find((card) => card.getAttribute('data-experience-id') === experienceId);
-
-				if (!matchingCard) {
-					return;
-				}
-
-				setActiveIndex(Number(matchingCard.getAttribute('data-experience-index')));
-			};
-
-			cards.forEach((card) => {
-				card.addEventListener('click', () => {
-					setActiveIndex(Number(card.getAttribute('data-experience-index')), true);
-				});
-
-				card.addEventListener('keydown', (event) => {
-					if (event.key === 'ArrowLeft') {
-						event.preventDefault();
-						setActiveIndex(activeIndex - 1);
-					}
-
-					if (event.key === 'ArrowRight') {
-						event.preventDefault();
-						setActiveIndex(activeIndex + 1);
-					}
-				});
-			});
-
-			previousButton?.addEventListener('click', () => setActiveIndex(activeIndex - 1));
-			nextButton?.addEventListener('click', () => setActiveIndex(activeIndex + 1));
-			desktopQuery.addEventListener('change', updateWheel);
-			phoneQuery.addEventListener('change', updateWheel);
-			window.addEventListener('hashchange', setActiveExperienceFromHash);
-
-			setActiveExperienceFromHash();
-			updateWheel();
-
-			const enableWheelTransitions = () => {
-				wheel.removeAttribute('data-wheel-initializing');
-			};
-
-			if (!('requestAnimationFrame' in window)) {
-				window.setTimeout(enableWheelTransitions, 0);
-				return;
-			}
-
-			window.requestAnimationFrame(() => {
-				window.requestAnimationFrame(enableWheelTransitions);
-			});
-		})();
+		setupWheelControllers();
 	</script>
 </BaseLayout>

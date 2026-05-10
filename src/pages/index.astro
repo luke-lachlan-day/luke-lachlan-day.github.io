@@ -1,13 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import AssetIcon from '../components/AssetIcon.astro';
+import HeroContent from '../components/HeroContent.astro';
 import ProjectImageFrame from '../components/ProjectImageFrame.astro';
+import ThemeHeroArt from '../components/ThemeHeroArt.astro';
 import { profile, type Project } from '../data/profile';
 import { getProjectTagRenderGroups, getProjectTagStyleVars } from '../data/projectTags';
 
 const { home, projects, companies } = profile;
 const [heroFirstName, ...heroRemainingNames] = profile.name.split(' ');
 const heroLastLine = heroRemainingNames.join(' ');
+const heroTitleLines = [heroFirstName, heroLastLine];
 const companyById = new Map(companies.map((company) => [company.id, company]));
 const featuredProjects = home.featuredProjectIds
 	.map((projectId) => projects.items.find((project) => project.id === projectId))
@@ -19,31 +21,18 @@ const featuredProjects = home.featuredProjectIds
 	description={home.description}
 >
 	<section class="hero" aria-labelledby="home-title">
-		<div class="hero-content">
-			<h1 id="home-title" class="hero-title" aria-label={profile.name}>
-				<span class="hero-title-line">{heroFirstName}</span>
-				<span class="hero-title-line hero-title-line-nowrap">{heroLastLine}</span>
-			</h1>
-			<p class="hero-role">{home.role}</p>
-			<p class="hero-intro">
-				{home.summary.map((summaryLine) => <span class="hero-intro-line">{summaryLine}</span>)}
-			</p>
-			<div class="hero-actions">
-				{
-					home.actions.map((action, index) => (
-						<a class={`button button-${index + 1}`} href={action.href}>
-							<AssetIcon src={action.icon} class="button-icon" />
-							{action.label}
-						</a>
-					))
-				}
-			</div>
-		</div>
+		<HeroContent
+			class="hero-content"
+			title={profile.name}
+			titleId="home-title"
+			titleLines={heroTitleLines}
+			titleAriaLabel={profile.name}
+			subtitle={home.role}
+			summary={home.summary}
+			actions={home.actions}
+		/>
 
-		<div class="hero-art" aria-hidden="true">
-			<img class="theme-asset theme-asset-light" src={home.heroImages.light.src} alt="" />
-			<img class="theme-asset theme-asset-dark" src={home.heroImages.dark.src} alt="" />
-		</div>
+		<ThemeHeroArt class="hero-art" light={home.heroImages.light} dark={home.heroImages.dark} />
 	</section>
 
 	<section class="section" aria-labelledby="featured-projects-title">

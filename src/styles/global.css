@@ -31,8 +31,26 @@
 	--border-strong: #cbbca9;
 	--shadow: 0 18px 42px rgba(52, 42, 28, 0.1);
 	--shadow-soft: 0 10px 28px rgba(52, 42, 28, 0.08);
+	--shadow-accent: 0 20px 44px color-mix(in srgb, var(--accent) 18%, transparent);
+	--shadow-accent-soft: 0 20px 46px color-mix(in srgb, var(--accent) 12%, transparent);
+	--shadow-button: 0 12px 26px color-mix(in srgb, var(--accent) 18%, transparent);
 	--button-text: #ffffff;
 	--image-filter: saturate(1.08) contrast(1.04);
+	--focus-ring: 3px solid color-mix(in srgb, var(--accent) 48%, transparent);
+	--focus-ring-soft: 3px solid color-mix(in srgb, var(--accent) 42%, transparent);
+	--focus-halo: 0 0 0 3px color-mix(in srgb, var(--accent) 38%, transparent);
+	--hover-lift: translateY(-2px);
+	--hover-lift-subtle: translateY(-1px);
+	--hover-lift-strong: translateY(-4px);
+	--surface-hover: color-mix(in srgb, var(--accent) 4%, var(--bg));
+	--surface-hover-strong: color-mix(in srgb, var(--accent) 9%, var(--surface));
+	--surface-tint: color-mix(in srgb, var(--accent) 5%, var(--bg));
+	--motion-button: 120ms ease;
+	--motion-fast: 140ms ease;
+	--motion-medium: 220ms ease;
+	--motion-tooltip: 180ms ease;
+	--motion-slow: 360ms ease;
+	--motion-gallery: 900ms;
 	--toggle-accent: #eda21a;
 	--toggle-thumb-border: #eda21a;
 	--toggle-shadow-color: rgba(52, 42, 28, 0.08);
@@ -46,7 +64,7 @@
 }
 
 :root[data-theme-ready] {
-	--theme-transition: 360ms ease;
+	--theme-transition: var(--motion-slow);
 }
 
 :root[data-theme="light"] {
@@ -75,6 +93,9 @@
 	--border-strong: #cbbca9;
 	--shadow: 0 18px 42px rgba(52, 42, 28, 0.1);
 	--shadow-soft: 0 10px 28px rgba(52, 42, 28, 0.08);
+	--shadow-accent: 0 20px 44px color-mix(in srgb, var(--accent) 18%, transparent);
+	--shadow-accent-soft: 0 20px 46px color-mix(in srgb, var(--accent) 12%, transparent);
+	--shadow-button: 0 12px 26px color-mix(in srgb, var(--accent) 18%, transparent);
 	--image-filter: saturate(1.08) contrast(1.04);
 	--toggle-accent: #eda21a;
 	--toggle-thumb-border: #eda21a;
@@ -109,6 +130,9 @@
 	--border-strong: #405474;
 	--shadow: 0 20px 50px rgba(0, 0, 0, 0.34);
 	--shadow-soft: 0 12px 34px rgba(0, 0, 0, 0.28);
+	--shadow-accent: 0 20px 44px color-mix(in srgb, var(--accent) 20%, transparent);
+	--shadow-accent-soft: 0 20px 46px color-mix(in srgb, var(--accent) 14%, transparent);
+	--shadow-button: 0 12px 26px color-mix(in srgb, var(--accent) 20%, transparent);
 	--image-filter: saturate(1.14) contrast(1.12) brightness(0.88);
 	--toggle-accent: #a885ff;
 	--toggle-thumb-border: color-mix(in srgb, #a885ff 70%, #405474);
@@ -435,12 +459,12 @@ main {
 .leaves-toggle:hover,
 .leaves-toggle:focus-visible,
 .theme-toggle:focus-visible {
-	transform: translateY(-1px);
+	transform: var(--hover-lift-subtle);
 }
 
 .nav-links a:focus-visible {
 	color: var(--accent);
-	outline: 3px solid color-mix(in srgb, var(--accent) 42%, transparent);
+	outline: var(--focus-ring-soft);
 	outline-offset: 3px;
 }
 
@@ -485,7 +509,7 @@ main {
 	border: 0;
 	background: transparent;
 	color: color-mix(in srgb, var(--accent-3) 76%, var(--text));
-	transition: transform 140ms ease;
+	transition: transform var(--motion-fast);
 }
 
 .theme-toggle:focus,
@@ -530,7 +554,7 @@ main {
 	background-color: currentColor;
 	-webkit-mask: url("/assets/icons/leaf.svg") center / contain no-repeat;
 	mask: url("/assets/icons/leaf.svg") center / contain no-repeat;
-	transition: opacity 140ms ease, transform 140ms ease;
+	transition: opacity var(--motion-fast), transform var(--motion-fast);
 }
 
 .leaves-toggle[aria-pressed="true"] .leaf-icon {
@@ -752,7 +776,7 @@ h3 {
 		linear-gradient(var(--paint-fill), var(--paint-fill)),
 		var(--paint-texture) center / 150px 150px repeat;
 	background-blend-mode: multiply;
-	box-shadow: 0 12px 26px color-mix(in srgb, var(--accent) 18%, transparent);
+	box-shadow: var(--shadow-button);
 	color: var(--button-text);
 	font-family: var(--font-body);
 	font-size: 1rem;
@@ -767,15 +791,15 @@ h3 {
 		color var(--theme-transition),
 		filter var(--theme-transition),
 		opacity var(--theme-transition),
-		transform 120ms ease;
+		transform var(--motion-button);
 }
 
 .button:hover {
-	transform: translateY(-1px);
+	transform: var(--hover-lift-subtle);
 }
 
 .button:focus-visible {
-	outline: 3px solid color-mix(in srgb, var(--accent) 48%, transparent);
+	outline: var(--focus-ring);
 	outline-offset: 3px;
 }
 
@@ -830,11 +854,11 @@ h3 {
 
 .text-link:hover,
 .text-link:focus-visible {
-	transform: translateY(-1px);
+	transform: var(--hover-lift-subtle);
 }
 
 .text-link:focus-visible {
-	outline: 3px solid color-mix(in srgb, var(--accent) 42%, transparent);
+	outline: var(--focus-ring-soft);
 	outline-offset: 3px;
 }
 
@@ -977,6 +1001,7 @@ h3 {
 	gap: 22px;
 }
 
+.surface-card,
 .project-card,
 .timeline-item,
 .contact-card {
@@ -999,13 +1024,13 @@ h3 {
 }
 
 .project-card:hover {
-	transform: translateY(-2px);
-	transition: transform 140ms ease;
+	transform: var(--hover-lift);
+	transition: transform var(--motion-fast);
 }
 
 .project-card:focus-visible,
 .contact-card:focus-visible {
-	outline: 3px solid color-mix(in srgb, var(--accent) 48%, transparent);
+	outline: var(--focus-ring);
 	outline-offset: 4px;
 }
 
@@ -1250,8 +1275,8 @@ h3 {
 		box-shadow var(--theme-transition),
 		color var(--theme-transition),
 		filter var(--theme-transition),
-		opacity 220ms ease,
-		transform 220ms ease;
+		opacity var(--motion-medium),
+		transform var(--motion-medium);
 }
 
 .project-wheel-card::after {
@@ -1263,7 +1288,7 @@ h3 {
 	content: "";
 	opacity: var(--project-wheel-card-fade);
 	pointer-events: none;
-	transition: opacity 220ms ease, background-color var(--theme-transition);
+	transition: opacity var(--motion-medium), background-color var(--theme-transition);
 }
 
 .project-wheel[data-wheel-initializing] .project-wheel-card {
@@ -1299,7 +1324,7 @@ h3 {
 	--project-wheel-card-fade: 0;
 	z-index: 4;
 	border-color: color-mix(in srgb, var(--accent) 72%, var(--border));
-	box-shadow: 0 20px 44px color-mix(in srgb, var(--accent) 18%, transparent);
+	box-shadow: var(--shadow-accent);
 	opacity: 1;
 	transform: translate(-50%, -54%) rotate(0deg) scale(1.04);
 }
@@ -1327,12 +1352,12 @@ h3 {
 
 .project-wheel-card:hover {
 	border-color: color-mix(in srgb, var(--accent) 46%, var(--border));
-	background: color-mix(in srgb, var(--accent) 5%, var(--bg));
+	background: var(--surface-tint);
 }
 
 .project-wheel-card:focus-visible,
 .project-wheel-nav:focus-visible {
-	outline: 3px solid color-mix(in srgb, var(--accent) 48%, transparent);
+	outline: var(--focus-ring);
 	outline-offset: 4px;
 }
 
@@ -1471,7 +1496,7 @@ h3 {
 .project-detail-company-link {
 	border-radius: 8px;
 	text-decoration: none;
-	transition: color 0.2s ease;
+	transition: color var(--motion-medium);
 }
 
 .project-detail-company-link:hover {
@@ -1480,7 +1505,7 @@ h3 {
 
 .project-detail-company-link:focus-visible {
 	color: var(--accent-strong);
-	outline: 3px solid color-mix(in srgb, var(--accent) 42%, transparent);
+	outline: var(--focus-ring-soft);
 	outline-offset: 4px;
 }
 
@@ -1547,13 +1572,13 @@ h3 {
 		border-color var(--theme-transition),
 		box-shadow var(--theme-transition),
 		color var(--theme-transition),
-		transform 140ms ease;
+		transform var(--motion-fast);
 }
 
 .project-wheel-nav:hover {
 	border-color: color-mix(in srgb, var(--accent) 62%, var(--border));
-	background: color-mix(in srgb, var(--accent) 9%, var(--surface));
-	transform: translateY(-1px);
+	background: var(--surface-hover-strong);
+	transform: var(--hover-lift-subtle);
 }
 
 .project-wheel-chest {
@@ -1608,7 +1633,7 @@ h3 {
 }
 
 .project-detail-gallery {
-	--project-gallery-transition-ms: 900ms;
+	--project-gallery-transition-ms: var(--motion-gallery);
 	position: relative;
 	isolation: isolate;
 	overflow: hidden;
@@ -1692,8 +1717,8 @@ h3 {
 		border-color var(--theme-transition),
 		box-shadow var(--theme-transition),
 		color var(--theme-transition),
-		opacity 140ms ease,
-		transform 140ms ease;
+		opacity var(--motion-fast),
+		transform var(--motion-fast);
 }
 
 .project-detail-gallery:hover .project-detail-gallery-control span,
@@ -1709,7 +1734,7 @@ h3 {
 .project-detail-gallery-control:focus-visible span {
 	border-color: color-mix(in srgb, var(--accent) 62%, var(--surface));
 	box-shadow:
-		0 0 0 3px color-mix(in srgb, var(--accent) 38%, transparent),
+		var(--focus-halo),
 		var(--shadow-soft);
 }
 
@@ -1731,7 +1756,7 @@ h3 {
 	border: 1px solid color-mix(in srgb, var(--surface) 78%, var(--border));
 	border-radius: 999px;
 	background: color-mix(in srgb, var(--surface-glass) 84%, var(--bg));
-	box-shadow: 0 2px 8px color-mix(in srgb, var(--heading) 22%, transparent);
+	box-shadow: var(--shadow-soft);
 	cursor: pointer;
 	padding: 0;
 	pointer-events: auto;
@@ -1739,7 +1764,7 @@ h3 {
 		background-color var(--theme-transition),
 		border-color var(--theme-transition),
 		box-shadow var(--theme-transition),
-		transform 140ms ease;
+		transform var(--motion-fast);
 }
 
 .project-detail-gallery-dot[aria-current="true"] {
@@ -1749,7 +1774,7 @@ h3 {
 }
 
 .project-detail-gallery-dot:focus-visible {
-	outline: 3px solid color-mix(in srgb, var(--accent) 48%, transparent);
+	outline: var(--focus-ring);
 	outline-offset: 3px;
 }
 
@@ -1894,11 +1919,11 @@ h3 {
 	height: calc(var(--award-medal-width) * 1.7778);
 	outline-offset: 3px;
 	pointer-events: auto;
-	transition: transform 140ms ease;
+	transition: transform var(--motion-fast);
 }
 
 .project-awards-medal-rack:not([data-awards-initializing]) .project-award:hover {
-	transform: translateY(-4px);
+	transform: var(--hover-lift-strong);
 }
 
 .project-award:focus {
@@ -1906,7 +1931,7 @@ h3 {
 }
 
 .project-award:focus-visible {
-	outline: 3px solid color-mix(in srgb, var(--accent) 42%, transparent);
+	outline: var(--focus-ring-soft);
 }
 
 .project-award-medal-base {
@@ -1962,8 +1987,8 @@ h3 {
 		border-color var(--theme-transition),
 		box-shadow var(--theme-transition),
 		color var(--theme-transition),
-		opacity 180ms ease,
-		transform 180ms ease;
+		opacity var(--motion-tooltip),
+		transform var(--motion-tooltip);
 }
 
 .project-award-details::after {
@@ -2311,14 +2336,14 @@ h3 {
 
 .contact-card:hover {
 	border-color: color-mix(in srgb, var(--accent) 32%, var(--border));
-	background-color: color-mix(in srgb, var(--accent) 4%, var(--bg));
-	box-shadow: 0 20px 46px color-mix(in srgb, var(--accent) 12%, transparent);
-	transform: translateY(-2px);
+	background-color: var(--surface-hover);
+	box-shadow: var(--shadow-accent-soft);
+	transform: var(--hover-lift);
 	transition:
-		background-color 140ms ease,
-		border-color 140ms ease,
-		box-shadow 140ms ease,
-		transform 140ms ease;
+		background-color var(--motion-fast),
+		border-color var(--motion-fast),
+		box-shadow var(--motion-fast),
+		transform var(--motion-fast);
 }
 
 .contact-card:hover .contact-card-link {
@@ -2494,11 +2519,11 @@ h3 {
 	border-color: color-mix(in srgb, var(--accent) 58%, var(--border));
 	background-color: color-mix(in srgb, var(--accent) 12%, var(--surface));
 	color: var(--accent-strong);
-	transform: translateY(-1px);
+	transform: var(--hover-lift-subtle);
 }
 
 .footer-links a:focus-visible {
-	outline: 3px solid color-mix(in srgb, var(--accent) 42%, transparent);
+	outline: var(--focus-ring-soft);
 	outline-offset: 3px;
 }
 
