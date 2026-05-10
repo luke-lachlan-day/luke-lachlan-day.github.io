@@ -39,7 +39,7 @@ const leafAmount = Math.max(0, Math.floor(config.goalAmount));
 			return;
 		}
 
-		const leafCount = Number.parseInt(root.dataset.leafCount ?? '0', 10);
+		const maxLeafCount = Number.parseInt(root.dataset.leafCount ?? '0', 10);
 		const layerSettings = [
 			{
 				name: 'back',
@@ -82,21 +82,56 @@ const leafAmount = Math.max(0, Math.floor(config.goalAmount));
 			width: window.innerWidth || document.documentElement.clientWidth || 1,
 			height: window.innerHeight || document.documentElement.clientHeight || 1,
 		});
+		const getResponsiveLeafProfile = () => {
+			if (viewport.width <= 560) {
+				return {
+					count: Math.min(maxLeafCount, 12),
+					shares: {
+						back: 0.5,
+						mid: 0.34,
+						front: 0.16,
+					},
+				};
+			}
 
-		const layers = layerSettings.map((settings, index) => ({
+			if (viewport.width <= 820) {
+				return {
+					count: Math.min(maxLeafCount, 20),
+					shares: {
+						back: 0.42,
+						mid: 0.4,
+						front: 0.18,
+					},
+				};
+			}
+
+			return {
+				count: maxLeafCount,
+				shares: {
+					back: 0.36,
+					mid: 0.42,
+					front: 0.22,
+				},
+			};
+		};
+		const getLeafProfileKey = (profile) =>
+			[
+				profile.count,
+				profile.shares.back,
+				profile.shares.mid,
+				profile.shares.front,
+			].join(':');
+
+		const layers = layerSettings.map((settings) => ({
 			...settings,
 			element: root.querySelector(`[data-leaf-layer="${settings.name}"]`),
-			count:
-				index === layerSettings.length - 1
-					? 0
-					: Math.round(leafCount * settings.share),
+			count: 0,
 		}));
 
-		const assignedCount = layers.reduce((sum, layer) => sum + layer.count, 0);
-		layers[layers.length - 1].count = Math.max(0, leafCount - assignedCount);
-		const leaves = [];
+		let leaves = [];
 		let scrollY = window.scrollY;
 		let viewport = getViewport();
+		let activeLeafProfileKey = '';
 
 		const getLeafPosition = (leaf, age) => {
 			// Depth increases from back to front: screenY = worldY - scrollY * scrollDepth.
@@ -148,19 +183,47 @@ const leafAmount = Math.max(0, Math.floor(config.goalAmount));
 			leaf.element.style.setProperty('--leaf-size', `${size.toFixed(2)}px`);
 		};
 
-		layers.forEach((layer) => {
-			if (!layer.element) return;
+		const assignLayerCounts = () => {
+			const profile = getResponsiveLeafProfile();
+			let assignedCount = 0;
 
-			for (let index = 0; index < layer.count; index += 1) {
-				const leaf = document.createElement('span');
-				leaf.className = 'falling-leaf';
-				layer.element.append(leaf);
+			layers.forEach((layer, index) => {
+				if (index === layers.length - 1) {
+					layer.count = 0;
+					return;
+				}
 
-				const leafState = { element: leaf, layer };
-				resetLeaf(leafState, performance.now(), true);
-				leaves.push(leafState);
-			}
-		});
+				layer.count = Math.round(profile.count * (profile.shares[layer.name] ?? layer.share));
+				assignedCount += layer.count;
+			});
+
+			layers[layers.length - 1].count = Math.max(0, profile.count - assignedCount);
+			return getLeafProfileKey(profile);
+		};
+
+		const createLeaves = (now) => {
+			layers.forEach((layer) => {
+				layer.element?.replaceChildren();
+			});
+			leaves = [];
+			activeLeafProfileKey = assignLayerCounts();
+
+			layers.forEach((layer) => {
+				if (!layer.element) return;
+
+				for (let index = 0; index < layer.count; index += 1) {
+					const leaf = document.createElement('span');
+					leaf.className = 'falling-leaf';
+					layer.element.append(leaf);
+
+					const leafState = { element: leaf, layer };
+					resetLeaf(leafState, now, true);
+					leaves.push(leafState);
+				}
+			});
+		};
+
+		createLeaves(performance.now());
 
 		const render = (now) => {
 			leaves.forEach((leaf) => {
@@ -218,6 +281,9 @@ const leafAmount = Math.max(0, Math.floor(config.goalAmount));
 			() => {
 				viewport = getViewport();
 				scrollY = window.scrollY;
+				if (getLeafProfileKey(getResponsiveLeafProfile()) !== activeLeafProfileKey) {
+					createLeaves(performance.now());
+				}
 			},
 			{ passive: true }
 		);
