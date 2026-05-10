@@ -52,10 +52,6 @@
 	font-weight: 700;
 }
 
-.contact-grid {
-	grid-template-columns: 1fr;
-}
-
 .contact-card {
 	position: relative;
 	display: grid;
