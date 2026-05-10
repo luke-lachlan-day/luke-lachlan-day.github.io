@@ -3,6 +3,30 @@ import { getShortestWheelOffset } from '../utils/wheelSlots';
 const desktopQueryText = '(min-width: 821px)';
 const phoneQueryText = '(max-width: 460px)';
 
+type WheelSlotRanges = {
+	interactive: number;
+	transition: number;
+};
+
+type WheelElements = {
+	cards: HTMLElement[];
+	details: HTMLElement[];
+	previousButton: HTMLElement | null;
+	nextButton: HTMLElement | null;
+};
+
+export type WheelControllerOptions = {
+	wheelSelector: string;
+	cardSelector: string;
+	detailSelector: string;
+	indexAttr: string;
+	idAttr: string;
+	changeEvent: string;
+	detailRootSelector?: string;
+	hashPrefix?: string;
+	syncHash?: boolean;
+};
+
 const getAttr = (element: Element, name: string) => element.getAttribute(name) ?? '';
 const getNumberAttr = (element: Element, name: string) => Number(getAttr(element, name)) || 0;
 const wrapIndex = (index: number, total: number) => ((index % total) + total) % total;
@@ -36,24 +60,97 @@ const enableTransitionsAfterPaint = (wheel: HTMLElement) => {
 	});
 };
 
-export const setupWheelController = (wheel: HTMLElement) => {
+const getSlotRanges = (desktopQuery: MediaQueryList, phoneQuery: MediaQueryList): WheelSlotRanges => {
+	if (phoneQuery.matches) {
+		return {
+			interactive: 0,
+			transition: 1,
+		};
+	}
+
+	return desktopQuery.matches
+		? {
+				interactive: 2,
+				transition: 3,
+			}
+		: {
+				interactive: 1,
+				transition: 2,
+			};
+};
+
+const getDetailRoot = (wheel: HTMLElement, detailRootSelector?: string) => {
+	if (!detailRootSelector) {
+		return wheel.parentElement;
+	}
+
+	return wheel.closest<HTMLElement>(detailRootSelector);
+};
+
+const getWheelElements = (wheel: HTMLElement, options: WheelControllerOptions): WheelElements => {
+	const detailRoot = getDetailRoot(wheel, options.detailRootSelector);
+
+	return {
+		cards: Array.from(wheel.querySelectorAll<HTMLElement>(options.cardSelector)),
+		details: detailRoot ? Array.from(detailRoot.querySelectorAll<HTMLElement>(options.detailSelector)) : [],
+		previousButton: wheel.querySelector<HTMLElement>('[data-wheel-prev]'),
+		nextButton: wheel.querySelector<HTMLElement>('[data-wheel-next]'),
+	};
+};
+
+const updateCardState = (card: HTMLElement, activeIndex: number, total: number, slotRanges: WheelSlotRanges, indexAttr: string) => {
+	const itemIndex = getNumberAttr(card, indexAttr);
+	const slot = getShortestWheelOffset(itemIndex, activeIndex, total);
+	const slotDistance = Math.abs(slot);
+	const transitionSlot = slotDistance <= slotRanges.transition ? String(slot) : '';
+	const isInteractive = slotDistance <= slotRanges.interactive;
+	const isActive = itemIndex === activeIndex;
+
+	if (transitionSlot) {
+		card.setAttribute('data-slot', transitionSlot);
+	} else {
+		card.removeAttribute('data-slot');
+	}
+
+	card.setAttribute('aria-pressed', String(isActive));
+	card.setAttribute('aria-hidden', String(!isInteractive));
+	card.tabIndex = isInteractive ? 0 : -1;
+};
+
+const updateDetailVisibility = (details: HTMLElement[], activeIndex: number, indexAttr: string) => {
+	details.forEach((detail) => {
+		detail.hidden = getNumberAttr(detail, indexAttr) !== activeIndex;
+	});
+};
+
+const dispatchWheelChange = (changeEvent: string, activeIndex: number) => {
+	if (!changeEvent) {
+		return;
+	}
+
+	window.dispatchEvent(new CustomEvent(changeEvent, { detail: { activeIndex } }));
+};
+
+const writeActiveHash = (cards: HTMLElement[], activeIndex: number, idAttr: string, hashPrefix: string) => {
+	const activeCard = cards[activeIndex];
+	const itemId = activeCard ? getAttr(activeCard, idAttr) : '';
+
+	if (!itemId) {
+		return;
+	}
+
+	const nextHash = `${hashPrefix}${encodeURIComponent(itemId)}`;
+	if (window.location.hash !== nextHash) {
+		window.history.replaceState(null, '', nextHash);
+	}
+};
+
+export const setupWheelController = (wheel: HTMLElement, options: WheelControllerOptions) => {
 	if (wheel.dataset.wheelControllerReady === 'true') {
 		return;
 	}
 
-	const cardSelector = wheel.dataset.wheelCardSelector ?? '[data-wheel-card]';
-	const detailSelector = wheel.dataset.wheelDetailSelector ?? '';
-	const indexAttr = wheel.dataset.wheelIndexAttr ?? 'data-wheel-index';
-	const idAttr = wheel.dataset.wheelIdAttr ?? 'data-wheel-id';
-	const changeEvent = wheel.dataset.wheelChangeEvent ?? '';
-	const hashPrefix = wheel.dataset.wheelHashPrefix ?? '#';
-	const syncHash = wheel.dataset.wheelHash !== 'false';
-	const cards = Array.from(document.querySelectorAll<HTMLElement>(cardSelector));
-	const details = detailSelector
-		? Array.from(document.querySelectorAll<HTMLElement>(detailSelector))
-		: [];
-	const previousButton = wheel.querySelector<HTMLElement>('[data-wheel-prev]');
-	const nextButton = wheel.querySelector<HTMLElement>('[data-wheel-next]');
+	const { cards, details, previousButton, nextButton } = getWheelElements(wheel, options);
 
 	if (cards.length === 0) {
 		return;
@@ -62,80 +159,27 @@ export const setupWheelController = (wheel: HTMLElement) => {
 	wheel.dataset.wheelControllerReady = 'true';
 
 	const total = cards.length;
-	let activeIndex = Number(wheel.getAttribute('data-active-index')) || 0;
 	const desktopQuery = window.matchMedia(desktopQueryText);
 	const phoneQuery = window.matchMedia(phoneQueryText);
-
-	const getSlotRanges = () => {
-		if (phoneQuery.matches) {
-			return {
-				interactive: 0,
-				transition: 1,
-			};
-		}
-
-		return desktopQuery.matches
-			? {
-					interactive: 2,
-					transition: 3,
-				}
-			: {
-					interactive: 1,
-					transition: 2,
-				};
-	};
+	const hashPrefix = options.hashPrefix ?? '#';
+	const syncHash = options.syncHash ?? true;
+	let activeIndex = Number(wheel.getAttribute('data-active-index')) || 0;
 
 	const updateWheel = () => {
-		const { interactive, transition } = getSlotRanges();
+		const slotRanges = getSlotRanges(desktopQuery, phoneQuery);
 
 		wheel.setAttribute('data-active-index', String(activeIndex));
-
-		cards.forEach((card) => {
-			const itemIndex = getNumberAttr(card, indexAttr);
-			const slot = getShortestWheelOffset(itemIndex, activeIndex, total);
-			const slotDistance = Math.abs(slot);
-			const transitionSlot = slotDistance <= transition ? String(slot) : '';
-			const isInteractive = slotDistance <= interactive;
-			const isActive = itemIndex === activeIndex;
-
-			if (transitionSlot) {
-				card.setAttribute('data-slot', transitionSlot);
-			} else {
-				card.removeAttribute('data-slot');
-			}
-
-			card.setAttribute('aria-pressed', String(isActive));
-			card.setAttribute('aria-hidden', String(!isInteractive));
-			card.tabIndex = isInteractive ? 0 : -1;
-		});
-
-		details.forEach((detail) => {
-			detail.hidden = getNumberAttr(detail, indexAttr) !== activeIndex;
-		});
-
-		if (changeEvent) {
-			window.dispatchEvent(new CustomEvent(changeEvent, { detail: { activeIndex } }));
-		}
+		cards.forEach((card) => updateCardState(card, activeIndex, total, slotRanges, options.indexAttr));
+		updateDetailVisibility(details, activeIndex, options.indexAttr);
+		dispatchWheelChange(options.changeEvent, activeIndex);
 	};
 
-	const setActiveIndex = (index: number, updateHash = false) => {
+	const setActiveIndex = (index: number, shouldUpdateHash = false) => {
 		activeIndex = wrapIndex(index, total);
 		updateWheel();
 
-		if (!syncHash || !updateHash) {
-			return;
-		}
-
-		const activeCard = cards[activeIndex];
-		const itemId = activeCard ? getAttr(activeCard, idAttr) : '';
-
-		if (!itemId) {
-			return;
-		}
-
-		const nextHash = `${hashPrefix}${encodeURIComponent(itemId)}`;
-		if (window.location.hash !== nextHash) {
-			window.history.replaceState(null, '', nextHash);
+		if (syncHash && shouldUpdateHash) {
+			writeActiveHash(cards, activeIndex, options.idAttr, hashPrefix);
 		}
 	};
 
@@ -150,18 +194,18 @@ export const setupWheelController = (wheel: HTMLElement) => {
 			return;
 		}
 
-		const matchingCard = cards.find((card) => getAttr(card, idAttr) === itemId);
+		const matchingCard = cards.find((card) => getAttr(card, options.idAttr) === itemId);
 
 		if (!matchingCard) {
 			return;
 		}
 
-		setActiveIndex(getNumberAttr(matchingCard, indexAttr));
+		setActiveIndex(getNumberAttr(matchingCard, options.indexAttr));
 	};
 
 	cards.forEach((card) => {
 		card.addEventListener('click', () => {
-			setActiveIndex(getNumberAttr(card, indexAttr), true);
+			setActiveIndex(getNumberAttr(card, options.indexAttr), true);
 		});
 
 		card.addEventListener('keydown', (event) => {
@@ -188,6 +232,8 @@ export const setupWheelController = (wheel: HTMLElement) => {
 	enableTransitionsAfterPaint(wheel);
 };
 
-export const setupWheelControllers = () => {
-	document.querySelectorAll<HTMLElement>('[data-wheel-controller]').forEach(setupWheelController);
+export const setupWheelControllers = (options: WheelControllerOptions) => {
+	document.querySelectorAll<HTMLElement>(options.wheelSelector).forEach((wheel) => {
+		setupWheelController(wheel, options);
+	});
 };

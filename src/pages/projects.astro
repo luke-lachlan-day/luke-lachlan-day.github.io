@@ -51,11 +51,6 @@ const initialTransitionSlotRange = 3;
 			previousLabel="Previous project"
 			nextLabel="Next project"
 			activeIndex={initialActiveProjectIndex}
-			cardSelector="[data-project-card]"
-			detailSelector="[data-project-detail-item]"
-			indexAttr="data-project-index"
-			idAttr="data-project-id"
-			changeEvent="project-detail-change"
 			dataAttrs={{ 'data-project-wheel': '' }}
 		>
 			{
@@ -178,9 +173,18 @@ const initialTransitionSlotRange = 3;
 		import { setupDetailGalleries } from '../scripts/detailGallery';
 		import { setupWheelControllers } from '../scripts/wheelController';
 
-		setupWheelControllers();
+		setupWheelControllers({
+			wheelSelector: '[data-project-wheel]',
+			cardSelector: '[data-project-card]',
+			detailSelector: '[data-project-detail-item]',
+			indexAttr: 'data-project-index',
+			idAttr: 'data-project-id',
+			changeEvent: 'project-detail-change',
+			detailRootSelector: '#project-showcase',
+		});
 		setupDetailGalleries({
 			gallerySelector: '[data-project-gallery]',
+			detailItemSelector: '[data-project-detail-item]',
 			detailChangeEvent: 'project-detail-change',
 		});
 	</script>

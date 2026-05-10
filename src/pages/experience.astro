@@ -35,11 +35,6 @@ const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)
 			previousLabel="Previous experience"
 			nextLabel="Next experience"
 			activeIndex={initialActiveExperienceIndex}
-			cardSelector="[data-experience-card]"
-			detailSelector="[data-experience-detail-item]"
-			indexAttr="data-experience-index"
-			idAttr="data-experience-id"
-			changeEvent="experience-detail-change"
 			dataAttrs={{ 'data-experience-wheel': '' }}
 		>
 			{
@@ -155,9 +150,18 @@ const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)
 		import { setupDetailGalleries } from '../scripts/detailGallery';
 		import { setupWheelControllers } from '../scripts/wheelController';
 
-		setupWheelControllers();
+		setupWheelControllers({
+			wheelSelector: '[data-experience-wheel]',
+			cardSelector: '[data-experience-card]',
+			detailSelector: '[data-experience-detail-item]',
+			indexAttr: 'data-experience-index',
+			idAttr: 'data-experience-id',
+			changeEvent: 'experience-detail-change',
+			detailRootSelector: '#experience-showcase',
+		});
 		setupDetailGalleries({
 			gallerySelector: '[data-experience-gallery]',
+			detailItemSelector: '[data-experience-detail-item]',
 			detailChangeEvent: 'experience-detail-change',
 		});
 	</script>
