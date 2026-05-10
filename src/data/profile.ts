@@ -51,6 +51,7 @@ export type CompanyId =
 	| 'daytime-devs'
 	| 'catalyst-games'
 	| 'coastal-derrieres'
+	| 'sciworld'
 	| 'solo'
 	| 'australian-army'
 	| 'power-net-it-solutions';
@@ -148,6 +149,14 @@ export const profile = {
 			icon: {
 				src: '/assets/images/company-coastal-derrieres.webp',
 				alt: 'Beach Bums app icon associated with Coastal Derrieres.',
+			},
+		},
+		{
+			id: 'sciworld',
+			name: 'SciWorld',
+			icon: {
+				src: '/assets/images/company-sciworld.webp',
+				alt: 'SciWorld logo.',
 			},
 		},
 		{
@@ -646,6 +655,24 @@ export const profile = {
 					'Quoted and oversaw client projects, pitched opportunities to publishers, taught game development in schools, and presented in weekly show-and-tell sessions.',
 				],
 				tools: ['Unity', 'C#', 'Addressables', 'Firebase', 'VR', 'Teaching', 'Technical Direction'],
+			},
+			{
+				id: 'sciworld-presenter',
+				role: 'Presenter',
+				company: 'SciWorld',
+				companyId: 'sciworld',
+				dateLabel: '2026',
+				sortDate: '2026-01-01',
+				context: 'Science outreach and STEM education',
+				summary:
+					'Presented interactive science programs for SciWorld, supporting STEM outreach for schools, parties, and public events across South Australia.',
+				highlights: [
+					'Presented science demonstrations and interactive explanations for school, party, and public event audiences.',
+					'Supported mobile outreach delivery through program setup, pack-down, and venue-ready preparation.',
+					'Adapted audience-facing explanations to help science concepts feel clear, engaging, and hands-on.',
+					'Followed safe presentation practices while supporting demonstrations, workshops, and science communication activities.',
+				],
+				tools: ['Science Communication', 'STEM Education', 'Presenting', 'Audience Engagement', 'Safety', 'Workshop Support'],
 			},
 			{
 				id: 'self-employed-unity-developer',
