@@ -1,43 +1,39 @@
-# Astro Starter Kit: Minimal
+# Luke Lachlan Day Portfolio
+
+Personal portfolio site for Luke Lachlan Day, built to share games, tools, work experience, and contact links with a playful pixel-art presentation.
+
+Live site: [luke-lachlan-day.github.io](https://luke-lachlan-day.github.io/)
+
+## What's Inside
+
+- Astro 6 site with TypeScript-powered content and components.
+- Responsive portfolio pages for home, projects, experience, and contact.
+- Light and dark theme support with a custom pixel-art visual direction.
+- Shared profile data for project details, experience history, links, and page content.
+
+## Local Setup
+
+This project requires Node.js `>=22.12.0`.
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Useful commands:
 
-## 🚀 Project Structure
+| Command           | Action                                      |
+| :---------------- | :------------------------------------------ |
+| `npm run dev`     | Start the local development server          |
+| `npm run build`   | Build the production site to `./dist/`      |
+| `npm run preview` | Preview the production build locally        |
 
-Inside of your Astro project, you'll see the following folders and files:
+## License
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+Source code in this repository is licensed under the MIT License. See `LICENSE`.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Artwork, images, screenshots, branding, logos, text content, project descriptions, visual designs, and other non-code assets are © 2026 Luke Lachlan Day. All rights reserved. See `ASSET-LICENSE.md`.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Third-Party Notices
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+SVG and other third-party asset notices are documented in `THIRD-PARTY-NOTICES.md`.
