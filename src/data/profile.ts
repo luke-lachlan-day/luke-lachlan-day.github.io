@@ -77,6 +77,22 @@ export type ProjectTags = {
 	tech?: string[];
 };
 
+export type ProjectActionType =
+	| 'website'
+	| 'webApp'
+	| 'browserExtension'
+	| 'steam'
+	| 'appStore'
+	| 'playStore'
+	| 'youtube'
+	| 'source';
+
+export type ProjectAction = {
+	type: ProjectActionType;
+	href: string;
+	label?: string;
+};
+
 export type Project = {
 	id: string;
 	companyId: Company['id'];
@@ -90,6 +106,7 @@ export type Project = {
 	yearLabel: string;
 	releaseStage: ProjectReleaseStage;
 	awards: ProjectAward[];
+	actions?: ProjectAction[];
 	projectUrl?: string;
 	projectUrlLabel?: string;
 	projectUrlIcon?: string;
@@ -224,6 +241,10 @@ export const profile = {
 				yearLabel: '2026',
 				releaseStage: 'released',
 				awards: [],
+				actions: [
+					{ type: 'website', href: 'https://luke-lachlan-day.github.io/' },
+					{ type: 'source', href: 'https://github.com/luke-lachlan-day/luke-lachlan-day.github.io' },
+				],
 				projectUrl: 'https://luke-lachlan-day.github.io/',
 				sourceUrl: 'https://github.com/luke-lachlan-day/luke-lachlan-day.github.io',
 			},
@@ -350,6 +371,9 @@ export const profile = {
 				yearLabel: '2008',
 				releaseStage: 'released',
 				awards: [],
+				actions: [
+					{ type: 'youtube', href: 'https://www.youtube.com/watch?v=C39TrymUclw' },
+				],
 				projectUrl: 'https://www.youtube.com/watch?v=C39TrymUclw',
 				projectUrlLabel: 'Watch Video',
 				projectUrlIcon: '/assets/icons/youtube.svg',
@@ -553,6 +577,9 @@ export const profile = {
 				yearLabel: '2025-2026',
 				releaseStage: 'contributed',
 				awards: [],
+				actions: [
+					{ type: 'steam', href: 'https://store.steampowered.com/app/2941630/Dungeons_and_Dining_Tables/' },
+				],
 				projectUrl: 'https://store.steampowered.com/app/2941630/Dungeons_and_Dining_Tables/',
 			},
 			{
@@ -583,6 +610,9 @@ export const profile = {
 				yearLabel: '2024',
 				releaseStage: 'contributed',
 				awards: [],
+				actions: [
+					{ type: 'steam', href: 'https://store.steampowered.com/app/2858760/Beach_Bums/' },
+				],
 				projectUrl: 'https://store.steampowered.com/app/2858760/Beach_Bums/',
 			},
 			{
@@ -720,6 +750,9 @@ export const profile = {
 				yearLabel: '2023',
 				releaseStage: 'released',
 				awards: [],
+				actions: [
+					{ type: 'steam', href: 'https://store.steampowered.com/app/2054850/Super_BAWK_BAWK_Chicken/' },
+				],
 				projectUrl: 'https://store.steampowered.com/app/2054850/Super_BAWK_BAWK_Chicken/',
 			},
 		] satisfies Project[],

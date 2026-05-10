@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AssetIcon from '../components/AssetIcon.astro';
 import { profile, type Project } from '../data/profile';
+import { getProjectActionLinks } from '../data/projectActions';
 import { getProjectTagRenderGroups, getProjectTagStyleVars } from '../data/projectTags';
 
 const { home, projects, companies } = profile;
@@ -110,6 +111,7 @@ const getInitialWheelSlot = (index: number) => {
 					const company = companyById.get(project.companyId);
 					const releaseStageLabel = releaseStageLabels[project.releaseStage];
 					const hasMultiplePictures = project.pictures.length > 1;
+					const actionLinks = getProjectActionLinks(project.actions);
 					const tagGroups = getProjectTagRenderGroups(project.projectTags);
 
 					return (
@@ -214,18 +216,16 @@ const getInitialWheelSlot = (index: number) => {
 										</div>
 									)
 								}
-								<div class="project-detail-actions">
-									<a class="button" href={project.projectUrl ?? `#${project.id}`}>
-										<AssetIcon src={project.projectUrlIcon ?? '/assets/icons/gamepad.svg'} class="button-icon" />
-										{project.projectUrlLabel ?? 'View Project'}
-									</a>
-									{project.sourceUrl && (
-										<a class="button button-2" href={project.sourceUrl}>
-											<AssetIcon src="/assets/icons/github.svg" class="button-icon" />
-											Source Code
-										</a>
-									)}
-								</div>
+								{actionLinks.length > 0 && (
+									<div class="project-detail-actions">
+										{actionLinks.map((action, actionIndex) => (
+											<a class:list={['button', actionIndex > 0 && 'button-2']} href={action.href}>
+												<AssetIcon src={action.icon} class="button-icon" />
+												{action.label}
+											</a>
+										))}
+									</div>
+								)}
 							</div>
 						</article>
 					);
