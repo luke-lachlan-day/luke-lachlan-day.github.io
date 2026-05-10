@@ -138,17 +138,6 @@ const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyI
 					);
 				})
 			}
-
-			<div class="experience-credentials" aria-label="Selected achievements and background">
-				{
-					experience.credentials.map((credential) => (
-						<div class="experience-credential">
-							<strong>{credential.label}</strong>
-							<span>{credential.value}</span>
-						</div>
-					))
-				}
-			</div>
 		</div>
 	</section>
 

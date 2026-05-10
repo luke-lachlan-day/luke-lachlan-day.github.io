@@ -32,11 +32,6 @@ export type ExperienceItem = {
 	tools: string[];
 };
 
-export type ExperienceCredential = {
-	label: string;
-	value: string;
-};
-
 export type HeroContent = {
 	title: string;
 	lead?: string;
@@ -1001,24 +996,6 @@ export const profile = {
 				tools: ['Network Administration', 'Technical Systems', 'Equipment Operation', 'Training', 'Teamwork'],
 			},
 		] satisfies ExperienceItem[],
-		credentials: [
-			{
-				label: 'Selected Achievement',
-				value: 'South Australian Screen Awards 2024 - Best Game for Super BAWK BAWK Chicken.',
-			},
-			{
-				label: 'Shipped Platforms',
-				value: 'Steam for Windows and Mac, Google Play, and the Apple App Store.',
-			},
-			{
-				label: 'Education',
-				value: 'Bachelor of Science, University of Adelaide - Genetics, Microbiology and Immunology.',
-			},
-			{
-				label: 'Team Fit',
-				value: 'Comfortable with programmers, artists, designers, clients, demos, teaching, and stakeholder communication.',
-			},
-		] satisfies ExperienceCredential[],
 	},
 	contact: {
 		title: 'Luke Lachlan Day | Contact',

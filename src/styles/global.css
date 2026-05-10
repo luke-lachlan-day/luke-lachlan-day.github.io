@@ -291,7 +291,6 @@ main {
 .experience-highlights,
 .experience-highlights-title,
 .experience-highlights li,
-.experience-credential,
 .project-tag,
 .site-footer,
 .site-footer::before,
@@ -2066,38 +2065,6 @@ h3 {
 	color: var(--accent);
 }
 
-.experience-credentials {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 10px;
-	margin-top: clamp(16px, 2.4vw, 24px);
-	padding-top: clamp(16px, 2.4vw, 24px);
-	border-top: 1px solid var(--border);
-}
-
-.experience-credential {
-	display: grid;
-	gap: 5px;
-	min-width: 0;
-	border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--border));
-	border-radius: 10px;
-	background: color-mix(in srgb, var(--surface) 72%, var(--bg));
-	padding: 11px 12px;
-}
-
-.experience-credential strong {
-	color: var(--heading);
-	font-size: 0.9rem;
-	line-height: 1.15;
-}
-
-.experience-credential span {
-	color: var(--muted);
-	font-size: 0.9rem;
-	font-weight: 800;
-	line-height: 1.35;
-}
-
 @media (max-width: 960px) {
 	.project-detail {
 		grid-template-columns: 1fr;
@@ -2230,10 +2197,6 @@ h3 {
 
 	.project-detail-actions .button {
 		width: 100%;
-	}
-
-	.experience-credentials {
-		grid-template-columns: 1fr;
 	}
 }
 
