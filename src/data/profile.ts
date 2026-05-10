@@ -162,7 +162,7 @@ export const profile = {
 			{ label: 'View Projects', href: '/projects/', icon: '/assets/icons/gamepad.svg' },
 			{ label: 'Get In Touch', href: '/contact/', icon: '/assets/icons/email.svg' },
 		],
-		featuredProjectIds: ['petes-place', 'coop-climbing', 'awbw-opening-analyzer'],
+		featuredProjectIds: ['petes-place', 'coop-climbing', 'super-bawk-bawk-chicken'],
 	},
 	companies: [
 		{

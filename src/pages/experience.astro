@@ -108,14 +108,7 @@ const getExperienceMedia = (item: ExperienceItem) => item.picture ?? getCompanyI
 							<div class="project-detail-media experience-detail-media">
 								{
 									media ? (
-										<ProjectImageFrame class="project-detail-gallery" src={media.src} alt={media.alt} loading={index === 0 ? 'eager' : 'lazy'}>
-											{icon && (
-												<span class="project-wheel-company-badge experience-detail-company-badge" aria-hidden="true">
-													<span class="project-wheel-company-badge-back"></span>
-													<span class="project-wheel-company-badge-icon" style={`--company-icon-url: url("${icon.src}")`}></span>
-												</span>
-											)}
-										</ProjectImageFrame>
+										<ProjectImageFrame class="project-detail-gallery" src={media.src} alt={media.alt} loading={index === 0 ? 'eager' : 'lazy'} />
 									) : (
 										<div class="experience-detail-media-fallback" aria-hidden="true">
 											<span class="experience-media-fallback-initial">{item.company.slice(0, 1)}</span>

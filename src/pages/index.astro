@@ -66,7 +66,14 @@ const featuredProjects = home.featuredProjectIds
 							href={`${projects.href}#${project.id}`}
 							aria-label={`View ${project.product} in projects`}
 						>
-							<ProjectImageFrame class="project-image" src={picture.src} alt={picture.alt} loading="lazy" />
+							<ProjectImageFrame class="project-image" src={picture.src} alt={picture.alt} loading="lazy">
+								{company && (
+									<span class="project-wheel-company-badge project-card-company-badge" aria-hidden="true">
+										<span class="project-wheel-company-badge-back"></span>
+										<span class="project-wheel-company-badge-icon" style={`--company-icon-url: url("${company.icon.src}")`}></span>
+									</span>
+								)}
+							</ProjectImageFrame>
 							<div class="project-body">
 								<div class="project-company">
 									{company && <img src={company.icon.src} alt="" loading="lazy" />}
