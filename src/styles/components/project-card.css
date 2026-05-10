@@ -76,8 +76,8 @@
 
 .tool-list span {
 	border-radius: 7px;
-	background: #d7e5bf;
-	color: #25313d;
+	background: var(--project-status-released-bg);
+	color: var(--project-status-released-text);
 	font-family: var(--font-body);
 	font-size: 0.82rem;
 	font-weight: 800;
@@ -86,24 +86,13 @@
 }
 
 .tool-list span:nth-child(2n) {
-	background: #f5cc79;
+	background: var(--project-status-dev-bg);
+	color: var(--project-status-dev-text);
 }
 
 .tool-list span:nth-child(3n) {
-	background: #d8cbed;
-}
-
-:root[data-theme='dark'] .tool-list span {
-	background: #304b78;
-	color: #edf0ff;
-}
-
-:root[data-theme='dark'] .tool-list span:nth-child(2n) {
-	background: #4b3a72;
-}
-
-:root[data-theme='dark'] .tool-list span:nth-child(3n) {
-	background: #425f43;
+	background: var(--project-status-contributed-bg);
+	color: var(--project-status-contributed-text);
 }
 
 @media (min-width: 720px) {

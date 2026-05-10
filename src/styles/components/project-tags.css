@@ -99,14 +99,6 @@
 	--tag-dark-text: #ffeaf2;
 	--tag-dark-border: #a45e77;
 }
-.project-tag[data-tag-style='tool'] {
-	--tag-bg: #cdebdc;
-	--tag-text: #245642;
-	--tag-border: #a8d6bf;
-	--tag-dark-bg: #315a4b;
-	--tag-dark-text: #e9fff5;
-	--tag-dark-border: #5b8976;
-}
 .project-tag[data-tag-style='browser-extension'] {
 	--tag-bg: #cfe6f2;
 	--tag-text: #28526a;

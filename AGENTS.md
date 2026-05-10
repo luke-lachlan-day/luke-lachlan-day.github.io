@@ -10,6 +10,7 @@ This file is the repo-level source of truth for future agent work on this Astro 
 - Node.js `>=22.12.0`.
 - Source code lives under `src/`.
 - Static assets live under `public/assets/`.
+- Source/original asset files live under `assets-source/`; do not place them under `public/`, because everything in `public/` is shipped with the site.
 - Shared data types live in `src/data/types.ts`.
 - Portfolio data lives in focused source-of-truth modules: `src/data/site.ts`, `src/data/home.ts`, `src/data/contact.ts`, `src/data/companies.ts`, `src/data/projects.ts`, and `src/data/experience.ts`.
 - Project rendering helpers live in `src/data/projectActions.ts` and `src/data/projectTags.ts`.
@@ -139,6 +140,7 @@ Before finishing a change, check for:
 ## Performance and Assets
 
 - Optimize web-facing raster assets before shipping.
+- Keep only deployable, optimized assets under `public/assets/`; keep oversized originals and working source files under `assets-source/`.
 - Prefer WebP for photos, illustrations, decorative images, and alpha-capable raster assets unless PNG is required for exact lossless output.
 - Use the repo-local ImageMagick executable under `.tools/` for conversions.
 - Do not reference oversized source PNGs from pages or CSS when an optimized WebP is suitable.
