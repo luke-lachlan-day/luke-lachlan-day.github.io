@@ -70,6 +70,13 @@ export type ProjectAward = {
 	emblem: ImageAsset;
 };
 
+export type ProjectTags = {
+	format: string[];
+	platform: string[];
+	specialty: string[];
+	tech?: string[];
+};
+
 export type Project = {
 	id: string;
 	companyId: Company['id'];
@@ -77,6 +84,7 @@ export type Project = {
 	pictures: ImageAsset[];
 	description: string;
 	tools: string[];
+	projectTags: ProjectTags;
 	sortDate: string;
 	dateLabel: string;
 	yearLabel: string;
@@ -205,6 +213,12 @@ export const profile = {
 				description:
 					'A personal Astro portfolio site for sharing projects, experience, contact links, and playful pixel-art presentation.',
 				tools: ['Astro', 'TypeScript', 'Portfolio'],
+				projectTags: {
+					format: ['Website'],
+					platform: ['Web'],
+					specialty: ['Portfolio'],
+					tech: ['Astro', 'TypeScript'],
+				},
 				sortDate: '2026-05-09',
 				dateLabel: 'May 2026',
 				yearLabel: '2026',
@@ -230,6 +244,11 @@ export const profile = {
 				description:
 					'An educational science video explaining why octopuses have three hearts and how their oxygen transport differs from humans.',
 				tools: ['Educational Video', 'Science Communication', 'Biology'],
+				projectTags: {
+					format: ['Video'],
+					platform: ['YouTube'],
+					specialty: ['Educational', 'Science Communication', 'Biology'],
+				},
 				sortDate: '2026-05-09',
 				dateLabel: '2026',
 				yearLabel: '2026',
@@ -249,6 +268,11 @@ export const profile = {
 				description:
 					'A solo game prototype built around buoyant movement, light physics, and playful traversal challenges.',
 				tools: ['Game Prototype', 'Physics', 'Solo'],
+				projectTags: {
+					format: ['Game', 'Prototype'],
+					platform: ['PC'],
+					specialty: ['Physics', 'Traversal'],
+				},
 				sortDate: '2026-05-06',
 				dateLabel: '2026',
 				yearLabel: '2026',
@@ -268,6 +292,11 @@ export const profile = {
 				description:
 					'A solo prototype exploring quiet puzzle ideas, reflective pacing, and small moments of discovery.',
 				tools: ['Puzzle', 'Prototype', 'Solo'],
+				projectTags: {
+					format: ['Game', 'Prototype'],
+					platform: ['PC'],
+					specialty: ['Puzzle', 'Reflective'],
+				},
 				sortDate: '2026-05-06',
 				dateLabel: '2026',
 				yearLabel: '2026',
@@ -287,6 +316,11 @@ export const profile = {
 				description:
 					'A festive quiz and games project for quick questions, party rounds, and light group play.',
 				tools: ['Quiz', 'Party Game', 'Solo'],
+				projectTags: {
+					format: ['Quiz', 'Party Game'],
+					platform: ['Web'],
+					specialty: ['Group Play', 'Festive'],
+				},
 				sortDate: '2026-05-06',
 				dateLabel: '2026',
 				yearLabel: '2026',
@@ -305,6 +339,12 @@ export const profile = {
 				],
 				description: "A video project in flash that I made in primary school and released on my brother's YouTube.",
 				tools: ['Video', 'YouTube', 'Solo'],
+				projectTags: {
+					format: ['Video'],
+					platform: ['YouTube'],
+					specialty: ['Animation'],
+					tech: ['Flash'],
+				},
 				sortDate: '2008-06-01',
 				dateLabel: 'June 2008',
 				yearLabel: '2008',
@@ -327,6 +367,11 @@ export const profile = {
 				description:
 					'A prototype focused on readable fights, quick decisions, and satisfying moment-to-moment combat.',
 				tools: ['Action', 'Combat', 'Prototype'],
+				projectTags: {
+					format: ['Game', 'Prototype'],
+					platform: ['PC'],
+					specialty: ['Action', 'Combat'],
+				},
 				sortDate: '2026-05-08',
 				dateLabel: '2026',
 				yearLabel: '2026',
@@ -346,6 +391,11 @@ export const profile = {
 				description:
 					'A prototype exploring roguelike combat ideas, short runs, and expressive player choices.',
 				tools: ['Roguelike', 'Combat', 'Prototype'],
+				projectTags: {
+					format: ['Game', 'Prototype'],
+					platform: ['PC'],
+					specialty: ['Roguelike', 'Combat'],
+				},
 				sortDate: '2026-05-07',
 				dateLabel: '2026',
 				yearLabel: '2026',
@@ -365,6 +415,11 @@ export const profile = {
 				description:
 					'A solo arcade prototype inspired by paddle-and-ball play, clean controls, and fast scoring loops.',
 				tools: ['Arcade', 'Prototype', 'Game Feel'],
+				projectTags: {
+					format: ['Game', 'Prototype'],
+					platform: ['PC'],
+					specialty: ['Arcade', 'Game Feel'],
+				},
 				sortDate: '2026-05-05',
 				dateLabel: '2026',
 				yearLabel: '2026',
@@ -384,6 +439,11 @@ export const profile = {
 				description:
 					'A solo simulation prototype about observing creatures, tuning behaviours, and experimenting with systemic interactions.',
 				tools: ['Simulation', 'Systems', 'Prototype'],
+				projectTags: {
+					format: ['Game', 'Prototype'],
+					platform: ['PC'],
+					specialty: ['Simulation', 'Systems'],
+				},
 				sortDate: '2026-05-04',
 				dateLabel: '2026',
 				yearLabel: '2026',
@@ -403,6 +463,11 @@ export const profile = {
 				description:
 					'A solo quiz project built around Norse mythology questions, learning, and fast answer feedback.',
 				tools: ['Quiz', 'Education', 'Mythology'],
+				projectTags: {
+					format: ['Quiz'],
+					platform: ['Web'],
+					specialty: ['Educational', 'Mythology'],
+				},
 				sortDate: '2026-05-03',
 				dateLabel: '2026',
 				yearLabel: '2026',
@@ -422,6 +487,11 @@ export const profile = {
 				description:
 					'A shelved solo party-game prototype built around quick reactions, passing pressure, and light group chaos.',
 				tools: ['Party Game', 'Prototype', 'Solo'],
+				projectTags: {
+					format: ['Party Game', 'Prototype'],
+					platform: ['PC'],
+					specialty: ['Group Play', 'Quick Reactions'],
+				},
 				sortDate: '2026-05-02',
 				dateLabel: '2026',
 				yearLabel: '2026',
@@ -449,6 +519,11 @@ export const profile = {
 				description:
 					'A cozy life sim about running a little shop, making friends, and helping a town full of quirky characters.',
 				tools: ['Life Sim', 'Cozy', 'Management'],
+				projectTags: {
+					format: ['Game'],
+					platform: ['PC'],
+					specialty: ['Life Sim', 'Cozy', 'Management'],
+				},
 				sortDate: '2026-04-01',
 				dateLabel: 'Apr 2026',
 				yearLabel: '2026',
@@ -468,6 +543,11 @@ export const profile = {
 				description:
 					'A cozy fantasy adventure about running a tavern, feeding heroes, and managing the chaos between dungeon runs.',
 				tools: ['Adventure', 'Management', 'Cozy'],
+				projectTags: {
+					format: ['Game'],
+					platform: ['PC', 'Steam'],
+					specialty: ['Adventure', 'Management', 'Cozy'],
+				},
 				sortDate: '2025-01-01',
 				dateLabel: '2025-2026',
 				yearLabel: '2025-2026',
@@ -492,6 +572,12 @@ export const profile = {
 				description:
 					'A 2D hidden object memory game about finding misplaced swimsuits and restoring order after a tidal wave disrupts a beach scene.',
 				tools: ['Unity', 'C#', 'FMOD', 'Hidden Object', 'Level Editor'],
+				projectTags: {
+					format: ['Game', 'Client Work'],
+					platform: ['PC', 'Steam'],
+					specialty: ['Hidden Object', 'Memory Game'],
+					tech: ['Unity', 'C#', 'FMOD'],
+				},
 				sortDate: '2024-10-01',
 				dateLabel: 'Jun 2024 - Oct 2024',
 				yearLabel: '2024',
@@ -512,6 +598,12 @@ export const profile = {
 				description:
 					'A Catalyst Games contribution to VR client work, supporting interactive training experiences and practical project delivery.',
 				tools: ['VR', 'Client Work', 'Unity'],
+				projectTags: {
+					format: ['Client Work'],
+					platform: ['VR'],
+					specialty: ['Training', 'Interactive Experience'],
+					tech: ['Unity'],
+				},
 				sortDate: '2026-02-01',
 				dateLabel: '2025-2026',
 				yearLabel: '2025-2026',
@@ -531,6 +623,12 @@ export const profile = {
 				description:
 					'A Catalyst Games contribution to a themed game-night experience, supporting playful group activities and event-ready presentation.',
 				tools: ['Event Game', 'Group Play', 'Unity'],
+				projectTags: {
+					format: ['Event Game', 'Client Work'],
+					platform: ['PC'],
+					specialty: ['Group Play', 'Presentation'],
+					tech: ['Unity'],
+				},
 				sortDate: '2026-01-01',
 				dateLabel: '2025-2026',
 				yearLabel: '2025-2026',
@@ -562,6 +660,11 @@ export const profile = {
 				description:
 					'A co-op climbing game built around communication, trust, and smart movement.',
 				tools: ['Prototype', 'Co-op', 'Physics'],
+				projectTags: {
+					format: ['Game', 'Prototype'],
+					platform: ['PC'],
+					specialty: ['Co-op', 'Physics', 'Communication'],
+				},
 				sortDate: '2026-03-01',
 				dateLabel: '2026',
 				yearLabel: '2026',
@@ -581,6 +684,12 @@ export const profile = {
 				description:
 					'Analyze Advance Wars By Web openings with win rates, data views, and strategy insights.',
 				tools: ['Tool', 'Data', 'Strategy'],
+				projectTags: {
+					format: ['Tool'],
+					platform: ['Web'],
+					specialty: ['Strategy', 'Data Analysis'],
+					tech: ['TypeScript'],
+				},
 				sortDate: '2026-04-01',
 				dateLabel: '2026',
 				yearLabel: '2026',
@@ -600,6 +709,12 @@ export const profile = {
 				description:
 					'A precision platformer about a chicken racing through dangerous levels, dodging traps, and chasing fast clears.',
 				tools: ['Platformer', 'Unity', 'Steam'],
+				projectTags: {
+					format: ['Game'],
+					platform: ['PC', 'Steam', 'Mobile'],
+					specialty: ['Platformer', 'Precision'],
+					tech: ['Unity', 'C#'],
+				},
 				sortDate: '2023-07-17',
 				dateLabel: 'Jul 2023',
 				yearLabel: '2023',

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AssetIcon from '../components/AssetIcon.astro';
 import { profile, type Project } from '../data/profile';
+import { getProjectTagRenderGroups, getProjectTagStyleVars } from '../data/projectTags';
 
 const { home, projects, companies } = profile;
 const companyById = new Map(companies.map((company) => [company.id, company]));
@@ -109,6 +110,7 @@ const getInitialWheelSlot = (index: number) => {
 					const company = companyById.get(project.companyId);
 					const releaseStageLabel = releaseStageLabels[project.releaseStage];
 					const hasMultiplePictures = project.pictures.length > 1;
+					const tagGroups = getProjectTagRenderGroups(project.projectTags);
 
 					return (
 						<article
@@ -187,8 +189,14 @@ const getInitialWheelSlot = (index: number) => {
 									<span>{project.dateLabel}</span>
 								</div>
 								<p class="project-detail-description">{project.description}</p>
-								<div class="tool-list" aria-label={`${project.product} tools`}>
-									{project.tools.map((tool) => <span>{tool}</span>)}
+								<div class="project-tag-list" aria-label={`${project.product} tags`}>
+									{tagGroups.map((tagGroup) => (
+										<span class="project-tag-group" data-tag-group={tagGroup.group}>
+											{tagGroup.tags.map((tag) => (
+												<span class="project-tag" style={getProjectTagStyleVars(tag.style)}>{tag.label}</span>
+											))}
+										</span>
+									))}
 								</div>
 								{
 									project.awards.length > 0 && (

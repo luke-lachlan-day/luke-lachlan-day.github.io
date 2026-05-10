@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AssetIcon from '../components/AssetIcon.astro';
 import { profile, type Project } from '../data/profile';
+import { getProjectTagRenderGroups, getProjectTagStyleVars } from '../data/projectTags';
 
 const { home, projects, companies } = profile;
 const [heroFirstName, ...heroRemainingNames] = profile.name.split(' ');
@@ -56,6 +57,7 @@ const featuredProjects = home.featuredProjectIds
 				featuredProjects.map((project) => {
 					const company = companyById.get(project.companyId);
 					const picture = project.pictures[0];
+					const tagGroups = getProjectTagRenderGroups(project.projectTags);
 
 					return (
 						<a
@@ -71,8 +73,14 @@ const featuredProjects = home.featuredProjectIds
 								</div>
 								<h3>{project.product}</h3>
 								<p>{project.description}</p>
-								<div class="tool-list" aria-label={`${project.product} tools`}>
-									{project.tools.map((tool) => <span>{tool}</span>)}
+								<div class="project-tag-list" aria-label={`${project.product} tags`}>
+									{tagGroups.map((tagGroup) => (
+										<span class="project-tag-group" data-tag-group={tagGroup.group}>
+											{tagGroup.tags.map((tag) => (
+												<span class="project-tag" style={getProjectTagStyleVars(tag.style)}>{tag.label}</span>
+											))}
+										</span>
+									))}
 								</div>
 							</div>
 						</a>

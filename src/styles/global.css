@@ -267,6 +267,7 @@ main {
 .contact-card-title,
 .contact-card-description,
 .contact-hero-image,
+.project-tag,
 .site-footer,
 .site-footer::before,
 .site-footer::after,
@@ -1033,6 +1034,67 @@ h3 {
 
 :root[data-theme="dark"] .tool-list span:nth-child(3n) {
 	background: #425f43;
+}
+
+.project-tag-list {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	column-gap: 18px;
+	row-gap: 8px;
+	margin-top: 6px;
+}
+
+.project-tag-group {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	min-width: 0;
+}
+
+.project-tag {
+	display: inline-flex;
+	align-items: center;
+	min-height: 28px;
+	border: 1px solid var(--tag-border, var(--border));
+	border-radius: 7px;
+	background: var(--tag-bg, var(--surface-soft));
+	color: var(--tag-text, var(--text));
+	font-family: var(--font-body);
+	font-size: 0.82rem;
+	font-weight: 800;
+	line-height: 1;
+	padding: 7px 11px;
+}
+
+.project-tag-group[data-tag-group="format"] .project-tag {
+	border-color: color-mix(in srgb, var(--tag-border, var(--border)) 82%, var(--tag-text, var(--text)));
+	box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--tag-text, var(--text)) 16%, transparent);
+}
+
+.project-tag-group[data-tag-group="platform"] .project-tag,
+.project-tag-group[data-tag-group="tech"] .project-tag {
+	background: color-mix(in srgb, var(--tag-bg, var(--surface-soft)) 64%, var(--surface));
+}
+
+.project-tag-group[data-tag-group="platform"] .project-tag {
+	border-style: dashed;
+}
+
+:root[data-theme="dark"] .project-tag {
+	border-color: var(--tag-dark-border, var(--border));
+	background: var(--tag-dark-bg, var(--surface-soft));
+	color: var(--tag-dark-text, var(--text));
+}
+
+:root[data-theme="dark"] .project-tag-group[data-tag-group="format"] .project-tag {
+	border-color: color-mix(in srgb, var(--tag-dark-border, var(--border)) 82%, var(--tag-dark-text, var(--text)));
+	box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--tag-dark-text, var(--text)) 14%, transparent);
+}
+
+:root[data-theme="dark"] .project-tag-group[data-tag-group="platform"] .project-tag,
+:root[data-theme="dark"] .project-tag-group[data-tag-group="tech"] .project-tag {
+	background: color-mix(in srgb, var(--tag-dark-bg, var(--surface-soft)) 82%, var(--surface));
 }
 
 .projects-hero {
