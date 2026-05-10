@@ -178,8 +178,8 @@ const getInitialWheelSlot = (index: number) => {
 								</div>
 							</div>
 							<div class="project-detail-content">
-								<div class="project-detail-kicker">
-									<span data-status={project.releaseStage}>{releaseStageLabel}</span>
+								<div class="project-detail-kicker project-detail-topline">
+									<span class="project-detail-status" data-status={project.releaseStage}>{releaseStageLabel}</span>
 									{
 										project.awards.length > 0 && (
 											<div class="project-awards project-awards-compact" aria-label={`${project.product} awards`}>
@@ -230,9 +230,9 @@ const getInitialWheelSlot = (index: number) => {
 								</div>
 								{actionLinks.length > 0 && (
 									<div class="project-detail-actions">
-										{actionLinks.map((action, actionIndex) => (
+										{actionLinks.map((action) => (
 											<a
-												class:list={['button', actionIndex > 0 && 'button-2']}
+												class:list={['button', action.variant === 'secondary' && 'button-2']}
 												href={action.href}
 												target={isExternalLink(action.href) ? '_blank' : undefined}
 												rel={isExternalLink(action.href) ? 'noreferrer' : undefined}

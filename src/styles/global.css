@@ -1112,6 +1112,15 @@ h3 {
 	min-width: 0;
 }
 
+.project-detail-content .project-tag-list {
+	column-gap: 22px;
+	row-gap: 10px;
+}
+
+.project-detail-content .project-tag-group {
+	gap: 7px;
+}
+
 .project-tag {
 	display: inline-flex;
 	align-items: center;
@@ -1501,24 +1510,24 @@ h3 {
 	width: clamp(140px, 18vw, 230px);
 	aspect-ratio: 672 / 602;
 	height: auto;
-	margin: -12px auto -22px;
+	margin: -12px auto -34px;
 	filter: var(--image-filter);
 	image-rendering: pixelated;
 	pointer-events: none;
 }
 
 .project-detail-panel {
-	margin-top: -8px;
+	margin-top: 0;
 	border: 1px solid var(--border);
 	border-radius: 18px;
 	background-color: var(--bg);
 	box-shadow: var(--shadow);
-	padding: clamp(14px, 2.4vw, 28px);
+	padding: clamp(32px, 3.4vw, 44px) clamp(14px, 2.4vw, 28px) clamp(14px, 2.4vw, 28px);
 }
 
 .project-detail {
 	display: grid;
-	grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+	grid-template-columns: minmax(0, 1fr) minmax(360px, 0.85fr);
 	align-items: start;
 	gap: clamp(20px, 4vw, 42px);
 }
@@ -1530,8 +1539,10 @@ h3 {
 .project-detail-media {
 	position: relative;
 	overflow: hidden;
-	border-radius: 14px;
+	border: 1px solid color-mix(in srgb, var(--border) 84%, var(--surface));
+	border-radius: 16px;
 	background: var(--surface-soft);
+	box-shadow: var(--shadow-soft);
 }
 
 .project-detail-gallery {
@@ -1541,7 +1552,18 @@ h3 {
 	overflow: hidden;
 	width: 100%;
 	aspect-ratio: 16 / 9;
+	border-radius: inherit;
 	background: var(--surface-soft);
+}
+
+.project-detail-gallery .project-image-frame-backdrop {
+	opacity: 0.42;
+	filter: var(--image-filter) blur(20px) saturate(0.78) contrast(0.92);
+	transform: scale(1.08);
+}
+
+.project-detail-gallery .project-image-frame::after {
+	background: color-mix(in srgb, var(--surface-soft) 34%, transparent);
 }
 
 .project-detail-gallery-image {
@@ -1677,7 +1699,8 @@ h3 {
 
 .project-detail-content {
 	display: grid;
-	gap: 12px;
+	align-content: start;
+	gap: 0;
 	min-width: 0;
 }
 
@@ -1686,6 +1709,13 @@ h3 {
 	flex-wrap: wrap;
 	align-items: flex-start;
 	gap: 8px;
+}
+
+.project-detail-topline {
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: clamp(8px, 1vw, 12px);
 }
 
 .project-detail-kicker > span {
@@ -1724,9 +1754,14 @@ h3 {
 }
 
 .project-detail h3 {
-	font-size: clamp(2.75rem, 5vw, 4.65rem);
-	line-height: 0.86;
+	font-size: clamp(2.35rem, 4.3vw, 4.05rem);
+	letter-spacing: 0;
+	line-height: 1;
 	overflow-wrap: anywhere;
+}
+
+.project-detail h3 + .project-detail-meta {
+	margin-top: clamp(14px, 1.4vw, 18px);
 }
 
 .project-detail-description {
@@ -1738,6 +1773,14 @@ h3 {
 	max-width: 58ch;
 	font-size: 1.02rem;
 	line-height: 1.58;
+}
+
+.project-detail-meta + .project-detail-description {
+	margin-top: clamp(14px, 1.6vw, 20px);
+}
+
+.project-detail-description + .project-tag-list {
+	margin-top: clamp(20px, 2vw, 26px);
 }
 
 .project-awards {
@@ -1796,8 +1839,8 @@ h3 {
 }
 
 .project-awards-compact .project-award {
-	width: 60px;
-	height: 60px;
+	width: 52px;
+	height: 52px;
 	border: 0;
 	background: transparent;
 	box-shadow: none;
@@ -1829,7 +1872,7 @@ h3 {
 }
 
 .project-awards-compact .project-award-emblem {
-	transform: translateY(-8px);
+	transform: translateY(-4px);
 }
 
 .project-award-details {
@@ -1968,8 +2011,18 @@ h3 {
 		margin-left: 0;
 	}
 
+	.project-detail-topline .project-awards-compact {
+		flex-basis: auto;
+		justify-content: end;
+		margin-left: auto;
+	}
+
 	.project-awards-compact .project-award-list {
 		justify-content: flex-start;
+	}
+
+	.project-detail-topline .project-awards-compact .project-award-list {
+		justify-content: flex-end;
 	}
 
 	.project-awards-compact .project-award-details {
@@ -1977,9 +2030,19 @@ h3 {
 		left: 0;
 	}
 
+	.project-detail-topline .project-awards-compact .project-award-details {
+		right: 0;
+		left: auto;
+	}
+
 	.project-awards-compact .project-award-details::after {
 		right: auto;
 		left: 25px;
+	}
+
+	.project-detail-topline .project-awards-compact .project-award-details::after {
+		right: 25px;
+		left: auto;
 	}
 }
 
@@ -1987,7 +2050,7 @@ h3 {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;
-	margin-top: 4px;
+	margin-top: clamp(18px, 1.8vw, 24px);
 }
 
 .project-detail-actions .button {
@@ -2250,7 +2313,7 @@ h3 {
 	.project-wheel-chest {
 		width: clamp(132px, 25vw, 190px);
 		margin-top: -12px;
-		margin-bottom: -18px;
+		margin-bottom: -28px;
 	}
 
 	.experience-wheel-book {
@@ -2261,6 +2324,7 @@ h3 {
 
 	.project-detail-panel {
 		margin-top: 0;
+		padding-top: 34px;
 	}
 }
 
@@ -2299,7 +2363,7 @@ h3 {
 	.project-wheel-chest {
 		width: clamp(118px, 38vw, 162px);
 		margin-top: -8px;
-		margin-bottom: -14px;
+		margin-bottom: -22px;
 	}
 
 	.experience-wheel-book {
@@ -2310,11 +2374,11 @@ h3 {
 
 	.project-detail-panel {
 		border-radius: 14px;
-		padding: 12px;
+		padding: 28px 12px 12px;
 	}
 
 	.project-detail h3 {
-		font-size: clamp(2.25rem, 13vw, 3.25rem);
+		font-size: clamp(2.1rem, 10.8vw, 3.1rem);
 	}
 
 	.project-detail-actions .button {

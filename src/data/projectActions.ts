@@ -5,8 +5,12 @@ export type ProjectActionMeta = {
 	icon: string;
 };
 
+export type ProjectActionVariant = 'primary' | 'secondary';
+
 export type ProjectActionLink = ProjectActionMeta & {
+	type: ProjectActionType;
 	href: string;
+	variant: ProjectActionVariant;
 };
 
 export const projectActionMeta = {
@@ -44,14 +48,45 @@ export const projectActionMeta = {
 	},
 } satisfies Record<ProjectActionType, ProjectActionMeta>;
 
-export const getProjectActionLink = (action: ProjectAction): ProjectActionLink => {
+const projectActionPrimaryPriority = [
+	'youtube',
+	'website',
+	'webApp',
+	'steam',
+	'browserExtension',
+	'source',
+	'appStore',
+	'playStore',
+] satisfies ProjectActionType[];
+
+const getPrimaryActionIndex = (actions: ProjectAction[]) => {
+	for (const actionType of projectActionPrimaryPriority) {
+		const actionIndex = actions.findIndex((action) => action.type === actionType);
+
+		if (actionIndex >= 0) {
+			return actionIndex;
+		}
+	}
+
+	return actions.length > 0 ? 0 : -1;
+};
+
+export const getProjectActionLink = (action: ProjectAction, variant: ProjectActionVariant = 'secondary'): ProjectActionLink => {
 	const meta = projectActionMeta[action.type];
 
 	return {
+		type: action.type,
 		href: action.href,
 		label: action.label ?? meta.label,
 		icon: meta.icon,
+		variant,
 	};
 };
 
-export const getProjectActionLinks = (actions: ProjectAction[] = []) => actions.map(getProjectActionLink);
+export const getProjectActionLinks = (actions: ProjectAction[] = []) => {
+	const primaryActionIndex = getPrimaryActionIndex(actions);
+
+	return actions.map((action, actionIndex) =>
+		getProjectActionLink(action, actionIndex === primaryActionIndex ? 'primary' : 'secondary')
+	);
+};
