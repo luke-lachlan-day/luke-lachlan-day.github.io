@@ -1,0 +1,30 @@
+---
+import AssetIcon from '../AssetIcon.astro';
+import { profile } from '../../data/profile';
+import { getExternalLinkAttrs } from '../../utils/links';
+
+const contactLinkByLabel = new Map(profile.contact.links.map((link) => [link.label, link]));
+const footerLinks = profile.footer.linkLabels.flatMap((label) => {
+	const link = contactLinkByLabel.get(label);
+	return link ? [link] : [];
+});
+---
+
+<footer class="site-footer">
+	<div class="footer-inner">
+		<div class="footer-heart" aria-hidden="true"></div>
+		<p>{profile.footer.message}</p>
+		<div class="footer-links" aria-labelledby="footer-social-links-title">
+			<h2 id="footer-social-links-title" class="visually-hidden">Social links</h2>
+			{
+				footerLinks.map((link) => (
+					<a href={link.href} {...getExternalLinkAttrs(link.href)} title={link.label}>
+						<AssetIcon src={link.icon} />
+						<span class="visually-hidden">{link.label}</span>
+					</a>
+				))
+			}
+		</div>
+		<p class="copyright">&copy; {new Date().getFullYear()} Luke Lachlan Day</p>
+	</div>
+</footer>

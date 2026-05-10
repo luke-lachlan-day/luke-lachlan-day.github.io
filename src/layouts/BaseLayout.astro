@@ -1,10 +1,10 @@
 ---
 import '../styles/global.css';
-import AssetIcon from '../components/AssetIcon.astro';
 import FallingLeaves from '../components/FallingLeaves.astro';
+import SiteFooter from '../components/layout/SiteFooter.astro';
+import SiteHead from '../components/layout/SiteHead.astro';
+import SiteHeader from '../components/layout/SiteHeader.astro';
 import { profile } from '../data/profile';
-import { getImageAttrs } from '../utils/images';
-import { getExternalLinkAttrs } from '../utils/links';
 
 interface Props {
 	title?: string;
@@ -18,272 +18,35 @@ const {
 	socialImage = '/assets/images/project-luke-lachlan-day-website.webp',
 } = Astro.props;
 
-const navItems = [
-	{ href: '/', label: 'Home' },
-	{ href: '/projects/', label: 'Projects' },
-	{ href: '/experience/', label: 'Experience' },
-	{ href: '/contact/', label: 'Contact' },
-];
-
 const currentPath = Astro.url.pathname;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.url.origin).toString();
 const socialImageUrl = new URL(socialImage, Astro.url.origin).toString();
-const contactLinkByLabel = new Map(profile.contact.links.map((link) => [link.label, link]));
-const footerLinks = profile.footer.linkLabels.flatMap((label) => {
-	const link = contactLinkByLabel.get(label);
-	return link ? [link] : [];
-});
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/webp" href="/assets/images/company-solo-clear.webp?v=20260510" />
-		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=20260510" />
-		<link rel="preload" as="image" type="image/webp" href="/assets/textures/nav-brush.webp" />
-		<link rel="preload" as="image" type="image/webp" href="/assets/images/footer-heart-light.webp" />
-		<link rel="preload" as="image" type="image/webp" href="/assets/images/footer-heart-dark.webp" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content={description} />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="theme-color" content="#fff9f0" media="(prefers-color-scheme: light)" />
-		<meta name="theme-color" content="#06111f" media="(prefers-color-scheme: dark)" />
-		<link rel="canonical" href={canonicalUrl} />
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:url" content={canonicalUrl} />
-		<meta property="og:image" content={socialImageUrl} />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={socialImageUrl} />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Nunito:wght@500;600;700;800&display=swap"
-			rel="stylesheet"
-		/>
-		<script is:inline>
-			(() => {
-				const themeStorageKey = 'luke-lachlan-day.theme';
-				const leavesStorageKey = 'luke-lachlan-day.fallingLeaves';
-				const root = document.documentElement;
-				let savedTheme = null;
-				let savedLeaves = null;
-				try {
-					savedTheme = localStorage.getItem(themeStorageKey);
-					savedLeaves = localStorage.getItem(leavesStorageKey);
-				} catch {
-					savedTheme = null;
-					savedLeaves = null;
-				}
-				const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-					? 'dark'
-					: 'light';
-				root.dataset.theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : systemTheme;
-				root.dataset.leaves = savedLeaves === 'off' ? 'off' : 'on';
-			})();
-		</script>
-		<title>{title}</title>
-	</head>
+	<SiteHead
+		title={title}
+		description={description}
+		canonicalUrl={canonicalUrl}
+		socialImageUrl={socialImageUrl}
+		generator={Astro.generator}
+	/>
 	<body>
 		<FallingLeaves config={profile.effects.fallingLeaves} />
 
-		<header class="site-header">
-			<nav class="site-nav" aria-label="Primary navigation">
-				<a
-					class="brand"
-					href="/"
-					data-current-page-link={currentPath === '/' ? 'true' : undefined}
-				>
-					<img src="/assets/images/company-solo-clear.webp" alt="" {...getImageAttrs('/assets/images/company-solo-clear.webp')} />
-					<span>Luke Lachlan Day</span>
-				</a>
-				<div class="nav-cluster">
-					<div class="nav-links">
-						{
-							navItems.map((item) => {
-								const isActive =
-									item.href === '/'
-										? currentPath === '/'
-										: currentPath.startsWith(item.href);
-
-								return (
-									<a
-										href={item.href}
-										aria-current={isActive ? 'page' : undefined}
-										data-current-page-link={isActive ? 'true' : undefined}
-									>
-										{item.label}
-									</a>
-								);
-							})
-						}
-					</div>
-					<div class="control-cluster">
-						<button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
-							<AssetIcon src="/assets/icons/sun.svg" class="theme-icon theme-icon-light" />
-							<AssetIcon src="/assets/icons/moon.svg" class="theme-icon theme-icon-dark" />
-							<span class="visually-hidden" data-theme-toggle-label>Switch theme</span>
-						</button>
-						<button
-							class="leaves-toggle"
-							type="button"
-							data-leaves-toggle
-							aria-pressed="true"
-						>
-							<AssetIcon src="/assets/icons/leaf.svg" class="leaf-icon" />
-							<span class="visually-hidden" data-leaves-toggle-label>Turn leaves off</span>
-						</button>
-					</div>
-				</div>
-			</nav>
-		</header>
+		<SiteHeader currentPath={currentPath} />
 
 		<main>
 			<slot />
 		</main>
 
-		<footer class="site-footer">
-			<div class="footer-inner">
-				<div class="footer-heart" aria-hidden="true"></div>
-				<p>{profile.footer.message}</p>
-				<div class="footer-links" aria-labelledby="footer-social-links-title">
-					<h2 id="footer-social-links-title" class="visually-hidden">Social links</h2>
-					{
-						footerLinks.map((link) => (
-							<a href={link.href} {...getExternalLinkAttrs(link.href)} title={link.label}>
-								<AssetIcon src={link.icon} />
-								<span class="visually-hidden">{link.label}</span>
-							</a>
-						))
-					}
-				</div>
-				<p class="copyright">&copy; {new Date().getFullYear()} Luke Lachlan Day</p>
-			</div>
-		</footer>
+		<SiteFooter />
 
-		<script is:inline>
-			(() => {
-				const themeStorageKey = 'luke-lachlan-day.theme';
-				const leavesStorageKey = 'luke-lachlan-day.fallingLeaves';
-				const root = document.documentElement;
-				const themeToggle = document.querySelector('[data-theme-toggle]');
-				const leavesToggle = document.querySelector('[data-leaves-toggle]');
-				const themeToggleLabel = document.querySelector('[data-theme-toggle-label]');
-				const leavesToggleLabel = document.querySelector('[data-leaves-toggle-label]');
-				const currentPageLinks = document.querySelectorAll('[data-current-page-link]');
-				const systemQuery = window.matchMedia('(prefers-color-scheme: dark)');
+		<script>
+			import { setupSitePreferences } from '../scripts/sitePreferences';
 
-				const systemTheme = () => (systemQuery.matches ? 'dark' : 'light');
-				const isCurrentUrl = (url) =>
-					url.origin === window.location.origin &&
-					url.pathname === window.location.pathname &&
-					url.search === window.location.search &&
-					url.hash === window.location.hash;
-				const getSavedTheme = () => {
-					try {
-						const saved = localStorage.getItem(themeStorageKey);
-						return saved === 'light' || saved === 'dark' ? saved : null;
-					} catch {
-						return null;
-					}
-				};
-				const setTheme = (theme, persist) => {
-					root.dataset.theme = theme;
-					themeToggle?.setAttribute('aria-pressed', String(theme === 'dark'));
-					if (themeToggleLabel) {
-						themeToggleLabel.textContent = `Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`;
-					}
-					if (persist) {
-						try {
-							localStorage.setItem(themeStorageKey, theme);
-						} catch {
-							// Keep the live theme change even if browser storage is unavailable.
-						}
-					}
-				};
-				const getSavedLeaves = () => {
-					try {
-						const saved = localStorage.getItem(leavesStorageKey);
-						return saved === 'on' || saved === 'off' ? saved : null;
-					} catch {
-						return null;
-					}
-				};
-				const setLeaves = (state, persist) => {
-					const leavesState = state === 'off' ? 'off' : 'on';
-					root.dataset.leaves = leavesState;
-					leavesToggle?.setAttribute('aria-pressed', String(leavesState === 'on'));
-					if (leavesToggleLabel) {
-						leavesToggleLabel.textContent = leavesState === 'on' ? 'Turn leaves off' : 'Turn leaves on';
-					}
-					if (persist) {
-						try {
-							localStorage.setItem(leavesStorageKey, leavesState);
-						} catch {
-							// Keep the live leaves change even if browser storage is unavailable.
-						}
-					}
-				};
-				const enableThemeTransitions = () => {
-					root.dataset.themeReady = 'true';
-				};
-				const enableTransitionsAfterInitialPaint = () => {
-					if (!('requestAnimationFrame' in window)) {
-						window.setTimeout(enableThemeTransitions, 0);
-						return;
-					}
-					window.requestAnimationFrame(() => {
-						window.requestAnimationFrame(enableThemeTransitions);
-					});
-				};
-
-				setTheme(getSavedTheme() ?? systemTheme(), false);
-				setLeaves(getSavedLeaves() ?? root.dataset.leaves, false);
-				enableTransitionsAfterInitialPaint();
-
-				currentPageLinks.forEach((link) => {
-					link.addEventListener('click', (event) => {
-						if (
-							event.defaultPrevented ||
-							event.button !== 0 ||
-							event.metaKey ||
-							event.ctrlKey ||
-							event.shiftKey ||
-							event.altKey ||
-							link.hasAttribute('target') ||
-							link.hasAttribute('download')
-						) {
-							return;
-						}
-
-						const url = new URL(link.href, window.location.href);
-						if (isCurrentUrl(url)) {
-							event.preventDefault();
-						}
-					});
-				});
-
-				themeToggle?.addEventListener('click', () => {
-					enableThemeTransitions();
-					setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark', true);
-				});
-
-				leavesToggle?.addEventListener('click', () => {
-					enableThemeTransitions();
-					setLeaves(root.dataset.leaves === 'off' ? 'on' : 'off', true);
-				});
-
-				systemQuery.addEventListener('change', () => {
-					if (!getSavedTheme()) {
-						enableThemeTransitions();
-						setTheme(systemTheme(), false);
-					}
-				});
-			})();
+			setupSitePreferences();
 		</script>
 	</body>
 </html>

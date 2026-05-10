@@ -1,0 +1,52 @@
+---
+import AssetIcon from '../AssetIcon.astro';
+import { getImageAttrs } from '../../utils/images';
+
+interface Props {
+	currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+const navItems = [
+	{ href: '/', label: 'Home' },
+	{ href: '/projects/', label: 'Projects' },
+	{ href: '/experience/', label: 'Experience' },
+	{ href: '/contact/', label: 'Contact' },
+];
+---
+
+<header class="site-header">
+	<nav class="site-nav" aria-label="Primary navigation">
+		<a class="brand" href="/" data-current-page-link={currentPath === '/' ? 'true' : undefined}>
+			<img src="/assets/images/company-solo-clear.webp" alt="" {...getImageAttrs('/assets/images/company-solo-clear.webp')} />
+			<span>Luke Lachlan Day</span>
+		</a>
+		<div class="nav-cluster">
+			<div class="nav-links">
+				{
+					navItems.map((item) => {
+						const isActive = item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href);
+
+						return (
+							<a href={item.href} aria-current={isActive ? 'page' : undefined} data-current-page-link={isActive ? 'true' : undefined}>
+								{item.label}
+							</a>
+						);
+					})
+				}
+			</div>
+			<div class="control-cluster">
+				<button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+					<AssetIcon src="/assets/icons/sun.svg" class="theme-icon theme-icon-light" />
+					<AssetIcon src="/assets/icons/moon.svg" class="theme-icon theme-icon-dark" />
+					<span class="visually-hidden" data-theme-toggle-label>Switch theme</span>
+				</button>
+				<button class="leaves-toggle" type="button" data-leaves-toggle aria-pressed="true">
+					<AssetIcon src="/assets/icons/leaf.svg" class="leaf-icon" />
+					<span class="visually-hidden" data-leaves-toggle-label>Turn leaves off</span>
+				</button>
+			</div>
+		</div>
+	</nav>
+</header>

@@ -1,0 +1,59 @@
+---
+interface Props {
+	title: string;
+	description: string;
+	canonicalUrl: string;
+	socialImageUrl: string;
+	generator: string;
+}
+
+const { title, description, canonicalUrl, socialImageUrl, generator } = Astro.props;
+---
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/webp" href="/assets/images/company-solo-clear.webp?v=20260510" />
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=20260510" />
+	<link rel="preload" as="image" type="image/webp" href="/assets/textures/nav-brush.webp" />
+	<link rel="preload" as="image" type="image/webp" href="/assets/images/footer-heart-light.webp" />
+	<link rel="preload" as="image" type="image/webp" href="/assets/images/footer-heart-dark.webp" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content={description} />
+	<meta name="generator" content={generator} />
+	<meta name="theme-color" content="#fff9f0" media="(prefers-color-scheme: light)" />
+	<meta name="theme-color" content="#06111f" media="(prefers-color-scheme: dark)" />
+	<link rel="canonical" href={canonicalUrl} />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:url" content={canonicalUrl} />
+	<meta property="og:image" content={socialImageUrl} />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={description} />
+	<meta name="twitter:image" content={socialImageUrl} />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Nunito:wght@500;600;700;800&display=swap"
+		rel="stylesheet"
+	/>
+	<script is:inline>
+		(() => {
+			const root = document.documentElement;
+			let savedTheme = null;
+			let savedLeaves = null;
+			try {
+				savedTheme = localStorage.getItem('luke-lachlan-day.theme');
+				savedLeaves = localStorage.getItem('luke-lachlan-day.fallingLeaves');
+			} catch {
+				savedTheme = null;
+				savedLeaves = null;
+			}
+			const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+			root.dataset.theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : systemTheme;
+			root.dataset.leaves = savedLeaves === 'off' ? 'off' : 'on';
+		})();
+	</script>
+	<title>{title}</title>
+</head>
