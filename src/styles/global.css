@@ -602,8 +602,8 @@ main {
 
 :root[data-theme="light"] .theme-icon-dark,
 :root[data-theme="dark"] .theme-icon-light {
-	opacity: 0.44;
-	--theme-icon-scale: 0.88;
+	opacity: 0.48;
+	--theme-icon-scale: 0.9;
 }
 
 :root[data-theme="light"] .theme-icon-light,
