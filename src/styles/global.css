@@ -760,6 +760,14 @@ h3 {
 	line-height: 1;
 	padding: 13px 25px 15px;
 	text-shadow: 0 1px 0 color-mix(in srgb, #000000 24%, transparent);
+	transition:
+		background-color var(--theme-transition),
+		border-color var(--theme-transition),
+		box-shadow var(--theme-transition),
+		color var(--theme-transition),
+		filter var(--theme-transition),
+		opacity var(--theme-transition),
+		transform 120ms ease;
 }
 
 .button:hover {
