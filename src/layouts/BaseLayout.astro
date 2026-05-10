@@ -3,15 +3,19 @@ import '../styles/global.css';
 import AssetIcon from '../components/AssetIcon.astro';
 import FallingLeaves from '../components/FallingLeaves.astro';
 import { profile } from '../data/profile';
+import { getImageAttrs } from '../utils/images';
+import { getExternalLinkAttrs } from '../utils/links';
 
 interface Props {
 	title?: string;
 	description?: string;
+	socialImage?: string;
 }
 
 const {
 	title = 'Luke Lachlan Day',
 	description = 'Personal website for Luke Lachlan Day.',
+	socialImage = '/assets/images/project-luke-lachlan-day-website.webp',
 } = Astro.props;
 
 const navItems = [
@@ -22,6 +26,8 @@ const navItems = [
 ];
 
 const currentPath = Astro.url.pathname;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.url.origin).toString();
+const socialImageUrl = new URL(socialImage, Astro.url.origin).toString();
 const contactLinkByLabel = new Map(profile.contact.links.map((link) => [link.label, link]));
 const footerLinks = profile.footer.linkLabels.flatMap((label) => {
 	const link = contactLinkByLabel.get(label);
@@ -41,6 +47,18 @@ const footerLinks = profile.footer.linkLabels.flatMap((label) => {
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="theme-color" content="#fff9f0" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#06111f" media="(prefers-color-scheme: dark)" />
+		<link rel="canonical" href={canonicalUrl} />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={socialImageUrl} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={socialImageUrl} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -81,7 +99,7 @@ const footerLinks = profile.footer.linkLabels.flatMap((label) => {
 					aria-label="Luke Lachlan Day home"
 					data-current-page-link={currentPath === '/' ? 'true' : undefined}
 				>
-					<img src="/assets/images/company-solo-clear.webp" alt="" width="42" height="42" />
+					<img src="/assets/images/company-solo-clear.webp" alt="" {...getImageAttrs('/assets/images/company-solo-clear.webp')} />
 					<span>Luke Lachlan Day</span>
 				</a>
 				<div class="nav-cluster">
@@ -135,7 +153,7 @@ const footerLinks = profile.footer.linkLabels.flatMap((label) => {
 				<div class="footer-links" aria-label="Social links">
 					{
 						footerLinks.map((link) => (
-							<a href={link.href} aria-label={link.label} title={link.label}>
+							<a href={link.href} {...getExternalLinkAttrs(link.href)} aria-label={link.label} title={link.label}>
 								<AssetIcon src={link.icon} />
 							</a>
 						))

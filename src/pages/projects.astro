@@ -7,7 +7,8 @@ import PortfolioWheelCard from '../components/PortfolioWheelCard.astro';
 import ProjectImageFrame from '../components/ProjectImageFrame.astro';
 import { profile, type Project } from '../data/profile';
 import { getProjectActionLinks } from '../data/projectActions';
-import { getProjectTagRenderGroups, getProjectTagStyleVars } from '../data/projectTags';
+import { getProjectTagRenderGroups } from '../data/projectTags';
+import { getImageAttrs } from '../utils/images';
 import { getInitialWheelSlot } from '../utils/wheelSlots';
 
 const { home, projects, companies, experience } = profile;
@@ -94,7 +95,7 @@ const initialTransitionSlotRange = 3;
 			<ArrowButton class="project-wheel-nav project-wheel-nav-next" direction="next" ariaLabel="Next project" data-wheel-next="" />
 		</div>
 
-		<img class="project-wheel-chest" src="/assets/images/project-chest.webp" alt="" loading="lazy" aria-hidden="true" />
+		<img class="project-wheel-chest" src="/assets/images/project-chest.webp" alt="" loading="lazy" {...getImageAttrs('/assets/images/project-chest.webp')} aria-hidden="true" />
 
 		<div class="project-detail-panel" data-project-detail aria-live="polite">
 			{
@@ -175,12 +176,12 @@ const initialTransitionSlotRange = 3;
 									{company && (
 										companyExperienceHref ? (
 											<a class="project-detail-company project-detail-company-link" href={companyExperienceHref} aria-label={`View ${company.name} experience`}>
-												<img src={company.icon.src} alt="" loading="lazy" />
+												<img src={company.icon.src} alt="" loading="lazy" {...getImageAttrs(company.icon)} />
 												<span>{company.name}</span>
 											</a>
 										) : (
 											<span class="project-detail-company">
-												<img src={company.icon.src} alt="" loading="lazy" />
+												<img src={company.icon.src} alt="" loading="lazy" {...getImageAttrs(company.icon)} />
 												<span>{company.name}</span>
 											</span>
 										)
@@ -192,7 +193,7 @@ const initialTransitionSlotRange = 3;
 									{tagGroups.map((tagGroup) => (
 										<span class="project-tag-group" data-tag-group={tagGroup.group}>
 											{tagGroup.tags.map((tag) => (
-												<span class="project-tag" style={getProjectTagStyleVars(tag.style)}>{tag.label}</span>
+												<span class="project-tag" data-tag-style={tag.styleKey}>{tag.label}</span>
 											))}
 										</span>
 									))}

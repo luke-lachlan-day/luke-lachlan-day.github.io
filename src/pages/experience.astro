@@ -5,6 +5,7 @@ import AwardMedals from '../components/AwardMedals.astro';
 import PortfolioWheelCard from '../components/PortfolioWheelCard.astro';
 import ProjectImageFrame from '../components/ProjectImageFrame.astro';
 import { profile, type ExperienceItem } from '../data/profile';
+import { getImageAttrs } from '../utils/images';
 import { getInitialWheelSlot } from '../utils/wheelSlots';
 
 const { experience, companies } = profile;
@@ -78,7 +79,7 @@ const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)
 			<ArrowButton class="project-wheel-nav project-wheel-nav-next" direction="next" ariaLabel="Next experience" data-wheel-next="" />
 		</div>
 
-		<img class="project-wheel-chest experience-wheel-book" src="/assets/images/experience-book.webp" alt="" loading="lazy" aria-hidden="true" />
+		<img class="project-wheel-chest experience-wheel-book" src="/assets/images/experience-book.webp" alt="" loading="lazy" {...getImageAttrs('/assets/images/experience-book.webp')} aria-hidden="true" />
 
 		<div class="project-detail-panel experience-detail-panel" data-experience-detail aria-live="polite">
 			{
@@ -165,7 +166,7 @@ const getExperienceMedia = (item: ExperienceItem) => getExperiencePictures(item)
 								<h3>{item.role}</h3>
 								<div class="project-detail-meta">
 									<span class="project-detail-company">
-										{icon && <img src={icon.src} alt="" loading="lazy" />}
+										{icon && <img src={icon.src} alt="" loading="lazy" {...getImageAttrs(icon)} />}
 										<span>{item.company}</span>
 									</span>
 									<span>{item.dateLabel}</span>

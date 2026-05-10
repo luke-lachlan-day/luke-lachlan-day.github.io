@@ -1,19 +1,11 @@
+import { getShortestWheelOffset } from '../utils/wheelSlots';
+
 const desktopQueryText = '(min-width: 821px)';
 const phoneQueryText = '(max-width: 460px)';
 
 const getAttr = (element: Element, name: string) => element.getAttribute(name) ?? '';
 const getNumberAttr = (element: Element, name: string) => Number(getAttr(element, name)) || 0;
 const wrapIndex = (index: number, total: number) => ((index % total) + total) % total;
-
-const shortestOffset = (index: number, active: number, total: number) => {
-	const rawOffset = index - active;
-	const forwardOffset = rawOffset + total;
-	const backwardOffset = rawOffset - total;
-
-	return [rawOffset, forwardOffset, backwardOffset].reduce((best, offset) =>
-		Math.abs(offset) < Math.abs(best) ? offset : best
-	);
-};
 
 const getHashId = (hashPrefix: string) => {
 	const hash = window.location.hash.slice(hashPrefix.length);
@@ -100,7 +92,7 @@ export const setupWheelController = (wheel: HTMLElement) => {
 
 		cards.forEach((card) => {
 			const itemIndex = getNumberAttr(card, indexAttr);
-			const slot = shortestOffset(itemIndex, activeIndex, total);
+			const slot = getShortestWheelOffset(itemIndex, activeIndex, total);
 			const slotDistance = Math.abs(slot);
 			const transitionSlot = slotDistance <= transition ? String(slot) : '';
 			const isInteractive = slotDistance <= interactive;

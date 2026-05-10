@@ -1,5 +1,6 @@
 ---
 import type { ImageAsset } from '../data/profile';
+import { getImageAttrs } from '../utils/images';
 
 type Props = {
 	light: ImageAsset;
@@ -28,6 +29,18 @@ const wrapperAttrs = decorative
 	: { role: 'img', 'aria-label': ariaLabel ?? light.alt };
 const getAssetClassName = (themeClass: string) =>
 	['theme-asset', imageClass, themeClass].filter(Boolean).join(' ');
+const lightFallbackAttrs = getImageAttrs(light);
+const darkFallbackAttrs = getImageAttrs(dark);
+const lightImageAttrs = {
+	...lightFallbackAttrs,
+	width: width ?? lightFallbackAttrs.width,
+	height: height ?? lightFallbackAttrs.height,
+};
+const darkImageAttrs = {
+	...darkFallbackAttrs,
+	width: width ?? darkFallbackAttrs.width,
+	height: height ?? darkFallbackAttrs.height,
+};
 ---
 
 <div class={className} {...wrapperAttrs}>
@@ -35,16 +48,14 @@ const getAssetClassName = (themeClass: string) =>
 		class={getAssetClassName('theme-asset-light')}
 		src={light.src}
 		alt=""
-		width={width}
-		height={height}
+		{...lightImageAttrs}
 		aria-hidden="true"
 	/>
 	<img
 		class={getAssetClassName('theme-asset-dark')}
 		src={dark.src}
 		alt=""
-		width={width}
-		height={height}
+		{...darkImageAttrs}
 		aria-hidden="true"
 	/>
 </div>

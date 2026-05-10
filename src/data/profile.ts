@@ -47,6 +47,9 @@ export type ContactHeroContent = {
 export type ImageAsset = {
 	src: string;
 	alt: string;
+	width?: number;
+	height?: number;
+	decoding?: 'async' | 'auto' | 'sync';
 };
 
 export type ThemeImageAssets = {
@@ -116,10 +119,6 @@ export type Project = {
 	releaseStage: ProjectReleaseStage;
 	awards: ProjectAward[];
 	actions?: ProjectAction[];
-	projectUrl?: string;
-	projectUrlLabel?: string;
-	projectUrlIcon?: string;
-	sourceUrl?: string;
 };
 
 export type FallingLeavesEffect = {
@@ -262,8 +261,6 @@ export const profile = {
 					{ type: 'website', href: 'https://luke-lachlan-day.github.io/' },
 					{ type: 'source', href: 'https://github.com/luke-lachlan-day/luke-lachlan-day.github.io' },
 				],
-				projectUrl: 'https://luke-lachlan-day.github.io/',
-				sourceUrl: 'https://github.com/luke-lachlan-day/luke-lachlan-day.github.io',
 			},
 			{
 				id: 'three-hearted-octopus',
@@ -391,9 +388,6 @@ export const profile = {
 				actions: [
 					{ type: 'youtube', href: 'https://www.youtube.com/watch?v=C39TrymUclw' },
 				],
-				projectUrl: 'https://www.youtube.com/watch?v=C39TrymUclw',
-				projectUrlLabel: 'Watch Video',
-				projectUrlIcon: '/assets/icons/youtube.svg',
 			},
 			{
 				id: 'trusty-battles',
@@ -597,7 +591,6 @@ export const profile = {
 				actions: [
 					{ type: 'steam', href: 'https://store.steampowered.com/app/2941630/Dungeons_and_Dining_Tables/' },
 				],
-				projectUrl: 'https://store.steampowered.com/app/2941630/Dungeons_and_Dining_Tables/',
 			},
 			{
 				id: 'beach-bums',
@@ -631,7 +624,6 @@ export const profile = {
 					{ type: 'website', href: 'https://www.coastalderrieres.com/' },
 					{ type: 'steam', href: 'https://store.steampowered.com/app/2858760/Beach_Bums/' },
 				],
-				projectUrl: 'https://www.coastalderrieres.com/',
 			},
 			{
 				id: 'think-digital-vr-work',
@@ -784,7 +776,6 @@ export const profile = {
 					{ type: 'appStore', href: 'https://apps.apple.com/au/app/super-bawk-bawk-chicken/id6464066197' },
 					{ type: 'playStore', href: 'https://play.google.com/store/apps/details?id=com.DaytimeDevs.BawkBawk' },
 				],
-				projectUrl: 'https://superbawkbawkchicken.com/',
 			},
 		] satisfies Project[],
 	},

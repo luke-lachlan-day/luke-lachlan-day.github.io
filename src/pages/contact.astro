@@ -3,9 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroContent from '../components/HeroContent.astro';
 import ThemeHeroArt from '../components/ThemeHeroArt.astro';
 import { profile } from '../data/profile';
+import { getImageAttrs } from '../utils/images';
+import { getExternalLinkAttrs } from '../utils/links';
 
 const { contact } = profile;
-const isExternalLink = (href: string) => href.startsWith('http://') || href.startsWith('https://');
 ---
 
 <BaseLayout
@@ -40,18 +41,15 @@ const isExternalLink = (href: string) => href.startsWith('http://') || href.star
 					<a
 						class="contact-card"
 						href={link.href}
-						target={isExternalLink(link.href) ? '_blank' : undefined}
-						rel={isExternalLink(link.href) ? 'noreferrer' : undefined}
+						{...getExternalLinkAttrs(link.href)}
 						aria-label={`Open ${link.label}`}
 					>
 						<img
 							class="contact-card-icon"
 							src={link.contactIcon ?? link.icon}
 							alt=""
-							width="320"
-							height="320"
+							{...getImageAttrs(link.contactIcon ?? link.icon)}
 							loading="lazy"
-							decoding="async"
 						/>
 						<h2 class="contact-card-title">{link.label}</h2>
 						{link.description && <p class="contact-card-description">{link.description}</p>}

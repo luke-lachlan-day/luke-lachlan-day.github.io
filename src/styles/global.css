@@ -1184,13 +1184,19 @@ h3 {
 }
 
 .project-tag {
+	--tag-bg: #e9e0d2;
+	--tag-text: #394353;
+	--tag-border: #d2c5b5;
+	--tag-dark-bg: #283348;
+	--tag-dark-text: #f1f0eb;
+	--tag-dark-border: #40506a;
 	display: inline-flex;
 	align-items: center;
 	min-height: 28px;
-	border: 1px solid var(--tag-border, var(--border));
+	border: 1px solid var(--tag-border);
 	border-radius: 7px;
-	background: var(--tag-bg, var(--surface-soft));
-	color: var(--tag-text, var(--text));
+	background: var(--tag-bg);
+	color: var(--tag-text);
 	font-family: var(--font-body);
 	font-size: 0.82rem;
 	font-weight: 800;
@@ -1198,14 +1204,72 @@ h3 {
 	padding: 7px 11px;
 }
 
+.project-tag[data-tag-style="website"] { --tag-bg: #cfe9cd; --tag-text: #244f31; --tag-border: #acd4ad; --tag-dark-bg: #31563a; --tag-dark-text: #eefbe9; --tag-dark-border: #588963; }
+.project-tag[data-tag-style="video"] { --tag-bg: #ffd4c7; --tag-text: #77402e; --tag-border: #efb29d; --tag-dark-bg: #704333; --tag-dark-text: #ffece5; --tag-dark-border: #9c6757; }
+.project-tag[data-tag-style="game"] { --tag-bg: #f5cc79; --tag-text: #6f4800; --tag-border: #dea949; --tag-dark-bg: #665024; --tag-dark-text: #fff0bf; --tag-dark-border: #a57a34; }
+.project-tag[data-tag-style="prototype"] { --tag-bg: #eadcff; --tag-text: #54347a; --tag-border: #d2b7f7; --tag-dark-bg: #503c72; --tag-dark-text: #f5edff; --tag-dark-border: #8066ad; }
+.project-tag[data-tag-style="quiz"] { --tag-bg: #d8ebff; --tag-text: #245178; --tag-border: #b8d4f1; --tag-dark-bg: #2f4d70; --tag-dark-text: #ebf5ff; --tag-dark-border: #5f7fa3; }
+.project-tag[data-tag-style="party-game"] { --tag-bg: #ffe0a6; --tag-text: #674900; --tag-border: #e8bd69; --tag-dark-bg: #654d23; --tag-dark-text: #fff1ca; --tag-dark-border: #9a7437; }
+.project-tag[data-tag-style="client-work"] { --tag-bg: #d7e5bf; --tag-text: #2f4b22; --tag-border: #b7cf93; --tag-dark-bg: #405f3f; --tag-dark-text: #f1ffe8; --tag-dark-border: #638b5e; }
+.project-tag[data-tag-style="event-game"] { --tag-bg: #ffd1e1; --tag-text: #78344f; --tag-border: #edaac2; --tag-dark-bg: #72384f; --tag-dark-text: #ffeaf2; --tag-dark-border: #a45e77; }
+.project-tag[data-tag-style="tool"] { --tag-bg: #cdebdc; --tag-text: #245642; --tag-border: #a8d6bf; --tag-dark-bg: #315a4b; --tag-dark-text: #e9fff5; --tag-dark-border: #5b8976; }
+.project-tag[data-tag-style="browser-extension"] { --tag-bg: #cfe6f2; --tag-text: #28526a; --tag-border: #afd0df; --tag-dark-bg: #2d4d61; --tag-dark-text: #edfbff; --tag-dark-border: #5d7f94; }
+.project-tag[data-tag-style="web"] { --tag-bg: #e8f0ff; --tag-text: #254c78; --tag-border: #c4d5f1; --tag-dark-bg: #263e60; --tag-dark-text: #edf4ff; --tag-dark-border: #526d96; }
+.project-tag[data-tag-style="youtube"] { --tag-bg: #ffe0dc; --tag-text: #83372f; --tag-border: #f2b6ae; --tag-dark-bg: #693733; --tag-dark-text: #ffecea; --tag-dark-border: #9b5f59; }
+.project-tag[data-tag-style="pc"] { --tag-bg: #dce9f2; --tag-text: #304b61; --tag-border: #bfd1df; --tag-dark-bg: #2c4258; --tag-dark-text: #edf6ff; --tag-dark-border: #5a7088; }
+.project-tag[data-tag-style="steam"] { --tag-bg: #d7e3f8; --tag-text: #24476f; --tag-border: #b6c9eb; --tag-dark-bg: #243c5b; --tag-dark-text: #eaf3ff; --tag-dark-border: #526b91; }
+.project-tag[data-tag-style="vr"] { --tag-bg: #dfe2ff; --tag-text: #383d7a; --tag-border: #c2c5f4; --tag-dark-bg: #363a67; --tag-dark-text: #f0f1ff; --tag-dark-border: #6167a3; }
+.project-tag[data-tag-style="mobile"] { --tag-bg: #d7efe9; --tag-text: #28564f; --tag-border: #b3d8d0; --tag-dark-bg: #2f554f; --tag-dark-text: #eafffb; --tag-dark-border: #5e847d; }
+.project-tag[data-tag-style="portfolio"] { --tag-bg: #efe1bf; --tag-text: #5e4a16; --tag-border: #d8c28c; --tag-dark-bg: #5a4b29; --tag-dark-text: #fff3ce; --tag-dark-border: #87713d; }
+.project-tag[data-tag-style="educational"] { --tag-bg: #dcebc5; --tag-text: #3d5d27; --tag-border: #bed69a; --tag-dark-bg: #425e35; --tag-dark-text: #f2ffe7; --tag-dark-border: #6f934f; }
+.project-tag[data-tag-style="science-communication"] { --tag-bg: #d0ecec; --tag-text: #23585b; --tag-border: #aad8da; --tag-dark-bg: #2d5a62; --tag-dark-text: #eaffff; --tag-dark-border: #5e8c93; }
+.project-tag[data-tag-style="biology"] { --tag-bg: #d5edc4; --tag-text: #2e5b24; --tag-border: #b3d79b; --tag-dark-bg: #365d37; --tag-dark-text: #efffe8; --tag-dark-border: #638e5e; }
+.project-tag[data-tag-style="physics"] { --tag-bg: #d9e1ff; --tag-text: #34457b; --tag-border: #bcc8f5; --tag-dark-bg: #34456a; --tag-dark-text: #eef2ff; --tag-dark-border: #6578a8; }
+.project-tag[data-tag-style="traversal"] { --tag-bg: #d7eee0; --tag-text: #28583c; --tag-border: #b5d9c5; --tag-dark-bg: #315a44; --tag-dark-text: #eafff1; --tag-dark-border: #5f8b70; }
+.project-tag[data-tag-style="puzzle"] { --tag-bg: #e7d8f5; --tag-text: #52376e; --tag-border: #ceb4e7; --tag-dark-bg: #4d3d67; --tag-dark-text: #f5edff; --tag-dark-border: #79679b; }
+.project-tag[data-tag-style="reflective"] { --tag-bg: #e7e0cc; --tag-text: #554a2d; --tag-border: #d0c39f; --tag-dark-bg: #4c493c; --tag-dark-text: #f8f1dc; --tag-dark-border: #77715c; }
+.project-tag[data-tag-style="group-play"] { --tag-bg: #ffe2be; --tag-text: #664617; --tag-border: #e8c086; --tag-dark-bg: #604a2c; --tag-dark-text: #fff0d4; --tag-dark-border: #917347; }
+.project-tag[data-tag-style="festive"] { --tag-bg: #ffdbe4; --tag-text: #70384c; --tag-border: #efb7c5; --tag-dark-bg: #693849; --tag-dark-text: #ffeef3; --tag-dark-border: #9a6473; }
+.project-tag[data-tag-style="animation"] { --tag-bg: #f1d6ee; --tag-text: #693366; --tag-border: #deb4da; --tag-dark-bg: #65375f; --tag-dark-text: #ffecfb; --tag-dark-border: #965f8d; }
+.project-tag[data-tag-style="action"] { --tag-bg: #ffd3bd; --tag-text: #743d19; --tag-border: #eead88; --tag-dark-bg: #6d3f25; --tag-dark-text: #ffeadf; --tag-dark-border: #9d694e; }
+.project-tag[data-tag-style="combat"] { --tag-bg: #f3d0c7; --tag-text: #703a30; --tag-border: #dcaa9d; --tag-dark-bg: #663c35; --tag-dark-text: #ffece8; --tag-dark-border: #95675f; }
+.project-tag[data-tag-style="roguelike"] { --tag-bg: #ded4ec; --tag-text: #49366b; --tag-border: #c3b0dd; --tag-dark-bg: #453c64; --tag-dark-text: #f1edff; --tag-dark-border: #6f6493; }
+.project-tag[data-tag-style="arcade"] { --tag-bg: #d8e7ff; --tag-text: #2c4d79; --tag-border: #b8d0f3; --tag-dark-bg: #2e466b; --tag-dark-text: #edf5ff; --tag-dark-border: #5e78a2; }
+.project-tag[data-tag-style="game-feel"] { --tag-bg: #f5dfb7; --tag-text: #624b18; --tag-border: #ddbf7f; --tag-dark-bg: #5d4a2b; --tag-dark-text: #fff1d0; --tag-dark-border: #8d7042; }
+.project-tag[data-tag-style="simulation"] { --tag-bg: #dce8c7; --tag-text: #435928; --tag-border: #c0d49e; --tag-dark-bg: #475b36; --tag-dark-text: #f4ffe9; --tag-dark-border: #718a57; }
+.project-tag[data-tag-style="systems"] { --tag-bg: #d8e6e1; --tag-text: #315148; --tag-border: #b8d0c8; --tag-dark-bg: #334f4b; --tag-dark-text: #eefcf8; --tag-dark-border: #617c77; }
+.project-tag[data-tag-style="mythology"] { --tag-bg: #e2dcc4; --tag-text: #574c22; --tag-border: #cbc091; --tag-dark-bg: #514b31; --tag-dark-text: #f8f0cf; --tag-dark-border: #7d7249; }
+.project-tag[data-tag-style="quick-reactions"] { --tag-bg: #ffd8b8; --tag-text: #6c4315; --tag-border: #edb681; --tag-dark-bg: #664628; --tag-dark-text: #ffedd8; --tag-dark-border: #9a7047; }
+.project-tag[data-tag-style="life-sim"] { --tag-bg: #d9edc8; --tag-text: #355a29; --tag-border: #b8d7a1; --tag-dark-bg: #3b5d39; --tag-dark-text: #f0ffe9; --tag-dark-border: #668f62; }
+.project-tag[data-tag-style="cozy"] { --tag-bg: #ffe1bd; --tag-text: #674612; --tag-border: #e8c083; --tag-dark-bg: #60492b; --tag-dark-text: #fff0d2; --tag-dark-border: #927147; }
+.project-tag[data-tag-style="management"] { --tag-bg: #dce8ff; --tag-text: #2f4e78; --tag-border: #bccff0; --tag-dark-bg: #304868; --tag-dark-text: #eef5ff; --tag-dark-border: #60799d; }
+.project-tag[data-tag-style="adventure"] { --tag-bg: #d8ead2; --tag-text: #33582e; --tag-border: #bad6b1; --tag-dark-bg: #3a5b38; --tag-dark-text: #efffed; --tag-dark-border: #668d61; }
+.project-tag[data-tag-style="hidden-object"] { --tag-bg: #e3d5ec; --tag-text: #513669; --tag-border: #cab2de; --tag-dark-bg: #4b3d62; --tag-dark-text: #f4edff; --tag-dark-border: #766597; }
+.project-tag[data-tag-style="memory-game"] { --tag-bg: #f2ddc7; --tag-text: #604420; --tag-border: #d9bb92; --tag-dark-bg: #5b482e; --tag-dark-text: #fff0d8; --tag-dark-border: #887045; }
+.project-tag[data-tag-style="training"] { --tag-bg: #d5e9f0; --tag-text: #2d5260; --tag-border: #b4d2dc; --tag-dark-bg: #315260; --tag-dark-text: #edfbff; --tag-dark-border: #5f8190; }
+.project-tag[data-tag-style="interactive-experience"] { --tag-bg: #d9def9; --tag-text: #3a4675; --tag-border: #bdc5ec; --tag-dark-bg: #374463; --tag-dark-text: #eef2ff; --tag-dark-border: #66749c; }
+.project-tag[data-tag-style="presentation"] { --tag-bg: #eee0c1; --tag-text: #5c4917; --tag-border: #d7c38b; --tag-dark-bg: #594b2b; --tag-dark-text: #fff2cf; --tag-dark-border: #86723f; }
+.project-tag[data-tag-style="co-op"] { --tag-bg: #d5e7ff; --tag-text: #2d4e78; --tag-border: #b5cdf0; --tag-dark-bg: #2d4668; --tag-dark-text: #edf5ff; --tag-dark-border: #5d779f; }
+.project-tag[data-tag-style="communication"] { --tag-bg: #d7ece9; --tag-text: #285750; --tag-border: #b3d8d2; --tag-dark-bg: #315753; --tag-dark-text: #eafffb; --tag-dark-border: #5f8781; }
+.project-tag[data-tag-style="strategy"] { --tag-bg: #e4e0c7; --tag-text: #544d24; --tag-border: #ccc393; --tag-dark-bg: #504d31; --tag-dark-text: #f8f2d1; --tag-dark-border: #7b754a; }
+.project-tag[data-tag-style="data-analysis"] { --tag-bg: #d9e7ed; --tag-text: #2d5061; --tag-border: #bdd0da; --tag-dark-bg: #304d5d; --tag-dark-text: #eef9ff; --tag-dark-border: #60798a; }
+.project-tag[data-tag-style="platformer"] { --tag-bg: #d6ead0; --tag-text: #33582f; --tag-border: #b8d6ae; --tag-dark-bg: #395a37; --tag-dark-text: #efffed; --tag-dark-border: #668c60; }
+.project-tag[data-tag-style="precision"] { --tag-bg: #f5d3bd; --tag-text: #70411c; --tag-border: #dfaf8a; --tag-dark-bg: #674125; --tag-dark-text: #ffeadf; --tag-dark-border: #976d4e; }
+.project-tag[data-tag-style="astro"] { --tag-bg: #e1d9ee; --tag-text: #473766; --tag-border: #c7b8df; --tag-dark-bg: #423c5f; --tag-dark-text: #f1edff; --tag-dark-border: #6c6492; }
+.project-tag[data-tag-style="typescript"] { --tag-bg: #d3e4f8; --tag-text: #28507a; --tag-border: #b2cbed; --tag-dark-bg: #2a4567; --tag-dark-text: #edf5ff; --tag-dark-border: #5b759d; }
+.project-tag[data-tag-style="flash"] { --tag-bg: #ffe0b4; --tag-text: #674711; --tag-border: #e7bd78; --tag-dark-bg: #624b27; --tag-dark-text: #fff0ce; --tag-dark-border: #94713f; }
+.project-tag[data-tag-style="unity"] { --tag-bg: #dbe3ee; --tag-text: #35485d; --tag-border: #c0ccda; --tag-dark-bg: #303f52; --tag-dark-text: #eef4fb; --tag-dark-border: #5e7189; }
+.project-tag[data-tag-style="c"] { --tag-bg: #deddf5; --tag-text: #3f3d70; --tag-border: #c2c0e8; --tag-dark-bg: #393c61; --tag-dark-text: #f0f1ff; --tag-dark-border: #686c9b; }
+.project-tag[data-tag-style="fmod"] { --tag-bg: #d7e4ed; --tag-text: #314d60; --tag-border: #bbcedb; --tag-dark-bg: #304a5b; --tag-dark-text: #eff8ff; --tag-dark-border: #60798a; }
+
 .project-tag-group[data-tag-group="format"] .project-tag {
-	border-color: color-mix(in srgb, var(--tag-border, var(--border)) 82%, var(--tag-text, var(--text)));
-	box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--tag-text, var(--text)) 16%, transparent);
+	border-color: color-mix(in srgb, var(--tag-border) 82%, var(--tag-text));
+	box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--tag-text) 16%, transparent);
 }
 
 .project-tag-group[data-tag-group="platform"] .project-tag,
 .project-tag-group[data-tag-group="tech"] .project-tag {
-	background: color-mix(in srgb, var(--tag-bg, var(--surface-soft)) 64%, var(--surface));
+	background: color-mix(in srgb, var(--tag-bg) 64%, var(--surface));
 }
 
 .project-tag-group[data-tag-group="platform"] .project-tag {
@@ -1213,19 +1277,19 @@ h3 {
 }
 
 :root[data-theme="dark"] .project-tag {
-	border-color: var(--tag-dark-border, var(--border));
-	background: var(--tag-dark-bg, var(--surface-soft));
-	color: var(--tag-dark-text, var(--text));
+	border-color: var(--tag-dark-border);
+	background: var(--tag-dark-bg);
+	color: var(--tag-dark-text);
 }
 
 :root[data-theme="dark"] .project-tag-group[data-tag-group="format"] .project-tag {
-	border-color: color-mix(in srgb, var(--tag-dark-border, var(--border)) 82%, var(--tag-dark-text, var(--text)));
-	box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--tag-dark-text, var(--text)) 14%, transparent);
+	border-color: color-mix(in srgb, var(--tag-dark-border) 82%, var(--tag-dark-text));
+	box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--tag-dark-text) 14%, transparent);
 }
 
 :root[data-theme="dark"] .project-tag-group[data-tag-group="platform"] .project-tag,
 :root[data-theme="dark"] .project-tag-group[data-tag-group="tech"] .project-tag {
-	background: color-mix(in srgb, var(--tag-dark-bg, var(--surface-soft)) 82%, var(--surface));
+	background: color-mix(in srgb, var(--tag-dark-bg) 82%, var(--surface));
 }
 
 .projects-hero {

@@ -4,7 +4,8 @@ import HeroContent from '../components/HeroContent.astro';
 import ProjectImageFrame from '../components/ProjectImageFrame.astro';
 import ThemeHeroArt from '../components/ThemeHeroArt.astro';
 import { profile, type Project } from '../data/profile';
-import { getProjectTagRenderGroups, getProjectTagStyleVars } from '../data/projectTags';
+import { getProjectTagRenderGroups } from '../data/projectTags';
+import { getImageAttrs } from '../utils/images';
 
 const { home, projects, companies } = profile;
 const [heroFirstName, ...heroRemainingNames] = profile.name.split(' ');
@@ -65,7 +66,7 @@ const featuredProjects = home.featuredProjectIds
 							</ProjectImageFrame>
 							<div class="project-body">
 								<div class="project-company">
-									{company && <img src={company.icon.src} alt="" loading="lazy" />}
+									{company && <img src={company.icon.src} alt="" loading="lazy" {...getImageAttrs(company.icon)} />}
 									<span>{company?.name}</span>
 								</div>
 								<h3>{project.product}</h3>
@@ -74,7 +75,7 @@ const featuredProjects = home.featuredProjectIds
 									{tagGroups.map((tagGroup) => (
 										<span class="project-tag-group" data-tag-group={tagGroup.group}>
 											{tagGroup.tags.map((tag) => (
-												<span class="project-tag" style={getProjectTagStyleVars(tag.style)}>{tag.label}</span>
+												<span class="project-tag" data-tag-style={tag.styleKey}>{tag.label}</span>
 											))}
 										</span>
 									))}

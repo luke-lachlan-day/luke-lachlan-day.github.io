@@ -1,5 +1,6 @@
 ---
 import AssetIcon from './AssetIcon.astro';
+import { getExternalLinkAttrs } from '../utils/links';
 
 type ButtonVariant = 'primary' | 'secondary';
 
@@ -22,9 +23,9 @@ const {
 	target,
 	rel,
 } = Astro.props as Props;
-const isExternalLink = href.startsWith('http://') || href.startsWith('https://');
-const linkTarget = target ?? (isExternalLink ? '_blank' : undefined);
-const linkRel = rel ?? (isExternalLink ? 'noreferrer' : undefined);
+const externalAttrs = getExternalLinkAttrs(href);
+const linkTarget = target ?? externalAttrs.target;
+const linkRel = rel ?? externalAttrs.rel;
 ---
 
 <a
