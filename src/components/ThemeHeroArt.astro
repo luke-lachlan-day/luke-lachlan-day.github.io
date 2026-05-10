@@ -1,5 +1,5 @@
 ---
-import type { ImageAsset } from '../data/profile';
+import type { ImageAsset } from '../data/types';
 import { getImageAttrs } from '../utils/images';
 
 type Props = {
@@ -13,22 +13,10 @@ type Props = {
 	decorative?: boolean;
 };
 
-const {
-	light,
-	dark,
-	class: className,
-	imageClass = '',
-	ariaLabel,
-	width,
-	height,
-	decorative = true,
-} = Astro.props as Props;
+const { light, dark, class: className, imageClass = '', ariaLabel, width, height, decorative = true } = Astro.props as Props;
 
-const wrapperAttrs = decorative
-	? { 'aria-hidden': true }
-	: { role: 'img' as const, 'aria-label': ariaLabel ?? light.alt };
-const getAssetClassName = (themeClass: string) =>
-	['theme-asset', imageClass, themeClass].filter(Boolean).join(' ');
+const wrapperAttrs = decorative ? { 'aria-hidden': true } : { role: 'img' as const, 'aria-label': ariaLabel ?? light.alt };
+const getAssetClassName = (themeClass: string) => ['theme-asset', imageClass, themeClass].filter(Boolean).join(' ');
 const lightFallbackAttrs = getImageAttrs(light);
 const darkFallbackAttrs = getImageAttrs(dark);
 const lightImageAttrs = {
@@ -44,18 +32,6 @@ const darkImageAttrs = {
 ---
 
 <div class={className} {...wrapperAttrs}>
-	<img
-		class={getAssetClassName('theme-asset-light')}
-		src={light.src}
-		alt=""
-		{...lightImageAttrs}
-		aria-hidden="true"
-	/>
-	<img
-		class={getAssetClassName('theme-asset-dark')}
-		src={dark.src}
-		alt=""
-		{...darkImageAttrs}
-		aria-hidden="true"
-	/>
+	<img class={getAssetClassName('theme-asset-light')} src={light.src} alt="" {...lightImageAttrs} aria-hidden="true" />
+	<img class={getAssetClassName('theme-asset-dark')} src={dark.src} alt="" {...darkImageAttrs} aria-hidden="true" />
 </div>

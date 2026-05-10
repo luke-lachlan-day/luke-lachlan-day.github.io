@@ -1,4 +1,4 @@
-import type { ImageAsset } from '../data/profile';
+import type { ImageAsset } from '../data/types';
 
 export type ImageDecoding = 'async' | 'auto' | 'sync';
 
@@ -65,8 +65,7 @@ export const imageDimensionsBySrc = {
 	'/assets/icons/contact-youtube.webp': { width: 292, height: 198 },
 } satisfies Record<string, ImageDimensions>;
 
-const getSrc = (assetOrSrc: Pick<ImageAsset, 'src'> | string) =>
-	typeof assetOrSrc === 'string' ? assetOrSrc : assetOrSrc.src;
+const getSrc = (assetOrSrc: Pick<ImageAsset, 'src'> | string) => (typeof assetOrSrc === 'string' ? assetOrSrc : assetOrSrc.src);
 
 export const getImageDimensions = (assetOrSrc: Pick<ImageAsset, 'src'> | string) => {
 	const src = getSrc(assetOrSrc);
@@ -78,9 +77,8 @@ export const getImageAttrs = (
 	decoding: ImageDecoding = 'async'
 ): ImageAttrs => {
 	if (typeof assetOrSrc !== 'string') {
-		const dimensions = assetOrSrc.width && assetOrSrc.height
-			? { width: assetOrSrc.width, height: assetOrSrc.height }
-			: getImageDimensions(assetOrSrc);
+		const dimensions =
+			assetOrSrc.width && assetOrSrc.height ? { width: assetOrSrc.width, height: assetOrSrc.height } : getImageDimensions(assetOrSrc);
 
 		return {
 			...dimensions,

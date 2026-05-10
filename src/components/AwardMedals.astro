@@ -1,5 +1,5 @@
 ---
-import type { ImageAsset } from '../data/profile';
+import type { ImageAsset } from '../data/types';
 import { getImageAttrs } from '../utils/images';
 
 type AwardMedal = {
@@ -18,7 +18,10 @@ type Props = {
 
 const { awards, ariaLabel, class: className } = Astro.props;
 const medalBaseSrc = '/assets/emblems/award-medal-base.webp';
-const headingId = `${ariaLabel.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}-heading`;
+const headingId = `${ariaLabel
+	.toLowerCase()
+	.replace(/[^a-z0-9]+/g, '-')
+	.replace(/^-|-$/g, '')}-heading`;
 ---
 
 {
@@ -29,7 +32,9 @@ const headingId = `${ariaLabel.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace
 			role="group"
 			aria-labelledby={headingId}
 		>
-			<h2 id={headingId} class="visually-hidden">{ariaLabel}</h2>
+			<h2 id={headingId} class="visually-hidden">
+				{ariaLabel}
+			</h2>
 			<div class="project-award-list">
 				{awards.map((award) => {
 					const itemLabel = award.detail
@@ -39,7 +44,14 @@ const headingId = `${ariaLabel.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace
 
 					return (
 						<span class="project-award" role="img" tabindex="0" aria-label={itemLabel}>
-							<img class="project-award-medal-base" src={medalBaseSrc} alt="" loading="lazy" {...getImageAttrs(medalBaseSrc)} aria-hidden="true" />
+							<img
+								class="project-award-medal-base"
+								src={medalBaseSrc}
+								alt=""
+								loading="lazy"
+								{...getImageAttrs(medalBaseSrc)}
+								aria-hidden="true"
+							/>
 							<img
 								class="project-award-emblem"
 								src={award.emblem.src}

@@ -1,6 +1,6 @@
 ---
 import ProjectImageFrame from './ProjectImageFrame.astro';
-import type { ImageAsset } from '../data/profile';
+import type { ImageAsset } from '../data/types';
 import { getImageAttrs } from '../utils/images';
 
 type WheelCardBadge = {
@@ -71,7 +71,7 @@ const mediaAttrs = mediaDecorative ? { 'aria-hidden': 'true' } : {};
 			>
 				{badge && (
 					<span class="project-wheel-company-badge" aria-hidden="true">
-						<span class="project-wheel-company-badge-back"></span>
+						<span class="project-wheel-company-badge-back" />
 						{badge.icon ? (
 							<img class="project-wheel-company-badge-icon" src={badge.icon.src} alt="" loading="lazy" {...getImageAttrs(badge.icon)} />
 						) : (
@@ -79,7 +79,11 @@ const mediaAttrs = mediaDecorative ? { 'aria-hidden': 'true' } : {};
 						)}
 					</span>
 				)}
-				{status && <span class="project-wheel-status-ribbon" data-status={status.value}>{status.label}</span>}
+				{status && (
+					<span class="project-wheel-status-ribbon" data-status={status.value}>
+						{status.label}
+					</span>
+				)}
 			</ProjectImageFrame>
 		) : (
 			<span class={['project-wheel-media', fallbackClass].filter(Boolean).join(' ')} aria-hidden="true">

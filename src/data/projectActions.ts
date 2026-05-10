@@ -1,4 +1,4 @@
-import type { ProjectAction, ProjectActionType } from './profile';
+import type { ProjectAction, ProjectActionType } from './types';
 
 export type ProjectActionMeta = {
 	label: string;
@@ -86,7 +86,5 @@ export const getProjectActionLink = (action: ProjectAction, variant: ProjectActi
 export const getProjectActionLinks = (actions: ProjectAction[] = []) => {
 	const primaryActionIndex = getPrimaryActionIndex(actions);
 
-	return actions.map((action, actionIndex) =>
-		getProjectActionLink(action, actionIndex === primaryActionIndex ? 'primary' : 'secondary')
-	);
+	return actions.map((action, actionIndex) => getProjectActionLink(action, actionIndex === primaryActionIndex ? 'primary' : 'secondary'));
 };

@@ -1,4 +1,4 @@
-import type { ProjectTags } from './profile';
+import type { ProjectTags } from './types';
 
 export const projectTagGroupOrder = ['format', 'platform', 'specialty', 'tech'] as const;
 
@@ -13,7 +13,10 @@ export type ProjectTagRenderGroup = {
 };
 
 export const getProjectTagStyleKey = (tag: string) =>
-	tag.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'default';
+	tag
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, '-')
+		.replace(/^-|-$/g, '') || 'default';
 
 export const getProjectTagRenderGroups = (projectTags: ProjectTags): ProjectTagRenderGroup[] =>
 	projectTagGroupOrder
