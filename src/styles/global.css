@@ -1199,7 +1199,7 @@ h3 {
 	gap: 8px;
 	grid-template-rows: auto minmax(0, 1fr);
 	width: clamp(174px, 17vw, 228px);
-	height: 232px;
+	height: 222px;
 	border: 1px solid var(--border);
 	border-radius: 14px;
 	background: var(--project-wheel-card-background);
@@ -1306,7 +1306,7 @@ h3 {
 
 .project-wheel-media {
 	width: 100%;
-	aspect-ratio: 16 / 10;
+	aspect-ratio: 16 / 9;
 	border-radius: 9px;
 }
 
@@ -1540,7 +1540,7 @@ h3 {
 	isolation: isolate;
 	overflow: hidden;
 	width: 100%;
-	aspect-ratio: 16 / 10.2;
+	aspect-ratio: 16 / 9;
 	background: var(--surface-soft);
 }
 
@@ -1619,8 +1619,14 @@ h3 {
 }
 
 .project-detail-gallery-control:focus-visible {
-	outline: 3px solid color-mix(in srgb, var(--accent) 48%, transparent);
-	outline-offset: -6px;
+	outline: none;
+}
+
+.project-detail-gallery-control:focus-visible span {
+	border-color: color-mix(in srgb, var(--accent) 62%, var(--surface));
+	box-shadow:
+		0 0 0 3px color-mix(in srgb, var(--accent) 38%, transparent),
+		var(--shadow-soft);
 }
 
 .project-detail-gallery-dots {
@@ -2001,7 +2007,7 @@ h3 {
 	display: grid;
 	place-items: center;
 	width: 100%;
-	aspect-ratio: 16 / 10;
+	aspect-ratio: 16 / 9;
 	border-radius: 9px;
 	background:
 		radial-gradient(circle at 50% 38%, color-mix(in srgb, var(--accent-2) 22%, transparent), transparent 58%),
@@ -2069,6 +2075,7 @@ h3 {
 
 .experience-detail-picture {
 	overflow: hidden;
+	aspect-ratio: 16 / 9;
 	border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--border));
 	border-radius: 12px;
 	background: var(--surface-soft);
@@ -2078,7 +2085,7 @@ h3 {
 .experience-detail-picture img {
 	display: block;
 	width: 100%;
-	aspect-ratio: 16 / 10;
+	height: 100%;
 	filter: var(--image-filter);
 	object-fit: cover;
 }
@@ -2209,7 +2216,7 @@ h3 {
 
 	.project-wheel-card {
 		width: clamp(172px, 34vw, 220px);
-		height: 230px;
+		height: 220px;
 	}
 
 	.project-wheel-card[data-slot="-2"] {
@@ -2270,7 +2277,7 @@ h3 {
 
 	.project-wheel-card {
 		width: min(230px, calc(100vw - 122px));
-		height: 228px;
+		height: 220px;
 	}
 
 	.project-wheel-card[data-slot="0"] {
