@@ -67,6 +67,7 @@ export type ProjectReleaseStage = 'dev' | 'released' | 'shelved' | 'contributed'
 export type ProjectAward = {
 	name: string;
 	awardedFrom: string;
+	year: string;
 	emblem: ImageAsset;
 };
 
@@ -749,11 +750,24 @@ export const profile = {
 				dateLabel: 'Jul 2023',
 				yearLabel: '2023',
 				releaseStage: 'released',
-				awards: [],
-				actions: [
-					{ type: 'steam', href: 'https://store.steampowered.com/app/2054850/Super_BAWK_BAWK_Chicken/' },
+				awards: [
+					{
+						name: 'Best Game',
+						awardedFrom: "The Mercury's South Australian Screen Awards",
+						year: '2024',
+						emblem: {
+							src: '/assets/emblems/daytime-devs.webp',
+							alt: 'Daytime Devs award emblem.',
+						},
+					},
 				],
-				projectUrl: 'https://store.steampowered.com/app/2054850/Super_BAWK_BAWK_Chicken/',
+				actions: [
+					{ type: 'website', href: 'https://superbawkbawkchicken.com/' },
+					{ type: 'steam', href: 'https://store.steampowered.com/app/2054850/Super_BAWK_BAWK_Chicken/' },
+					{ type: 'appStore', href: 'https://apps.apple.com/au/app/super-bawk-bawk-chicken/id6464066197' },
+					{ type: 'playStore', href: 'https://play.google.com/store/apps/details?id=com.DaytimeDevs.BawkBawk' },
+				],
+				projectUrl: 'https://superbawkbawkchicken.com/',
 			},
 		] satisfies Project[],
 	},
