@@ -261,6 +261,9 @@ main {
 .button::after,
 .hero-role::before,
 .project-card,
+.project-image-frame,
+.project-image-frame-backdrop,
+.project-image-frame-img,
 .timeline-item,
 .contact-card,
 .contact-card-icon,
@@ -990,14 +993,48 @@ h3 {
 	outline-offset: 4px;
 }
 
+.project-image-frame {
+	position: relative;
+	isolation: isolate;
+	display: block;
+	overflow: hidden;
+	background: var(--surface-soft);
+}
+
+.project-image-frame-backdrop {
+	position: absolute;
+	inset: -18px;
+	z-index: 0;
+	background: var(--project-image-url) center / cover no-repeat;
+	filter: var(--image-filter) blur(18px) saturate(1.16);
+	image-rendering: pixelated;
+	transform: scale(1.04);
+	pointer-events: none;
+}
+
+.project-image-frame::after {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	background: color-mix(in srgb, var(--surface-soft) 18%, transparent);
+	content: "";
+	pointer-events: none;
+}
+
+.project-image-frame-img {
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	filter: var(--image-filter);
+	image-rendering: pixelated;
+	object-fit: contain;
+}
+
 .project-image {
 	width: 100%;
 	aspect-ratio: 16 / 9;
 	border-radius: 9px;
-	object-fit: cover;
-	background: var(--surface-soft);
-	filter: var(--image-filter);
-	image-rendering: pixelated;
 }
 
 .project-body {
@@ -1268,21 +1305,9 @@ h3 {
 }
 
 .project-wheel-media {
-	position: relative;
-	display: block;
 	width: 100%;
 	aspect-ratio: 16 / 10;
-	overflow: hidden;
 	border-radius: 9px;
-	background: var(--surface-soft);
-}
-
-.project-wheel-image {
-	width: 100%;
-	height: 100%;
-	filter: var(--image-filter);
-	image-rendering: pixelated;
-	object-fit: cover;
 }
 
 .project-wheel-company-badge {
@@ -1290,7 +1315,7 @@ h3 {
 	position: absolute;
 	right: 9px;
 	bottom: 9px;
-	z-index: 2;
+	z-index: 3;
 	display: block;
 	width: 58px;
 	height: 58px;
@@ -1338,6 +1363,7 @@ h3 {
 	position: absolute;
 	top: 8px;
 	right: 8px;
+	z-index: 3;
 	border-radius: 7px;
 	background: var(--project-status-dev-bg);
 	color: var(--project-status-dev-text);
@@ -1521,12 +1547,8 @@ h3 {
 .project-detail-gallery-image {
 	position: absolute;
 	inset: 0;
-	display: block;
 	width: 100%;
 	height: 100%;
-	filter: var(--image-filter);
-	image-rendering: pixelated;
-	object-fit: cover;
 	opacity: 0;
 	z-index: 0;
 	transition: opacity var(--project-gallery-transition-ms) ease-in-out;

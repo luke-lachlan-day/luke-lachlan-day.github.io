@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AssetIcon from '../components/AssetIcon.astro';
+import ProjectImageFrame from '../components/ProjectImageFrame.astro';
 import { profile, type Project } from '../data/profile';
 import { getProjectActionLinks } from '../data/projectActions';
 import { getProjectTagRenderGroups, getProjectTagStyleVars } from '../data/projectTags';
@@ -79,8 +80,7 @@ const getInitialWheelSlot = (index: number) => {
 								aria-label={`Select ${project.product}`}
 								tabindex={isActive ? undefined : -1}
 							>
-								<span class="project-wheel-media">
-									<img class="project-wheel-image" src={picture.src} alt={picture.alt} loading={isActive ? 'eager' : 'lazy'} />
+								<ProjectImageFrame class="project-wheel-media" src={picture.src} alt={picture.alt} loading={isActive ? 'eager' : 'lazy'}>
 									{company && (
 										<span class="project-wheel-company-badge" aria-hidden="true">
 											<span class="project-wheel-company-badge-back"></span>
@@ -88,7 +88,7 @@ const getInitialWheelSlot = (index: number) => {
 										</span>
 									)}
 									<span class="project-wheel-status-ribbon" data-status={project.releaseStage}>{releaseStageLabel}</span>
-								</span>
+								</ProjectImageFrame>
 								<span class="project-wheel-body">
 									<span class="project-wheel-title">{project.product}</span>
 									<span class="project-wheel-year">{project.yearLabel}</span>
@@ -132,7 +132,7 @@ const getInitialWheelSlot = (index: number) => {
 									aria-label={`${project.product} images`}
 								>
 									{project.pictures.map((picture, pictureIndex) => (
-										<img
+										<ProjectImageFrame
 											class="project-detail-gallery-image"
 											src={picture.src}
 											alt={picture.alt}

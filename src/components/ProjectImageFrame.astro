@@ -1,0 +1,30 @@
+---
+type Props = {
+	src: string;
+	alt: string;
+	loading?: 'eager' | 'lazy';
+	class?: string;
+	imageClass?: string;
+	style?: string;
+	[key: string]: unknown;
+};
+
+const {
+	src,
+	alt,
+	loading = 'lazy',
+	class: className,
+	imageClass,
+	style: styleValue,
+	...attrs
+} = Astro.props as Props;
+const frameClass = ['project-image-frame', className].filter(Boolean).join(' ');
+const foregroundClass = ['project-image-frame-img', imageClass].filter(Boolean).join(' ');
+const frameStyle = [styleValue, `--project-image-url: url(${JSON.stringify(src)})`].filter(Boolean).join('; ');
+---
+
+<span {...attrs} class={frameClass} style={frameStyle}>
+	<span class="project-image-frame-backdrop" aria-hidden="true"></span>
+	<img class={foregroundClass} src={src} alt={alt} loading={loading} />
+	<slot />
+</span>

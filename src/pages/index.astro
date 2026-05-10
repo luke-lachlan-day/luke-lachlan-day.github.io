@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AssetIcon from '../components/AssetIcon.astro';
+import ProjectImageFrame from '../components/ProjectImageFrame.astro';
 import { profile, type Project } from '../data/profile';
 import { getProjectTagRenderGroups, getProjectTagStyleVars } from '../data/projectTags';
 
@@ -65,7 +66,7 @@ const featuredProjects = home.featuredProjectIds
 							href={`${projects.href}#${project.id}`}
 							aria-label={`View ${project.product} in projects`}
 						>
-							<img class="project-image" src={picture.src} alt={picture.alt} loading="lazy" />
+							<ProjectImageFrame class="project-image" src={picture.src} alt={picture.alt} loading="lazy" />
 							<div class="project-body">
 								<div class="project-company">
 									{company && <img src={company.icon.src} alt="" loading="lazy" />}
