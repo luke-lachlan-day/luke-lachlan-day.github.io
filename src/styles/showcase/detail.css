@@ -365,8 +365,11 @@
 }
 
 .project-detail-actions .button {
+	flex: 0 1 auto;
+	min-width: max-content;
 	min-height: 48px;
 	padding: 11px 18px 13px;
+	white-space: nowrap;
 }
 
 @media (max-width: 960px) {
@@ -399,6 +402,8 @@
 	}
 
 	.project-detail-actions .button {
+		flex: 1 1 100%;
+		min-width: 0;
 		width: 100%;
 	}
 }

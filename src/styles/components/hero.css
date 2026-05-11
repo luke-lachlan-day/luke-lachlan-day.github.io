@@ -134,6 +134,12 @@ h3 {
 	margin-top: 25px;
 }
 
+.hero-actions .button {
+	flex: 1 1 0;
+	min-width: 0;
+	white-space: nowrap;
+}
+
 .hero-actions .hero-art {
 	position: relative;
 	z-index: 1;

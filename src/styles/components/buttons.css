@@ -1,10 +1,4 @@
 .button {
-	flex: 1 1 0;
-	min-width: 0;
-	white-space: nowrap;
-}
-
-.button {
 	position: relative;
 	isolation: isolate;
 	display: inline-flex;
