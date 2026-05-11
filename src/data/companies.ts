@@ -42,6 +42,14 @@ export const companies = [
 		},
 	},
 	{
+		id: 'athletics-south-australia',
+		name: 'Athletics South Australia',
+		icon: {
+			src: '/assets/images/company-athletics-south-australia.webp',
+			alt: 'Athletics South Australia bird logo.',
+		},
+	},
+	{
 		id: 'australian-army',
 		name: 'Australian Army',
 		icon: {

@@ -63,6 +63,7 @@ export type CompanyId =
 	| 'coastal-derrieres'
 	| 'sciworld'
 	| 'solo'
+	| 'athletics-south-australia'
 	| 'australian-army'
 	| 'power-net-it-solutions'
 	| 'university-of-adelaide';

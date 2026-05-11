@@ -13,6 +13,7 @@ export type ImageAttrs = Partial<ImageDimensions> & {
 
 export const imageDimensionsBySrc = {
 	'/assets/images/catalyst-think-digital-vr-cattle-vr.webp': { width: 960, height: 1280 },
+	'/assets/images/company-athletics-south-australia.webp': { width: 225, height: 225 },
 	'/assets/images/company-australian-army.webp': { width: 256, height: 184 },
 	'/assets/images/company-catalyst-games.webp': { width: 182, height: 217 },
 	'/assets/images/company-coastal-derrieres.webp': { width: 128, height: 128 },
@@ -32,6 +33,10 @@ export const imageDimensionsBySrc = {
 	'/assets/images/experience-catalyst-games-studio-event-group.webp': { width: 760, height: 507 },
 	'/assets/images/experience-power-net-it-solutions.webp': { width: 760, height: 478 },
 	'/assets/images/experience-solo-dev.webp': { width: 760, height: 478 },
+	'/assets/images/experience-state-level-athlete-gold-medal.webp': { width: 760, height: 507 },
+	'/assets/images/experience-state-level-athlete-harbour.webp': { width: 760, height: 570 },
+	'/assets/images/experience-state-level-athlete-silver-medal.webp': { width: 760, height: 507 },
+	'/assets/images/experience-state-level-athlete-track.webp': { width: 570, height: 760 },
 	'/assets/images/experience-university-of-adelaide.webp': { width: 760, height: 478 },
 	'/assets/images/footer-frame-dark.webp': { width: 1983, height: 793 },
 	'/assets/images/footer-frame-light.webp': { width: 1983, height: 793 },
@@ -60,6 +65,7 @@ export const imageDimensionsBySrc = {
 	'/assets/images/project-three-hearted-octopus.webp': { width: 1672, height: 941 },
 	'/assets/images/project-trusty-battles.webp': { width: 960, height: 540 },
 	'/assets/images/project-x-men.webp': { width: 480, height: 360 },
+	'/assets/emblems/athletics-south-australia.webp': { width: 157, height: 77 },
 	'/assets/emblems/army-bushfire-assist.webp': { width: 256, height: 256 },
 	'/assets/emblems/award-medal-base.webp': { width: 288, height: 512 },
 	'/assets/emblems/daytime-devs.webp': { width: 486, height: 308 },

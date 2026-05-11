@@ -275,5 +275,62 @@ export const experience = {
 			],
 			tools: ['Network Administration', 'Technical Systems', 'Equipment Operation', 'Training', 'Teamwork'],
 		},
+		{
+			id: 'state-level-athlete',
+			role: 'State-Level Athlete',
+			company: 'Athletics South Australia',
+			companyId: 'athletics-south-australia',
+			pictures: [
+				{
+					src: '/assets/images/experience-state-level-athlete-track.webp',
+					alt: 'Athletics South Australia runner standing beside an outdoor athletics track.',
+				},
+				{
+					src: '/assets/images/experience-state-level-athlete-harbour.webp',
+					alt: 'Athletics South Australia runner standing near Sydney Harbour Bridge.',
+				},
+				{
+					src: '/assets/images/experience-state-level-athlete-gold-medal.webp',
+					alt: 'Gold Athletics South Australia State Championships medal.',
+				},
+				{
+					src: '/assets/images/experience-state-level-athlete-silver-medal.webp',
+					alt: 'Silver Athletics South Australia medal for the Under 18 100 metres event.',
+				},
+			],
+			dateLabel: '2011 - 2012',
+			cardDateLabel: '2011 - 2012',
+			sortDate: '2012-03-18',
+			context: 'Under 18 sprinting and Junior Athletics Championships',
+			summary:
+				'It would not be right to build a portfolio without reliving my Under 18 sprinting glory, mostly because my partner has already heard about it enough times that the website may as well share the burden.',
+			recognition: [
+				{
+					name: 'First Place, 200 metres',
+					awardedFrom: 'Athletics South Australia State Championships',
+					detail: 'Under 18, 22.79 seconds',
+					year: '2011',
+					emblem: {
+						src: '/assets/emblems/athletics-south-australia.webp',
+						alt: 'Athletics South Australia bird emblem.',
+					},
+				},
+				{
+					name: 'Second Place, 100 metres',
+					awardedFrom: 'Athletics South Australia State Championships',
+					detail: 'Under 18, 11.39 seconds',
+					year: '2011',
+					emblem: {
+						src: '/assets/emblems/athletics-south-australia.webp',
+						alt: 'Athletics South Australia bird emblem.',
+					},
+				},
+			],
+			highlights: [
+				'Went to Sydney to represent South Australia at the 2012 Junior Athletics Championships.',
+				'Learned the lifelong professional skill of bringing up former glory at completely unnecessary moments.',
+			],
+			tools: ['Athletics', 'Sprinting', '200 metres', '100 metres', 'State Championships', 'Personal Bests'],
+		},
 	] satisfies ExperienceItem[],
 } as const;
