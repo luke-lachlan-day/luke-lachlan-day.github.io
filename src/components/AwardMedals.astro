@@ -52,14 +52,8 @@ const headingId = `${ariaLabel
 								{...getImageAttrs(medalBaseSrc)}
 								aria-hidden="true"
 							/>
-							<img
-								class="project-award-emblem"
-								src={award.emblem.src}
-								alt=""
-								loading="lazy"
-								{...getImageAttrs(award.emblem)}
-								aria-hidden="true"
-							/>
+							<span class="project-award-medal-face" aria-hidden="true" />
+							<span class="project-award-emblem" style={`--project-award-emblem-src: url('${award.emblem.src}')`} aria-hidden="true" />
 							<span class="project-award-details" aria-hidden="true">
 								<strong>{award.name}</strong>
 								{detailLines.map((line) => (

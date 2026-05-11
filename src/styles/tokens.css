@@ -24,6 +24,10 @@
 	--project-status-shelved-text: #4b4f55;
 	--project-status-contributed-bg: #eadcff;
 	--project-status-contributed-text: #54347a;
+	--award-medal-face: #f7ecd1;
+	--award-medal-face-border: #9b7440;
+	--award-medal-face-shadow: rgba(70, 46, 20, 0.2);
+	--award-medal-mark: #1f251b;
 	--paint: #285590;
 	--paint-fill: color-mix(in srgb, var(--accent) 88%, #000000);
 	--border: #ded2c2;
@@ -85,6 +89,10 @@
 	--project-status-shelved-text: #4b4f55;
 	--project-status-contributed-bg: #eadcff;
 	--project-status-contributed-text: #54347a;
+	--award-medal-face: #f7ecd1;
+	--award-medal-face-border: #9b7440;
+	--award-medal-face-shadow: rgba(70, 46, 20, 0.2);
+	--award-medal-mark: #1f251b;
 	--paint: #285590;
 	--border: #ded2c2;
 	--border-strong: #cbbca9;
@@ -120,6 +128,10 @@
 	--project-status-shelved-text: #f2f0e9;
 	--project-status-contributed-bg: #523a76;
 	--project-status-contributed-text: #f6ecff;
+	--award-medal-face: #efe0bc;
+	--award-medal-face-border: #b88948;
+	--award-medal-face-shadow: rgba(0, 0, 0, 0.36);
+	--award-medal-mark: #171c16;
 	--paint: #7f58e8;
 	--border: #293a56;
 	--border-strong: #405474;
