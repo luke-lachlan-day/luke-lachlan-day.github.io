@@ -105,6 +105,19 @@ const createLeafState = (element: HTMLElement, layer: LeafLayerState): LeafState
 	startY: 0,
 });
 
+const afterInitialPaint = (callback: () => void) => {
+	window.requestAnimationFrame(() => {
+		window.requestAnimationFrame(() => {
+			if ('requestIdleCallback' in window) {
+				window.requestIdleCallback(callback, { timeout: 1200 });
+				return;
+			}
+
+			setTimeout(callback, 0);
+		});
+	});
+};
+
 export const setupFallingLeaves = () => {
 	const root = document.querySelector<HTMLElement>('[data-falling-leaves]');
 	if (!root) return;
@@ -130,6 +143,7 @@ export const setupFallingLeaves = () => {
 	let scrollY = window.scrollY;
 	let viewport = getViewport();
 	let activeLeafProfileKey = '';
+	let hasCreatedLeaves = false;
 
 	const getResponsiveLeafProfile = (): LeafProfile => {
 		if (viewport.width <= 560) {
@@ -246,8 +260,6 @@ export const setupFallingLeaves = () => {
 		});
 	};
 
-	createLeaves(performance.now());
-
 	const render = (now: number) => {
 		leaves.forEach((leaf) => {
 			const age = Math.max(0, (now - leaf.bornAt) / 1000);
@@ -275,6 +287,10 @@ export const setupFallingLeaves = () => {
 	};
 	const start = () => {
 		if (isRunning || motionQuery.matches || pageRoot.dataset.leaves === 'off') return;
+		if (!hasCreatedLeaves) {
+			createLeaves(performance.now());
+			hasCreatedLeaves = true;
+		}
 		root.removeAttribute('hidden');
 		scrollY = window.scrollY;
 		viewport = getViewport();
@@ -304,7 +320,7 @@ export const setupFallingLeaves = () => {
 		() => {
 			viewport = getViewport();
 			scrollY = window.scrollY;
-			if (getLeafProfileKey(getResponsiveLeafProfile()) !== activeLeafProfileKey) {
+			if (hasCreatedLeaves && getLeafProfileKey(getResponsiveLeafProfile()) !== activeLeafProfileKey) {
 				createLeaves(performance.now());
 			}
 		},
@@ -322,5 +338,5 @@ export const setupFallingLeaves = () => {
 		attributeFilter: ['data-leaves'],
 	});
 
-	syncLeavesState();
+	afterInitialPaint(syncLeavesState);
 };

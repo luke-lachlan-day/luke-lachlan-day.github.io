@@ -1,6 +1,5 @@
 ---
 import type { ImageAsset } from '../data/types';
-import { getImageAttrs } from '../utils/images';
 
 type Props = {
 	light: ImageAsset;
@@ -8,30 +7,21 @@ type Props = {
 	class?: string;
 	imageClass?: string;
 	ariaLabel?: string;
-	width?: string | number;
-	height?: string | number;
 	decorative?: boolean;
 };
 
-const { light, dark, class: className, imageClass = '', ariaLabel, width, height, decorative = true } = Astro.props as Props;
+const { light, dark, class: className, imageClass = '', ariaLabel, decorative = true } = Astro.props as Props;
 
 const wrapperAttrs = decorative ? { 'aria-hidden': true } : { role: 'img' as const, 'aria-label': ariaLabel ?? light.alt };
-const getAssetClassName = (themeClass: string) => ['theme-asset', imageClass, themeClass].filter(Boolean).join(' ');
-const lightFallbackAttrs = getImageAttrs(light);
-const darkFallbackAttrs = getImageAttrs(dark);
-const lightImageAttrs = {
-	...lightFallbackAttrs,
-	width: width ?? lightFallbackAttrs.width,
-	height: height ?? lightFallbackAttrs.height,
-};
-const darkImageAttrs = {
-	...darkFallbackAttrs,
-	width: width ?? darkFallbackAttrs.width,
-	height: height ?? darkFallbackAttrs.height,
-};
+const assetClass = ['theme-asset', imageClass].filter(Boolean).join(' ');
+const assetStyle = [
+	`--theme-asset-light-image: url(${JSON.stringify(light.src)})`,
+	`--theme-asset-dark-image: url(${JSON.stringify(dark.src)})`,
+]
+	.filter(Boolean)
+	.join('; ');
 ---
 
 <div class={className} {...wrapperAttrs}>
-	<img class={getAssetClassName('theme-asset-light')} src={light.src} alt="" {...lightImageAttrs} aria-hidden="true" />
-	<img class={getAssetClassName('theme-asset-dark')} src={dark.src} alt="" {...darkImageAttrs} aria-hidden="true" />
+	<span class={assetClass} style={assetStyle} aria-hidden="true"></span>
 </div>

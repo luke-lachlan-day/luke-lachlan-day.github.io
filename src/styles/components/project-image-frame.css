@@ -10,9 +10,12 @@
 	position: absolute;
 	inset: -18px;
 	z-index: 0;
-	background: var(--project-image-url) center / cover no-repeat;
+	width: calc(100% + 36px);
+	max-width: none;
+	height: calc(100% + 36px);
 	filter: var(--image-filter) blur(18px) saturate(1.16);
 	image-rendering: pixelated;
+	object-fit: cover;
 	transform: scale(1.04);
 	pointer-events: none;
 }

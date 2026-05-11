@@ -32,7 +32,7 @@ const {
 } = Astro.props as Props;
 const frameClass = ['project-image-frame', className].filter(Boolean).join(' ');
 const foregroundClass = ['project-image-frame-img', imageClass].filter(Boolean).join(' ');
-const frameStyle = [styleValue, `--project-image-url: url(${JSON.stringify(src)})`].filter(Boolean).join('; ');
+const frameStyle = styleValue || undefined;
 const fallbackImageAttrs = getImageAttrs(src, decoding ?? 'async');
 const imageAttrs = {
 	...fallbackImageAttrs,
@@ -43,7 +43,7 @@ const Wrapper = wrapper;
 ---
 
 <Wrapper {...attrs} class={frameClass} style={frameStyle}>
-	<span class="project-image-frame-backdrop" aria-hidden="true"></span>
+	<img class="project-image-frame-backdrop" src={src} alt="" loading={loading} {...imageAttrs} aria-hidden="true" />
 	<img class={foregroundClass} src={src} alt={alt} loading={loading} {...imageAttrs} />
 	<slot />
 </Wrapper>
