@@ -326,10 +326,7 @@ export const experience = {
 					},
 				},
 			],
-			highlights: [
-				'Went to Sydney to represent South Australia at the 2012 Junior Athletics Championships.',
-				'Learned the lifelong professional skill of bringing up former glory at completely unnecessary moments.',
-			],
+			highlights: ['Went to Sydney to represent South Australia at the 2012 Junior Athletics Championships.'],
 			tools: ['Athletics', 'Sprinting', '200 metres', '100 metres', 'State Championships', 'Personal Bests'],
 		},
 	] satisfies ExperienceItem[],
