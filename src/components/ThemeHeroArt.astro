@@ -13,7 +13,7 @@ type Props = {
 const { light, dark, class: className, imageClass = '', ariaLabel, decorative = true } = Astro.props as Props;
 
 const wrapperAttrs = decorative ? { 'aria-hidden': true } : { role: 'img' as const, 'aria-label': ariaLabel ?? light.alt };
-const assetClass = ['theme-asset', imageClass].filter(Boolean).join(' ');
+const assetClass = (theme: 'light' | 'dark') => ['theme-asset', `theme-asset-${theme}`, imageClass].filter(Boolean).join(' ');
 const assetStyle = [
 	`--theme-asset-light-image: url(${JSON.stringify(light.src)})`,
 	`--theme-asset-dark-image: url(${JSON.stringify(dark.src)})`,
@@ -22,6 +22,7 @@ const assetStyle = [
 	.join('; ');
 ---
 
-<div class={className} {...wrapperAttrs}>
-	<span class={assetClass} style={assetStyle} aria-hidden="true"></span>
+<div class={className} style={assetStyle} {...wrapperAttrs}>
+	<span class={assetClass('light')} aria-hidden="true"></span>
+	<span class={assetClass('dark')} aria-hidden="true"></span>
 </div>

@@ -140,7 +140,7 @@ h3 {
 	white-space: nowrap;
 }
 
-.hero-actions .hero-art {
+.hero-art {
 	position: relative;
 	z-index: 1;
 	min-height: 650px;
@@ -161,15 +161,23 @@ h3 {
 	background-size: contain;
 	filter: var(--image-filter);
 	image-rendering: pixelated;
-	transition: filter var(--theme-transition);
+	opacity: 0;
+	transition:
+		filter var(--theme-transition),
+		opacity var(--theme-transition);
 }
 
-:root[data-theme='light'] .theme-asset {
+.theme-asset-light {
 	background-image: var(--theme-asset-light-image);
 }
 
-:root[data-theme='dark'] .theme-asset {
+.theme-asset-dark {
 	background-image: var(--theme-asset-dark-image);
+}
+
+:root[data-theme='light'] .theme-asset-light,
+:root[data-theme='dark'] .theme-asset-dark {
+	opacity: 1;
 }
 
 @media (min-width: 900px) and (max-width: 1040px) {
