@@ -504,6 +504,31 @@ export const projects = {
 			awards: [],
 		},
 		{
+			id: '7-days-to-die-mods',
+			companyId: 'solo',
+			product: '7 Days to Die Mods',
+			pictures: [
+				{
+					src: '/assets/images/project-7-days-to-die-mods.webp',
+					alt: '7 Days to Die key art with survivors and zombies in a dark forest.',
+				},
+			],
+			description:
+				'A released collection of 7 Days to Die mods shared through GitHub for players who want to customize their survival experience.',
+			tools: ['Modding', 'Survival', 'GitHub'],
+			projectTags: {
+				format: ['Mod Collection'],
+				platform: ['PC'],
+				specialty: ['Modding', 'Survival'],
+			},
+			sortDate: '2022-01-01',
+			dateLabel: '2022',
+			yearLabel: '2022',
+			releaseStage: 'released',
+			awards: [],
+			actions: [{ type: 'source', href: 'https://github.com/Daylight-V/DayMods-7D2D' }],
+		},
+		{
 			id: 'super-bawk-bawk-chicken',
 			companyId: 'daytime-devs',
 			product: 'Super BAWK BAWK Chicken',

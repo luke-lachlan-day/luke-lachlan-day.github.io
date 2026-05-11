@@ -59,6 +59,14 @@
 	--tag-dark-text: #fff0bf;
 	--tag-dark-border: #a57a34;
 }
+.project-tag[data-tag-style='mod-collection'] {
+	--tag-bg: #d6e3c3;
+	--tag-text: #3d5523;
+	--tag-border: #b9ce91;
+	--tag-dark-bg: #405438;
+	--tag-dark-text: #f2ffe8;
+	--tag-dark-border: #6f884f;
+}
 .project-tag[data-tag-style='prototype'] {
 	--tag-bg: #eadcff;
 	--tag-text: #54347a;
@@ -434,6 +442,22 @@
 	--tag-dark-bg: #674125;
 	--tag-dark-text: #ffeadf;
 	--tag-dark-border: #976d4e;
+}
+.project-tag[data-tag-style='modding'] {
+	--tag-bg: #d7e5d2;
+	--tag-text: #345730;
+	--tag-border: #b7d0ad;
+	--tag-dark-bg: #37563a;
+	--tag-dark-text: #efffeb;
+	--tag-dark-border: #638d5f;
+}
+.project-tag[data-tag-style='survival'] {
+	--tag-bg: #efd4c4;
+	--tag-text: #663d25;
+	--tag-border: #d7ad94;
+	--tag-dark-bg: #5e4435;
+	--tag-dark-text: #ffede3;
+	--tag-dark-border: #8b6d5c;
 }
 .project-tag[data-tag-style='astro'] {
 	--tag-bg: #e1d9ee;

@@ -44,6 +44,7 @@ export const imageDimensionsBySrc = {
 	'/assets/images/footer-heart-light.webp': { width: 136, height: 112 },
 	'/assets/images/hero-dark.webp': { width: 1254, height: 1254 },
 	'/assets/images/hero-light.webp': { width: 1254, height: 1254 },
+	'/assets/images/project-7-days-to-die-mods.webp': { width: 616, height: 353 },
 	'/assets/images/project-awbw.webp': { width: 1672, height: 941 },
 	'/assets/images/project-beach-bums-capsule.webp': { width: 616, height: 353 },
 	'/assets/images/project-beach-bums.webp': { width: 460, height: 215 },
