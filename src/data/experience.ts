@@ -47,12 +47,24 @@ export const experience = {
 			companyId: 'catalyst-games',
 			pictures: [
 				{
-					src: '/assets/images/project-dungeons-and-dining-tables.webp',
-					alt: 'Steam header art for Dungeons and Dining Tables reused as a Catalyst Games gallery test image.',
+					src: '/assets/images/catalyst-think-digital-vr-cattle-vr.webp',
+					alt: 'Catalyst and Think Digital VR team members filming a cattle VR training experience.',
 				},
 				{
-					src: '/assets/images/project-quizmas-quizes-and-games.webp',
-					alt: 'Pixel art festive quiz board reused as a Catalyst Games gallery test image.',
+					src: '/assets/images/experience-catalyst-games-sagta-award-group.webp',
+					alt: 'Catalyst Games team members posing with a SAGTA South Australian Game Industry Award.',
+				},
+				{
+					src: '/assets/images/experience-catalyst-games-sagta-award-media-wall.webp',
+					alt: 'Catalyst Games team members at the SAGTA awards media wall holding an award.',
+				},
+				{
+					src: '/assets/images/experience-catalyst-games-studio-event-audience.webp',
+					alt: 'Catalyst Games studio event guests watching a presentation.',
+				},
+				{
+					src: '/assets/images/experience-catalyst-games-studio-event-group.webp',
+					alt: 'Large Catalyst Games studio event group photo on a staircase.',
 				},
 			],
 			dateLabel: 'Jan 2025 - Mar 2026',

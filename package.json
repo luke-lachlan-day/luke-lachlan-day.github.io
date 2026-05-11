@@ -9,6 +9,7 @@
     "dev": "astro dev",
     "check": "astro check",
     "check:assets": "node scripts/check-assets.mjs",
+    "process:assets": "node scripts/process-assets.mjs",
     "build": "astro build",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

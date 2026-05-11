@@ -391,8 +391,12 @@ export const projects = {
 			product: 'Think Digital VR Work',
 			pictures: [
 				{
-					src: '/assets/images/project-dungeons-and-dining-tables.webp',
-					alt: 'Steam header art reused for Think Digital VR Work.',
+					src: '/assets/images/project-think-digital-vr-work-banner.webp',
+					alt: 'Students wearing Think Digital branded VR headsets in a mobile training space.',
+				},
+				{
+					src: '/assets/images/catalyst-think-digital-vr-cattle-vr.webp',
+					alt: 'Catalyst and Think Digital VR team members filming a cattle VR training experience.',
 				},
 			],
 			description:

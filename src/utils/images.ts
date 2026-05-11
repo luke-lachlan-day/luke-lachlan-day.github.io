@@ -12,6 +12,7 @@ export type ImageAttrs = Partial<ImageDimensions> & {
 };
 
 export const imageDimensionsBySrc = {
+	'/assets/images/catalyst-think-digital-vr-cattle-vr.webp': { width: 960, height: 1280 },
 	'/assets/images/company-australian-army.webp': { width: 256, height: 184 },
 	'/assets/images/company-catalyst-games.webp': { width: 182, height: 217 },
 	'/assets/images/company-coastal-derrieres.webp': { width: 128, height: 128 },
@@ -25,6 +26,10 @@ export const imageDimensionsBySrc = {
 	'/assets/images/contact-mailbox-light.webp': { width: 1390, height: 1132 },
 	'/assets/images/experience-australian-army.webp': { width: 760, height: 478 },
 	'/assets/images/experience-book.webp': { width: 760, height: 478 },
+	'/assets/images/experience-catalyst-games-sagta-award-group.webp': { width: 750, height: 507 },
+	'/assets/images/experience-catalyst-games-sagta-award-media-wall.webp': { width: 760, height: 507 },
+	'/assets/images/experience-catalyst-games-studio-event-audience.webp': { width: 760, height: 507 },
+	'/assets/images/experience-catalyst-games-studio-event-group.webp': { width: 760, height: 507 },
 	'/assets/images/experience-power-net-it-solutions.webp': { width: 760, height: 478 },
 	'/assets/images/experience-solo-dev.webp': { width: 760, height: 478 },
 	'/assets/images/experience-university-of-adelaide.webp': { width: 760, height: 478 },
@@ -51,6 +56,7 @@ export const imageDimensionsBySrc = {
 	'/assets/images/project-quizmas-quizes-and-games.webp': { width: 960, height: 540 },
 	'/assets/images/project-rogue-hands.webp': { width: 960, height: 540 },
 	'/assets/images/project-super-bawk-bawk-chicken.webp': { width: 1672, height: 941 },
+	'/assets/images/project-think-digital-vr-work-banner.webp': { width: 1672, height: 669 },
 	'/assets/images/project-three-hearted-octopus.webp': { width: 1672, height: 941 },
 	'/assets/images/project-trusty-battles.webp': { width: 960, height: 540 },
 	'/assets/images/project-x-men.webp': { width: 480, height: 360 },
