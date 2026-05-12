@@ -141,6 +141,7 @@ Before finishing a change, check for:
 
 - Optimize web-facing raster assets before shipping.
 - Keep only deployable, optimized assets under `public/assets/`; keep oversized originals and working source files under `assets-source/`.
+- When processing newly supplied source images, rename them in `assets-source/images/` to descriptive kebab-case filenames that match the intended shipped asset before generating optimized outputs.
 - Prefer WebP for photos, illustrations, decorative images, and alpha-capable raster assets unless PNG is required for exact lossless output.
 - Use the repo-local ImageMagick executable under `.tools/` for conversions.
 - Do not reference oversized source PNGs from pages or CSS when an optimized WebP is suitable.
