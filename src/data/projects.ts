@@ -530,7 +530,7 @@ export const projects = {
 		},
 		{
 			id: '7-days-to-die-mods',
-			companyId: 'solo',
+			companyId: 'daytime-devs',
 			product: '7 Days to Die Mods',
 			pictures: [
 				{
