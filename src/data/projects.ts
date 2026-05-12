@@ -445,6 +445,34 @@ export const projects = {
 			],
 		},
 		{
+			id: 'super-raccoon',
+			companyId: 'global-game-jam',
+			product: 'Super Raccoon',
+			pictures: [
+				{
+					src: '/assets/images/project-super-raccoon.webp',
+					alt: 'Super Raccoon cover art with Ricky Raccoon wearing a red cape.',
+				},
+			],
+			description: 'A Global Game Jam team puzzle game about helping office worker Ricky Raccoon escape the office without being spotted.',
+			tools: ['Unity', 'C#', 'Puzzle', 'Game Jam'],
+			projectTags: {
+				format: ['Game'],
+				platform: ['Web', 'PC'],
+				specialty: ['Puzzle'],
+				tech: ['Unity'],
+			},
+			sortDate: '2026-01-31',
+			dateLabel: 'Jan 2026',
+			yearLabel: '2026',
+			releaseStage: 'contributed',
+			awards: [],
+			actions: [
+				{ type: 'website', label: 'Play on itch.io', href: 'https://logan-baker.itch.io/super-raccoon' },
+				{ type: 'source', href: 'https://github.com/Logan-Baker63/SuperRaccoon' },
+			],
+		},
+		{
 			id: 'coop-climbing',
 			companyId: 'daytime-devs',
 			product: 'Co-op Cat Temple Escape',

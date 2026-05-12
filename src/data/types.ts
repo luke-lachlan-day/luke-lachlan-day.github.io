@@ -61,6 +61,7 @@ export type CompanyId =
 	| 'daytime-devs'
 	| 'catalyst-games'
 	| 'coastal-derrieres'
+	| 'global-game-jam'
 	| 'sciworld'
 	| 'solo'
 	| 'athletics-south-australia'

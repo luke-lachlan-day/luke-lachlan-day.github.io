@@ -101,6 +101,31 @@ export const experience = {
 			tools: ['Science Communication', 'STEM Education', 'Presenting', 'Audience Engagement', 'Safety', 'Workshop Support'],
 		},
 		{
+			id: 'global-game-jam-super-raccoon',
+			role: 'Game Jam Participant',
+			company: 'Global Game Jam',
+			companyId: 'global-game-jam',
+			pictures: [
+				{
+					src: '/assets/images/project-super-raccoon.webp',
+					alt: 'Super Raccoon cover art with the mascot in a red cape.',
+				},
+			],
+			dateLabel: 'Jan 2026',
+			cardDateLabel: '2026',
+			sortDate: '2026-01-31',
+			context: 'Super Raccoon team project',
+			summary:
+				'Joined a Global Game Jam team as a programmer on Super Raccoon, a released Unity puzzle game about helping office worker Ricky Raccoon escape without being spotted.',
+			highlights: [
+				'Credited as a programmer on the released Super Raccoon game jam project.',
+				'Built gameplay in Unity as part of a small team working to a short jam timeline.',
+				'Helped deliver an HTML5 browser build and downloadable PC build for the itch.io release.',
+				'Worked within a shared codebase that was published publicly on GitHub.',
+			],
+			tools: ['Unity', 'C#', 'Game Jam', 'Puzzle Game', 'HTML5', 'PC'],
+		},
+		{
 			id: 'self-employed-unity-developer',
 			role: 'Unity Developer',
 			company: 'Coastal Derrieres',

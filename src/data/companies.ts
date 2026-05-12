@@ -26,6 +26,14 @@ export const companies = [
 		},
 	},
 	{
+		id: 'global-game-jam',
+		name: 'Global Game Jam',
+		icon: {
+			src: '/assets/images/company-global-game-jam.webp',
+			alt: 'Super Raccoon mascot crop used for Global Game Jam project attribution.',
+		},
+	},
+	{
 		id: 'sciworld',
 		name: 'SciWorld',
 		icon: {
