@@ -36,7 +36,7 @@ export const imageDimensionsBySrc = {
 	'/assets/images/experience-daytime-devs-convention.webp': { width: 760, height: 428 },
 	'/assets/images/experience-daytime-devs-sasa-team.webp': { width: 760, height: 428 },
 	'/assets/images/experience-power-net-it-solutions.webp': { width: 760, height: 478 },
-	'/assets/images/experience-solo-dev.webp': { width: 760, height: 478 },
+	'/assets/images/experience-solo-dev.webp': { width: 760, height: 428 },
 	'/assets/images/experience-state-level-athlete-gold-medal.webp': { width: 760, height: 507 },
 	'/assets/images/experience-state-level-athlete-harbour.webp': { width: 760, height: 570 },
 	'/assets/images/experience-state-level-athlete-silver-medal.webp': { width: 760, height: 507 },

@@ -30,13 +30,22 @@ export const experience = {
 			cardDateLabel: '2022 - Present',
 			sortDate: '2026-05-01',
 			context: 'Independent studio',
-			summary:
-				'Co-founded an independent game studio with my brothers and helped self-publish Super BAWK BAWK Chicken across PC and mobile platforms.',
+			summary: 'Co-founded Daytime Devs and helped self-publish Super BAWK BAWK Chicken across PC and mobile.',
+			recognition: [
+				{
+					name: 'Best Game',
+					awardedFrom: "The Mercury's South Australian Screen Awards",
+					year: '2024',
+					emblem: {
+						src: '/assets/emblems/daytime-devs.webp',
+						alt: 'Daytime Devs award emblem.',
+					},
+				},
+			],
 			highlights: [
-				'Self-published Super BAWK BAWK Chicken on Steam for Windows and Mac in 2023, followed by Google Play and App Store releases in 2024.',
-				'Helped grow the title to 25,500+ Google Play downloads and deliver 15 updates since the 2023 demo launch.',
-				'Worked across design documentation, prototyping, C# tools and libraries, shaders, debugging, release management, and mobile porting.',
-				'Supported store publishing, marketing, conventions, and interviews while representing the studio publicly.',
+				'Released Super BAWK BAWK Chicken on Steam, Google Play, and the App Store.',
+				'Helped grow the game to 25,500+ Google Play downloads and deliver 15 updates since the 2023 demo launch.',
+				'Worked across design, C# gameplay and tools, shaders, debugging, mobile porting, store publishing, marketing, conventions, and interviews.',
 			],
 			tools: ['Unity', 'C#', 'Steam', 'Google Play', 'App Store', 'Shaders', 'Tooling'],
 		},
@@ -163,14 +172,6 @@ export const experience = {
 				{
 					src: '/assets/images/experience-solo-dev.webp',
 					alt: 'Pixel art solo developer overlooking a bright mountain valley.',
-				},
-				{
-					src: '/assets/images/project-luke-lachlan-day-website.webp',
-					alt: 'Pixel art traveler overlooking a bright mountain valley reused as a Solo Dev gallery test image.',
-				},
-				{
-					src: '/assets/images/project-petes-place.webp',
-					alt: 'Pixel art cozy forest shop scene reused as a Solo Dev gallery test image.',
 				},
 			],
 			dateLabel: '2021 - Present',
