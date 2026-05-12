@@ -263,6 +263,23 @@ export const experience = {
 			tools: ['IT Support', 'Customer Service', 'Troubleshooting', 'Client Support', 'Communication'],
 		},
 		{
+			id: 'japanese-language-student',
+			role: 'Japanese Language Student',
+			company: 'WEA / Japaneasy',
+			dateLabel: '2014 - 2016, 2022',
+			cardDateLabel: '2014 - 2022',
+			sortDate: '2022-01-01',
+			context: 'Japanese language study',
+			summary: 'Completed Japanese language courses through WEA and Japaneasy, continuing a long-running interest in language learning.',
+			highlights: [
+				'Completed WEA Japanese study from 2014 to 2016.',
+				'Studied WEA Japanese with my brother.',
+				'Completed Japaneasy Japanese study in 2022.',
+				'Studied Japaneasy Japanese with my partner.',
+			],
+			tools: ['Japanese', 'Language Learning', 'Study', 'Communication'],
+		},
+		{
 			id: 'australian-army',
 			role: 'Information Systems Technician',
 			company: 'Australian Army Reserve',
