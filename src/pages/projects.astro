@@ -52,6 +52,8 @@ const initialTransitionSlotRange = 3;
 							ariaLabel={`Select ${project.product}`}
 							isActive={isActive}
 							initialSlot={initialSlot}
+							fallbackClass="showcase-wheel-media-fallback"
+							fallbackLabel={project.product.slice(0, 1)}
 							dataAttrs={{
 								'data-project-card': '',
 								'data-project-index': index,
@@ -85,14 +87,19 @@ const initialTransitionSlotRange = 3;
 							awards={project.awards}
 							awardsAriaLabel={`${project.product} awards`}
 						>
-							<DetailGallery
-								slot="media"
-								pictures={project.pictures}
-								galleryAttr="data-project-gallery"
-								galleryLabel={`${project.product} images`}
-								imageLabel={project.product}
-								firstImageEager={index === initialActiveProjectIndex}
-							/>
+							<Fragment slot="media">
+								{project.pictures.length > 0 ? (
+									<DetailGallery
+										pictures={project.pictures}
+										galleryAttr="data-project-gallery"
+										galleryLabel={`${project.product} images`}
+										imageLabel={project.product}
+										firstImageEager={index === initialActiveProjectIndex}
+									/>
+								) : (
+									<div class="project-detail-gallery" aria-hidden="true" />
+								)}
+							</Fragment>
 							<Fragment slot="content">
 								<div class="project-detail-kicker project-detail-topline">
 									<span class="project-detail-status" data-status={project.releaseStage}>

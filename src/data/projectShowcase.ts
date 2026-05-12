@@ -8,7 +8,7 @@ export type ProjectShowcaseItem = {
 	project: Project;
 	company: Company | undefined;
 	companyExperienceHref: string | undefined;
-	primaryPicture: ImageAsset;
+	primaryPicture: ImageAsset | undefined;
 	releaseStageLabel: ProjectReleaseStageLabel;
 	actionLinks: ProjectActionLink[];
 	tagGroups: ProjectTagRenderGroup[];

@@ -12,6 +12,7 @@
 	padding-top: 18px;
 }
 
+.showcase-wheel-media-fallback,
 .experience-wheel-media-fallback,
 .experience-detail-media-fallback {
 	display: grid;
@@ -23,6 +24,7 @@
 		color-mix(in srgb, var(--surface-soft) 82%, var(--bg));
 }
 
+.showcase-wheel-media-fallback,
 .experience-wheel-media-fallback {
 	border-radius: 9px;
 }
@@ -31,6 +33,7 @@
 	border-radius: 16px;
 }
 
+.showcase-media-fallback-initial,
 .experience-media-fallback-initial {
 	color: var(--accent);
 	font-family: var(--font-display);

@@ -59,6 +59,14 @@
 	--tag-dark-text: #fff0bf;
 	--tag-dark-border: #a57a34;
 }
+.project-tag[data-tag-style='map'] {
+	--tag-bg: #d8ead2;
+	--tag-text: #33582e;
+	--tag-border: #bad6b1;
+	--tag-dark-bg: #3a5b38;
+	--tag-dark-text: #efffed;
+	--tag-dark-border: #668d61;
+}
 .project-tag[data-tag-style='mod-collection'] {
 	--tag-bg: #d6e3c3;
 	--tag-text: #3d5523;
@@ -315,6 +323,14 @@
 	--tag-dark-text: #f8f0cf;
 	--tag-dark-border: #7d7249;
 }
+.project-tag[data-tag-style='age-of-mythology'] {
+	--tag-bg: #e1d6bd;
+	--tag-text: #58431d;
+	--tag-border: #cbb383;
+	--tag-dark-bg: #55452d;
+	--tag-dark-text: #fff0c9;
+	--tag-dark-border: #826b43;
+}
 .project-tag[data-tag-style='quick-reactions'] {
 	--tag-bg: #ffd8b8;
 	--tag-text: #6c4315;
@@ -419,6 +435,22 @@
 	--tag-dark-text: #f8f2d1;
 	--tag-dark-border: #7b754a;
 }
+.project-tag[data-tag-style='autobattler'] {
+	--tag-bg: #ead6ce;
+	--tag-text: #65382e;
+	--tag-border: #d4aca1;
+	--tag-dark-bg: #5c3b36;
+	--tag-dark-text: #ffede8;
+	--tag-dark-border: #8b665f;
+}
+.project-tag[data-tag-style='card-game'] {
+	--tag-bg: #d8e4f6;
+	--tag-text: #2d4a70;
+	--tag-border: #b8cae6;
+	--tag-dark-bg: #2c435f;
+	--tag-dark-text: #edf5ff;
+	--tag-dark-border: #5c7397;
+}
 .project-tag[data-tag-style='data-analysis'] {
 	--tag-bg: #d9e7ed;
 	--tag-text: #2d5061;
@@ -482,6 +514,14 @@
 	--tag-dark-bg: #624b27;
 	--tag-dark-text: #fff0ce;
 	--tag-dark-border: #94713f;
+}
+.project-tag[data-tag-style='scenario-editor'] {
+	--tag-bg: #dce7d6;
+	--tag-text: #365534;
+	--tag-border: #bfd1b2;
+	--tag-dark-bg: #3c5538;
+	--tag-dark-text: #efffe9;
+	--tag-dark-border: #69865d;
 }
 .project-tag[data-tag-style='unity'] {
 	--tag-bg: #dbe3ee;
