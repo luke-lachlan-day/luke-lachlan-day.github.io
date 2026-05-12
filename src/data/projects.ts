@@ -467,10 +467,7 @@ export const projects = {
 			yearLabel: '2026',
 			releaseStage: 'contributed',
 			awards: [],
-			actions: [
-				{ type: 'website', label: 'Play on itch.io', href: 'https://logan-baker.itch.io/super-raccoon' },
-				{ type: 'source', href: 'https://github.com/Logan-Baker63/SuperRaccoon' },
-			],
+			actions: [{ type: 'website', label: 'Play on itch.io', href: 'https://logan-baker.itch.io/super-raccoon' }],
 		},
 		{
 			id: 'coop-climbing',
