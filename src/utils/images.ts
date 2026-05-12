@@ -18,6 +18,7 @@ export const imageDimensionsBySrc = {
 	'/assets/images/company-catalyst-games.webp': { width: 182, height: 217 },
 	'/assets/images/company-coastal-derrieres.webp': { width: 128, height: 128 },
 	'/assets/images/company-daytime-devs.webp': { width: 224, height: 382 },
+	'/assets/images/company-avcon.webp': { width: 256, height: 95 },
 	'/assets/images/company-global-game-jam.webp': { width: 256, height: 256 },
 	'/assets/images/company-power-net-it-solutions.webp': { width: 232, height: 256 },
 	'/assets/images/company-sciworld.webp': { width: 246, height: 238 },

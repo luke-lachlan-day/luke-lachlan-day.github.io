@@ -318,6 +318,25 @@ export const experience = {
 			tools: ['Network Administration', 'Technical Systems', 'Equipment Operation', 'Training', 'Teamwork'],
 		},
 		{
+			id: 'avcon-invader',
+			role: 'AVCon Invader',
+			company: 'AVCon',
+			companyId: 'avcon',
+			dateLabel: '2014 - 2018',
+			cardDateLabel: '2014 - 2018',
+			sortDate: '2018-07-01',
+			context: 'Volunteer festival operations',
+			summary:
+				'Volunteered for five years at AVCon, supporting Adelaide’s volunteer-run anime, gaming, and pop culture festival through event operations and attendee-facing support.',
+			highlights: [
+				'Supported festival operations across busy public event environments as part of the AVCon volunteer team.',
+				'Helped attendees navigate the event experience through clear communication and practical on-the-day support.',
+				'Worked within a coordinated volunteer team to keep event areas running smoothly across festival weekends.',
+				'Contributed time and energy to a not-for-profit community event built around anime, gaming, pop culture, and local fan communities.',
+			],
+			tools: ['Volunteering', 'Event Operations', 'Attendee Support', 'Teamwork', 'Communication', 'Community Events'],
+		},
+		{
 			id: 'state-level-athlete',
 			role: 'State-Level Athlete',
 			company: 'Athletics South Australia',

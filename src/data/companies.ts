@@ -42,6 +42,14 @@ export const companies = [
 		},
 	},
 	{
+		id: 'avcon',
+		name: 'AVCon',
+		icon: {
+			src: '/assets/images/company-avcon.webp',
+			alt: 'AVCon Anime and Gaming Festival logo.',
+		},
+	},
+	{
 		id: 'solo',
 		name: 'Solo',
 		icon: {

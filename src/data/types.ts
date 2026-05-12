@@ -63,6 +63,7 @@ export type CompanyId =
 	| 'coastal-derrieres'
 	| 'global-game-jam'
 	| 'sciworld'
+	| 'avcon'
 	| 'solo'
 	| 'athletics-south-australia'
 	| 'australian-army'

@@ -61,6 +61,13 @@ const assets = [
 		maxSize: 760,
 	},
 	{
+		source: 'company-avcon.gif',
+		sourceFrame: 0,
+		output: 'company-avcon.webp',
+		maxSize: 256,
+		quality: 90,
+	},
+	{
 		source: 'company-athletics-south-australia.jpg',
 		output: 'company-athletics-south-australia.webp',
 		maxSize: 256,
@@ -100,7 +107,8 @@ for (const asset of assets) {
 
 	mkdirSync(outputDir, { recursive: true });
 
-	const args = [sourcePath, '-auto-orient'];
+	const sourceInput = asset.sourceFrame === undefined ? sourcePath : `${sourcePath}[${asset.sourceFrame}]`;
+	const args = [sourceInput, '-auto-orient'];
 
 	if (asset.transparentWhiteBackground) {
 		args.push(
