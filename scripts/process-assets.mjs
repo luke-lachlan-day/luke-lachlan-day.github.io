@@ -41,6 +41,17 @@ const assets = [
 		maxSize: 760,
 	},
 	{
+		source: '465783317_10212414278908696_5489246177427786077_n.jpg',
+		output: 'experience-daytime-devs-sasa-team.webp',
+		maxSize: 760,
+	},
+	{
+		source: '558241285_10214105146859338_719203090482694637_n.jpg',
+		output: 'experience-daytime-devs-convention.webp',
+		maxSize: 760,
+		crop: '960x540+0+148',
+	},
+	{
 		source: 'experience-state-level-athlete-track.jpg',
 		output: 'experience-state-level-athlete-track.webp',
 		maxSize: 760,

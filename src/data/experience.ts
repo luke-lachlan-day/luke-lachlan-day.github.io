@@ -18,12 +18,12 @@ export const experience = {
 			companyId: 'daytime-devs',
 			pictures: [
 				{
-					src: '/assets/images/project-super-bawk-bawk-chicken.webp',
-					alt: 'Steam header art for Super BAWK BAWK Chicken.',
+					src: '/assets/images/experience-daytime-devs-sasa-team.webp',
+					alt: 'Daytime Devs team members at the South Australian Screen Awards media wall.',
 				},
 				{
-					src: '/assets/images/project-coop-cat-temple-escape.webp',
-					alt: 'Pixel art cats fleeing a collapsing Egyptian temple corridor reused as a Daytime Devs gallery test image.',
+					src: '/assets/images/experience-daytime-devs-convention.webp',
+					alt: 'Daytime Devs team members in Super BAWK BAWK Chicken shirts at a convention booth.',
 				},
 			],
 			dateLabel: 'Mar 2022 - Present',
@@ -47,12 +47,12 @@ export const experience = {
 			companyId: 'catalyst-games',
 			pictures: [
 				{
-					src: '/assets/images/catalyst-think-digital-vr-cattle-vr.webp',
-					alt: 'Catalyst and Think Digital VR team members filming a cattle VR training experience.',
-				},
-				{
 					src: '/assets/images/experience-catalyst-games-sagta-award-group.webp',
 					alt: 'Catalyst Games team members posing with a SAGTA South Australian Game Industry Award.',
+				},
+				{
+					src: '/assets/images/catalyst-think-digital-vr-cattle-vr.webp',
+					alt: 'Catalyst and Think Digital VR team members filming a cattle VR training experience.',
 				},
 				{
 					src: '/assets/images/experience-catalyst-games-sagta-award-media-wall.webp',
@@ -173,17 +173,16 @@ export const experience = {
 					alt: 'Pixel art cozy forest shop scene reused as a Solo Dev gallery test image.',
 				},
 			],
-			dateLabel: 'Nov 2023 - Present',
-			cardDateLabel: '2023 - Present',
+			dateLabel: '2021 - Present',
+			cardDateLabel: '2021 - Present',
 			sortDate: '2026-05-10',
 			context: 'Independent games, tools, and web projects',
 			summary:
-				'Built independent games, prototypes, creative tools, and web projects across solo development cycles from idea through playable delivery.',
+				'Built independent games, prototypes, tools, and web projects across solo development cycles, carrying ideas from early concept through practical delivery.',
 			highlights: [
-				'Developed and maintained solo game prototypes across cozy, puzzle, physics, arcade, action, simulation, quiz, and party-game ideas.',
-				'Built web-facing projects and tooling with attention to responsive presentation, accessible content, and clear project documentation.',
-				'Used solo development workflows to strengthen scope control, technical problem-solving, iteration, and production follow-through.',
-				'Connected game development, teaching, science communication, and portfolio work into a practical independent development practice.',
+				'Created both handcrafted and AI-assisted games, prototypes, tools, and web projects as part of a long-running independent software practice.',
+				'Built software as a lifelong hobby from primary school before beginning professional software development work in 2021.',
+				'Released my first game title in 2023, gaining practical experience across publishing, iteration, and post-release support.',
 			],
 			tools: ['Unity', 'C#', 'Astro', 'TypeScript', 'Game Prototyping', 'Web Tools'],
 		},
@@ -264,7 +263,7 @@ export const experience = {
 		},
 		{
 			id: 'japanese-language-student',
-			role: 'Japanese Language Student',
+			role: 'Language Student',
 			company: 'WEA / Japaneasy',
 			dateLabel: '2014 - 2016, 2022',
 			cardDateLabel: '2014 - 2022',
@@ -272,10 +271,8 @@ export const experience = {
 			context: 'Japanese language study',
 			summary: 'Completed Japanese language courses through WEA and Japaneasy, continuing a long-running interest in language learning.',
 			highlights: [
-				'Completed WEA Japanese study from 2014 to 2016.',
-				'Studied WEA Japanese with my brother.',
-				'Completed Japaneasy Japanese study in 2022.',
-				'Studied Japaneasy Japanese with my partner.',
+				'Completed WEA Japanese study from 2014 to 2016 with my brother.',
+				'Completed Japaneasy Japanese study in 2022 with my family, including my brother, sister-in-law, and partner.',
 			],
 			tools: ['Japanese', 'Language Learning', 'Study', 'Communication'],
 		},
