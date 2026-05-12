@@ -389,7 +389,10 @@ export const experience = {
 					},
 				},
 			],
-			highlights: ['Went to Sydney to represent South Australia at the 2012 Junior Athletics Championships.'],
+			highlights: [
+				'Coached by the Legendary Debbie Meich at Western Athletics Club.',
+				'Went to Sydney to represent South Australia at the 2012 Junior Athletics Championships.',
+			],
 			tools: ['Athletics', 'Sprinting', '200 metres', '100 metres', 'State Championships', 'Personal Bests'],
 		},
 	] satisfies ExperienceItem[],
