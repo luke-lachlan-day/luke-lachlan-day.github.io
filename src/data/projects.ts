@@ -315,7 +315,7 @@ export const projects = {
 					alt: 'Pixel art creature habitat reused as a third gallery test image.',
 				},
 			],
-			description: 'A cozy life sim about running a little shop, making friends, and helping a town full of quirky characters.',
+			description: 'A strategy auto-battler set in and around Uncle Pete’s wildlife sanctuary. Collect, merge, and battle with real native animals, complete wildlife missions at real locations, and learn about each species’ habitats, diets, and unique traits.',
 			tools: ['Life Sim', 'Cozy', 'Management'],
 			projectTags: {
 				format: ['Game'],
@@ -358,12 +358,8 @@ export const projects = {
 			product: 'Beach Bums',
 			pictures: [
 				{
-					src: '/assets/images/project-beach-bums.webp',
-					alt: 'Steam header art for Beach Bums.',
-				},
-				{
 					src: '/assets/images/project-beach-bums-capsule.webp',
-					alt: 'Steam capsule art for Beach Bums.',
+					alt: 'Beach Bums title art.',
 				},
 			],
 			description:

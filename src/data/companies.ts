@@ -4,6 +4,7 @@ export const companies = [
 	{
 		id: 'daytime-devs',
 		name: 'Daytime Devs',
+		website: 'https://www.daytimedevs.com/',
 		icon: {
 			src: '/assets/images/company-daytime-devs.webp',
 			alt: 'Pixel art sun and code mark for Daytime Devs.',
@@ -30,7 +31,7 @@ export const companies = [
 		name: 'Global Game Jam',
 		icon: {
 			src: '/assets/images/company-global-game-jam.webp',
-			alt: 'Super Raccoon mascot crop used for Global Game Jam project attribution.',
+			alt: 'Global Game Jam round logo.',
 		},
 	},
 	{

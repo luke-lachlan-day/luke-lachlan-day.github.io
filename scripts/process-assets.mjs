@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, '..');
 const magickPath = path.join(repoRoot, '.tools', 'ImageMagick', 'magick.exe');
+const iconSourceDir = path.join(repoRoot, 'assets-source', 'icons');
 const sourceDir = path.join(repoRoot, 'assets-source', 'images');
 const defaultOutputDir = path.join(repoRoot, 'public', 'assets', 'images');
 
@@ -70,8 +71,8 @@ const assets = [
 		maxSize: 760,
 	},
 	{
-		source: 'company-avcon.gif',
-		sourceFrame: 0,
+		source: 'company-avcon-logo-white-tagline.webp',
+		sourceDir: iconSourceDir,
 		output: 'company-avcon.webp',
 		maxSize: 256,
 		quality: 90,
@@ -106,7 +107,7 @@ if (!existsSync(magickPath)) {
 mkdirSync(defaultOutputDir, { recursive: true });
 
 for (const asset of assets) {
-	const sourcePath = path.join(sourceDir, asset.source);
+	const sourcePath = path.join(asset.sourceDir ?? sourceDir, asset.source);
 	const outputDir = asset.outputDir ?? defaultOutputDir;
 	const outputPath = path.join(outputDir, asset.output);
 

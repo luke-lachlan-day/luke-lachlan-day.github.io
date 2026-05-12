@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/pages/showcase.css';
+import ButtonLink from '../components/ButtonLink.astro';
 import DetailGallery from '../components/DetailGallery.astro';
 import PortfolioWheelCard from '../components/PortfolioWheelCard.astro';
 import ProjectImageFrame from '../components/ProjectImageFrame.astro';
@@ -8,6 +9,7 @@ import ShowcaseDetail from '../components/ShowcaseDetail.astro';
 import ShowcaseWheel from '../components/ShowcaseWheel.astro';
 import { getExperienceShowcaseItems } from '../data/experienceShowcase';
 import { profile } from '../data/profile';
+import { projectActionMeta } from '../data/projectActions';
 import { getImageAttrs } from '../utils/images';
 import { getInitialWheelSlot } from '../utils/wheelSlots';
 
@@ -74,7 +76,9 @@ const initialTransitionSlotRange = 3;
 
 		<div class="project-detail-panel experience-detail-panel" data-experience-detail aria-live="polite">
 			{
-				showcaseItems.map(({ item, icon, pictures, fallbackLabel }, index) => {
+				showcaseItems.map(({ item, company, icon, pictures, fallbackLabel }, index) => {
+					const hasHighlights = item.highlights.length > 0;
+
 					return (
 						<ShowcaseDetail
 							id={`experience-detail-${item.id}`}
@@ -122,14 +126,21 @@ const initialTransitionSlotRange = 3;
 									<span>{item.dateLabel}</span>
 								</div>
 								<p class="project-detail-description">{item.summary}</p>
-								<div class="experience-highlights" aria-label={`${item.role} highlights`}>
-									<p class="experience-highlights-title">Highlights</p>
-									<ul>
-										{item.highlights.map((highlight) => (
-											<li>{highlight}</li>
-										))}
-									</ul>
-								</div>
+								{hasHighlights && (
+									<div class="experience-highlights" aria-label={`${item.role} highlights`}>
+										<p class="experience-highlights-title">Highlights</p>
+										<ul>
+											{item.highlights.map((highlight) => (
+												<li>{highlight}</li>
+											))}
+										</ul>
+									</div>
+								)}
+								{company?.website && (
+									<div class="project-detail-actions">
+										<ButtonLink href={company.website} label={projectActionMeta.website.label} icon={projectActionMeta.website.icon} />
+									</div>
+								)}
 							</Fragment>
 						</ShowcaseDetail>
 					);

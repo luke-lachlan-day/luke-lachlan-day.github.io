@@ -21,6 +21,7 @@ export type ExperienceItem = {
 	cardRole?: string;
 	company: string;
 	companyId?: Company['id'];
+	icon?: ImageAsset;
 	pictures?: ImageAsset[];
 	dateLabel: string;
 	cardDateLabel: string;
@@ -74,6 +75,7 @@ export type Company = {
 	id: CompanyId;
 	name: string;
 	icon: ImageAsset;
+	website?: string;
 };
 
 export type ProjectReleaseStage = 'dev' | 'released' | 'shelved' | 'contributed';

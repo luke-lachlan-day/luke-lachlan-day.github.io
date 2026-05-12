@@ -55,10 +55,7 @@ export const experience = {
 					},
 				},
 			],
-			highlights: [
-				'Grew our first title to 25,500+ Google Play downloads and delivered 15 updates since the 2023 demo launch.',
-				'Worked across design, C# gameplay and tools, shaders, debugging, mobile porting, store publishing, marketing, conventions, and interviews.',
-			],
+			highlights: ['Grew our first title to 25,500+ Google Play downloads and delivered 15 updates since the 2023 demo launch.'],
 			tools: ['Unity', 'C#', 'Steam', 'Google Play', 'App Store', 'Shaders', 'Tooling'],
 		},
 		{
@@ -85,12 +82,12 @@ export const experience = {
 			sortDate: '2026-03-01',
 			context: 'Client and studio projects',
 			summary:
-				'Delivered production systems, client applications, and VR training experiences before moving into a Technical Director role supporting project delivery.',
+				'Worked across original IP including Dungeons and Dining Tables, client projects such as Think Digital VR training experiences, and the Firebase-authenticated Disney Game Night mobile app. Contributed beyond development through publisher pitching, school-based game development teaching, and team training sessions.',
 			recognition: [
 				{
 					name: 'Most Impactful Studio of 2025',
 					awardedFrom: 'SA Game Industry Awards (SAGIA)',
-					detail: 'Inaugural South Australian Game Industry Awards',
+					detail: 'South Australian Game Industry Awards',
 					year: '2025',
 					emblem: {
 						src: '/assets/images/company-catalyst-games.webp',
@@ -98,12 +95,7 @@ export const experience = {
 					},
 				},
 			],
-			highlights: [
-				'Developed a SAGE vertical slice within my first month as the studio transitioned to a new project.',
-				'Introduced scene management, asynchronous loading, Addressables, a UI framework, and a decoration system.',
-				'Delivered a Firebase-authenticated mobile app and multiple VR training experiences for clients.',
-				'Quoted and oversaw client projects, pitched opportunities to publishers, taught game development in schools, and presented in weekly show-and-tell sessions.',
-			],
+			highlights: ['Dungeons and Dining Tables released as a playable demo on Steam.', 'Disney Game Night App released on mobile.'],
 			tools: ['Unity', 'C#', 'Addressables', 'Firebase', 'VR', 'Teaching', 'Technical Direction'],
 		},
 		{
@@ -111,23 +103,24 @@ export const experience = {
 			role: 'Presenter',
 			company: 'SciWorld',
 			companyId: 'sciworld',
-			dateLabel: '2026',
-			cardDateLabel: '2026',
-			sortDate: '2026-01-01',
+			pictures: [
+				{
+					src: '/assets/images/experience-sciworld-starlab.webp',
+					alt: 'SciWorld Starlab inflatable planetarium set up inside a room.',
+				},
+			],
+			dateLabel: 'Apr 2026 - Present',
+			cardDateLabel: '2026 - Present',
+			sortDate: '2026-04-01',
 			context: 'Science outreach and STEM education',
 			summary:
-				'Presented interactive science programs for SciWorld, supporting STEM outreach for schools, parties, and public events across South Australia.',
-			highlights: [
-				'Presented science demonstrations and interactive explanations for school, party, and public event audiences.',
-				'Supported mobile outreach delivery through program setup, pack-down, and venue-ready preparation.',
-				'Adapted audience-facing explanations to help science concepts feel clear, engaging, and hands-on.',
-				'Followed safe presentation practices while supporting demonstrations, workshops, and science communication activities.',
-			],
+				'Recently joined the team at SciWorld, supporting STEM outreach for schools, parties, and public events across South Australia.',
+			highlights: [],
 			tools: ['Science Communication', 'STEM Education', 'Presenting', 'Audience Engagement', 'Safety', 'Workshop Support'],
 		},
 		{
 			id: 'global-game-jam-super-raccoon',
-			role: 'Game Jam Participant',
+			role: 'Programmer',
 			company: 'Global Game Jam',
 			companyId: 'global-game-jam',
 			pictures: [
@@ -140,14 +133,8 @@ export const experience = {
 			cardDateLabel: '2026',
 			sortDate: '2026-01-31',
 			context: 'Super Raccoon team project',
-			summary:
-				'Joined a Global Game Jam team as a programmer on Super Raccoon, a released Unity puzzle game about helping office worker Ricky Raccoon escape without being spotted.',
-			highlights: [
-				'Credited as a programmer on the released Super Raccoon game jam project.',
-				'Built gameplay in Unity as part of a small team working to a short jam timeline.',
-				'Helped deliver an HTML5 browser build and downloadable PC build for the itch.io release.',
-				'Worked within a shared codebase that was published publicly on GitHub.',
-			],
+			summary: 'Joined a Global Game Jam team as a programmer to release Super Raccoon, a Unity puzzle game.',
+			highlights: [],
 			tools: ['Unity', 'C#', 'Game Jam', 'Puzzle Game', 'HTML5', 'PC'],
 		},
 		{
@@ -157,12 +144,8 @@ export const experience = {
 			companyId: 'coastal-derrieres',
 			pictures: [
 				{
-					src: '/assets/images/project-beach-bums.webp',
-					alt: 'Steam header art for Beach Bums.',
-				},
-				{
 					src: '/assets/images/project-beach-bums-capsule.webp',
-					alt: 'Steam capsule art for Beach Bums.',
+					alt: 'Beach Bums title art.',
 				},
 			],
 			dateLabel: 'Jun 2024 - Oct 2024',
@@ -170,18 +153,13 @@ export const experience = {
 			sortDate: '2024-10-01',
 			context: 'Contract vertical slice',
 			summary:
-				'Worked with Coastal Derrieres to turn the Beach Bums design document into a playable vertical slice for funding opportunities.',
-			highlights: [
-				'Provided senior Unity development support inside a small multidisciplinary team of four.',
-				'Translated the design into a practical production plan and helped keep the scope achievable.',
-				'Integrated FMOD into Unity to support the project audio requirements.',
-				'Helped adapt art assets for game use and built an intuitive level editor for the design workflow.',
-			],
+				'Worked with Coastal Derrieres in a small team of four to turn the Beach Bums design document into a playable vertical slice for funding opportunities.',
+			highlights: ['Vertical slice exhibited at events such as SAGE and AVcon.'],
 			tools: ['Unity', 'C#', 'FMOD', 'Level Editor', 'Vertical Slice', 'Production Planning'],
 		},
 		{
 			id: 'solo-dev',
-			role: 'Solo Dev',
+			role: 'Solo Developer',
 			company: 'Self-Employed',
 			companyId: 'solo',
 			pictures: [
@@ -216,12 +194,7 @@ export const experience = {
 			context: 'Mathematics tutoring',
 			summary:
 				'Taught mathematics to high school students from years 8 to 12, adapting explanations to different confidence levels and learning styles.',
-			highlights: [
-				'Supported students across year 8 to year 12 mathematics.',
-				'Built clear communication habits by breaking complex topics into approachable steps.',
-				"Adapted lessons to each student's goals, pace, and curriculum needs.",
-				'Developed mentoring skills that continue to support teaching, teamwork, and client communication.',
-			],
+			highlights: [],
 			tools: ['Tutoring', 'Mathematics', 'Teaching', 'Mentoring', 'Communication'],
 		},
 		{
@@ -238,15 +211,10 @@ export const experience = {
 			dateLabel: '2019',
 			cardDateLabel: '2019',
 			dateHeading: 'Degree',
-			sortDate: '2013-01-01',
+			sortDate: '2019-01-01',
 			context: 'Genetics, Microbiology and Immunology',
-			summary: 'Studied a Bachelor of Science at the University of Adelaide, focusing on genetics, microbiology, and immunology.',
-			highlights: [
-				'Built a broad scientific foundation across genetics, microbiology, and immunology.',
-				'Developed research, analysis, and evidence-based reasoning skills through university science study.',
-				'Strengthened the learning habits and curiosity that continue to support technical problem-solving.',
-				'Connected a long-running interest in science with later work in teaching, STEM outreach, and software development.',
-			],
+			summary: 'Studied a Bachelor of Science at the University of Adelaide, majoring in Genetics, Microbiology, and Immunology.',
+			highlights: [],
 			tools: ['Science', 'Genetics', 'Microbiology', 'Immunology', 'Research', 'Analysis'],
 		},
 		{
@@ -266,18 +234,27 @@ export const experience = {
 			sortDate: '2022-03-01',
 			context: 'IT customer service',
 			summary: 'Maintained high levels of customer service for high-profile clients during urgent IT support situations.',
-			highlights: [
-				'Supported urgent client-facing technical situations with calm, clear communication.',
-				'Balanced customer service expectations with practical troubleshooting and escalation.',
-				'Worked with high-profile clients where responsiveness and professionalism were essential.',
-				'Strengthened the service mindset and communication discipline I bring to software teams.',
-			],
+			highlights: [],
 			tools: ['IT Support', 'Customer Service', 'Troubleshooting', 'Client Support', 'Communication'],
 		},
 		{
 			id: 'japanese-language-student',
 			role: 'Language Student',
 			company: 'WEA / Japaneasy',
+			icon: {
+				src: '/assets/icons/experience-language-student-japan-flag.webp',
+				alt: 'Japanese flag icon for language study.',
+			},
+			pictures: [
+				{
+					src: '/assets/images/experience-language-student-wea-building.webp',
+					alt: 'WEA building entrance in Adelaide.',
+				},
+				{
+					src: '/assets/images/experience-language-student-japaneasy-group.webp',
+					alt: 'Japaneasy Japanese class group photo.',
+				},
+			],
 			dateLabel: '2014 - 2016, 2022',
 			cardDateLabel: '2014 - 2022',
 			sortDate: '2022-01-01',
@@ -318,13 +295,7 @@ export const experience = {
 					},
 				},
 			],
-			highlights: [
-				'Worked across unit parades, exercises, online and local courses, network administration, and equipment operation.',
-				'Built technical discipline through communications systems work and operational training.',
-				'Handled weapons training and worked within structured team environments.',
-				'Awarded the National Emergency Medal for Operation Bushfire Assist service at Kangaroo Island.',
-				'Served in Operation COVID-19 Assist.',
-			],
+			highlights: [],
 			tools: ['Network Administration', 'Technical Systems', 'Equipment Operation', 'Training', 'Teamwork'],
 		},
 		{
@@ -332,6 +303,12 @@ export const experience = {
 			role: 'AVCon Invader',
 			company: 'AVCon',
 			companyId: 'avcon',
+			pictures: [
+				{
+					src: '/assets/images/experience-avcon-invader.webp',
+					alt: 'AVCon Invader volunteer watching a game station at the festival.',
+				},
+			],
 			dateLabel: '2014 - 2018',
 			cardDateLabel: '2014 - 2018',
 			sortDate: '2018-07-01',
@@ -339,10 +316,6 @@ export const experience = {
 			summary:
 				'Volunteered for five years at AVCon, supporting Adelaide’s volunteer-run anime, gaming, and pop culture festival through event operations and attendee-facing support.',
 			highlights: [
-				'Supported festival operations across busy public event environments as part of the AVCon volunteer team.',
-				'Helped attendees navigate the event experience through clear communication and practical on-the-day support.',
-				'Worked within a coordinated volunteer team to keep event areas running smoothly across festival weekends.',
-				'Contributed time and energy to a not-for-profit community event built around anime, gaming, pop culture, and local fan communities.',
 			],
 			tools: ['Volunteering', 'Event Operations', 'Attendee Support', 'Teamwork', 'Communication', 'Community Events'],
 		},

@@ -2,6 +2,7 @@ import type { Company, ExperienceItem, ImageAsset } from './types';
 
 export type ExperienceShowcaseItem = {
 	item: ExperienceItem;
+	company: Company | undefined;
 	icon: ImageAsset | undefined;
 	pictures: ImageAsset[];
 	media: ImageAsset | undefined;
@@ -21,11 +22,13 @@ export const getExperienceShowcaseItems = ({ items, companies }: ExperienceShowc
 	return [...items]
 		.sort((itemA, itemB) => itemB.sortDate.localeCompare(itemA.sortDate))
 		.map((item) => {
-			const icon = item.companyId ? companyById.get(item.companyId)?.icon : undefined;
+			const company = item.companyId ? companyById.get(item.companyId) : undefined;
+			const icon = item.icon ?? company?.icon;
 			const pictures = item.pictures ?? [];
 
 			return {
 				item,
+				company,
 				icon,
 				pictures,
 				media: pictures[0] ?? icon,
