@@ -24,21 +24,19 @@ const assets = [
 		source: 'experience-catalyst-games-sagta-award-group.jpg',
 		output: 'experience-catalyst-games-sagta-award-group.webp',
 		maxSize: 760,
+		crop: '750x422+0+21',
 	},
 	{
-		source: 'experience-catalyst-games-sagta-award-media-wall.jpg',
-		output: 'experience-catalyst-games-sagta-award-media-wall.webp',
+		source: 'catalyst-think-digital-vr-cattle-vr.jpg',
+		output: 'experience-catalyst-games-think-digital-vr-cattle-vr.webp',
 		maxSize: 760,
-	},
-	{
-		source: 'experience-catalyst-games-studio-event-audience.jpg',
-		output: 'experience-catalyst-games-studio-event-audience.webp',
-		maxSize: 760,
+		crop: '1280x720+0+523',
 	},
 	{
 		source: 'experience-catalyst-games-studio-event-group.jpg',
 		output: 'experience-catalyst-games-studio-event-group.webp',
 		maxSize: 760,
+		crop: '2048x1152+0+106',
 	},
 	{
 		source: '465783317_10212414278908696_5489246177427786077_n.jpg',

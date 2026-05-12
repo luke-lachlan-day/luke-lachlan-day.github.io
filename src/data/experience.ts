@@ -42,10 +42,11 @@ export const experience = {
 			cardDateLabel: '2022 - Present',
 			sortDate: '2026-05-01',
 			context: 'Independent studio',
-			summary: 'Co-founded Daytime Devs and helped self-publish Super BAWK BAWK Chicken across PC and mobile.',
+			summary:
+				'Co-founded Daytime Devs and with my two brothers and self-published our first title Super BAWK BAWK Chicken across Steam, Google Play, and the App Store.',
 			recognition: [
 				{
-					name: 'Best Game',
+					name: 'Best Game - Super BAWK BAWK Chicken',
 					awardedFrom: "The Mercury's South Australian Screen Awards",
 					year: '2024',
 					emblem: {
@@ -55,8 +56,7 @@ export const experience = {
 				},
 			],
 			highlights: [
-				'Released Super BAWK BAWK Chicken on Steam, Google Play, and the App Store.',
-				'Helped grow the game to 25,500+ Google Play downloads and deliver 15 updates since the 2023 demo launch.',
+				'Grew our first title to 25,500+ Google Play downloads and delivered 15 updates since the 2023 demo launch.',
 				'Worked across design, C# gameplay and tools, shaders, debugging, mobile porting, store publishing, marketing, conventions, and interviews.',
 			],
 			tools: ['Unity', 'C#', 'Steam', 'Google Play', 'App Store', 'Shaders', 'Tooling'],
@@ -72,16 +72,8 @@ export const experience = {
 					alt: 'Catalyst Games team members posing with a SAGTA South Australian Game Industry Award.',
 				},
 				{
-					src: '/assets/images/catalyst-think-digital-vr-cattle-vr.webp',
+					src: '/assets/images/experience-catalyst-games-think-digital-vr-cattle-vr.webp',
 					alt: 'Catalyst and Think Digital VR team members filming a cattle VR training experience.',
-				},
-				{
-					src: '/assets/images/experience-catalyst-games-sagta-award-media-wall.webp',
-					alt: 'Catalyst Games team members at the SAGTA awards media wall holding an award.',
-				},
-				{
-					src: '/assets/images/experience-catalyst-games-studio-event-audience.webp',
-					alt: 'Catalyst Games studio event guests watching a presentation.',
 				},
 				{
 					src: '/assets/images/experience-catalyst-games-studio-event-group.webp',
@@ -94,6 +86,18 @@ export const experience = {
 			context: 'Client and studio projects',
 			summary:
 				'Delivered production systems, client applications, and VR training experiences before moving into a Technical Director role supporting project delivery.',
+			recognition: [
+				{
+					name: 'Most Impactful Studio of 2025',
+					awardedFrom: 'SA Game Industry Awards (SAGIA)',
+					detail: 'Inaugural South Australian Game Industry Awards',
+					year: '2025',
+					emblem: {
+						src: '/assets/images/company-catalyst-games.webp',
+						alt: 'Catalyst Games award emblem.',
+					},
+				},
+			],
 			highlights: [
 				'Developed a SAGE vertical slice within my first month as the studio transitioned to a new project.',
 				'Introduced scene management, asynchronous loading, Addressables, a UI framework, and a decoration system.',
@@ -186,17 +190,13 @@ export const experience = {
 					alt: 'Pixel art solo developer overlooking a bright mountain valley.',
 				},
 			],
-			dateLabel: '2021 - Present',
-			cardDateLabel: '2021 - Present',
+			dateLabel: 'Present',
+			cardDateLabel: 'Present',
 			sortDate: '2026-05-10',
 			context: 'Independent games, tools, and web projects',
 			summary:
-				'Built independent games, prototypes, tools, and web projects across solo development cycles, carrying ideas from early concept through practical delivery.',
-			highlights: [
-				'Created both handcrafted and AI-assisted games, prototypes, tools, and web projects as part of a long-running independent software practice.',
-				'Built software as a lifelong hobby from primary school before beginning professional software development work in 2021.',
-				'Released my first game title in 2023, gaining practical experience across publishing, iteration, and post-release support.',
-			],
+				'Created handcrafted and AI-assisted prototypes, mods, tools, videos, and web projects across solo development cycles, carrying ideas into playable prototypes or released works.',
+			highlights: ['Published Luke Lachlan Day website in 2026.', 'Many, many prototypes enjoyed by friends and family.'],
 			tools: ['Unity', 'C#', 'Astro', 'TypeScript', 'Game Prototyping', 'Web Tools'],
 		},
 		{
@@ -390,8 +390,8 @@ export const experience = {
 				},
 			],
 			highlights: [
-				'Coached by the Legendary Debbie Meich at Western Athletics Club.',
 				'Went to Sydney to represent South Australia at the 2012 Junior Athletics Championships.',
+				'Coached by the legendary Debbie Meich at Western Athletics Club.',
 			],
 			tools: ['Athletics', 'Sprinting', '200 metres', '100 metres', 'State Championships', 'Personal Bests'],
 		},
