@@ -9,6 +9,7 @@ import ShowcaseDetail from '../components/ShowcaseDetail.astro';
 import ShowcaseWheel from '../components/ShowcaseWheel.astro';
 import { profile } from '../data/profile';
 import { getProjectShowcaseItems } from '../data/projectShowcase';
+import { getCompanyLogoToneClass } from '../utils/companyLogoTone';
 import { getImageAttrs } from '../utils/images';
 import { getInitialWheelSlot } from '../utils/wheelSlots';
 
@@ -111,13 +112,25 @@ const initialTransitionSlotRange = 3;
 									{company &&
 										(companyExperienceHref ? (
 											<a class="project-detail-company project-detail-company-link" href={companyExperienceHref}>
-												<img src={company.icon.src} alt="" loading="lazy" {...getImageAttrs(company.icon)} />
+												<img
+													class={getCompanyLogoToneClass(company.icon)}
+													src={company.icon.src}
+													alt=""
+													loading="lazy"
+													{...getImageAttrs(company.icon)}
+												/>
 												<span>{company.name}</span>
 												<span class="visually-hidden"> experience</span>
 											</a>
 										) : (
 											<span class="project-detail-company">
-												<img src={company.icon.src} alt="" loading="lazy" {...getImageAttrs(company.icon)} />
+												<img
+													class={getCompanyLogoToneClass(company.icon)}
+													src={company.icon.src}
+													alt=""
+													loading="lazy"
+													{...getImageAttrs(company.icon)}
+												/>
 												<span>{company.name}</span>
 											</span>
 										))}

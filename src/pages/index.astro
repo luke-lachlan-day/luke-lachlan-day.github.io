@@ -7,6 +7,7 @@ import ProjectTagList from '../components/ProjectTagList.astro';
 import ThemeHeroArt from '../components/ThemeHeroArt.astro';
 import { profile, type Project } from '../data/profile';
 import { getProjectTagRenderGroups } from '../data/projectTags';
+import { getCompanyLogoToneClass } from '../utils/companyLogoTone';
 import { getImageAttrs } from '../utils/images';
 
 const { home, projects, companies } = profile;
@@ -57,7 +58,15 @@ const featuredProjects = home.featuredProjectIds
 							</ProjectImageFrame>
 							<div class="project-body">
 								<div class="project-company">
-									{company && <img src={company.icon.src} alt="" loading="lazy" {...getImageAttrs(company.icon)} />}
+									{company && (
+										<img
+											class={getCompanyLogoToneClass(company.icon)}
+											src={company.icon.src}
+											alt=""
+											loading="lazy"
+											{...getImageAttrs(company.icon)}
+										/>
+									)}
 									<span>{company?.name}</span>
 								</div>
 								<h3>{project.product}</h3>

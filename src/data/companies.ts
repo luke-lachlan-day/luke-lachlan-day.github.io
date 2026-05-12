@@ -48,6 +48,10 @@ export const companies = [
 		icon: {
 			src: '/assets/images/company-avcon.webp',
 			alt: 'AVCon Anime and Gaming Festival logo.',
+			logoTone: {
+				light: 'dark',
+				dark: 'light',
+			},
 		},
 	},
 	{

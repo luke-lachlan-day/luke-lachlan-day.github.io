@@ -1,5 +1,6 @@
 ---
 import type { ImageAsset } from '../data/types';
+import { getCompanyLogoClass } from '../utils/companyLogoTone';
 import { getImageAttrs } from '../utils/images';
 
 type Props = {
@@ -17,7 +18,13 @@ const badgeClass = ['project-wheel-company-badge', className].filter(Boolean).jo
 		<span class={badgeClass} aria-hidden="true">
 			<span class="project-wheel-company-badge-back" />
 			{icon ? (
-				<img class="project-wheel-company-badge-icon" src={icon.src} alt="" loading="lazy" {...getImageAttrs(icon)} />
+				<img
+					class={getCompanyLogoClass('project-wheel-company-badge-icon', icon)}
+					src={icon.src}
+					alt=""
+					loading="lazy"
+					{...getImageAttrs(icon)}
+				/>
 			) : (
 				<span class="project-wheel-company-badge-label">{label}</span>
 			)}

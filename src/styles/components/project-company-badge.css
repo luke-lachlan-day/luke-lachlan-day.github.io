@@ -1,3 +1,18 @@
+.company-logo-tone {
+	--company-logo-filter: var(--image-filter);
+	filter: var(--company-logo-filter);
+}
+
+.company-logo-tone-light-light,
+:root[data-theme='dark'] .company-logo-tone-dark-light {
+	--company-logo-filter: brightness(0) invert(1);
+}
+
+.company-logo-tone-light-dark,
+:root[data-theme='dark'] .company-logo-tone-dark-dark {
+	--company-logo-filter: brightness(0);
+}
+
 .project-wheel-company-badge {
 	--project-wheel-company-badge-padding: 4px;
 	position: absolute;
@@ -33,7 +48,7 @@
 	width: calc(100% - (var(--project-wheel-company-badge-padding) * 2));
 	height: calc(100% - (var(--project-wheel-company-badge-padding) * 2));
 	border-radius: inherit;
-	filter: var(--image-filter) drop-shadow(0 3px 5px rgba(0, 0, 0, 0.24));
+	filter: var(--company-logo-filter, var(--image-filter)) drop-shadow(0 3px 5px rgba(0, 0, 0, 0.24));
 	image-rendering: pixelated;
 	object-fit: contain;
 }

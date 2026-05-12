@@ -45,12 +45,20 @@ export type ContactHeroContent = {
 	summary: string[];
 };
 
+export type LogoTone = 'light' | 'dark';
+
+export type ThemeLogoTone = {
+	light: LogoTone;
+	dark: LogoTone;
+};
+
 export type ImageAsset = {
 	src: string;
 	alt: string;
 	width?: number;
 	height?: number;
 	decoding?: 'async' | 'auto' | 'sync';
+	logoTone?: ThemeLogoTone;
 };
 
 export type ThemeImageAssets = {

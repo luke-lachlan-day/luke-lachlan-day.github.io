@@ -10,6 +10,7 @@ import ShowcaseWheel from '../components/ShowcaseWheel.astro';
 import { getExperienceShowcaseItems } from '../data/experienceShowcase';
 import { profile } from '../data/profile';
 import { projectActionMeta } from '../data/projectActions';
+import { getCompanyLogoToneClass } from '../utils/companyLogoTone';
 import { getImageAttrs } from '../utils/images';
 import { getInitialWheelSlot } from '../utils/wheelSlots';
 
@@ -120,7 +121,7 @@ const initialTransitionSlotRange = 3;
 								<h3>{item.role}</h3>
 								<div class="project-detail-meta">
 									<span class="project-detail-company">
-										{icon && <img src={icon.src} alt="" loading="lazy" {...getImageAttrs(icon)} />}
+										{icon && <img class={getCompanyLogoToneClass(icon)} src={icon.src} alt="" loading="lazy" {...getImageAttrs(icon)} />}
 										<span>{item.company}</span>
 									</span>
 									<span>{item.dateLabel}</span>
