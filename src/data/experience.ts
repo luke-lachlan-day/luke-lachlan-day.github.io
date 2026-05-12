@@ -25,6 +25,18 @@ export const experience = {
 					src: '/assets/images/experience-daytime-devs-convention.webp',
 					alt: 'Daytime Devs team members in Super BAWK BAWK Chicken shirts at a convention booth.',
 				},
+				{
+					src: '/assets/images/experience-daytime-devs-pax-aus-team.webp',
+					alt: 'Daytime Devs team members at PAX Aus in front of Super BAWK BAWK Chicken banners.',
+				},
+				{
+					src: '/assets/images/experience-daytime-devs-booth-team.webp',
+					alt: 'Daytime Devs team members standing behind a Super BAWK BAWK Chicken convention booth.',
+				},
+				{
+					src: '/assets/images/experience-daytime-devs-avcon-costumes.webp',
+					alt: 'Daytime Devs team members wearing chicken costumes at a convention.',
+				},
 			],
 			dateLabel: 'Mar 2022 - Present',
 			cardDateLabel: '2022 - Present',
@@ -347,14 +359,6 @@ export const experience = {
 				{
 					src: '/assets/images/experience-state-level-athlete-harbour.webp',
 					alt: 'Athletics South Australia runner standing near Sydney Harbour Bridge.',
-				},
-				{
-					src: '/assets/images/experience-state-level-athlete-gold-medal.webp',
-					alt: 'Gold Athletics South Australia State Championships medal.',
-				},
-				{
-					src: '/assets/images/experience-state-level-athlete-silver-medal.webp',
-					alt: 'Silver Athletics South Australia medal for the Under 18 100 metres event.',
 				},
 			],
 			dateLabel: '2011 - 2012',
