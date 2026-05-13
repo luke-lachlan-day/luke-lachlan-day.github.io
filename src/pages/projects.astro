@@ -105,6 +105,11 @@ const getProjectDetailSectionId = (projectId: string, sectionTitle: string) =>
 									<div class="project-detail-gallery" aria-hidden="true" />
 								)}
 							</Fragment>
+							{project.mediaNotice && (
+								<p slot="media-footer" class="project-detail-media-notice">
+									{project.mediaNotice}
+								</p>
+							)}
 							<Fragment slot="content">
 								<div class="project-detail-kicker project-detail-topline">
 									<span class="project-detail-status" data-status={project.releaseStage}>
@@ -159,7 +164,6 @@ const getProjectDetailSectionId = (projectId: string, sectionTitle: string) =>
 										})}
 									</div>
 								)}
-								{project.mediaNotice && <p class="project-detail-media-notice">{project.mediaNotice}</p>}
 								<ProjectTagList tagGroups={tagGroups} ariaLabel={`${project.product} tags`} />
 								{actionLinks.length > 0 && (
 									<div class="project-detail-actions">

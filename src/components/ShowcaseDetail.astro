@@ -48,8 +48,11 @@ const articleAttrs = {
 
 <article {...articleAttrs} class={articleClass} id={id} hidden={index === activeIndex ? undefined : true}>
 	<AwardMedals awards={awards} ariaLabel={awardsAriaLabel} class={awardClass} />
-	<div class={mediaWrapperClass}>
-		<slot name="media" />
+	<div class="project-detail-media-column">
+		<div class={mediaWrapperClass}>
+			<slot name="media" />
+		</div>
+		<slot name="media-footer" />
 	</div>
 	<div class={contentWrapperClass}>
 		<slot name="content" />

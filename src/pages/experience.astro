@@ -121,6 +121,11 @@ const initialTransitionSlotRange = 3;
 									</div>
 								)}
 							</Fragment>
+							{item.mediaNotice && (
+								<p slot="media-footer" class="project-detail-media-notice">
+									{item.mediaNotice}
+								</p>
+							)}
 
 							<Fragment slot="content">
 								<h3>{item.role}</h3>
@@ -142,7 +147,6 @@ const initialTransitionSlotRange = 3;
 										</ul>
 									</div>
 								)}
-								{item.mediaNotice && <p class="project-detail-media-notice">{item.mediaNotice}</p>}
 								{companyActionLinks.length > 0 && (
 									<div class="project-detail-actions">
 										{companyActionLinks.map((action) => (
