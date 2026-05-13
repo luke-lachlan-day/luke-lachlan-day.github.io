@@ -547,6 +547,14 @@
 	--tag-dark-text: #eff8ff;
 	--tag-dark-border: #60798a;
 }
+.project-tag[data-tag-style='xml'] {
+	--tag-bg: #e2e6dc;
+	--tag-text: #445137;
+	--tag-border: #c4cfb7;
+	--tag-dark-bg: #3f4b36;
+	--tag-dark-text: #f1fae9;
+	--tag-dark-border: #6b7d5f;
+}
 
 .project-tag-group[data-tag-group='format'] .project-tag {
 	border-color: color-mix(in srgb, var(--tag-border) 82%, var(--tag-text));

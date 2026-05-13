@@ -198,6 +198,51 @@
 	margin-top: clamp(20px, 2vw, 26px);
 }
 
+.project-detail-sections {
+	display: grid;
+	gap: 14px;
+	max-width: 62ch;
+	margin-top: clamp(16px, 1.8vw, 22px);
+}
+
+.project-detail-section {
+	display: grid;
+	gap: 8px;
+}
+
+.project-detail-section h4 {
+	color: var(--text);
+	font-size: 0.92rem;
+	font-weight: 900;
+	letter-spacing: 0.02em;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+
+.project-detail-section ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.project-detail-section li {
+	border: 1px solid color-mix(in srgb, var(--border) 82%, var(--text));
+	border-radius: 7px;
+	background: color-mix(in srgb, var(--surface-raised) 74%, var(--surface));
+	color: var(--muted);
+	font-size: 0.88rem;
+	font-weight: 800;
+	line-height: 1.15;
+	padding: 7px 10px;
+}
+
+.project-detail-sections + .project-tag-list {
+	margin-top: clamp(20px, 2vw, 26px);
+}
+
 .project-awards {
 	display: grid;
 	gap: 10px;

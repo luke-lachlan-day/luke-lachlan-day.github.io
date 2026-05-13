@@ -84,6 +84,6 @@ const mediaAttrs = mediaDecorative ? { 'aria-hidden': true } : {};
 	}
 	<span class="project-wheel-body">
 		<span class="project-wheel-title">{title}</span>
-		<span class="project-wheel-year">{subtitle}</span>
+		{subtitle && <span class="project-wheel-year">{subtitle}</span>}
 	</span>
 </button>

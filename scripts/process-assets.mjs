@@ -17,8 +17,101 @@ const assets = [
 		maxSize: 1280,
 	},
 	{
+		source: 'project-think-digital-vr-work-cattle-vr-simulation.jpg',
+		output: 'project-think-digital-vr-work-cattle-vr-simulation.webp',
+		maxSize: 1640,
+		crop: '1893x1065+0+107',
+	},
+	{
 		source: 'project-think-digital-vr-work-banner.jpg',
 		output: 'project-think-digital-vr-work-banner.webp',
+		maxSize: 1672,
+	},
+	{
+		source: 'project-disney-game-night-toy-story-menu.jpg',
+		output: 'project-disney-game-night-toy-story-menu.webp',
+		maxSize: 1672,
+	},
+	{
+		source: 'project-disney-game-night-game-list.png',
+		output: 'project-disney-game-night-game-list.webp',
+		maxSize: 1440,
+	},
+	{
+		source: 'project-disney-game-night-moana-icon.png',
+		output: 'project-disney-game-night-moana-icon.webp',
+		maxSize: 548,
+		quality: 90,
+	},
+	{
+		source: 'project-unreleased-treasures.png',
+		output: 'project-unreleased-treasures.webp',
+		maxSize: 1672,
+	},
+	{
+		source: 'project-dungeons-and-dining-tables-capsule.jpg',
+		output: 'project-dungeons-and-dining-tables.webp',
+		maxSize: 608,
+		crop: '608x342+4+5',
+	},
+	{
+		source: 'project-dungeons-and-dining-tables-dungeon-combat.jpg',
+		output: 'project-dungeons-and-dining-tables-dungeon-combat.webp',
+		maxSize: 1672,
+	},
+	{
+		source: 'project-dungeons-and-dining-tables-furniture-menu.jpg',
+		output: 'project-dungeons-and-dining-tables-furniture-menu.webp',
+		maxSize: 1672,
+	},
+	{
+		source: 'project-dungeons-and-dining-tables-cavern-boss.jpg',
+		output: 'project-dungeons-and-dining-tables-cavern-boss.webp',
+		maxSize: 1672,
+	},
+	{
+		source: 'project-beach-bums-beachgoers-before-wave.jpg',
+		output: 'project-beach-bums-beachgoers-before-wave.webp',
+		maxSize: 1672,
+	},
+	{
+		source: 'project-super-bawk-bawk-chicken-event-cover.png',
+		output: 'project-super-bawk-bawk-chicken.webp',
+		maxSize: 1672,
+	},
+	{
+		source: 'project-super-bawk-bawk-chicken-cannon-pass.jpg',
+		output: 'project-super-bawk-bawk-chicken-cannon-pass.webp',
+		maxSize: 1672,
+	},
+	{
+		source: 'project-super-bawk-bawk-chicken-waterfall-run.jpg',
+		output: 'project-super-bawk-bawk-chicken-waterfall-run.webp',
+		maxSize: 1672,
+	},
+	{
+		source: 'project-super-bawk-bawk-chicken-item-shop.jpg',
+		output: 'project-super-bawk-bawk-chicken-item-shop.webp',
+		maxSize: 1672,
+	},
+	{
+		source: 'project-super-bawk-bawk-chicken-close-call.jpg',
+		output: 'project-super-bawk-bawk-chicken-close-call.webp',
+		maxSize: 1672,
+	},
+	{
+		source: 'project-super-bawk-bawk-chicken-lava-cavern.jpg',
+		output: 'project-super-bawk-bawk-chicken-lava-cavern.webp',
+		maxSize: 1672,
+	},
+	{
+		source: 'project-beach-bums-beach-search.jpg',
+		output: 'project-beach-bums-beach-search.webp',
+		maxSize: 1672,
+	},
+	{
+		source: 'project-beach-bums-tidal-wave.jpg',
+		output: 'project-beach-bums-tidal-wave.webp',
 		maxSize: 1672,
 	},
 	{
@@ -49,6 +142,21 @@ const assets = [
 		output: 'experience-daytime-devs-convention.webp',
 		maxSize: 760,
 		crop: '960x540+0+148',
+	},
+	{
+		source: 'experience-australian-army-wallaby.jpg',
+		output: 'experience-australian-army-wallaby.webp',
+		maxSize: 760,
+	},
+	{
+		source: 'experience-australian-army-equipment-display.jpg',
+		output: 'experience-australian-army-equipment-display.webp',
+		maxSize: 760,
+	},
+	{
+		source: 'experience-australian-army-field-vehicles.jpg',
+		output: 'experience-australian-army-field-vehicles.webp',
+		maxSize: 760,
 	},
 	{
 		source: 'experience-state-level-athlete-track.jpg',

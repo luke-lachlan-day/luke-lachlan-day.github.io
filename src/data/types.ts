@@ -110,12 +110,18 @@ export type ProjectAction = {
 	label?: string;
 };
 
+export type ProjectDetailSection = {
+	title: string;
+	items: string[];
+};
+
 export type Project = {
 	id: string;
 	companyId: Company['id'];
 	product: string;
 	pictures: ImageAsset[];
 	description: string;
+	detailSections?: ProjectDetailSection[];
 	tools: string[];
 	projectTags: ProjectTags;
 	sortDate: string;

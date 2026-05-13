@@ -237,7 +237,7 @@ export const experience = {
 			highlights: [],
 			tools: ['IT Support', 'Customer Service', 'Troubleshooting', 'Client Support', 'Communication'],
 		},
-		{
+		/*{
 			id: 'japanese-language-student',
 			role: 'Language Student',
 			company: 'WEA / Japaneasy',
@@ -265,13 +265,25 @@ export const experience = {
 				'Completed Japaneasy Japanese study in 2022 with my family, including my brother, sister-in-law, and partner.',
 			],
 			tools: ['Japanese', 'Language Learning', 'Study', 'Communication'],
-		},
+		},*/
 		{
 			id: 'australian-army',
 			role: 'Information Systems Technician',
 			company: 'Australian Army Reserve',
 			companyId: 'australian-army',
 			pictures: [
+				{
+					src: '/assets/images/experience-australian-army-field-vehicles.webp',
+					alt: 'Australian Army Reserve team with field vehicles and antennas overlooking the coast.',
+				},
+				{
+					src: '/assets/images/experience-australian-army-wallaby.webp',
+					alt: 'Australian Army Reserve soldier feeding a wallaby during a field activity.',
+				},
+				{
+					src: '/assets/images/experience-australian-army-equipment-display.webp',
+					alt: 'Australian Army Reserve team standing in front of communications equipment at an indoor display.',
+				},
 				{
 					src: '/assets/images/experience-australian-army.webp',
 					alt: 'Royal Australian Corps of Signals Jimmy emblem.',
@@ -315,8 +327,7 @@ export const experience = {
 			context: 'Volunteer festival operations',
 			summary:
 				'Volunteered for five years at AVCon, supporting Adelaide’s volunteer-run anime, gaming, and pop culture festival through event operations and attendee-facing support.',
-			highlights: [
-			],
+			highlights: [],
 			tools: ['Volunteering', 'Event Operations', 'Attendee Support', 'Teamwork', 'Communication', 'Community Events'],
 		},
 		{

@@ -7,3 +7,7 @@ All rights reserved.
 You may not copy, redistribute, modify, use, or republish these assets without written permission from Luke Lachlan Day.
 
 The MIT License in `LICENSE` applies only to the source code, not to the non-code assets listed above.
+
+## Third-party project media
+
+The Beach Bums, Dungeons and Dining Tables, and Super BAWK BAWK Chicken screenshots and store images sourced from their Steam store pages remain copyright of their respective rightsholders. Local WebP copies are optimized for this portfolio site only.

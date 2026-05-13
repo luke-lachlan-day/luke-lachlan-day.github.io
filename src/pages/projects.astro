@@ -22,6 +22,11 @@ const showcaseItems = getProjectShowcaseItems({
 });
 const initialActiveProjectIndex = 0;
 const initialTransitionSlotRange = 3;
+const getProjectDetailSectionId = (projectId: string, sectionTitle: string) =>
+	`project-detail-${projectId}-${sectionTitle
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, '-')
+		.replace(/^-|-$/g, '')}`;
 ---
 
 <BaseLayout title={projects.title} description={projects.description}>
@@ -134,9 +139,27 @@ const initialTransitionSlotRange = 3;
 												<span>{company.name}</span>
 											</span>
 										))}
-									<span>{project.dateLabel}</span>
+									{project.dateLabel && <span>{project.dateLabel}</span>}
 								</div>
 								<p class="project-detail-description">{project.description}</p>
+								{project.detailSections && project.detailSections.length > 0 && (
+									<div class="project-detail-sections" aria-label={`${project.product} details`}>
+										{project.detailSections.map((section) => {
+											const sectionId = getProjectDetailSectionId(project.id, section.title);
+
+											return (
+												<section class="project-detail-section" aria-labelledby={sectionId}>
+													<h4 id={sectionId}>{section.title}</h4>
+													<ul>
+														{section.items.map((item) => (
+															<li>{item}</li>
+														))}
+													</ul>
+												</section>
+											);
+										})}
+									</div>
+								)}
 								<ProjectTagList tagGroups={tagGroups} ariaLabel={`${project.product} tags`} />
 								{actionLinks.length > 0 && (
 									<div class="project-detail-actions">
