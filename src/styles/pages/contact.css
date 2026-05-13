@@ -47,7 +47,6 @@
 	background-position: center;
 	filter: var(--image-filter);
 	image-rendering: pixelated;
-	transition: var(--theme-transition-filter);
 }
 
 .contact-grid {
