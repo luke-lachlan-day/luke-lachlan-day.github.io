@@ -8,10 +8,6 @@
 	font-weight: 700;
 }
 
-.experience-showcase {
-	padding-top: 18px;
-}
-
 .showcase-wheel-media-fallback,
 .experience-wheel-media-fallback,
 .experience-detail-media-fallback {
@@ -45,8 +41,6 @@
 .experience-wheel-book {
 	width: clamp(190px, 25vw, 318px);
 	aspect-ratio: 760 / 478;
-	margin-top: -22px;
-	margin-bottom: -30px;
 }
 
 .experience-highlights {
@@ -86,15 +80,11 @@
 @media (max-width: 820px) {
 	.experience-wheel-book {
 		width: clamp(176px, 38vw, 266px);
-		margin-top: -22px;
-		margin-bottom: -22px;
 	}
 }
 
 @media (max-width: 560px) {
 	.experience-wheel-book {
 		width: clamp(166px, 58vw, 236px);
-		margin-top: -18px;
-		margin-bottom: -18px;
 	}
 }
