@@ -1,4 +1,5 @@
 import type { Project } from './types';
+import { mediaOwnershipNotice } from './site';
 
 export const projects = {
 	title: 'Luke Lachlan Day | Projects',
@@ -59,6 +60,7 @@ export const projects = {
 			],
 			description:
 				'Delve into dungeons to collect rare furniture, then bring it home to decorate. The cosier your house is, the higher your stats. Go forth and drive the grumpiness from the land: your perfect home is just a dungeon away. Oh, and you play as an axolotl.',
+			mediaNotice: mediaOwnershipNotice,
 			projectTags: {
 				format: ['Game'],
 				platform: ['PC', 'Steam'],
@@ -95,6 +97,7 @@ export const projects = {
 			],
 			description:
 				'A Catalyst Games contribution to the released Disney Game Night companion app, supporting digital party games for the board game experience.',
+			mediaNotice: mediaOwnershipNotice,
 			projectTags: {
 				format: ['Game'],
 				platform: ['Mobile'],
@@ -124,6 +127,7 @@ export const projects = {
 			],
 			description:
 				'A Catalyst Games contribution to Think Digital client work, supporting VR interactive training experiences, a web puzzle and practical project delivery.',
+			mediaNotice: mediaOwnershipNotice,
 			projectTags: {
 				format: ['Interactive Experience'],
 				platform: ['VR', 'Web'],
@@ -149,6 +153,7 @@ export const projects = {
 			],
 			description:
 				"You play as Ricky Raccoon, an office worker with a secret identity. Escape the office in your super outfit to go save the day, but don't get spotted; you're too cute and famous for your own good.",
+			mediaNotice: mediaOwnershipNotice,
 			projectTags: {
 				format: ['Game'],
 				platform: ['PC', 'Web'],
@@ -186,6 +191,7 @@ export const projects = {
 			],
 			description:
 				'Beach Bums is a cheeky 2D hidden object memory game in which the player must reunite beachgoers with their swimsuits after a tidal wave washes them away.',
+			mediaNotice: mediaOwnershipNotice,
 			projectTags: {
 				format: ['Game'],
 				platform: ['PC', 'Steam'],
@@ -275,6 +281,7 @@ export const projects = {
 			],
 			description:
 				'A released collection of 7 Days to Die mods shared through GitHub for players who want to customize their survival experience.',
+			mediaNotice: mediaOwnershipNotice,
 			projectTags: {
 				format: ['Mod'],
 				platform: ['PC'],
@@ -304,6 +311,7 @@ export const projects = {
 			],
 			description:
 				'A released Age of Mythology: The Titans custom map series combining BETA, EASY, and HARD versions of a shop-and-siege scenario.',
+			mediaNotice: mediaOwnershipNotice,
 			projectTags: {
 				format: ['Map'],
 				platform: ['PC'],

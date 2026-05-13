@@ -11,20 +11,29 @@ const footerLinks = profile.footer.linkLabels.flatMap((label) => {
 ---
 
 <footer class="site-footer">
-	<div class="footer-inner">
-		<div class="footer-heart" aria-hidden="true"></div>
-		<p>{profile.footer.message}</p>
-		<div class="footer-links" aria-labelledby="footer-social-links-title">
-			<h2 id="footer-social-links-title" class="visually-hidden">Social links</h2>
-			{
-				footerLinks.map((link) => (
-					<a href={link.href} {...getExternalLinkAttrs(link.href)} title={link.label}>
-						<AssetIcon src={link.icon} />
-						<span class="visually-hidden">{link.label}</span>
-					</a>
-				))
-			}
+	<div class="footer-visual">
+		<div class="footer-inner">
+			<div class="footer-heart" aria-hidden="true"></div>
+			<p>{profile.footer.message}</p>
+			<div class="footer-links" aria-labelledby="footer-social-links-title">
+				<h2 id="footer-social-links-title" class="visually-hidden">Social links</h2>
+				{
+					footerLinks.map((link) => (
+						<a href={link.href} {...getExternalLinkAttrs(link.href)} title={link.label}>
+							<AssetIcon src={link.icon} />
+							<span class="visually-hidden">{link.label}</span>
+						</a>
+					))
+				}
+			</div>
+			<p class="copyright">&copy; {new Date().getFullYear()} Luke Lachlan Day</p>
 		</div>
-		<p class="copyright">&copy; {new Date().getFullYear()} Luke Lachlan Day</p>
 	</div>
+	{
+		profile.footer.mediaDisclaimer && (
+			<div class="footer-legal">
+				<p class="footer-media-disclaimer">{profile.footer.mediaDisclaimer}</p>
+			</div>
+		)
+	}
 </footer>

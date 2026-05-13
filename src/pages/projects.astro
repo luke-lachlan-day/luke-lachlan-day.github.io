@@ -159,6 +159,7 @@ const getProjectDetailSectionId = (projectId: string, sectionTitle: string) =>
 										})}
 									</div>
 								)}
+								{project.mediaNotice && <p class="project-detail-media-notice">{project.mediaNotice}</p>}
 								<ProjectTagList tagGroups={tagGroups} ariaLabel={`${project.product} tags`} />
 								{actionLinks.length > 0 && (
 									<div class="project-detail-actions">

@@ -198,6 +198,21 @@
 	margin-top: clamp(20px, 2vw, 26px);
 }
 
+.project-detail-media-notice {
+	max-width: 62ch;
+	margin-top: clamp(16px, 1.8vw, 22px);
+	border-top: 1px solid var(--border);
+	color: color-mix(in srgb, var(--muted) 88%, var(--bg));
+	font-size: 0.82rem;
+	font-weight: 800;
+	line-height: 1.45;
+	padding-top: 12px;
+}
+
+.project-detail-media-notice + .project-tag-list {
+	margin-top: clamp(18px, 1.8vw, 24px);
+}
+
 .project-detail-sections {
 	display: grid;
 	gap: 14px;

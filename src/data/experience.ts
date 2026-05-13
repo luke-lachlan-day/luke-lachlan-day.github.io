@@ -1,4 +1,5 @@
 import type { ExperienceItem, HeroContent } from './types';
+import { mediaOwnershipNotice } from './site';
 
 export const experience = {
 	title: 'Luke Lachlan Day | Experience',
@@ -96,6 +97,7 @@ export const experience = {
 			context: 'Science outreach and STEM education',
 			summary:
 				'Recently joined the team at SciWorld, supporting STEM outreach for schools, parties, and public events across South Australia.',
+			mediaNotice: mediaOwnershipNotice,
 			highlights: [],
 		},
 		{
@@ -123,6 +125,7 @@ export const experience = {
 			context: 'Client and studio projects',
 			summary:
 				'Worked across original IP including Dungeons and Dining Tables, client projects such as Think Digital VR training experiences, and the Firebase-authenticated Disney Game Night mobile app. Contributed beyond development through publisher pitching, school-based game development teaching, and team training sessions.',
+			mediaNotice: mediaOwnershipNotice,
 			recognition: [
 				{
 					name: 'Most Impactful Studio of 2025',
@@ -153,6 +156,7 @@ export const experience = {
 			sortDate: '2026-01-31',
 			context: 'Super Raccoon team project',
 			summary: 'Joined a Global Game Jam team as a programmer to release Super Raccoon, a Unity puzzle game.',
+			mediaNotice: mediaOwnershipNotice,
 			highlights: [],
 		},
 		{
@@ -172,6 +176,7 @@ export const experience = {
 			context: 'Contract vertical slice',
 			summary:
 				'Worked with Coastal Derrieres in a small team of four to turn the Beach Bums design document into a playable vertical slice for funding opportunities.',
+			mediaNotice: mediaOwnershipNotice,
 			highlights: ['Vertical slice exhibited at events such as SAGE and AVCon.'],
 		},
 		{
@@ -210,6 +215,7 @@ export const experience = {
 			sortDate: '2022-03-01',
 			context: 'IT customer service',
 			summary: 'Maintained high levels of customer service for high-profile clients during urgent IT support situations.',
+			mediaNotice: mediaOwnershipNotice,
 			highlights: [],
 		},
 		{
@@ -241,6 +247,7 @@ export const experience = {
 			context: 'Army Reserve communications',
 			summary:
 				'Served as an Information Systems Technician in the Australian Army Reserve across 144 Signal Squadron in South Australia and 108 Signal Squadron in Victoria.',
+			mediaNotice: mediaOwnershipNotice,
 			recognition: [
 				{
 					name: 'National Emergency Medal',
@@ -272,6 +279,7 @@ export const experience = {
 			sortDate: '2019-01-01',
 			context: 'Genetics, Microbiology and Immunology',
 			summary: 'Studied a Bachelor of Science at the University of Adelaide, majoring in Genetics, Microbiology, and Immunology.',
+			mediaNotice: mediaOwnershipNotice,
 			highlights: [],
 		},
 		{
@@ -291,6 +299,7 @@ export const experience = {
 			context: 'Volunteer festival operations',
 			summary:
 				"Volunteered for five years at AVCon, supporting Adelaide's volunteer-run anime, gaming, and pop culture festival through event operations and attendee-facing support.",
+			mediaNotice: mediaOwnershipNotice,
 			highlights: [],
 		},
 		{
@@ -314,6 +323,7 @@ export const experience = {
 			context: 'Under 18 sprinting and Junior Athletics Championships',
 			summary:
 				'It would not be right to build a portfolio without reliving my Under 18 sprinting glory, mostly because my partner has already heard about it enough times that the website may as well share the burden.',
+			mediaNotice: mediaOwnershipNotice,
 			recognition: [
 				{
 					name: 'First Place, 200 metres',

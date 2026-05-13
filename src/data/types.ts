@@ -23,6 +23,7 @@ export type ExperienceItem = {
 	companyId?: Company['id'];
 	icon?: ImageAsset;
 	pictures?: ImageAsset[];
+	mediaNotice?: string;
 	dateLabel: string;
 	cardDateLabel: string;
 	dateHeading?: string;
@@ -130,6 +131,7 @@ export type Project = {
 	product: string;
 	pictures: ImageAsset[];
 	description: string;
+	mediaNotice?: string;
 	detailSections?: ProjectDetailSection[];
 	projectTags: ProjectTags;
 	sortDate: string;
