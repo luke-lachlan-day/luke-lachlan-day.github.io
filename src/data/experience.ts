@@ -186,8 +186,8 @@ export const experience = {
 			companyId: 'solo',
 			pictures: [
 				{
-					src: '/assets/images/experience-solo-dev.webp',
-					alt: 'Pixel art solo developer overlooking a bright mountain valley.',
+					src: '/assets/images/experience-maths-tutoring.webp',
+					alt: 'Pixel art maths tutor teaching geometry and algebra outdoors beside a mountain lake.',
 				},
 			],
 			dateLabel: 'Feb 2014 - Nov 2023',

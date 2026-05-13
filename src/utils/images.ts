@@ -40,6 +40,7 @@ export const imageDimensionsBySrc = {
 	'/assets/images/experience-daytime-devs-convention.webp': { width: 760, height: 428 },
 	'/assets/images/experience-daytime-devs-pax-aus-team.webp': { width: 760, height: 428 },
 	'/assets/images/experience-daytime-devs-sasa-team.webp': { width: 760, height: 428 },
+	'/assets/images/experience-maths-tutoring.webp': { width: 760, height: 428 },
 	'/assets/images/experience-power-net-it-solutions.webp': { width: 760, height: 478 },
 	'/assets/images/experience-sciworld-starlab.webp': { width: 300, height: 169 },
 	'/assets/images/experience-solo-dev.webp': { width: 760, height: 428 },
