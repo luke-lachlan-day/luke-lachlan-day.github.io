@@ -10,17 +10,13 @@ type Props = {
 	icon?: string;
 	variant?: ButtonVariant;
 	class?: string;
-	target?: string;
-	rel?: string;
 };
 
-const { href, label, icon, variant = 'primary', class: className, target, rel } = Astro.props as Props;
+const { href, label, icon, variant = 'primary', class: className } = Astro.props as Props;
 const externalAttrs = getExternalLinkAttrs(href);
-const linkTarget = target ?? externalAttrs.target;
-const linkRel = rel ?? externalAttrs.rel;
 ---
 
-<a class:list={['button', variant === 'secondary' && 'button-2', className]} href={href} target={linkTarget} rel={linkRel}>
+<a class:list={['button', variant === 'secondary' && 'button-2', className]} href={href} {...externalAttrs}>
 	{icon && <AssetIcon src={icon} class="button-icon" />}
 	{label}
 </a>

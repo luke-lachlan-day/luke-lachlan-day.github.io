@@ -1,3 +1,4 @@
+import { getCompanyById } from './companies';
 import type { Company, ExperienceItem, ImageAsset } from './types';
 
 export type ExperienceShowcaseItem = {
@@ -13,8 +14,6 @@ type ExperienceShowcaseInput = {
 	items: readonly ExperienceItem[];
 	companies: readonly Company[];
 };
-
-const getCompanyById = (companies: readonly Company[]) => new Map(companies.map((company) => [company.id, company]));
 
 export const getExperienceShowcaseItems = ({ items, companies }: ExperienceShowcaseInput): ExperienceShowcaseItem[] => {
 	const companyById = getCompanyById(companies);

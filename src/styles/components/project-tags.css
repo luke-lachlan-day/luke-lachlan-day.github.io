@@ -75,14 +75,6 @@
 	--tag-dark-text: #f2ffe8;
 	--tag-dark-border: #6f884f;
 }
-.project-tag[data-tag-style='mod-collection'] {
-	--tag-bg: #d6e3c3;
-	--tag-text: #3d5523;
-	--tag-border: #b9ce91;
-	--tag-dark-bg: #405438;
-	--tag-dark-text: #f2ffe8;
-	--tag-dark-border: #6f884f;
-}
 .project-tag[data-tag-style='party-game'] {
 	--tag-bg: #ffe0a6;
 	--tag-text: #674900;
@@ -90,14 +82,6 @@
 	--tag-dark-bg: #654d23;
 	--tag-dark-text: #fff1ca;
 	--tag-dark-border: #9a7437;
-}
-.project-tag[data-tag-style='client-work'] {
-	--tag-bg: #d7e5bf;
-	--tag-text: #2f4b22;
-	--tag-border: #b7cf93;
-	--tag-dark-bg: #405f3f;
-	--tag-dark-text: #f1ffe8;
-	--tag-dark-border: #638b5e;
 }
 .project-tag[data-tag-style='web'] {
 	--tag-bg: #e8f0ff;
@@ -210,14 +194,6 @@
 	--tag-dark-bg: #60492b;
 	--tag-dark-text: #fff0d2;
 	--tag-dark-border: #927147;
-}
-.project-tag[data-tag-style='management'] {
-	--tag-bg: #dce8ff;
-	--tag-text: #2f4e78;
-	--tag-border: #bccff0;
-	--tag-dark-bg: #304868;
-	--tag-dark-text: #eef5ff;
-	--tag-dark-border: #60799d;
 }
 .project-tag[data-tag-style='adventure'] {
 	--tag-bg: #d8ead2;

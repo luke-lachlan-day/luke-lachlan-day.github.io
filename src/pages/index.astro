@@ -6,6 +6,7 @@ import HeroContent from '../components/HeroContent.astro';
 import ProjectImageFrame from '../components/ProjectImageFrame.astro';
 import ProjectTagList from '../components/ProjectTagList.astro';
 import ThemeHeroArt from '../components/ThemeHeroArt.astro';
+import { getCompanyById } from '../data/companies';
 import { profile, type Project } from '../data/profile';
 import { getProjectTagRenderGroups } from '../data/projectTags';
 import { getCompanyLogoToneClass } from '../utils/companyLogoTone';
@@ -15,7 +16,7 @@ const { home, projects, companies } = profile;
 const [heroFirstName, ...heroRemainingNames] = profile.name.split(' ');
 const heroLastLine = heroRemainingNames.join(' ');
 const heroTitleLines = [heroFirstName, heroLastLine];
-const companyById = new Map(companies.map((company) => [company.id, company]));
+const companyById = getCompanyById(companies);
 const projectItems: Project[] = [...projects.items];
 const featuredProjects = home.featuredProjectIds
 	.map((projectId) => projectItems.find((project) => project.id === projectId))

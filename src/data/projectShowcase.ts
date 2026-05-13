@@ -1,3 +1,4 @@
+import { getCompanyById } from './companies';
 import { getProjectActionLinks, type ProjectActionLink } from './projectActions';
 import { getProjectTagRenderGroups, type ProjectTagRenderGroup } from './projectTags';
 import type { Company, ExperienceItem, ImageAsset, Project } from './types';
@@ -33,8 +34,6 @@ const projectShowcaseReleaseStageRank = {
 	shelved: 1,
 	dev: 2,
 } satisfies Record<Project['releaseStage'], number>;
-
-const getCompanyById = (companies: readonly Company[]) => new Map(companies.map((company) => [company.id, company]));
 
 const sortProjectsForShowcase = (projects: readonly Project[]) =>
 	[...projects].sort((projectA, projectB) => {

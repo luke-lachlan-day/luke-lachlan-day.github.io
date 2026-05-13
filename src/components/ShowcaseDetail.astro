@@ -22,7 +22,6 @@ type Props = {
 	awardClass?: string;
 	mediaClass?: string;
 	contentClass?: string;
-	dataAttrs?: Record<string, string | number | undefined>;
 };
 
 const {
@@ -37,7 +36,6 @@ const {
 	awardClass,
 	mediaClass,
 	contentClass,
-	dataAttrs = {},
 } = Astro.props as Props;
 const articleClass = ['project-detail', className].filter(Boolean).join(' ');
 const mediaWrapperClass = ['project-detail-media', mediaClass].filter(Boolean).join(' ');
@@ -45,7 +43,6 @@ const contentWrapperClass = ['project-detail-content', contentClass].filter(Bool
 const articleAttrs = {
 	[itemAttr]: '',
 	[indexAttr]: index,
-	...dataAttrs,
 };
 ---
 

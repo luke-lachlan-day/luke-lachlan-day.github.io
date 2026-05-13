@@ -2,12 +2,11 @@
 import type { HTMLAttributes } from 'astro/types';
 import { getImageAttrs, type ImageDecoding } from '../utils/images';
 
-type FrameAttrs = Omit<HTMLAttributes<'span'> & HTMLAttributes<'div'> & HTMLAttributes<'figure'>, 'class' | 'style'>;
+type FrameAttrs = Omit<HTMLAttributes<'span'>, 'class' | 'style'>;
 
 type Props = FrameAttrs & {
 	src: string;
 	alt: string;
-	wrapper?: 'span' | 'div' | 'figure';
 	loading?: 'eager' | 'lazy';
 	width?: number;
 	height?: number;
@@ -20,7 +19,6 @@ type Props = FrameAttrs & {
 const {
 	src,
 	alt,
-	wrapper = 'span',
 	loading = 'lazy',
 	width,
 	height,
@@ -39,11 +37,10 @@ const imageAttrs = {
 	width: width ?? fallbackImageAttrs.width,
 	height: height ?? fallbackImageAttrs.height,
 };
-const Wrapper = wrapper;
 ---
 
-<Wrapper {...attrs} class={frameClass} style={frameStyle}>
+<span {...attrs} class={frameClass} style={frameStyle}>
 	<img class="project-image-frame-backdrop" src={src} alt="" loading={loading} {...imageAttrs} aria-hidden="true" />
 	<img class={foregroundClass} src={src} alt={alt} loading={loading} {...imageAttrs} />
 	<slot />
-</Wrapper>
+</span>

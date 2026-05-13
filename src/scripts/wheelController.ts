@@ -23,16 +23,14 @@ export type WheelControllerOptions = {
 	idAttr: string;
 	changeEvent: string;
 	detailRootSelector?: string;
-	hashPrefix?: string;
-	syncHash?: boolean;
 };
 
 const getAttr = (element: Element, name: string) => element.getAttribute(name) ?? '';
 const getNumberAttr = (element: Element, name: string) => Number(getAttr(element, name)) || 0;
 const wrapIndex = (index: number, total: number) => ((index % total) + total) % total;
 
-const getHashId = (hashPrefix: string) => {
-	const hash = window.location.hash.slice(hashPrefix.length);
+const getHashId = () => {
+	const hash = window.location.hash.slice(1);
 
 	if (!hash) {
 		return '';
@@ -131,7 +129,7 @@ const dispatchWheelChange = (changeEvent: string, activeIndex: number) => {
 	window.dispatchEvent(new CustomEvent(changeEvent, { detail: { activeIndex } }));
 };
 
-const writeActiveHash = (cards: HTMLElement[], activeIndex: number, idAttr: string, hashPrefix: string) => {
+const writeActiveHash = (cards: HTMLElement[], activeIndex: number, idAttr: string) => {
 	const activeCard = cards[activeIndex];
 	const itemId = activeCard ? getAttr(activeCard, idAttr) : '';
 
@@ -139,7 +137,7 @@ const writeActiveHash = (cards: HTMLElement[], activeIndex: number, idAttr: stri
 		return;
 	}
 
-	const nextHash = `${hashPrefix}${encodeURIComponent(itemId)}`;
+	const nextHash = `#${encodeURIComponent(itemId)}`;
 	if (window.location.hash !== nextHash) {
 		window.history.replaceState(null, '', nextHash);
 	}
@@ -161,8 +159,6 @@ export const setupWheelController = (wheel: HTMLElement, options: WheelControlle
 	const total = cards.length;
 	const desktopQuery = window.matchMedia(desktopQueryText);
 	const phoneQuery = window.matchMedia(phoneQueryText);
-	const hashPrefix = options.hashPrefix ?? '#';
-	const syncHash = options.syncHash ?? true;
 	let activeIndex = Number(wheel.getAttribute('data-active-index')) || 0;
 
 	const updateWheel = () => {
@@ -178,17 +174,13 @@ export const setupWheelController = (wheel: HTMLElement, options: WheelControlle
 		activeIndex = wrapIndex(index, total);
 		updateWheel();
 
-		if (syncHash && shouldUpdateHash) {
-			writeActiveHash(cards, activeIndex, options.idAttr, hashPrefix);
+		if (shouldUpdateHash) {
+			writeActiveHash(cards, activeIndex, options.idAttr);
 		}
 	};
 
 	const setActiveItemFromHash = () => {
-		if (!syncHash) {
-			return;
-		}
-
-		const itemId = getHashId(hashPrefix);
+		const itemId = getHashId();
 
 		if (!itemId) {
 			return;
