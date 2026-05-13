@@ -1,6 +1,15 @@
 # Third-Party Notices
 
-This file records third-party SVG provenance and attribution for SVG files in `public/`. The MIT License in `LICENSE` applies to this repository's source code only, and `ASSET-LICENSE.md` covers Luke Lachlan Day's non-code assets and content.
+This file records third-party asset provenance, attribution, and license notes for files in `public/`. The MIT License in `LICENSE` applies to this repository's source code only, and `ASSET-LICENSE.md` covers Luke Lachlan Day's non-code assets and content.
+
+## Fonts
+
+The following fonts are self-hosted under `public/assets/fonts/` and are licensed under the SIL Open Font License, Version 1.1. The full OFL text and font copyright notices are included in `public/assets/fonts/OFL.txt`.
+
+| Files                                                                                                    | Source / attribution                                            | License notes | Local changes                                     |
+| -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------- | ------------------------------------------------- |
+| `public/assets/fonts/balsamiq-sans-400-latin.woff2`, `public/assets/fonts/balsamiq-sans-700-latin.woff2` | Balsamiq Sans, copyright 2011 The Balsamiq Sans Project Authors | OFL-1.1       | Google Fonts Latin WOFF2 subsets are self-hosted. |
+| `public/assets/fonts/nunito-500-800-latin.woff2`                                                         | Nunito, copyright 2014 The Nunito Project Authors               | OFL-1.1       | Google Fonts Latin WOFF2 subset is self-hosted.   |
 
 ## SVG Repo Assets
 

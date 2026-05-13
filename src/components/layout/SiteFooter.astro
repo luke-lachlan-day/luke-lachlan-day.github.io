@@ -28,12 +28,12 @@ const footerLinks = profile.footer.linkLabels.flatMap((label) => {
 			</div>
 			<p class="copyright">&copy; {new Date().getFullYear()} Luke Lachlan Day</p>
 		</div>
+		{
+			profile.footer.mediaDisclaimer && (
+				<div class="footer-legal">
+					<p class="footer-media-disclaimer">{profile.footer.mediaDisclaimer}</p>
+				</div>
+			)
+		}
 	</div>
-	{
-		profile.footer.mediaDisclaimer && (
-			<div class="footer-legal">
-				<p class="footer-media-disclaimer">{profile.footer.mediaDisclaimer}</p>
-			</div>
-		)
-	}
 </footer>

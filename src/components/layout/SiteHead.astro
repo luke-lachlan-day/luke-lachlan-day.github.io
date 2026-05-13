@@ -9,6 +9,10 @@ interface Props {
 
 const { title, description, canonicalUrl, socialImageUrl, generator } = Astro.props;
 const criticalImagePreloads = [{ href: '/assets/textures/nav-brush.webp', type: 'image/webp' }] as const;
+const criticalFontPreloads = [
+	{ href: '/assets/fonts/balsamiq-sans-400-latin.woff2', type: 'font/woff2' },
+	{ href: '/assets/fonts/nunito-500-800-latin.woff2', type: 'font/woff2' },
+] as const;
 ---
 
 <head>
@@ -16,6 +20,7 @@ const criticalImagePreloads = [{ href: '/assets/textures/nav-brush.webp', type: 
 	<link rel="icon" type="image/webp" href="/assets/images/company-solo-clear.webp?v=20260510" />
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=20260510" />
 	{criticalImagePreloads.map((asset) => <link rel="preload" as="image" type={asset.type} href={asset.href} />)}
+	{criticalFontPreloads.map((asset) => <link rel="preload" as="font" type={asset.type} href={asset.href} crossorigin />)}
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content={description} />
 	<meta name="generator" content={generator} />
@@ -31,12 +36,6 @@ const criticalImagePreloads = [{ href: '/assets/textures/nav-brush.webp', type: 
 	<meta name="twitter:title" content={title} />
 	<meta name="twitter:description" content={description} />
 	<meta name="twitter:image" content={socialImageUrl} />
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Nunito:wght@500;600;700;800&display=swap"
-		rel="stylesheet"
-	/>
 	<script is:inline>
 		(() => {
 			const root = document.documentElement;
