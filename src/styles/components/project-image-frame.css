@@ -3,7 +3,7 @@
 	isolation: isolate;
 	display: block;
 	overflow: hidden;
-	background: var(--surface-soft);
+	background-color: var(--surface-soft);
 	transition: var(--theme-transition-background);
 }
 
@@ -26,7 +26,7 @@
 	position: absolute;
 	inset: 0;
 	z-index: 1;
-	background: color-mix(in srgb, var(--surface-soft) 18%, transparent);
+	background-color: color-mix(in srgb, var(--surface-soft) 18%, transparent);
 	content: '';
 	pointer-events: none;
 	transition: var(--theme-transition-background);

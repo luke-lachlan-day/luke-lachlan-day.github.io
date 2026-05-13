@@ -6,7 +6,7 @@
 	width: 100%;
 	aspect-ratio: 16 / 9;
 	border-radius: inherit;
-	background: var(--surface-soft);
+	background-color: var(--surface-soft);
 	transition: var(--theme-transition-background);
 }
 
@@ -18,7 +18,7 @@
 }
 
 .project-detail-gallery .project-image-frame::after {
-	background: color-mix(in srgb, var(--surface-soft) 34%, transparent);
+	background-color: color-mix(in srgb, var(--surface-soft) 34%, transparent);
 	transition: var(--theme-transition-background);
 }
 
@@ -86,7 +86,7 @@
 	height: 42px;
 	border: 1px solid color-mix(in srgb, var(--surface) 70%, var(--border));
 	border-radius: 999px;
-	background: color-mix(in srgb, var(--surface-glass) 82%, var(--bg));
+	background-color: color-mix(in srgb, var(--surface-glass) 82%, var(--bg));
 	box-shadow: var(--shadow-soft);
 	opacity: 0;
 	transform: translateY(2px);
@@ -107,7 +107,7 @@
 .project-detail-gallery-control:hover .arrow-button-icon {
 	--arrow-button-icon-color: var(--accent);
 	border-color: color-mix(in srgb, var(--accent) 62%, var(--surface));
-	background: var(--surface-hover-strong);
+	background-color: var(--surface-hover-strong);
 }
 
 .project-detail-gallery-control:focus-visible {
@@ -136,7 +136,7 @@
 	height: 11px;
 	border: 1px solid color-mix(in srgb, var(--surface) 78%, var(--border));
 	border-radius: 999px;
-	background: color-mix(in srgb, var(--surface-glass) 84%, var(--bg));
+	background-color: color-mix(in srgb, var(--surface-glass) 84%, var(--bg));
 	box-shadow: var(--shadow-soft);
 	cursor: pointer;
 	padding: 0;
@@ -150,7 +150,7 @@
 
 .project-detail-gallery-dot[aria-current='true'] {
 	border-color: color-mix(in srgb, var(--accent) 70%, var(--surface));
-	background: var(--accent);
+	background-color: var(--accent);
 	transform: scale(1.16);
 }
 

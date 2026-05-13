@@ -7,7 +7,7 @@
 .project-card {
 	border: 1px solid var(--border);
 	border-radius: var(--radius);
-	background: var(--bg);
+	background-color: var(--bg);
 	box-shadow: var(--shadow);
 	transition: var(--theme-transition-surface);
 }
@@ -102,7 +102,7 @@
 
 .tool-list span {
 	border-radius: 7px;
-	background: var(--project-status-released-bg);
+	background-color: var(--project-status-released-bg);
 	color: var(--project-status-released-text);
 	font-family: var(--font-body);
 	font-size: 0.82rem;
@@ -113,12 +113,12 @@
 }
 
 .tool-list span:nth-child(2n) {
-	background: var(--project-status-dev-bg);
+	background-color: var(--project-status-dev-bg);
 	color: var(--project-status-dev-text);
 }
 
 .tool-list span:nth-child(3n) {
-	background: var(--project-status-contributed-bg);
+	background-color: var(--project-status-contributed-bg);
 	color: var(--project-status-contributed-text);
 }
 

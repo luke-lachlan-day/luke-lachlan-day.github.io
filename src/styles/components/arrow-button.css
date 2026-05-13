@@ -9,7 +9,7 @@
 	height: var(--arrow-button-size);
 	border: 1px solid color-mix(in srgb, var(--accent) 36%, var(--border));
 	border-radius: 999px;
-	background: color-mix(in srgb, var(--surface) 88%, var(--bg));
+	background-color: color-mix(in srgb, var(--surface) 88%, var(--bg));
 	box-shadow: var(--shadow-soft);
 	color: var(--accent);
 	cursor: pointer;
@@ -22,7 +22,7 @@
 
 .arrow-button:hover {
 	border-color: color-mix(in srgb, var(--accent) 62%, var(--border));
-	background: var(--surface-hover-strong);
+	background-color: var(--surface-hover-strong);
 	transform: var(--hover-lift-subtle);
 }
 

@@ -26,7 +26,7 @@
 	min-height: 28px;
 	border: 1px solid var(--tag-border);
 	border-radius: 7px;
-	background: var(--tag-bg);
+	background-color: var(--tag-bg);
 	color: var(--tag-text);
 	font-family: var(--font-body);
 	font-size: 0.82rem;
@@ -357,7 +357,7 @@
 
 .project-tag-group[data-tag-group='platform'] .project-tag,
 .project-tag-group[data-tag-group='tech'] .project-tag {
-	background: color-mix(in srgb, var(--tag-bg) 64%, var(--surface));
+	background-color: color-mix(in srgb, var(--tag-bg) 64%, var(--surface));
 }
 
 .project-tag-group[data-tag-group='platform'] .project-tag {
@@ -366,7 +366,7 @@
 
 :root[data-theme='dark'] .project-tag {
 	border-color: var(--tag-dark-border);
-	background: var(--tag-dark-bg);
+	background-color: var(--tag-dark-bg);
 	color: var(--tag-dark-text);
 }
 
@@ -376,5 +376,5 @@
 
 :root[data-theme='dark'] .project-tag-group[data-tag-group='platform'] .project-tag,
 :root[data-theme='dark'] .project-tag-group[data-tag-group='tech'] .project-tag {
-	background: color-mix(in srgb, var(--tag-dark-bg) 82%, var(--surface));
+	background-color: color-mix(in srgb, var(--tag-dark-bg) 82%, var(--surface));
 }

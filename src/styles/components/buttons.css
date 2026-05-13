@@ -8,10 +8,12 @@
 	min-height: 58px;
 	border: 2px solid transparent;
 	border-radius: 13px;
-	background:
-		linear-gradient(var(--paint-fill), var(--paint-fill)),
-		var(--paint-texture) center / 150px 150px repeat;
+	background-color: var(--paint-fill);
 	background-blend-mode: multiply;
+	background-image: var(--paint-texture);
+	background-position: center;
+	background-repeat: repeat;
+	background-size: 150px 150px;
 	box-shadow: var(--shadow-button);
 	color: var(--button-text);
 	font-family: var(--font-body);
@@ -41,8 +43,9 @@
 
 .button-2 {
 	border-color: color-mix(in srgb, var(--accent) 42%, var(--border));
-	background: var(--bg);
+	background-color: var(--bg);
 	background-blend-mode: normal;
+	background-image: none;
 	box-shadow: none;
 	color: var(--accent);
 	text-shadow: none;
@@ -50,7 +53,7 @@
 
 .button-2:hover {
 	border-color: color-mix(in srgb, var(--accent) 66%, var(--border));
-	background: color-mix(in srgb, var(--accent) 7%, var(--bg));
+	background-color: color-mix(in srgb, var(--accent) 7%, var(--bg));
 }
 
 :root[data-theme='dark'] .button-2 {
@@ -59,7 +62,7 @@
 }
 
 :root[data-theme='dark'] .button-2:hover {
-	background: color-mix(in srgb, var(--accent-2) 10%, var(--bg));
+	background-color: color-mix(in srgb, var(--accent-2) 10%, var(--bg));
 }
 
 .text-link {
@@ -96,6 +99,6 @@
 	flex: 0 0 auto;
 	width: 1.05em;
 	height: 0.78em;
-	background: currentColor;
+	background-color: currentColor;
 	clip-path: polygon(0 42%, 62% 42%, 62% 18%, 100% 50%, 62% 82%, 62% 58%, 0 58%);
 }
