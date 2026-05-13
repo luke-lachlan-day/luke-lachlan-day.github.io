@@ -67,6 +67,14 @@
 	--tag-dark-text: #efffed;
 	--tag-dark-border: #668d61;
 }
+.project-tag[data-tag-style='mod'] {
+	--tag-bg: #d6e3c3;
+	--tag-text: #3d5523;
+	--tag-border: #b9ce91;
+	--tag-dark-bg: #405438;
+	--tag-dark-text: #f2ffe8;
+	--tag-dark-border: #6f884f;
+}
 .project-tag[data-tag-style='mod-collection'] {
 	--tag-bg: #d6e3c3;
 	--tag-text: #3d5523;

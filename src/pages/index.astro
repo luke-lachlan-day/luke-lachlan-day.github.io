@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AwardMedals from '../components/AwardMedals.astro';
 import CompanyBadge from '../components/CompanyBadge.astro';
 import HeroContent from '../components/HeroContent.astro';
 import ProjectImageFrame from '../components/ProjectImageFrame.astro';
@@ -50,30 +51,34 @@ const featuredProjects = home.featuredProjectIds
 					const company = companyById.get(project.companyId);
 					const picture = project.pictures[0];
 					const tagGroups = getProjectTagRenderGroups(project.projectTags);
+					const hasAwards = project.awards.length > 0;
 
 					return (
-						<a class="project-card" href={`${projects.href}#${project.id}`} aria-label={`View ${project.product} in projects`}>
-							<ProjectImageFrame class="project-image" src={picture.src} alt={picture.alt} loading="lazy">
-								{company && <CompanyBadge icon={company.icon} class="project-card-company-badge" />}
-							</ProjectImageFrame>
-							<div class="project-body">
-								<div class="project-company">
-									{company && (
-										<img
-											class={getCompanyLogoToneClass(company.icon)}
-											src={company.icon.src}
-											alt=""
-											loading="lazy"
-											{...getImageAttrs(company.icon)}
-										/>
-									)}
-									<span>{company?.name}</span>
+						<article class:list={['project-card-shell', hasAwards && 'project-card-shell-awarded']}>
+							{hasAwards && <AwardMedals awards={project.awards} ariaLabel={`${project.product} awards`} class="project-card-awards" />}
+							<a class="project-card" href={`${projects.href}#${project.id}`} aria-label={`View ${project.product} in projects`}>
+								<ProjectImageFrame class="project-image" src={picture.src} alt={picture.alt} loading="lazy">
+									{company && <CompanyBadge icon={company.icon} class="project-card-company-badge" />}
+								</ProjectImageFrame>
+								<div class="project-body">
+									<div class="project-company">
+										{company && (
+											<img
+												class={getCompanyLogoToneClass(company.icon)}
+												src={company.icon.src}
+												alt=""
+												loading="lazy"
+												{...getImageAttrs(company.icon)}
+											/>
+										)}
+										<span>{company?.name}</span>
+									</div>
+									<h3>{project.product}</h3>
+									<p>{project.description}</p>
+									<ProjectTagList tagGroups={tagGroups} ariaLabel={`${project.product} tags`} />
 								</div>
-								<h3>{project.product}</h3>
-								<p>{project.description}</p>
-								<ProjectTagList tagGroups={tagGroups} ariaLabel={`${project.product} tags`} />
-							</div>
-						</a>
+							</a>
+						</article>
 					);
 				})
 			}

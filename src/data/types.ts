@@ -31,7 +31,6 @@ export type ExperienceItem = {
 	summary: string;
 	recognition?: ExperienceRecognition[];
 	highlights: string[];
-	tools: string[];
 };
 
 export type HeroContent = {
@@ -84,6 +83,7 @@ export type Company = {
 	name: string;
 	icon: ImageAsset;
 	website?: string;
+	actions?: ProjectAction[];
 };
 
 export type ProjectReleaseStage = 'dev' | 'released' | 'shelved' | 'contributed';
@@ -102,7 +102,16 @@ export type ProjectTags = {
 	tech?: string[];
 };
 
-export type ProjectActionType = 'website' | 'webApp' | 'browserExtension' | 'steam' | 'appStore' | 'playStore' | 'youtube' | 'source';
+export type ProjectActionType =
+	| 'website'
+	| 'webApp'
+	| 'browserExtension'
+	| 'steam'
+	| 'appStore'
+	| 'playStore'
+	| 'youtube'
+	| 'source'
+	| 'discord';
 
 export type ProjectAction = {
 	type: ProjectActionType;
@@ -122,7 +131,6 @@ export type Project = {
 	pictures: ImageAsset[];
 	description: string;
 	detailSections?: ProjectDetailSection[];
-	tools: string[];
 	projectTags: ProjectTags;
 	sortDate: string;
 	dateLabel: string;

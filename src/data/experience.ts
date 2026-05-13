@@ -29,7 +29,6 @@ export const experience = {
 			summary:
 				'Created handcrafted and AI-assisted prototypes, mods, tools, videos, and web projects across solo development cycles, carrying ideas into playable prototypes or released works.',
 			highlights: ['Published Luke Lachlan Day website in 2026.', 'Many, many prototypes enjoyed by friends and family.'],
-			tools: ['Unity', 'C#', 'Astro', 'TypeScript', 'Game Prototyping', 'Web Tools'],
 		},
 		{
 			id: 'daytime-devs',
@@ -77,9 +76,8 @@ export const experience = {
 			],
 			highlights: [
 				'Grew our first title to 25,500+ Google Play downloads and delivered 15 updates since the 2023 demo launch.',
-				'Experienced Chris Norton’s game music performed live by the Woodville Concert Band at Music With Motion: Down Under, directed by Dr Nathan Cummins.'
+				'Experienced Chris Norton’s game music performed live by the Woodville Concert Band at Music With Motion: Down Under, directed by Dr Nathan Cummins.',
 			],
-			tools: ['Unity', 'C#', 'Steam', 'Google Play', 'App Store', 'Shaders', 'Tooling'],
 		},
 		{
 			id: 'sciworld-presenter',
@@ -99,7 +97,6 @@ export const experience = {
 			summary:
 				'Recently joined the team at SciWorld, supporting STEM outreach for schools, parties, and public events across South Australia.',
 			highlights: [],
-			tools: ['Science Communication', 'STEM Education', 'Presenting', 'Audience Engagement', 'Safety', 'Workshop Support'],
 		},
 		{
 			id: 'catalyst-games',
@@ -139,7 +136,6 @@ export const experience = {
 				},
 			],
 			highlights: ['Dungeons and Dining Tables released as a playable demo on Steam.', 'Disney Game Night App released on mobile.'],
-			tools: ['Unity', 'C#', 'Addressables', 'Firebase', 'VR', 'Teaching', 'Technical Direction'],
 		},
 		{
 			id: 'global-game-jam-super-raccoon',
@@ -158,7 +154,6 @@ export const experience = {
 			context: 'Super Raccoon team project',
 			summary: 'Joined a Global Game Jam team as a programmer to release Super Raccoon, a Unity puzzle game.',
 			highlights: [],
-			tools: ['Unity', 'C#', 'Game Jam', 'Puzzle Game', 'HTML5', 'PC'],
 		},
 		{
 			id: 'self-employed-unity-developer',
@@ -178,7 +173,6 @@ export const experience = {
 			summary:
 				'Worked with Coastal Derrieres in a small team of four to turn the Beach Bums design document into a playable vertical slice for funding opportunities.',
 			highlights: ['Vertical slice exhibited at events such as SAGE and AVCon.'],
-			tools: ['Unity', 'C#', 'FMOD', 'Level Editor', 'Vertical Slice', 'Production Planning'],
 		},
 		{
 			id: 'maths-tutor',
@@ -198,7 +192,6 @@ export const experience = {
 			summary:
 				'Taught mathematics to high school students from years 8 to 12, adapting explanations to different confidence levels and learning styles.',
 			highlights: [],
-			tools: ['Tutoring', 'Mathematics', 'Teaching', 'Mentoring', 'Communication'],
 		},
 		{
 			id: 'power-net-it-solutions',
@@ -218,7 +211,6 @@ export const experience = {
 			context: 'IT customer service',
 			summary: 'Maintained high levels of customer service for high-profile clients during urgent IT support situations.',
 			highlights: [],
-			tools: ['IT Support', 'Customer Service', 'Troubleshooting', 'Client Support', 'Communication'],
 		},
 		{
 			id: 'australian-army',
@@ -262,7 +254,6 @@ export const experience = {
 				},
 			],
 			highlights: [],
-			tools: ['Network Administration', 'Technical Systems', 'Equipment Operation', 'Training', 'Teamwork'],
 		},
 		{
 			id: 'uni-student',
@@ -282,7 +273,6 @@ export const experience = {
 			context: 'Genetics, Microbiology and Immunology',
 			summary: 'Studied a Bachelor of Science at the University of Adelaide, majoring in Genetics, Microbiology, and Immunology.',
 			highlights: [],
-			tools: ['Science', 'Genetics', 'Microbiology', 'Immunology', 'Research', 'Analysis'],
 		},
 		{
 			id: 'avcon-invader',
@@ -302,7 +292,6 @@ export const experience = {
 			summary:
 				"Volunteered for five years at AVCon, supporting Adelaide's volunteer-run anime, gaming, and pop culture festival through event operations and attendee-facing support.",
 			highlights: [],
-			tools: ['Volunteering', 'Event Operations', 'Attendee Support', 'Teamwork', 'Communication', 'Community Events'],
 		},
 		{
 			id: 'state-level-athlete',
@@ -351,7 +340,6 @@ export const experience = {
 				'Went to Sydney to represent South Australia at the 2012 Junior Athletics Championships.',
 				'Coached by the legendary Debbie Meich at Western Athletics Club.',
 			],
-			tools: ['Athletics', 'Sprinting', '200 metres', '100 metres', 'State Championships', 'Personal Bests'],
 		},
 
 		// Commented-out experience drafts
@@ -370,7 +358,6 @@ export const experience = {
 				'Completed WEA Japanese study from 2014 to 2016 with my brother.',
 				'Completed Japaneasy Japanese study in 2022 with my family, including my brother, sister-in-law, and partner.',
 			],
-			tools: ['Japanese', 'Language Learning', 'Study', 'Communication'],
 		},
 		*/
 	] satisfies ExperienceItem[],

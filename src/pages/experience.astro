@@ -9,7 +9,7 @@ import ShowcaseDetail from '../components/ShowcaseDetail.astro';
 import ShowcaseWheel from '../components/ShowcaseWheel.astro';
 import { getExperienceShowcaseItems } from '../data/experienceShowcase';
 import { profile } from '../data/profile';
-import { projectActionMeta } from '../data/projectActions';
+import { getProjectActionLinks } from '../data/projectActions';
 import { getCompanyLogoToneClass } from '../utils/companyLogoTone';
 import { getImageAttrs } from '../utils/images';
 import { getInitialWheelSlot } from '../utils/wheelSlots';
@@ -79,6 +79,11 @@ const initialTransitionSlotRange = 3;
 			{
 				showcaseItems.map(({ item, company, icon, pictures, fallbackLabel }, index) => {
 					const hasHighlights = item.highlights.length > 0;
+					const companyActions = [
+						...(company?.website ? [{ type: 'website' as const, href: company.website }] : []),
+						...(company?.actions ?? []),
+					];
+					const companyActionLinks = getProjectActionLinks(companyActions);
 
 					return (
 						<ShowcaseDetail
@@ -137,9 +142,11 @@ const initialTransitionSlotRange = 3;
 										</ul>
 									</div>
 								)}
-								{company?.website && (
+								{companyActionLinks.length > 0 && (
 									<div class="project-detail-actions">
-										<ButtonLink href={company.website} label={projectActionMeta.website.label} icon={projectActionMeta.website.icon} />
+										{companyActionLinks.map((action) => (
+											<ButtonLink href={action.href} label={action.label} icon={action.icon} variant={action.variant} />
+										))}
 									</div>
 								)}
 							</Fragment>

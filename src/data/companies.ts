@@ -5,6 +5,7 @@ export const companies = [
 		id: 'daytime-devs',
 		name: 'Daytime Devs',
 		website: 'https://www.daytimedevs.com/',
+		actions: [{ type: 'discord', href: 'https://discord.com/invite/wgjazDgWBR' }],
 		icon: {
 			src: '/assets/images/company-daytime-devs.webp',
 			alt: 'Pixel art sun and code mark for Daytime Devs.',

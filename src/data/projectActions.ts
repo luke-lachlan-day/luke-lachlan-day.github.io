@@ -46,6 +46,10 @@ export const projectActionMeta = {
 		label: 'Source Code',
 		icon: '/assets/icons/github.svg',
 	},
+	discord: {
+		label: 'Join Discord',
+		icon: '/assets/icons/discord.svg',
+	},
 } satisfies Record<ProjectActionType, ProjectActionMeta>;
 
 const projectActionPrimaryPriority = [
