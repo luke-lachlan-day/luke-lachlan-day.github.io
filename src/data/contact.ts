@@ -49,7 +49,7 @@ export const contact = {
 		},
 		{
 			label: 'YouTube',
-			href: '#',
+			href: 'https://www.youtube.com/@LukeLachlanDay',
 			display: 'Visit channel',
 			icon: '/assets/icons/youtube.svg',
 			contactIcon: '/assets/icons/contact-youtube.webp',
@@ -57,7 +57,7 @@ export const contact = {
 		},
 		{
 			label: 'Instagram',
-			href: '#',
+			href: 'https://www.instagram.com/lukelachlanday/',
 			display: 'View profile',
 			icon: '/assets/icons/instagram.svg',
 			contactIcon: '/assets/icons/contact-instagram.webp',
