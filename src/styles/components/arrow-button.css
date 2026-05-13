@@ -15,10 +15,7 @@
 	cursor: pointer;
 	padding: 0;
 	transition:
-		background-color var(--theme-transition),
-		border-color var(--theme-transition),
-		box-shadow var(--theme-transition),
-		color var(--theme-transition),
+		var(--theme-transition-surface),
 		opacity var(--motion-fast),
 		transform var(--motion-fast);
 }
@@ -40,17 +37,17 @@
 	width: 100%;
 	height: 100%;
 	color: var(--arrow-button-icon-color);
-	transition: none;
+	transition: var(--theme-transition-color);
 }
 
 .arrow-button-icon::before {
 	display: block;
 	width: var(--arrow-button-icon-size);
 	height: var(--arrow-button-icon-size);
-	background: currentColor;
+	background-color: currentColor;
 	clip-path: polygon(28% 12%, 78% 50%, 28% 88%, 20% 76%, 54% 50%, 20% 24%);
 	content: '';
-	transition: none;
+	transition: var(--theme-transition-background);
 }
 
 .arrow-button-prev .arrow-button-icon::before {

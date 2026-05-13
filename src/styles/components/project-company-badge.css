@@ -1,6 +1,7 @@
 .company-logo-tone {
 	--company-logo-filter: var(--image-filter);
 	filter: var(--company-logo-filter);
+	transition: var(--theme-transition-filter);
 }
 
 .company-logo-tone-light-light,
@@ -28,7 +29,7 @@
 	background: transparent;
 	color: var(--accent);
 	isolation: isolate;
-	transition: none;
+	transition: var(--theme-transition-color);
 }
 
 .project-wheel-company-badge-back {
@@ -38,7 +39,7 @@
 	border-radius: inherit;
 	background: var(--surface);
 	pointer-events: none;
-	transition: none;
+	transition: var(--theme-transition-background);
 }
 
 .project-wheel-company-badge-icon {
@@ -51,6 +52,7 @@
 	filter: var(--company-logo-filter, var(--image-filter)) drop-shadow(0 3px 5px rgba(0, 0, 0, 0.24));
 	image-rendering: pixelated;
 	object-fit: contain;
+	transition: var(--theme-transition-filter);
 }
 
 .project-wheel-company-badge-label {

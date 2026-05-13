@@ -61,6 +61,14 @@
 	--nav-brush-mask: url('/assets/textures/nav-brush.webp') center / 100% 100% no-repeat;
 	--paint-texture: url('/assets/textures/paint-texture.webp');
 	--theme-transition: 0ms;
+	--theme-transition-background: background-color var(--theme-transition);
+	--theme-transition-border: border-color var(--theme-transition);
+	--theme-transition-color: color var(--theme-transition);
+	--theme-transition-filter: filter var(--theme-transition);
+	--theme-transition-opacity: opacity var(--theme-transition);
+	--theme-transition-shadow: box-shadow var(--theme-transition);
+	--theme-transition-surface:
+		var(--theme-transition-background), var(--theme-transition-border), var(--theme-transition-shadow), var(--theme-transition-color);
 	color-scheme: light;
 	font-family: var(--font-body);
 }
@@ -145,4 +153,10 @@
 	--toggle-thumb-border: color-mix(in srgb, #a885ff 70%, #405474);
 	--toggle-shadow-color: rgba(0, 0, 0, 0.24);
 	color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:root[data-theme-ready] {
+		--theme-transition: 0ms;
+	}
 }

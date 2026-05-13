@@ -10,12 +10,13 @@
 	color: var(--text);
 	font-size: 0.9rem;
 	font-weight: 800;
+	transition: var(--theme-transition-color);
 }
 
 .project-detail-company-link {
 	border-radius: 8px;
 	text-decoration: none;
-	transition: color var(--motion-medium);
+	transition: var(--theme-transition-color);
 }
 
 .project-detail-company-link:hover {
@@ -36,6 +37,7 @@
 	filter: var(--company-logo-filter, var(--image-filter));
 	image-rendering: pixelated;
 	object-fit: contain;
+	transition: var(--theme-transition-filter);
 }
 
 .project-detail-company span {
@@ -50,6 +52,7 @@
 	color: var(--muted);
 	font-size: 0.86rem;
 	font-weight: 800;
+	transition: var(--theme-transition-color);
 }
 
 .project-detail .project-detail-meta {
@@ -86,6 +89,7 @@
 	background-color: var(--bg);
 	box-shadow: var(--shadow);
 	padding: var(--project-detail-panel-pad-top) var(--project-detail-panel-pad-x) var(--project-detail-panel-pad-bottom);
+	transition: var(--theme-transition-surface);
 }
 
 .project-detail-panel:has(> .project-detail:not([hidden]) > .project-awards-medal-rack) {
@@ -116,6 +120,7 @@
 	border-radius: 16px;
 	background: var(--surface-soft);
 	box-shadow: var(--shadow-soft);
+	transition: var(--theme-transition-background), var(--theme-transition-border), var(--theme-transition-shadow);
 }
 
 .project-detail-content {
@@ -147,6 +152,7 @@
 	font-weight: 900;
 	line-height: 1;
 	padding: 8px 10px;
+	transition: var(--theme-transition-background), var(--theme-transition-color);
 }
 
 .project-detail-kicker > span:nth-child(2) {
@@ -188,6 +194,7 @@
 .project-detail-description {
 	color: var(--muted);
 	font-weight: 700;
+	transition: var(--theme-transition-color);
 }
 
 .project-detail-description {
@@ -211,6 +218,7 @@
 	font-size: 0.82rem;
 	font-weight: 800;
 	line-height: 1.45;
+	transition: var(--theme-transition-color);
 }
 
 .project-detail-sections {
@@ -232,6 +240,7 @@
 	letter-spacing: 0.02em;
 	line-height: 1.2;
 	text-transform: uppercase;
+	transition: var(--theme-transition-color);
 }
 
 .project-detail-section ul {
@@ -252,6 +261,7 @@
 	font-weight: 800;
 	line-height: 1.15;
 	padding: 7px 10px;
+	transition: var(--theme-transition-background), var(--theme-transition-border), var(--theme-transition-color);
 }
 
 .project-detail-sections + .project-tag-list {
@@ -288,6 +298,7 @@
 	);
 	content: '';
 	pointer-events: none;
+	transition: var(--theme-transition-background);
 }
 
 .project-award-list {
@@ -331,6 +342,7 @@
 	filter: drop-shadow(0 4px 7px color-mix(in srgb, var(--accent) 16%, transparent));
 	image-rendering: pixelated;
 	object-fit: contain;
+	transition: var(--theme-transition-filter);
 }
 
 .project-award-medal-face,
@@ -355,6 +367,7 @@
 		inset 0 2px 4px color-mix(in srgb, #ffffff 52%, transparent),
 		inset 0 -3px 5px var(--award-medal-face-shadow),
 		0 1px 1px color-mix(in srgb, #000000 20%, transparent);
+	transition: var(--theme-transition-background), var(--theme-transition-border), var(--theme-transition-shadow);
 }
 
 .project-award-emblem {
@@ -367,6 +380,7 @@
 	filter: drop-shadow(0 1px 1px color-mix(in srgb, var(--heading) 18%, transparent));
 	mask: var(--project-award-emblem-src) center / contain no-repeat;
 	-webkit-mask: var(--project-award-emblem-src) center / contain no-repeat;
+	transition: var(--theme-transition-background), var(--theme-transition-filter);
 }
 
 .project-award-details {
@@ -392,10 +406,7 @@
 	text-align: left;
 	transform: translateY(6px);
 	transition:
-		background-color var(--theme-transition),
-		border-color var(--theme-transition),
-		box-shadow var(--theme-transition),
-		color var(--theme-transition),
+		var(--theme-transition-surface),
 		opacity var(--motion-tooltip),
 		transform var(--motion-tooltip);
 }
@@ -411,6 +422,7 @@
 	background: color-mix(in srgb, var(--accent) 5%, var(--bg));
 	content: '';
 	transform: rotate(45deg);
+	transition: var(--theme-transition-background), var(--theme-transition-border);
 }
 
 .project-awards-medal-rack:not([data-awards-initializing]) .project-award:hover .project-award-details,
@@ -424,6 +436,7 @@
 	font-size: 0.94rem;
 	line-height: 1.15;
 	overflow-wrap: anywhere;
+	transition: var(--theme-transition-color);
 }
 
 .project-award-details span,
@@ -436,6 +449,7 @@
 	font-size: 0.8rem;
 	font-weight: 900;
 	line-height: 1;
+	transition: var(--theme-transition-color);
 }
 
 .project-detail-actions {

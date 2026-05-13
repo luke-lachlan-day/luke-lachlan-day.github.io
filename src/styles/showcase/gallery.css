@@ -7,16 +7,19 @@
 	aspect-ratio: 16 / 9;
 	border-radius: inherit;
 	background: var(--surface-soft);
+	transition: var(--theme-transition-background);
 }
 
 .project-detail-gallery .project-image-frame-backdrop {
 	opacity: 0.42;
 	filter: var(--image-filter) blur(20px) saturate(0.78) contrast(0.92);
 	transform: scale(1.08);
+	transition: var(--theme-transition-filter);
 }
 
 .project-detail-gallery .project-image-frame::after {
 	background: color-mix(in srgb, var(--surface-soft) 34%, transparent);
+	transition: var(--theme-transition-background);
 }
 
 .project-detail-gallery-image {
@@ -56,6 +59,7 @@
 	cursor: pointer;
 	padding: 0 14px;
 	transform: none;
+	transition: var(--theme-transition-color);
 }
 
 .project-detail-gallery-control-prev {
@@ -87,9 +91,9 @@
 	opacity: 0;
 	transform: translateY(2px);
 	transition:
-		background-color var(--theme-transition),
-		border-color var(--theme-transition),
-		box-shadow var(--theme-transition),
+		var(--theme-transition-background),
+		var(--theme-transition-border),
+		var(--theme-transition-shadow),
 		opacity var(--motion-fast),
 		transform var(--motion-fast);
 }
@@ -138,9 +142,9 @@
 	padding: 0;
 	pointer-events: auto;
 	transition:
-		background-color var(--theme-transition),
-		border-color var(--theme-transition),
-		box-shadow var(--theme-transition),
+		var(--theme-transition-background),
+		var(--theme-transition-border),
+		var(--theme-transition-shadow),
 		transform var(--motion-fast);
 }
 

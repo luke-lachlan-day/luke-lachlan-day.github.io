@@ -26,7 +26,7 @@
 	opacity: 0;
 	pointer-events: none;
 	transform: translateX(calc(-50% + var(--footer-visual-offset-x)));
-	transition: opacity var(--theme-transition);
+	transition: var(--theme-transition-opacity);
 }
 
 .footer-visual::before {
@@ -69,7 +69,7 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
-	transition: opacity var(--theme-transition);
+	transition: var(--theme-transition-opacity);
 }
 
 .footer-heart::before {
@@ -119,9 +119,9 @@
 	background-color: color-mix(in srgb, var(--surface) 84%, var(--bg));
 	color: var(--accent);
 	transition:
-		background-color var(--theme-transition),
-		border-color var(--theme-transition),
-		color var(--theme-transition),
+		var(--theme-transition-background),
+		var(--theme-transition-border),
+		var(--theme-transition-color),
 		transform var(--motion-fast);
 }
 

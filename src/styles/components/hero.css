@@ -25,6 +25,7 @@
 	font-weight: 400;
 	letter-spacing: 0.04em;
 	text-transform: uppercase;
+	transition: var(--theme-transition-color);
 }
 
 h1,
@@ -34,6 +35,7 @@ h3 {
 	font-family: var(--font-display);
 	font-weight: 400;
 	letter-spacing: 0;
+	transition: var(--theme-transition-color);
 }
 
 h1 {
@@ -116,6 +118,7 @@ h3 {
 	font-size: 1.08rem;
 	font-weight: 700;
 	line-height: 1.72;
+	transition: var(--theme-transition-color);
 }
 
 .hero-intro-line {
@@ -162,9 +165,7 @@ h3 {
 	filter: var(--image-filter);
 	image-rendering: pixelated;
 	opacity: 0;
-	transition:
-		filter var(--theme-transition),
-		opacity var(--theme-transition);
+	transition: var(--theme-transition-filter), var(--theme-transition-opacity);
 }
 
 .theme-asset-light {

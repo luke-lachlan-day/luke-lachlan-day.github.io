@@ -34,6 +34,7 @@
 	-webkit-mask: var(--leaf-shape-mask);
 	mask: var(--leaf-shape-mask);
 	will-change: transform;
+	transition: var(--theme-transition-background), var(--theme-transition-filter);
 }
 
 .falling-leaf::after {
@@ -44,6 +45,7 @@
 	mix-blend-mode: luminosity;
 	opacity: var(--leaf-texture-opacity);
 	pointer-events: none;
+	transition: var(--theme-transition-opacity);
 }
 
 :root[data-theme='dark'] .falling-leaf {

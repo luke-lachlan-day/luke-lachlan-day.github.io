@@ -21,10 +21,7 @@
 	padding: 13px 25px 15px;
 	text-shadow: 0 1px 0 color-mix(in srgb, #000000 24%, transparent);
 	transition:
-		background-color var(--theme-transition),
-		border-color var(--theme-transition),
-		box-shadow var(--theme-transition),
-		color var(--theme-transition),
+		var(--theme-transition-surface),
 		transform var(--motion-button);
 }
 
@@ -80,7 +77,7 @@
 	line-height: 1;
 	white-space: nowrap;
 	transition:
-		color var(--theme-transition),
+		var(--theme-transition-color),
 		transform var(--motion-fast);
 }
 

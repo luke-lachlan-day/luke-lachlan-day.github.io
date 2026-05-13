@@ -3,7 +3,7 @@
 	top: 0;
 	z-index: 20;
 	background-color: var(--bg);
-	transition: background-color var(--theme-transition);
+	transition: var(--theme-transition-background);
 }
 
 .site-nav {
@@ -31,7 +31,7 @@
 	font-weight: 400;
 	line-height: 1;
 	white-space: nowrap;
-	transition: color var(--theme-transition);
+	transition: var(--theme-transition-color);
 }
 
 .brand img {
@@ -45,7 +45,7 @@
 	object-fit: contain;
 	object-position: center;
 	padding: 0px;
-	transition: filter var(--theme-transition);
+	transition: var(--theme-transition-filter);
 }
 
 .nav-cluster,
@@ -86,7 +86,7 @@
 	font-weight: 400;
 	line-height: 1;
 	transition:
-		color var(--theme-transition),
+		var(--theme-transition-color),
 		transform var(--motion-fast);
 }
 
@@ -103,7 +103,7 @@
 	opacity: 0;
 	transform: translateX(-50%);
 	pointer-events: none;
-	transition: background-color var(--theme-transition);
+	transition: var(--theme-transition-background);
 }
 
 .nav-links a:hover,
@@ -158,8 +158,8 @@
 	height: var(--toggle-height);
 	width: var(--toggle-width);
 	transition:
-		background-color var(--theme-transition),
-		box-shadow var(--theme-transition),
+		var(--theme-transition-background),
+		var(--theme-transition-shadow),
 		transform var(--motion-fast);
 }
 
@@ -171,7 +171,7 @@
 	background: transparent;
 	color: color-mix(in srgb, var(--accent-3) 76%, var(--text));
 	transition:
-		color var(--theme-transition),
+		var(--theme-transition-color),
 		transform var(--motion-fast);
 }
 
@@ -200,9 +200,9 @@
 	background-color: var(--surface);
 	box-shadow: 0 1px 4px var(--toggle-shadow-color);
 	transition:
-		background-color var(--theme-transition),
-		border-color var(--theme-transition),
-		box-shadow var(--theme-transition),
+		var(--theme-transition-background),
+		var(--theme-transition-border),
+		var(--theme-transition-shadow),
 		transform var(--theme-transition);
 }
 
@@ -245,8 +245,8 @@
 	color: var(--muted);
 	transform: scale(var(--theme-icon-scale));
 	transition:
-		color var(--theme-transition),
-		opacity var(--theme-transition),
+		var(--theme-transition-color),
+		var(--theme-transition-opacity),
 		transform var(--theme-transition);
 }
 

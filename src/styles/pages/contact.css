@@ -47,6 +47,7 @@
 	background-position: center;
 	filter: var(--image-filter);
 	image-rendering: pixelated;
+	transition: var(--theme-transition-filter);
 }
 
 .contact-grid {
@@ -70,10 +71,7 @@
 	text-decoration: none;
 	text-align: center;
 	transition:
-		background-color var(--theme-transition),
-		border-color var(--theme-transition),
-		box-shadow var(--theme-transition),
-		color var(--theme-transition),
+		var(--theme-transition-surface),
 		transform var(--motion-fast);
 }
 
@@ -87,11 +85,6 @@
 	background-color: var(--surface-hover);
 	box-shadow: var(--shadow-accent-soft);
 	transform: var(--hover-lift);
-	transition:
-		background-color var(--motion-fast),
-		border-color var(--motion-fast),
-		box-shadow var(--motion-fast),
-		transform var(--motion-fast);
 }
 
 .contact-card:hover .contact-card-link {
@@ -105,6 +98,7 @@
 	object-fit: contain;
 	filter: var(--image-filter);
 	image-rendering: pixelated;
+	transition: var(--theme-transition-filter);
 }
 
 .contact-card-title {
@@ -113,6 +107,7 @@
 	font-size: 1.08rem;
 	font-weight: 800;
 	line-height: 1.1;
+	transition: var(--theme-transition-color);
 }
 
 .contact-card-description {
@@ -121,6 +116,7 @@
 	font-size: 0.88rem;
 	font-weight: 700;
 	line-height: 1.32;
+	transition: var(--theme-transition-color);
 }
 
 .contact-card-link {
@@ -134,6 +130,7 @@
 	font-size: 0.92rem;
 	font-weight: 800;
 	overflow-wrap: anywhere;
+	transition: var(--theme-transition-color);
 }
 
 .contact-card-link::after {

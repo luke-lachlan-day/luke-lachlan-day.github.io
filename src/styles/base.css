@@ -4,9 +4,7 @@
 
 html {
 	background-color: var(--bg);
-	transition:
-		background-color var(--theme-transition),
-		color var(--theme-transition);
+	transition: var(--theme-transition-background), var(--theme-transition-color);
 }
 
 body {
@@ -20,9 +18,7 @@ body {
 	font-weight: 600;
 	line-height: 1.55;
 	overflow-x: clip;
-	transition:
-		background-color var(--theme-transition),
-		color var(--theme-transition);
+	transition: var(--theme-transition-background), var(--theme-transition-color);
 }
 
 a {

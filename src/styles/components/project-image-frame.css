@@ -4,6 +4,7 @@
 	display: block;
 	overflow: hidden;
 	background: var(--surface-soft);
+	transition: var(--theme-transition-background);
 }
 
 .project-image-frame-backdrop {
@@ -18,6 +19,7 @@
 	object-fit: cover;
 	transform: scale(1.04);
 	pointer-events: none;
+	transition: var(--theme-transition-filter);
 }
 
 .project-image-frame::after {
@@ -27,6 +29,7 @@
 	background: color-mix(in srgb, var(--surface-soft) 18%, transparent);
 	content: '';
 	pointer-events: none;
+	transition: var(--theme-transition-background);
 }
 
 .project-image-frame-img {
@@ -37,4 +40,5 @@
 	filter: var(--image-filter);
 	image-rendering: pixelated;
 	object-fit: contain;
+	transition: var(--theme-transition-filter);
 }
