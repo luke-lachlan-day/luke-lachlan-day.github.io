@@ -61,9 +61,10 @@
 	--nav-brush-mask: url('/assets/textures/nav-brush.webp') center / 100% 100% no-repeat;
 	--paint-texture: url('/assets/textures/paint-texture.webp');
 	--theme-transition: 0ms;
+	--theme-transition-text: 0ms;
 	--theme-transition-background: background-color var(--theme-transition);
 	--theme-transition-border: border-color var(--theme-transition);
-	--theme-transition-color: color var(--theme-transition);
+	--theme-transition-color: color var(--theme-transition-text);
 	--theme-transition-filter: filter var(--theme-transition);
 	--theme-transition-opacity: opacity var(--theme-transition);
 	--theme-transition-shadow: box-shadow var(--theme-transition);
@@ -75,6 +76,7 @@
 
 :root[data-theme-ready] {
 	--theme-transition: var(--motion-slow);
+	--theme-transition-text: var(--motion-medium);
 }
 
 :root[data-theme='light'] {
@@ -158,5 +160,6 @@
 @media (prefers-reduced-motion: reduce) {
 	:root[data-theme-ready] {
 		--theme-transition: 0ms;
+		--theme-transition-text: 0ms;
 	}
 }
