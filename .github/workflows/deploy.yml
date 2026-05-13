@@ -26,20 +26,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Check formatting
-        run: npm run format:check
+      - name: Install validation dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends imagemagick
+          npm exec playwright -- install --with-deps chromium
 
-      - name: Check Astro types and content
-        run: npm run check
-
-      - name: Install ImageMagick
-        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends imagemagick
-
-      - name: Check assets
-        run: npm run check:assets
-
-      - name: Build site
-        run: npm run build
+      - name: Validate
+        run: npm run validate
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v5

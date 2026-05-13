@@ -4,6 +4,15 @@
 
 This file is the repo-level source of truth for future agent work on this Astro portfolio site. Follow it before making code, content, asset, styling, or workflow changes. Use justified exceptions only when the surrounding code clearly requires them, and explain the exception in your handoff.
 
+## Source of Truth
+
+- Package manager: npm, with `package-lock.json` committed.
+- Runtime: Node.js `>=22.12.0`.
+- Canonical validation: `npm run validate`.
+- CI expectation: `.github/workflows/deploy.yml` installs validation dependencies, runs `npm run validate`, then deploys the generated `dist/` artifact to GitHub Pages.
+- Important folders: `src/` for source code, `src/data/` for typed content data, `src/scripts/` for browser behavior, `src/styles/` for CSS ownership, `public/assets/` for deployable optimized assets, and `assets-source/` for source/original asset files.
+- Asset rule: keep only optimized files needed by the site under `public/assets/`; keep oversized originals, working files, and provenance-preserving source assets under `assets-source/`.
+
 ## Project Shape
 
 - Astro 6 site.
@@ -23,13 +32,15 @@ This file is the repo-level source of truth for future agent work on this Astro 
 - `npm run check` runs Astro's type and content validation.
 - `npm run build` builds the site.
 - `npm run check:assets` verifies tracked image dimensions and project tag style coverage.
+- `npm run test:e2e` runs the Playwright smoke tests.
+- `npm run validate` runs the canonical local and CI validation path.
 - `npm run format` formats the repository with Prettier.
 - `npm run format:check` checks Prettier formatting without writing changes.
 - `npm run preview` previews the production build.
 
-After code, data, tooling, or documentation changes, run the smallest relevant command-line validation available. Default to `npm run check`, `npm run build`, and `npm run format:check` unless the user explicitly asks not to. Use `npm run format` only when intentionally applying formatting changes. Report any commands that were not run.
+After code, data, tooling, or documentation changes, run the smallest relevant command-line validation available. Default to `npm run validate` when the change can affect validation, CI, build output, scripts, assets, or user-facing behavior. Use narrower commands for documentation-only changes when appropriate, and use `npm run format` only when intentionally applying formatting changes. Report any commands that were not run.
 
-Do not run Playwright checks, browser validation, dev servers, previews, or other visual validation commands unless the user explicitly asks for them. For visual or UI changes, describe the recommended review at phone, tablet, and desktop/PC widths instead.
+Do not run ad hoc Playwright checks, browser validation, dev servers, previews, or other visual validation commands unless the user explicitly asks for them. `npm run validate` is the exception because it is the canonical CI path and includes the committed smoke suite. For visual or UI changes, describe the recommended review at phone, tablet, and desktop/PC widths instead.
 
 ## Playwright
 
@@ -42,7 +53,7 @@ Common commands:
 - `npm exec playwright -- test --ui`
 - `npm exec playwright -- codegen http://localhost:4321`
 
-The repo currently does not define a dedicated Playwright npm script or committed test suite, so use `npm exec playwright -- ...` unless scripts are added later. Treat these commands as reference only and do not run them unless the user explicitly asks.
+The repo defines `npm run test:e2e` for committed Playwright smoke tests. Treat direct Playwright commands as reference only and do not run them unless the user explicitly asks.
 
 ## Engineering Standards
 
@@ -166,7 +177,7 @@ When cleaning pixel-art cutouts with transparent backgrounds:
 - Keep filenames, dimensions, alpha channels, and consuming data/CSS unchanged unless the user asks otherwise.
 - Use high-zoom previews composited on dark and light backgrounds, because dark mode exposes matte artifacts most clearly.
 
-The contact icon cleanup used `sharp` for pixel-level RGBA inspection/editing and the repo-local ImageMagick executable for dark-background composites, zoom crops, dimension checks, and alpha checks. A safe workflow is: write patched candidates to `Temp/`, inspect zoom previews, then move approved WebPs over the existing assets.
+For pixel-level RGBA edits, use a focused image tool such as `sharp` only when ImageMagick operations are not precise enough. A safe workflow is: write patched candidates to `Temp/`, inspect zoom previews on dark and light backgrounds, then move approved optimized outputs over the existing assets.
 
 ## ImageMagick
 
