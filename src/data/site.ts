@@ -4,7 +4,8 @@ export const name = 'Luke Lachlan Day';
 
 export const location = 'Adelaide, Australia';
 
-export const mediaOwnershipNotice = 'Project visuals and brand assets remain property of their respective owners.';
+export const mediaOwnershipNotice =
+	'Project visuals and brand assets remain property of their respective owners.';
 
 export const effects = {
 	fallingLeaves: {

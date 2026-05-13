@@ -10,7 +10,14 @@ type Props = {
 	dataAttrs?: Record<string, string | number | undefined>;
 };
 
-const { labelledBy, previousLabel, nextLabel, activeIndex, class: className, dataAttrs = {} } = Astro.props as Props;
+const {
+	labelledBy,
+	previousLabel,
+	nextLabel,
+	activeIndex,
+	class: className,
+	dataAttrs = {},
+} = Astro.props as Props;
 const wheelClass = ['project-wheel', className].filter(Boolean).join(' ');
 const wheelAttrs = {
 	...dataAttrs,
@@ -21,11 +28,21 @@ const wheelAttrs = {
 ---
 
 <div {...wheelAttrs} class={wheelClass} role="group" aria-labelledby={labelledBy}>
-	<ArrowButton class="project-wheel-nav project-wheel-nav-prev" direction="prev" label={previousLabel} data-wheel-prev="" />
+	<ArrowButton
+		class="project-wheel-nav project-wheel-nav-prev"
+		direction="prev"
+		label={previousLabel}
+		data-wheel-prev=""
+	/>
 
 	<div class="project-wheel-viewport">
 		<slot />
 	</div>
 
-	<ArrowButton class="project-wheel-nav project-wheel-nav-next" direction="next" label={nextLabel} data-wheel-next="" />
+	<ArrowButton
+		class="project-wheel-nav project-wheel-nav-next"
+		direction="next"
+		label={nextLabel}
+		data-wheel-next=""
+	/>
 </div>

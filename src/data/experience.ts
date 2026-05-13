@@ -24,7 +24,10 @@ export const experience = {
 			sortDate: '2026-05-10',
 			summary:
 				'Created handcrafted and AI-assisted prototypes, mods, tools, videos, and web projects across solo development cycles, carrying ideas into playable prototypes or released works.',
-			highlights: ['Published Luke Lachlan Day website in 2026.', 'Many, many prototypes enjoyed by friends and family.'],
+			highlights: [
+				'Published Luke Lachlan Day website in 2026.',
+				'Many, many prototypes enjoyed by friends and family.',
+			],
 		},
 		{
 			id: 'daytime-devs',
@@ -130,7 +133,10 @@ export const experience = {
 					},
 				},
 			],
-			highlights: ['Dungeons and Dining Tables released as a playable demo on Steam.', 'Disney Game Night App released on mobile.'],
+			highlights: [
+				'Dungeons and Dining Tables released as a playable demo on Steam.',
+				'Disney Game Night App released on mobile.',
+			],
 		},
 		{
 			id: 'global-game-jam-super-raccoon',
@@ -202,7 +208,8 @@ export const experience = {
 			dateLabel: 'Mar 2021 - Mar 2022',
 			cardDateLabel: '2021 - 2022',
 			sortDate: '2022-03-01',
-			summary: 'Maintained high levels of customer service for high-profile clients during urgent IT support situations.',
+			summary:
+				'Maintained high levels of customer service for high-profile clients during urgent IT support situations.',
 			mediaNotice: mediaOwnershipNotice,
 			highlights: [],
 		},
@@ -263,7 +270,8 @@ export const experience = {
 			dateLabel: '2019',
 			cardDateLabel: '2019',
 			sortDate: '2019-01-01',
-			summary: 'Studied a Bachelor of Science at the University of Adelaide, majoring in Genetics, Microbiology, and Immunology.',
+			summary:
+				'Studied a Bachelor of Science at the University of Adelaide, majoring in Genetics, Microbiology, and Immunology.',
 			mediaNotice: mediaOwnershipNotice,
 			highlights: [],
 		},

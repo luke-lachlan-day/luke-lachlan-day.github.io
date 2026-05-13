@@ -180,7 +180,10 @@ export const setupFallingLeaves = () => {
 
 	const getLeafPosition = (leaf: LeafState, age: number) => {
 		// Depth increases from back to front: screenY = worldY - scrollY * scrollDepth.
-		const x = leaf.startX + Math.sin(age * leaf.swayRate + leaf.phase) * leaf.swayAmplitude + age * windSpeed * leaf.layer.windDepth;
+		const x =
+			leaf.startX +
+			Math.sin(age * leaf.swayRate + leaf.phase) * leaf.swayAmplitude +
+			age * windSpeed * leaf.layer.windDepth;
 		const worldY = leaf.startY + age * leaf.fallSpeed;
 		const screenY = worldY - scrollY * leaf.layer.scrollDepth;
 
@@ -198,7 +201,9 @@ export const setupFallingLeaves = () => {
 		const startRotation = random(0, 360);
 		const tilt = random(-12, 12);
 		const age = seedOnscreen ? random(0, Math.max(8, viewport.height / fallSpeed)) : 0;
-		const targetY = seedOnscreen ? random(-size, viewport.height + size) : random(-viewport.height * 0.24 - size, -size);
+		const targetY = seedOnscreen
+			? random(-size, viewport.height + size)
+			: random(-viewport.height * 0.24 - size, -size);
 		const targetX = seedOnscreen
 			? random(-size * 0.5, viewport.width - size * 0.2)
 			: random(-viewport.width * 0.18 - size, viewport.width * 0.9);
@@ -213,7 +218,8 @@ export const setupFallingLeaves = () => {
 			startRotation,
 			tilt,
 			bornAt: now - age * 1000,
-			startX: targetX - Math.sin(age * swayRate + phase) * swayAmplitude - age * windSpeed * leaf.layer.windDepth,
+			startX:
+				targetX - Math.sin(age * swayRate + phase) * swayAmplitude - age * windSpeed * leaf.layer.windDepth,
 			startY: targetY + scrollY * leaf.layer.scrollDepth - age * fallSpeed,
 		});
 

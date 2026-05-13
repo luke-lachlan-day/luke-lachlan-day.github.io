@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, '..');
-const magickPath = path.join(repoRoot, '.tools', 'ImageMagick', 'magick.exe');
+const windowsMagickPath = path.join(repoRoot, '.tools', 'ImageMagick', 'magick.exe');
 
 const readRepoFile = (relativePath) => readFileSync(path.join(repoRoot, relativePath), 'utf8');
 const toAssetPath = (src) => path.join(repoRoot, 'public', src.replace(/^\//, ''));
@@ -32,8 +32,63 @@ const parseImageDimensions = () => {
 	return dimensions;
 };
 
-const getActualDimensions = (assetPath) => {
-	const output = execFileSync(magickPath, ['identify', '-format', '%w %h', assetPath], { encoding: 'utf8' }).trim();
+const getMagickCandidates = () => [
+	...(process.env.MAGICK_PATH
+		? [
+				{
+					label: `MAGICK_PATH (${process.env.MAGICK_PATH})`,
+					command: process.env.MAGICK_PATH,
+					args: (assetPath) => ['identify', '-format', '%w %h', assetPath],
+				},
+			]
+		: []),
+	...(process.platform === 'win32' && existsSync(windowsMagickPath)
+		? [
+				{
+					label: path.relative(repoRoot, windowsMagickPath),
+					command: windowsMagickPath,
+					args: (assetPath) => ['identify', '-format', '%w %h', assetPath],
+				},
+			]
+		: []),
+	{
+		label: 'magick from PATH',
+		command: 'magick',
+		args: (assetPath) => ['identify', '-format', '%w %h', assetPath],
+	},
+	{
+		label: 'identify from PATH',
+		command: 'identify',
+		args: (assetPath) => ['-format', '%w %h', assetPath],
+	},
+];
+
+const resolveMagickCommand = () => {
+	const attempts = [];
+
+	for (const candidate of getMagickCandidates()) {
+		try {
+			execFileSync(candidate.command, ['-version'], { stdio: 'ignore' });
+			return { command: candidate, error: undefined };
+		} catch (error) {
+			attempts.push(candidate.label);
+		}
+	}
+
+	return {
+		command: undefined,
+		error: [
+			'ImageMagick was not available for asset checks.',
+			`Tried: ${attempts.join(', ')}.`,
+			'Install ImageMagick, add it to PATH, or set MAGICK_PATH to the ImageMagick executable.',
+		].join(' '),
+	};
+};
+
+const getActualDimensions = (assetPath, magickCommand) => {
+	const output = execFileSync(magickCommand.command, magickCommand.args(assetPath), {
+		encoding: 'utf8',
+	}).trim();
 	const [width, height] = output.split(/\s+/).map(Number);
 
 	return { width, height };
@@ -41,9 +96,10 @@ const getActualDimensions = (assetPath) => {
 
 const checkImageDimensions = () => {
 	const issues = [];
+	const { command: magickCommand, error } = resolveMagickCommand();
 
-	if (!existsSync(magickPath)) {
-		return [`ImageMagick was not found at ${path.relative(repoRoot, magickPath)}.`];
+	if (!magickCommand) {
+		return [error];
 	}
 
 	for (const [src, expected] of parseImageDimensions()) {
@@ -54,9 +110,11 @@ const checkImageDimensions = () => {
 			continue;
 		}
 
-		const actual = getActualDimensions(assetPath);
+		const actual = getActualDimensions(assetPath, magickCommand);
 		if (actual.width !== expected.width || actual.height !== expected.height) {
-			issues.push(`${src} is ${actual.width}x${actual.height}, expected ${expected.width}x${expected.height}.`);
+			issues.push(
+				`${src} is ${actual.width}x${actual.height}, expected ${expected.width}x${expected.height}.`
+			);
 		}
 	}
 
@@ -110,8 +168,13 @@ const checkProjectTagStyles = () => {
 		.sort();
 
 	return {
-		issues: missing.map((styleKey) => `Project tag style "${styleKey}" is used in project data but has no CSS selector.`),
-		warnings: unused.map((styleKey) => `Project tag style "${styleKey}" has a CSS selector but is not used by current project data.`),
+		issues: missing.map(
+			(styleKey) => `Project tag style "${styleKey}" is used in project data but has no CSS selector.`
+		),
+		warnings: unused.map(
+			(styleKey) =>
+				`Project tag style "${styleKey}" has a CSS selector but is not used by current project data.`
+		),
 	};
 };
 

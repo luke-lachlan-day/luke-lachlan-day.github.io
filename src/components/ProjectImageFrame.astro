@@ -40,7 +40,14 @@ const imageAttrs = {
 ---
 
 <span {...attrs} class={frameClass} style={frameStyle}>
-	<img class="project-image-frame-backdrop" src={src} alt="" loading={loading} {...imageAttrs} aria-hidden="true" />
+	<img
+		class="project-image-frame-backdrop"
+		src={src}
+		alt=""
+		loading={loading}
+		{...imageAttrs}
+		aria-hidden="true"
+	/>
 	<img class={foregroundClass} src={src} alt={alt} loading={loading} {...imageAttrs} />
 	<slot />
 </span>

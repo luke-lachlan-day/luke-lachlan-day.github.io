@@ -94,7 +94,8 @@ export const imageDimensionsBySrc = {
 	'/assets/icons/contact-youtube.webp': { width: 292, height: 198 },
 } satisfies Record<string, ImageDimensions>;
 
-const getSrc = (assetOrSrc: Pick<ImageAsset, 'src'> | string) => (typeof assetOrSrc === 'string' ? assetOrSrc : assetOrSrc.src);
+const getSrc = (assetOrSrc: Pick<ImageAsset, 'src'> | string) =>
+	typeof assetOrSrc === 'string' ? assetOrSrc : assetOrSrc.src;
 
 export const getImageDimensions = (assetOrSrc: Pick<ImageAsset, 'src'> | string) => {
 	const src = getSrc(assetOrSrc);
@@ -107,7 +108,9 @@ export const getImageAttrs = (
 ): ImageAttrs => {
 	if (typeof assetOrSrc !== 'string') {
 		const dimensions =
-			assetOrSrc.width && assetOrSrc.height ? { width: assetOrSrc.width, height: assetOrSrc.height } : getImageDimensions(assetOrSrc);
+			assetOrSrc.width && assetOrSrc.height
+				? { width: assetOrSrc.width, height: assetOrSrc.height }
+				: getImageDimensions(assetOrSrc);
 
 		return {
 			...dimensions,

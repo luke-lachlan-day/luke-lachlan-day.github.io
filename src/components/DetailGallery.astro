@@ -18,7 +18,13 @@ const galleryAttrs = {
 };
 ---
 
-<div {...galleryAttrs} class="project-detail-gallery" data-gallery-index="0" role="group" aria-label={galleryLabel}>
+<div
+	{...galleryAttrs}
+	class="project-detail-gallery"
+	data-gallery-index="0"
+	role="group"
+	aria-label={galleryLabel}
+>
 	{
 		pictures.map((picture, pictureIndex) => (
 			<ProjectImageFrame

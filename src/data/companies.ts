@@ -97,4 +97,5 @@ export const companies = [
 	},
 ] satisfies Company[];
 
-export const getCompanyById = (companyItems: readonly Company[]) => new Map(companyItems.map((company) => [company.id, company]));
+export const getCompanyById = (companyItems: readonly Company[]) =>
+	new Map(companyItems.map((company) => [company.id, company]));

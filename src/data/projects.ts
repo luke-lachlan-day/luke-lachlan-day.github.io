@@ -110,9 +110,15 @@ export const projects = {
 			releaseStage: 'contributed',
 			awards: [],
 			actions: [
-				{ type: 'website', href: 'https://disneygamenight.com/au-disney-game-night/bingo/app/app-downloader.php' },
+				{
+					type: 'website',
+					href: 'https://disneygamenight.com/au-disney-game-night/bingo/app/app-downloader.php',
+				},
 				{ type: 'appStore', href: 'https://apps.apple.com/au/app/disney-game-night/id6754215412' },
-				{ type: 'playStore', href: 'https://play.google.com/store/apps/details?id=com.CatalystGames.DisneyGameNight' },
+				{
+					type: 'playStore',
+					href: 'https://play.google.com/store/apps/details?id=com.CatalystGames.DisneyGameNight',
+				},
 			],
 		},
 		{
@@ -165,7 +171,9 @@ export const projects = {
 			yearLabel: '2026',
 			releaseStage: 'contributed',
 			awards: [],
-			actions: [{ type: 'website', label: 'Play on itch.io', href: 'https://logan-baker.itch.io/super-raccoon' }],
+			actions: [
+				{ type: 'website', label: 'Play on itch.io', href: 'https://logan-baker.itch.io/super-raccoon' },
+			],
 		},
 		{
 			id: 'beach-bums',
@@ -323,7 +331,13 @@ export const projects = {
 			yearLabel: '2010',
 			releaseStage: 'released',
 			awards: [],
-			actions: [{ type: 'website', label: 'Download Map', href: 'https://aom.heavengames.com/downloads/showfile.php?fileid=9475' }],
+			actions: [
+				{
+					type: 'website',
+					label: 'Download Map',
+					href: 'https://aom.heavengames.com/downloads/showfile.php?fileid=9475',
+				},
+			],
 		},
 		{
 			id: 'x-men-video',
@@ -335,7 +349,8 @@ export const projects = {
 					alt: 'YouTube thumbnail for the X-Men video.',
 				},
 			],
-			description: "A video project in Flash that I made in primary school and released on my brother's YouTube.",
+			description:
+				"A video project in Flash that I made in primary school and released on my brother's YouTube.",
 			projectTags: {
 				format: ['Video'],
 				platform: ['YouTube'],
@@ -399,7 +414,6 @@ export const projects = {
 				platform: [],
 				specialty: [],
 			},
-			sortDate: '',
 			dateLabel: '',
 			yearLabel: '',
 			releaseStage: 'shelved',
@@ -430,7 +444,6 @@ export const projects = {
 				platform: ['Mobile', 'PC'],
 				specialty: ['Autobattler', 'Card Game', 'Strategy'],
 			},
-			sortDate: '',
 			dateLabel: 'In Dev',
 			yearLabel: 'In Dev',
 			releaseStage: 'dev',

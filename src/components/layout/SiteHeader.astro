@@ -19,7 +19,11 @@ const navItems = [
 <header class="site-header">
 	<nav class="site-nav" aria-label="Primary navigation">
 		<a class="brand" href="/" data-current-page-link={currentPath === '/' ? 'true' : undefined}>
-			<img src="/assets/images/company-solo-clear.webp" alt="" {...getImageAttrs('/assets/images/company-solo-clear.webp')} />
+			<img
+				src="/assets/images/company-solo-clear.webp"
+				alt=""
+				{...getImageAttrs('/assets/images/company-solo-clear.webp')}
+			/>
 			<span>Luke Lachlan Day</span>
 		</a>
 		<div class="nav-cluster">
@@ -29,7 +33,11 @@ const navItems = [
 						const isActive = item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href);
 
 						return (
-							<a href={item.href} aria-current={isActive ? 'page' : undefined} data-current-page-link={isActive ? 'true' : undefined}>
+							<a
+								href={item.href}
+								aria-current={isActive ? 'page' : undefined}
+								data-current-page-link={isActive ? 'true' : undefined}
+							>
 								{item.label}
 							</a>
 						);

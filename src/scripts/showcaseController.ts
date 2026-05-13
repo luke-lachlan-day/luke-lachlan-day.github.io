@@ -5,7 +5,12 @@ export type ShowcaseControllerOptions = WheelControllerOptions & {
 	gallerySelector: string;
 };
 
-export const setupShowcaseControllers = ({ gallerySelector, detailSelector, changeEvent, ...wheelOptions }: ShowcaseControllerOptions) => {
+export const setupShowcaseControllers = ({
+	gallerySelector,
+	detailSelector,
+	changeEvent,
+	...wheelOptions
+}: ShowcaseControllerOptions) => {
 	setupWheelControllers({
 		...wheelOptions,
 		detailSelector,

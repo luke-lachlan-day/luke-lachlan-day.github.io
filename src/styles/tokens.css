@@ -68,7 +68,8 @@
 	--theme-transition-opacity: opacity var(--theme-transition);
 	--theme-transition-shadow: box-shadow var(--theme-transition);
 	--theme-transition-surface:
-		var(--theme-transition-background), var(--theme-transition-border), var(--theme-transition-shadow), var(--theme-transition-color);
+		var(--theme-transition-background), var(--theme-transition-border), var(--theme-transition-shadow),
+		var(--theme-transition-color);
 	color-scheme: light;
 	font-family: var(--font-body);
 }

@@ -96,7 +96,13 @@ const getWheelElements = (wheel: HTMLElement, options: WheelControllerOptions): 
 	};
 };
 
-const updateCardState = (card: HTMLElement, activeIndex: number, total: number, slotRanges: WheelSlotRanges, indexAttr: string) => {
+const updateCardState = (
+	card: HTMLElement,
+	activeIndex: number,
+	total: number,
+	slotRanges: WheelSlotRanges,
+	indexAttr: string
+) => {
 	const itemIndex = getNumberAttr(card, indexAttr);
 	const slot = getShortestWheelOffset(itemIndex, activeIndex, total);
 	const slotDistance = Math.abs(slot);

@@ -1,5 +1,6 @@
 import { getCompanyById } from './companies';
-import type { Company, ExperienceItem, ImageAsset } from './types';
+import { getProjectActionLinks, type ProjectActionLink } from './projectActions';
+import type { Company, ExperienceItem, ImageAsset, ProjectAction } from './types';
 
 export type ExperienceShowcaseItem = {
 	item: ExperienceItem;
@@ -8,6 +9,8 @@ export type ExperienceShowcaseItem = {
 	pictures: ImageAsset[];
 	media: ImageAsset | undefined;
 	fallbackLabel: string;
+	hasHighlights: boolean;
+	companyActionLinks: ProjectActionLink[];
 };
 
 type ExperienceShowcaseInput = {
@@ -15,7 +18,10 @@ type ExperienceShowcaseInput = {
 	companies: readonly Company[];
 };
 
-export const getExperienceShowcaseItems = ({ items, companies }: ExperienceShowcaseInput): ExperienceShowcaseItem[] => {
+export const getExperienceShowcaseItems = ({
+	items,
+	companies,
+}: ExperienceShowcaseInput): ExperienceShowcaseItem[] => {
 	const companyById = getCompanyById(companies);
 
 	return [...items]
@@ -24,6 +30,10 @@ export const getExperienceShowcaseItems = ({ items, companies }: ExperienceShowc
 			const company = item.companyId ? companyById.get(item.companyId) : undefined;
 			const icon = item.icon ?? company?.icon;
 			const pictures = item.pictures ?? [];
+			const companyActions: ProjectAction[] = [
+				...(company?.website ? [{ type: 'website' as const, href: company.website }] : []),
+				...(company?.actions ?? []),
+			];
 
 			return {
 				item,
@@ -32,6 +42,8 @@ export const getExperienceShowcaseItems = ({ items, companies }: ExperienceShowc
 				pictures,
 				media: pictures[0] ?? icon,
 				fallbackLabel: item.company.slice(0, 1),
+				hasHighlights: item.highlights.length > 0,
+				companyActionLinks: getProjectActionLinks(companyActions),
 			};
 		});
 };

@@ -88,7 +88,8 @@
 	border-radius: 18px;
 	background-color: var(--bg);
 	box-shadow: var(--shadow);
-	padding: var(--project-detail-panel-pad-top) var(--project-detail-panel-pad-x) var(--project-detail-panel-pad-bottom);
+	padding: var(--project-detail-panel-pad-top) var(--project-detail-panel-pad-x)
+		var(--project-detail-panel-pad-bottom);
 	transition: var(--theme-transition-surface);
 }
 
@@ -120,7 +121,8 @@
 	border-radius: 16px;
 	background-color: var(--surface-soft);
 	box-shadow: var(--shadow-soft);
-	transition: var(--theme-transition-background), var(--theme-transition-border), var(--theme-transition-shadow);
+	transition:
+		var(--theme-transition-background), var(--theme-transition-border), var(--theme-transition-shadow);
 }
 
 .project-detail-content {
@@ -261,7 +263,8 @@
 	font-weight: 800;
 	line-height: 1.15;
 	padding: 7px 10px;
-	transition: var(--theme-transition-background), var(--theme-transition-border), var(--theme-transition-color);
+	transition:
+		var(--theme-transition-background), var(--theme-transition-border), var(--theme-transition-color);
 }
 
 .project-detail-sections + .project-tag-list {
@@ -363,12 +366,17 @@
 	background-color: var(--award-medal-face);
 	background-image:
 		radial-gradient(circle at 32% 26%, color-mix(in srgb, #ffffff 54%, transparent) 0 17%, transparent 18%),
-		radial-gradient(circle at 70% 78%, color-mix(in srgb, var(--award-medal-face-border) 14%, transparent) 0 22%, transparent 23%);
+		radial-gradient(
+			circle at 70% 78%,
+			color-mix(in srgb, var(--award-medal-face-border) 14%, transparent) 0 22%,
+			transparent 23%
+		);
 	box-shadow:
 		inset 0 2px 4px color-mix(in srgb, #ffffff 52%, transparent),
 		inset 0 -3px 5px var(--award-medal-face-shadow),
 		0 1px 1px color-mix(in srgb, #000000 20%, transparent);
-	transition: var(--theme-transition-background), var(--theme-transition-border), var(--theme-transition-shadow);
+	transition:
+		var(--theme-transition-background), var(--theme-transition-border), var(--theme-transition-shadow);
 }
 
 .project-award-emblem {
@@ -427,7 +435,9 @@
 }
 
 .project-awards-medal-rack:not([data-awards-initializing]) .project-award:hover .project-award-details,
-.project-awards-medal-rack:not([data-awards-initializing]) .project-award:focus-visible .project-award-details {
+.project-awards-medal-rack:not([data-awards-initializing])
+	.project-award:focus-visible
+	.project-award-details {
 	opacity: 1;
 	transform: translateY(0);
 }

@@ -18,14 +18,27 @@ type Props = {
 	class?: string;
 };
 
-const { title, titleId, titleLines, titleAriaLabel, subtitle, summary = [], actions = [], class: className } = Astro.props as Props;
+const {
+	title,
+	titleId,
+	titleLines,
+	titleAriaLabel,
+	subtitle,
+	summary = [],
+	actions = [],
+	class: className,
+} = Astro.props as Props;
 const headingLines = titleLines ?? [title];
 const headingAttrs = titleAriaLabel ? { 'aria-label': titleAriaLabel } : {};
 ---
 
 <div class={className}>
 	<h1 id={titleId} class="hero-title" {...headingAttrs}>
-		{headingLines.map((line, index) => <span class:list={['hero-title-line', index > 0 && 'hero-title-line-nowrap']}>{line}</span>)}
+		{
+			headingLines.map((line, index) => (
+				<span class:list={['hero-title-line', index > 0 && 'hero-title-line-nowrap']}>{line}</span>
+			))
+		}
 	</h1>
 	{subtitle && <p class="hero-role">{subtitle}</p>}
 	{
@@ -41,7 +54,12 @@ const headingAttrs = titleAriaLabel ? { 'aria-label': titleAriaLabel } : {};
 		actions.length > 0 && (
 			<div class="hero-actions">
 				{actions.map((action, index) => (
-					<ButtonLink href={action.href} label={action.label} icon={action.icon} variant={index === 0 ? 'primary' : 'secondary'} />
+					<ButtonLink
+						href={action.href}
+						label={action.label}
+						icon={action.icon}
+						variant={index === 0 ? 'primary' : 'secondary'}
+					/>
 				))}
 			</div>
 		)

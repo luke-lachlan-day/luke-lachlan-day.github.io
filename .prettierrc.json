@@ -2,7 +2,7 @@
   "plugins": ["prettier-plugin-astro"],
   "singleQuote": true,
   "trailingComma": "es5",
-  "printWidth": 140,
+  "printWidth": 110,
   "overrides": [
     {
       "files": ["*.astro", "*.css", "*.mjs", "*.ts"],

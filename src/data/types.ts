@@ -101,7 +101,14 @@ export type ProjectTags = {
 	tech?: string[];
 };
 
-export type ProjectActionType = 'website' | 'steam' | 'appStore' | 'playStore' | 'youtube' | 'source' | 'discord';
+export type ProjectActionType =
+	| 'website'
+	| 'steam'
+	| 'appStore'
+	| 'playStore'
+	| 'youtube'
+	| 'source'
+	| 'discord';
 
 export type ProjectAction = {
 	type: ProjectActionType;
@@ -123,10 +130,11 @@ export type Project = {
 	mediaNotice?: string;
 	detailSections?: ProjectDetailSection[];
 	projectTags: ProjectTags;
-	sortDate: string;
+	sortDate?: string;
 	dateLabel: string;
 	yearLabel: string;
 	releaseStage: ProjectReleaseStage;
+	showcasePriority?: number;
 	awards: ProjectAward[];
 	actions?: ProjectAction[];
 };

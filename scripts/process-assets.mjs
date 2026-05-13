@@ -247,7 +247,14 @@ for (const asset of assets) {
 		args.push('-trim', '+repage');
 	}
 
-	args.push('-resize', `${asset.maxSize}x${asset.maxSize}>`, '-strip', '-quality', String(asset.quality ?? 82), outputPath);
+	args.push(
+		'-resize',
+		`${asset.maxSize}x${asset.maxSize}>`,
+		'-strip',
+		'-quality',
+		String(asset.quality ?? 82),
+		outputPath
+	);
 
 	execFileSync(magickPath, args);
 

@@ -35,7 +35,10 @@ const getGalleryIndex = (gallery: HTMLElement) => Number(gallery.getAttribute('d
 const isElementHidden = (element: HTMLElement | null) => Boolean(element?.hidden);
 const wrapIndex = (index: number, total: number) => ((index % total) + total) % total;
 
-const getDetailGalleryElements = (gallery: HTMLElement, detailItemSelector: string): DetailGalleryElements => ({
+const getDetailGalleryElements = (
+	gallery: HTMLElement,
+	detailItemSelector: string
+): DetailGalleryElements => ({
 	detail: gallery.closest<HTMLElement>(detailItemSelector),
 	images: Array.from(gallery.querySelectorAll<HTMLElement>('[data-gallery-image]')),
 	controls: Array.from(gallery.querySelectorAll<HTMLElement>('[data-gallery-step]')),
@@ -57,7 +60,12 @@ const clearExitingImageStates = (images: HTMLElement[]) => {
 	});
 };
 
-const setImageState = (image: HTMLElement, activeIndex: number, previousIndex: number, prefersReducedMotion: boolean) => {
+const setImageState = (
+	image: HTMLElement,
+	activeIndex: number,
+	previousIndex: number,
+	prefersReducedMotion: boolean
+) => {
 	const imageIndex = getNumberAttr(image, 'data-gallery-image-index');
 	const isActive = imageIndex === activeIndex;
 	const isExiting = !prefersReducedMotion && previousIndex !== activeIndex && imageIndex === previousIndex;
@@ -87,7 +95,11 @@ const setDotState = (dot: HTMLElement, activeIndex: number) => {
 const isAutoplayPaused = (state: DetailGalleryPauseState) =>
 	state.isHovered || state.hasFocus || state.prefersReducedMotion || state.isDetailHidden;
 
-const setupDetailGallery = (gallery: HTMLElement, options: DetailGalleryOptions, reducedMotionQuery: MediaQueryList) => {
+const setupDetailGallery = (
+	gallery: HTMLElement,
+	options: DetailGalleryOptions,
+	reducedMotionQuery: MediaQueryList
+) => {
 	if (gallery.dataset.detailGalleryReady === 'true') {
 		return;
 	}

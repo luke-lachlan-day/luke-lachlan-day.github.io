@@ -19,8 +19,16 @@ const criticalFontPreloads = [
 	<meta charset="utf-8" />
 	<link rel="icon" type="image/webp" href="/assets/images/company-solo-clear.webp?v=20260510" />
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=20260510" />
-	{criticalImagePreloads.map((asset) => <link rel="preload" as="image" type={asset.type} href={asset.href} />)}
-	{criticalFontPreloads.map((asset) => <link rel="preload" as="font" type={asset.type} href={asset.href} crossorigin />)}
+	{
+		criticalImagePreloads.map((asset) => (
+			<link rel="preload" as="image" type={asset.type} href={asset.href} />
+		))
+	}
+	{
+		criticalFontPreloads.map((asset) => (
+			<link rel="preload" as="font" type={asset.type} href={asset.href} crossorigin />
+		))
+	}
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content={description} />
 	<meta name="generator" content={generator} />

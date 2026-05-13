@@ -56,8 +56,18 @@ const featuredProjects = home.featuredProjectIds
 
 					return (
 						<article class:list={['project-card-shell', hasAwards && 'project-card-shell-awarded']}>
-							{hasAwards && <AwardMedals awards={project.awards} ariaLabel={`${project.product} awards`} class="project-card-awards" />}
-							<a class="project-card" href={`${projects.href}#${project.id}`} aria-label={`View ${project.product} in projects`}>
+							{hasAwards && (
+								<AwardMedals
+									awards={project.awards}
+									ariaLabel={`${project.product} awards`}
+									class="project-card-awards"
+								/>
+							)}
+							<a
+								class="project-card"
+								href={`${projects.href}#${project.id}`}
+								aria-label={`View ${project.product} in projects`}
+							>
 								<ProjectImageFrame class="project-image" src={picture.src} alt={picture.alt} loading="lazy">
 									{company && <CompanyBadge icon={company.icon} class="project-card-company-badge" />}
 								</ProjectImageFrame>

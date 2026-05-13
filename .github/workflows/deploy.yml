@@ -17,12 +17,34 @@ jobs:
       - name: Checkout your repository
         uses: actions/checkout@v6
 
-      - name: Install, build, and upload your site
-        uses: withastro/action@v6
+      - name: Setup Node
+        uses: actions/setup-node@v6
         with:
           node-version: 22
-          package-manager: npm
-          build-cmd: npm run build
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check formatting
+        run: npm run format:check
+
+      - name: Check Astro types and content
+        run: npm run check
+
+      - name: Install ImageMagick
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends imagemagick
+
+      - name: Check assets
+        run: npm run check:assets
+
+      - name: Build site
+        run: npm run build
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
 
   deploy:
     needs: build
