@@ -9,10 +9,13 @@
     "dev": "astro dev",
     "check": "astro check",
     "check:assets": "node scripts/check-assets.mjs",
+    "audit:assets": "node scripts/check-assets.mjs",
     "process:assets": "node scripts/process-assets.mjs",
     "build": "astro build",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "test:e2e": "playwright test",
+    "validate": "npm run check && npm run build && npm run format:check && npm run audit:assets && npm run test:e2e",
     "preview": "astro preview",
     "astro": "astro"
   },

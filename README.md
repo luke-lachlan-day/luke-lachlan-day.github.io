@@ -2,7 +2,7 @@
 
 Personal portfolio site for Luke Lachlan Day, built to share games, tools, work experience, and contact links with a playful pixel-art presentation.
 
-Live site: [luke-lachlan-day.github.io](https://luke-lachlan-day.github.io/)
+Live site: [lukelachlanday.dev](https://lukelachlanday.dev/)
 
 ## What's Inside
 

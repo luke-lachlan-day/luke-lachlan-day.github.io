@@ -32,7 +32,7 @@ export const projects = {
 			releaseStage: 'released',
 			awards: [],
 			actions: [
-				{ type: 'website', href: 'https://luke-lachlan-day.github.io/' },
+				{ type: 'website', href: 'https://lukelachlanday.dev/' },
 				{ type: 'source', href: 'https://github.com/luke-lachlan-day/luke-lachlan-day.github.io' },
 			],
 		},
@@ -437,62 +437,5 @@ export const projects = {
 			awards: [],
 			actions: [{ type: 'discord', href: 'https://discord.com/invite/R79ShQzvBX' }],
 		},
-
-		// Commented-out project drafts
-		/*
-		{
-			id: 'three-hearted-octopus',
-			companyId: 'solo',
-			product: 'Three Hearted Octopus',
-			pictures: [],
-			description:
-				'An educational science video explaining why octopuses have three hearts and how their oxygen transport differs from humans.',
-			projectTags: {
-				format: ['Video'],
-				platform: ['YouTube'],
-				specialty: ['Educational', 'Science Communication', 'Biology'],
-			},
-			sortDate: '2026-05-09',
-			dateLabel: '2026',
-			yearLabel: '2026',
-			releaseStage: 'dev',
-			awards: [],
-		},
-		{
-			id: 'awbw-opening-analyzer',
-			companyId: 'solo',
-			product: 'AWBW Opening Analyzer',
-			pictures: [],
-			description: 'Analyze Advance Wars By Web openings with win rates, data views, and strategy insights.',
-			projectTags: {
-				format: ['Browser Extension'],
-				platform: ['Web'],
-				specialty: ['Strategy', 'Data Analysis'],
-				tech: ['TypeScript'],
-			},
-			sortDate: '2026-04-01',
-			dateLabel: '2026',
-			yearLabel: '2026',
-			releaseStage: 'dev',
-			awards: [],
-		},
-		{
-			id: 'coop-climbing',
-			companyId: 'daytime-devs',
-			product: 'Co-op Cat Temple Escape',
-			pictures: [],
-			description: 'A co-op climbing game built around communication, trust, and smart movement.',
-			projectTags: {
-				format: ['Game', 'Prototype'],
-				platform: ['PC'],
-				specialty: ['Co-op', 'Communication', 'Physics'],
-			},
-			sortDate: '2026-03-01',
-			dateLabel: '2026',
-			yearLabel: '2026',
-			releaseStage: 'dev',
-			awards: [],
-		},
-		*/
 	] satisfies Project[],
 } as const;

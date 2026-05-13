@@ -3,3 +3,6 @@ dist
 node_modules
 .tools
 Temp
+test-results
+playwright-report
+blob-report
