@@ -3,7 +3,6 @@
 	gap: 22px;
 }
 
-.surface-card,
 .project-card {
 	border: 1px solid var(--border);
 	border-radius: var(--radius);
@@ -91,35 +90,6 @@
 	font-weight: 700;
 	line-height: 1.42;
 	transition: var(--theme-transition-color);
-}
-
-.tool-list {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px;
-	margin-top: 6px;
-}
-
-.tool-list span {
-	border-radius: 7px;
-	background-color: var(--project-status-released-bg);
-	color: var(--project-status-released-text);
-	font-family: var(--font-body);
-	font-size: 0.82rem;
-	font-weight: 800;
-	line-height: 1;
-	padding: 7px 11px;
-	transition: var(--theme-transition-background), var(--theme-transition-color);
-}
-
-.tool-list span:nth-child(2n) {
-	background-color: var(--project-status-dev-bg);
-	color: var(--project-status-dev-text);
-}
-
-.tool-list span:nth-child(3n) {
-	background-color: var(--project-status-contributed-bg);
-	color: var(--project-status-contributed-text);
 }
 
 @media (min-width: 720px) {

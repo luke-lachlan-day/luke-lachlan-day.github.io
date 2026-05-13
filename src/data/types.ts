@@ -26,9 +26,7 @@ export type ExperienceItem = {
 	mediaNotice?: string;
 	dateLabel: string;
 	cardDateLabel: string;
-	dateHeading?: string;
 	sortDate: string;
-	context: string;
 	summary: string;
 	recognition?: ExperienceRecognition[];
 	highlights: string[];
@@ -103,16 +101,7 @@ export type ProjectTags = {
 	tech?: string[];
 };
 
-export type ProjectActionType =
-	| 'website'
-	| 'webApp'
-	| 'browserExtension'
-	| 'steam'
-	| 'appStore'
-	| 'playStore'
-	| 'youtube'
-	| 'source'
-	| 'discord';
+export type ProjectActionType = 'website' | 'steam' | 'appStore' | 'playStore' | 'youtube' | 'source' | 'discord';
 
 export type ProjectAction = {
 	type: ProjectActionType;

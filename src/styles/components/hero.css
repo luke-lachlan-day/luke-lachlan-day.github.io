@@ -17,17 +17,6 @@
 	max-width: 520px;
 }
 
-.eyebrow,
-.meta-label {
-	color: var(--accent);
-	font-family: var(--font-accent);
-	font-size: 0.93rem;
-	font-weight: 400;
-	letter-spacing: 0.04em;
-	text-transform: uppercase;
-	transition: var(--theme-transition-color);
-}
-
 h1,
 h2,
 h3 {

@@ -7,10 +7,6 @@ export const experience = {
 	hero: {
 		title: 'Experience',
 	} satisfies HeroContent,
-	history: {
-		eyebrow: 'Experience',
-		title: 'Work history',
-	},
 	items: [
 		{
 			id: 'solo-dev',
@@ -26,7 +22,6 @@ export const experience = {
 			dateLabel: 'Present',
 			cardDateLabel: 'Present',
 			sortDate: '2026-05-10',
-			context: 'Independent games, tools, and web projects',
 			summary:
 				'Created handcrafted and AI-assisted prototypes, mods, tools, videos, and web projects across solo development cycles, carrying ideas into playable prototypes or released works.',
 			highlights: ['Published Luke Lachlan Day website in 2026.', 'Many, many prototypes enjoyed by friends and family.'],
@@ -61,7 +56,6 @@ export const experience = {
 			dateLabel: 'Mar 2022 - Present',
 			cardDateLabel: '2022 - Present',
 			sortDate: '2026-05-01',
-			context: 'Independent studio',
 			summary:
 				'Co-founded Daytime Devs with my two brothers and self-published our first title Super BAWK BAWK Chicken across Steam, Google Play, and the App Store.',
 			recognition: [
@@ -94,7 +88,6 @@ export const experience = {
 			dateLabel: 'Apr 2026 - Present',
 			cardDateLabel: '2026 - Present',
 			sortDate: '2026-04-01',
-			context: 'Science outreach and STEM education',
 			summary:
 				'Recently joined the team at SciWorld, supporting STEM outreach for schools, parties, and public events across South Australia.',
 			mediaNotice: mediaOwnershipNotice,
@@ -122,7 +115,6 @@ export const experience = {
 			dateLabel: 'Jan 2025 - Mar 2026',
 			cardDateLabel: '2025 - 2026',
 			sortDate: '2026-03-01',
-			context: 'Client and studio projects',
 			summary:
 				'Worked across original IP including Dungeons and Dining Tables, client projects such as Think Digital VR training experiences, and the Firebase-authenticated Disney Game Night mobile app. Contributed beyond development through publisher pitching, school-based game development teaching, and team training sessions.',
 			mediaNotice: mediaOwnershipNotice,
@@ -154,7 +146,6 @@ export const experience = {
 			dateLabel: 'Jan 2026',
 			cardDateLabel: '2026',
 			sortDate: '2026-01-31',
-			context: 'Super Raccoon team project',
 			summary: 'Joined a Global Game Jam team as a programmer to release Super Raccoon, a Unity puzzle game.',
 			mediaNotice: mediaOwnershipNotice,
 			highlights: [],
@@ -173,7 +164,6 @@ export const experience = {
 			dateLabel: 'Jun 2024 - Oct 2024',
 			cardDateLabel: '2024',
 			sortDate: '2024-10-01',
-			context: 'Contract vertical slice',
 			summary:
 				'Worked with Coastal Derrieres in a small team of four to turn the Beach Bums design document into a playable vertical slice for funding opportunities.',
 			mediaNotice: mediaOwnershipNotice,
@@ -193,7 +183,6 @@ export const experience = {
 			dateLabel: 'Feb 2014 - Nov 2023',
 			cardDateLabel: '2014 - 2023',
 			sortDate: '2023-11-01',
-			context: 'Mathematics tutoring',
 			summary:
 				'Taught mathematics to high school students from years 8 to 12, adapting explanations to different confidence levels and learning styles.',
 			highlights: [],
@@ -213,7 +202,6 @@ export const experience = {
 			dateLabel: 'Mar 2021 - Mar 2022',
 			cardDateLabel: '2021 - 2022',
 			sortDate: '2022-03-01',
-			context: 'IT customer service',
 			summary: 'Maintained high levels of customer service for high-profile clients during urgent IT support situations.',
 			mediaNotice: mediaOwnershipNotice,
 			highlights: [],
@@ -244,7 +232,6 @@ export const experience = {
 			dateLabel: 'Jul 2016 - Jul 2021',
 			cardDateLabel: '2016 - 2021',
 			sortDate: '2021-07-01',
-			context: 'Army Reserve communications',
 			summary:
 				'Served as an Information Systems Technician in the Australian Army Reserve across 144 Signal Squadron in South Australia and 108 Signal Squadron in Victoria.',
 			mediaNotice: mediaOwnershipNotice,
@@ -275,9 +262,7 @@ export const experience = {
 			],
 			dateLabel: '2019',
 			cardDateLabel: '2019',
-			dateHeading: 'Degree',
 			sortDate: '2019-01-01',
-			context: 'Genetics, Microbiology and Immunology',
 			summary: 'Studied a Bachelor of Science at the University of Adelaide, majoring in Genetics, Microbiology, and Immunology.',
 			mediaNotice: mediaOwnershipNotice,
 			highlights: [],
@@ -296,7 +281,6 @@ export const experience = {
 			dateLabel: '2014 - 2018',
 			cardDateLabel: '2014 - 2018',
 			sortDate: '2018-07-01',
-			context: 'Volunteer festival operations',
 			summary:
 				"Volunteered for five years at AVCon, supporting Adelaide's volunteer-run anime, gaming, and pop culture festival through event operations and attendee-facing support.",
 			mediaNotice: mediaOwnershipNotice,
@@ -320,7 +304,6 @@ export const experience = {
 			dateLabel: '2011 - 2012',
 			cardDateLabel: '2011 - 2012',
 			sortDate: '2012-03-18',
-			context: 'Under 18 sprinting and Junior Athletics Championships',
 			summary:
 				'It would not be right to build a portfolio without reliving my Under 18 sprinting glory, mostly because my partner has already heard about it enough times that the website may as well share the burden.',
 			mediaNotice: mediaOwnershipNotice,

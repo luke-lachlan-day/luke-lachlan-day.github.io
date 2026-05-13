@@ -18,14 +18,6 @@ export const projectActionMeta = {
 		label: 'Website',
 		icon: '/assets/icons/web.svg',
 	},
-	webApp: {
-		label: 'Open Web App',
-		icon: '/assets/icons/web.svg',
-	},
-	browserExtension: {
-		label: 'Extension Page',
-		icon: '/assets/icons/web.svg',
-	},
 	steam: {
 		label: 'Steam Page',
 		icon: '/assets/icons/steam.svg',
@@ -52,16 +44,7 @@ export const projectActionMeta = {
 	},
 } satisfies Record<ProjectActionType, ProjectActionMeta>;
 
-const projectActionPrimaryPriority = [
-	'youtube',
-	'website',
-	'webApp',
-	'steam',
-	'browserExtension',
-	'source',
-	'appStore',
-	'playStore',
-] satisfies ProjectActionType[];
+const projectActionPrimaryPriority = ['youtube', 'website', 'steam', 'source', 'appStore', 'playStore'] satisfies ProjectActionType[];
 
 const getPrimaryActionIndex = (actions: ProjectAction[]) => {
 	for (const actionType of projectActionPrimaryPriority) {
