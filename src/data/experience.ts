@@ -334,24 +334,5 @@ export const experience = {
 				'Coached by the legendary Debbie Meich at Western Athletics Club.',
 			],
 		},
-
-		// Commented-out experience drafts
-		/*
-		{
-			id: 'japanese-language-student',
-			role: 'Language Student',
-			company: 'WEA / Japaneasy',
-			pictures: [],
-			dateLabel: '2014 - 2016, 2022',
-			cardDateLabel: '2014 - 2022',
-			sortDate: '2022-01-01',
-			context: 'Japanese language study',
-			summary: 'Completed Japanese language courses through WEA and Japaneasy, continuing a long-running interest in language learning.',
-			highlights: [
-				'Completed WEA Japanese study from 2014 to 2016 with my brother.',
-				'Completed Japaneasy Japanese study in 2022 with my family, including my brother, sister-in-law, and partner.',
-			],
-		},
-		*/
 	] satisfies ExperienceItem[],
 } as const;
