@@ -12,7 +12,6 @@ export type ImageAttrs = Partial<ImageDimensions> & {
 };
 
 export const imageDimensionsBySrc = {
-	'/assets/images/catalyst-think-digital-vr-cattle-vr.webp': { width: 960, height: 1280 },
 	'/assets/images/company-athletics-south-australia.webp': { width: 225, height: 225 },
 	'/assets/images/company-australian-army.webp': { width: 256, height: 184 },
 	'/assets/images/company-catalyst-games.webp': { width: 182, height: 217 },
@@ -29,7 +28,7 @@ export const imageDimensionsBySrc = {
 	'/assets/images/contact-mailbox-light.webp': { width: 1390, height: 1132 },
 	'/assets/images/experience-australian-army.webp': { width: 760, height: 478 },
 	'/assets/images/experience-australian-army-equipment-display.webp': { width: 760, height: 570 },
-	'/assets/images/experience-australian-army-field-vehicles.webp': { width: 760, height: 436 },
+	'/assets/images/experience-australian-army-field-vehicles.webp': { width: 760, height: 428 },
 	'/assets/images/experience-australian-army-wallaby.webp': { width: 565, height: 760 },
 	'/assets/images/experience-avcon-invader.webp': { width: 275, height: 183 },
 	'/assets/images/experience-book.webp': { width: 760, height: 478 },
@@ -41,8 +40,6 @@ export const imageDimensionsBySrc = {
 	'/assets/images/experience-daytime-devs-convention.webp': { width: 760, height: 428 },
 	'/assets/images/experience-daytime-devs-pax-aus-team.webp': { width: 760, height: 428 },
 	'/assets/images/experience-daytime-devs-sasa-team.webp': { width: 760, height: 428 },
-	'/assets/images/experience-language-student-japaneasy-group.webp': { width: 760, height: 428 },
-	'/assets/images/experience-language-student-wea-building.webp': { width: 760, height: 428 },
 	'/assets/images/experience-power-net-it-solutions.webp': { width: 760, height: 478 },
 	'/assets/images/experience-sciworld-starlab.webp': { width: 300, height: 169 },
 	'/assets/images/experience-solo-dev.webp': { width: 760, height: 428 },
@@ -56,14 +53,11 @@ export const imageDimensionsBySrc = {
 	'/assets/images/hero-dark.webp': { width: 1254, height: 1254 },
 	'/assets/images/hero-light.webp': { width: 1254, height: 1254 },
 	'/assets/images/project-7-days-to-die-mods.webp': { width: 608, height: 342 },
-	'/assets/images/project-awbw.webp': { width: 1672, height: 941 },
 	'/assets/images/project-beach-bums-beach-search.webp': { width: 1672, height: 941 },
 	'/assets/images/project-beach-bums-beachgoers-before-wave.webp': { width: 1672, height: 941 },
 	'/assets/images/project-beach-bums-capsule.webp': { width: 616, height: 346 },
 	'/assets/images/project-beach-bums-tidal-wave.webp': { width: 1672, height: 941 },
 	'/assets/images/project-chest.webp': { width: 672, height: 602 },
-	'/assets/images/project-climbing.webp': { width: 1672, height: 941 },
-	'/assets/images/project-coop-cat-temple-escape.webp': { width: 1672, height: 941 },
 	'/assets/images/project-days-siege-beta.webp': { width: 350, height: 350 },
 	'/assets/images/project-days-siege-easy.webp': { width: 350, height: 350 },
 	'/assets/images/project-disney-game-night-game-list.webp': { width: 646, height: 1440 },
@@ -84,11 +78,9 @@ export const imageDimensionsBySrc = {
 	'/assets/images/project-super-bawk-bawk-chicken-waterfall-run.webp': { width: 1672, height: 941 },
 	'/assets/images/project-super-bawk-bawk-chicken.webp': { width: 1672, height: 940 },
 	'/assets/images/project-super-raccoon.webp': { width: 630, height: 500 },
-	'/assets/images/project-think-digital-vr-work-banner.webp': { width: 1672, height: 669 },
 	'/assets/images/project-think-digital-vr-work-cattle-vr-simulation.webp': { width: 1640, height: 923 },
-	'/assets/images/project-three-hearted-octopus.webp': { width: 1672, height: 941 },
 	'/assets/images/project-unreleased-treasures.webp': { width: 1672, height: 941 },
-	'/assets/images/project-x-men.webp': { width: 480, height: 360 },
+	'/assets/images/project-x-men.webp': { width: 480, height: 348 },
 	'/assets/emblems/athletics-south-australia.webp': { width: 157, height: 77 },
 	'/assets/emblems/army-bushfire-assist.webp': { width: 256, height: 256 },
 	'/assets/emblems/award-medal-base.webp': { width: 288, height: 512 },
@@ -99,7 +91,6 @@ export const imageDimensionsBySrc = {
 	'/assets/icons/contact-instagram.webp': { width: 279, height: 284 },
 	'/assets/icons/contact-linkedin.webp': { width: 289, height: 294 },
 	'/assets/icons/contact-youtube.webp': { width: 292, height: 198 },
-	'/assets/icons/experience-language-student-japan-flag.webp': { width: 256, height: 256 },
 } satisfies Record<string, ImageDimensions>;
 
 const getSrc = (assetOrSrc: Pick<ImageAsset, 'src'> | string) => (typeof assetOrSrc === 'string' ? assetOrSrc : assetOrSrc.src);

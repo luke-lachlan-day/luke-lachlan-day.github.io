@@ -20,5 +20,5 @@ export const home = {
 		{ label: 'View Projects', href: '/projects/', icon: '/assets/icons/gamepad.svg' },
 		{ label: 'Get in Touch', href: '/contact/', icon: '/assets/icons/email.svg' },
 	],
-	featuredProjectIds: ['petes-place', 'coop-climbing', 'super-bawk-bawk-chicken'],
+	featuredProjectIds: ['super-bawk-bawk-chicken', 'dungeons-and-dining-tables', 'beach-bums'],
 } as const;

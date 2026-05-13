@@ -13,9 +13,8 @@ import { getCompanyLogoToneClass } from '../utils/companyLogoTone';
 import { getImageAttrs } from '../utils/images';
 import { getInitialWheelSlot } from '../utils/wheelSlots';
 
-const { home, projects, companies, experience } = profile;
+const { projects, companies, experience } = profile;
 const showcaseItems = getProjectShowcaseItems({
-	featuredProjectIds: home.featuredProjectIds,
 	projects: projects.items,
 	companies,
 	experienceItems: experience.items,

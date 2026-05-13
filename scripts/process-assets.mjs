@@ -12,20 +12,10 @@ const defaultOutputDir = path.join(repoRoot, 'public', 'assets', 'images');
 
 const assets = [
 	{
-		source: 'catalyst-think-digital-vr-cattle-vr.jpg',
-		output: 'catalyst-think-digital-vr-cattle-vr.webp',
-		maxSize: 1280,
-	},
-	{
 		source: 'project-think-digital-vr-work-cattle-vr-simulation.jpg',
 		output: 'project-think-digital-vr-work-cattle-vr-simulation.webp',
 		maxSize: 1640,
 		crop: '1893x1065+0+107',
-	},
-	{
-		source: 'project-think-digital-vr-work-banner.jpg',
-		output: 'project-think-digital-vr-work-banner.webp',
-		maxSize: 1672,
 	},
 	{
 		source: 'project-disney-game-night-toy-story-menu.jpg',

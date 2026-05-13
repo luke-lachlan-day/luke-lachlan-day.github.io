@@ -18,11 +18,13 @@ export const getProjectTagStyleKey = (tag: string) =>
 		.replace(/[^a-z0-9]+/g, '-')
 		.replace(/^-|-$/g, '') || 'default';
 
+const sortProjectTagLabels = (tags: readonly string[]) => [...tags].sort((first, second) => first.localeCompare(second));
+
 export const getProjectTagRenderGroups = (projectTags: ProjectTags): ProjectTagRenderGroup[] =>
 	projectTagGroupOrder
 		.map((group) => ({
 			group,
-			tags: (projectTags[group] ?? []).map((label) => ({
+			tags: sortProjectTagLabels(projectTags[group] ?? []).map((label) => ({
 				label,
 				styleKey: getProjectTagStyleKey(label),
 			})),

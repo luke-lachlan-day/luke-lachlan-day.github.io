@@ -15,7 +15,6 @@ export type ProjectShowcaseItem = {
 };
 
 type ProjectShowcaseInput = {
-	featuredProjectIds: readonly string[];
 	projects: readonly Project[];
 	companies: readonly Company[];
 	experienceItems: readonly ExperienceItem[];
@@ -28,7 +27,22 @@ export const projectReleaseStageLabels = {
 	contributed: 'Contributed',
 } satisfies Record<Project['releaseStage'], ProjectReleaseStageLabel>;
 
+const projectShowcaseReleaseStageRank = {
+	released: 0,
+	contributed: 0,
+	shelved: 1,
+	dev: 2,
+} satisfies Record<Project['releaseStage'], number>;
+
 const getCompanyById = (companies: readonly Company[]) => new Map(companies.map((company) => [company.id, company]));
+
+const sortProjectsForShowcase = (projects: readonly Project[]) =>
+	[...projects].sort((projectA, projectB) => {
+		const releaseStageRank =
+			projectShowcaseReleaseStageRank[projectA.releaseStage] - projectShowcaseReleaseStageRank[projectB.releaseStage];
+
+		return releaseStageRank || projectB.sortDate.localeCompare(projectA.sortDate);
+	});
 
 const getLatestExperienceByCompanyId = (experienceItems: readonly ExperienceItem[]) => {
 	const experienceByCompanyId = new Map<string, ExperienceItem>();
@@ -42,24 +56,12 @@ const getLatestExperienceByCompanyId = (experienceItems: readonly ExperienceItem
 	return experienceByCompanyId;
 };
 
-export const getProjectShowcaseItems = ({
-	featuredProjectIds,
-	projects,
-	companies,
-	experienceItems,
-}: ProjectShowcaseInput): ProjectShowcaseItem[] => {
+export const getProjectShowcaseItems = ({ projects, companies, experienceItems }: ProjectShowcaseInput): ProjectShowcaseItem[] => {
 	const companyById = getCompanyById(companies);
 	const experienceByCompanyId = getLatestExperienceByCompanyId(experienceItems);
-	const boostedProjectIds = new Set<string>(featuredProjectIds);
-	const projectItems = [...projects];
-	const boostedProjects = featuredProjectIds
-		.map((projectId) => projectItems.find((project) => project.id === projectId))
-		.filter((project): project is Project => Boolean(project));
-	const remainingProjects = projectItems
-		.filter((project) => !boostedProjectIds.has(project.id))
-		.sort((projectA, projectB) => projectB.sortDate.localeCompare(projectA.sortDate));
+	const projectItems = sortProjectsForShowcase(projects);
 
-	return [...boostedProjects, ...remainingProjects].map((project) => {
+	return projectItems.map((project) => {
 		const company = companyById.get(project.companyId);
 		const companyExperience = experienceByCompanyId.get(project.companyId);
 

@@ -75,22 +75,6 @@
 	--tag-dark-text: #f2ffe8;
 	--tag-dark-border: #6f884f;
 }
-.project-tag[data-tag-style='prototype'] {
-	--tag-bg: #eadcff;
-	--tag-text: #54347a;
-	--tag-border: #d2b7f7;
-	--tag-dark-bg: #503c72;
-	--tag-dark-text: #f5edff;
-	--tag-dark-border: #8066ad;
-}
-.project-tag[data-tag-style='quiz'] {
-	--tag-bg: #d8ebff;
-	--tag-text: #245178;
-	--tag-border: #b8d4f1;
-	--tag-dark-bg: #2f4d70;
-	--tag-dark-text: #ebf5ff;
-	--tag-dark-border: #5f7fa3;
-}
 .project-tag[data-tag-style='party-game'] {
 	--tag-bg: #ffe0a6;
 	--tag-text: #674900;
@@ -106,22 +90,6 @@
 	--tag-dark-bg: #405f3f;
 	--tag-dark-text: #f1ffe8;
 	--tag-dark-border: #638b5e;
-}
-.project-tag[data-tag-style='event-game'] {
-	--tag-bg: #ffd1e1;
-	--tag-text: #78344f;
-	--tag-border: #edaac2;
-	--tag-dark-bg: #72384f;
-	--tag-dark-text: #ffeaf2;
-	--tag-dark-border: #a45e77;
-}
-.project-tag[data-tag-style='browser-extension'] {
-	--tag-bg: #cfe6f2;
-	--tag-text: #28526a;
-	--tag-border: #afd0df;
-	--tag-dark-bg: #2d4d61;
-	--tag-dark-text: #edfbff;
-	--tag-dark-border: #5d7f94;
 }
 .project-tag[data-tag-style='web'] {
 	--tag-bg: #e8f0ff;
@@ -179,46 +147,6 @@
 	--tag-dark-text: #fff3ce;
 	--tag-dark-border: #87713d;
 }
-.project-tag[data-tag-style='educational'] {
-	--tag-bg: #dcebc5;
-	--tag-text: #3d5d27;
-	--tag-border: #bed69a;
-	--tag-dark-bg: #425e35;
-	--tag-dark-text: #f2ffe7;
-	--tag-dark-border: #6f934f;
-}
-.project-tag[data-tag-style='science-communication'] {
-	--tag-bg: #d0ecec;
-	--tag-text: #23585b;
-	--tag-border: #aad8da;
-	--tag-dark-bg: #2d5a62;
-	--tag-dark-text: #eaffff;
-	--tag-dark-border: #5e8c93;
-}
-.project-tag[data-tag-style='biology'] {
-	--tag-bg: #d5edc4;
-	--tag-text: #2e5b24;
-	--tag-border: #b3d79b;
-	--tag-dark-bg: #365d37;
-	--tag-dark-text: #efffe8;
-	--tag-dark-border: #638e5e;
-}
-.project-tag[data-tag-style='physics'] {
-	--tag-bg: #d9e1ff;
-	--tag-text: #34457b;
-	--tag-border: #bcc8f5;
-	--tag-dark-bg: #34456a;
-	--tag-dark-text: #eef2ff;
-	--tag-dark-border: #6578a8;
-}
-.project-tag[data-tag-style='traversal'] {
-	--tag-bg: #d7eee0;
-	--tag-text: #28583c;
-	--tag-border: #b5d9c5;
-	--tag-dark-bg: #315a44;
-	--tag-dark-text: #eafff1;
-	--tag-dark-border: #5f8b70;
-}
 .project-tag[data-tag-style='puzzle'] {
 	--tag-bg: #e7d8f5;
 	--tag-text: #52376e;
@@ -227,14 +155,6 @@
 	--tag-dark-text: #f5edff;
 	--tag-dark-border: #79679b;
 }
-.project-tag[data-tag-style='reflective'] {
-	--tag-bg: #e7e0cc;
-	--tag-text: #554a2d;
-	--tag-border: #d0c39f;
-	--tag-dark-bg: #4c493c;
-	--tag-dark-text: #f8f1dc;
-	--tag-dark-border: #77715c;
-}
 .project-tag[data-tag-style='group-play'] {
 	--tag-bg: #ffe2be;
 	--tag-text: #664617;
@@ -242,14 +162,6 @@
 	--tag-dark-bg: #604a2c;
 	--tag-dark-text: #fff0d4;
 	--tag-dark-border: #917347;
-}
-.project-tag[data-tag-style='festive'] {
-	--tag-bg: #ffdbe4;
-	--tag-text: #70384c;
-	--tag-border: #efb7c5;
-	--tag-dark-bg: #693849;
-	--tag-dark-text: #ffeef3;
-	--tag-dark-border: #9a6473;
 }
 .project-tag[data-tag-style='animation'] {
 	--tag-bg: #f1d6ee;
@@ -267,22 +179,6 @@
 	--tag-dark-text: #ffeadf;
 	--tag-dark-border: #9d694e;
 }
-.project-tag[data-tag-style='combat'] {
-	--tag-bg: #f3d0c7;
-	--tag-text: #703a30;
-	--tag-border: #dcaa9d;
-	--tag-dark-bg: #663c35;
-	--tag-dark-text: #ffece8;
-	--tag-dark-border: #95675f;
-}
-.project-tag[data-tag-style='roguelike'] {
-	--tag-bg: #ded4ec;
-	--tag-text: #49366b;
-	--tag-border: #c3b0dd;
-	--tag-dark-bg: #453c64;
-	--tag-dark-text: #f1edff;
-	--tag-dark-border: #6f6493;
-}
 .project-tag[data-tag-style='arcade'] {
 	--tag-bg: #d8e7ff;
 	--tag-text: #2c4d79;
@@ -291,38 +187,6 @@
 	--tag-dark-text: #edf5ff;
 	--tag-dark-border: #5e78a2;
 }
-.project-tag[data-tag-style='game-feel'] {
-	--tag-bg: #f5dfb7;
-	--tag-text: #624b18;
-	--tag-border: #ddbf7f;
-	--tag-dark-bg: #5d4a2b;
-	--tag-dark-text: #fff1d0;
-	--tag-dark-border: #8d7042;
-}
-.project-tag[data-tag-style='simulation'] {
-	--tag-bg: #dce8c7;
-	--tag-text: #435928;
-	--tag-border: #c0d49e;
-	--tag-dark-bg: #475b36;
-	--tag-dark-text: #f4ffe9;
-	--tag-dark-border: #718a57;
-}
-.project-tag[data-tag-style='systems'] {
-	--tag-bg: #d8e6e1;
-	--tag-text: #315148;
-	--tag-border: #b8d0c8;
-	--tag-dark-bg: #334f4b;
-	--tag-dark-text: #eefcf8;
-	--tag-dark-border: #617c77;
-}
-.project-tag[data-tag-style='mythology'] {
-	--tag-bg: #e2dcc4;
-	--tag-text: #574c22;
-	--tag-border: #cbc091;
-	--tag-dark-bg: #514b31;
-	--tag-dark-text: #f8f0cf;
-	--tag-dark-border: #7d7249;
-}
 .project-tag[data-tag-style='age-of-mythology'] {
 	--tag-bg: #e1d6bd;
 	--tag-text: #58431d;
@@ -330,22 +194,6 @@
 	--tag-dark-bg: #55452d;
 	--tag-dark-text: #fff0c9;
 	--tag-dark-border: #826b43;
-}
-.project-tag[data-tag-style='quick-reactions'] {
-	--tag-bg: #ffd8b8;
-	--tag-text: #6c4315;
-	--tag-border: #edb681;
-	--tag-dark-bg: #664628;
-	--tag-dark-text: #ffedd8;
-	--tag-dark-border: #9a7047;
-}
-.project-tag[data-tag-style='life-sim'] {
-	--tag-bg: #d9edc8;
-	--tag-text: #355a29;
-	--tag-border: #b8d7a1;
-	--tag-dark-bg: #3b5d39;
-	--tag-dark-text: #f0ffe9;
-	--tag-dark-border: #668f62;
 }
 .project-tag[data-tag-style='cozy'] {
 	--tag-bg: #ffe1bd;
@@ -403,30 +251,6 @@
 	--tag-dark-text: #eef2ff;
 	--tag-dark-border: #66749c;
 }
-.project-tag[data-tag-style='presentation'] {
-	--tag-bg: #eee0c1;
-	--tag-text: #5c4917;
-	--tag-border: #d7c38b;
-	--tag-dark-bg: #594b2b;
-	--tag-dark-text: #fff2cf;
-	--tag-dark-border: #86723f;
-}
-.project-tag[data-tag-style='co-op'] {
-	--tag-bg: #d5e7ff;
-	--tag-text: #2d4e78;
-	--tag-border: #b5cdf0;
-	--tag-dark-bg: #2d4668;
-	--tag-dark-text: #edf5ff;
-	--tag-dark-border: #5d779f;
-}
-.project-tag[data-tag-style='communication'] {
-	--tag-bg: #d7ece9;
-	--tag-text: #285750;
-	--tag-border: #b3d8d2;
-	--tag-dark-bg: #315753;
-	--tag-dark-text: #eafffb;
-	--tag-dark-border: #5f8781;
-}
 .project-tag[data-tag-style='strategy'] {
 	--tag-bg: #e4e0c7;
 	--tag-text: #544d24;
@@ -450,30 +274,6 @@
 	--tag-dark-bg: #2c435f;
 	--tag-dark-text: #edf5ff;
 	--tag-dark-border: #5c7397;
-}
-.project-tag[data-tag-style='data-analysis'] {
-	--tag-bg: #d9e7ed;
-	--tag-text: #2d5061;
-	--tag-border: #bdd0da;
-	--tag-dark-bg: #304d5d;
-	--tag-dark-text: #eef9ff;
-	--tag-dark-border: #60798a;
-}
-.project-tag[data-tag-style='platformer'] {
-	--tag-bg: #d6ead0;
-	--tag-text: #33582f;
-	--tag-border: #b8d6ae;
-	--tag-dark-bg: #395a37;
-	--tag-dark-text: #efffed;
-	--tag-dark-border: #668c60;
-}
-.project-tag[data-tag-style='precision'] {
-	--tag-bg: #f5d3bd;
-	--tag-text: #70411c;
-	--tag-border: #dfaf8a;
-	--tag-dark-bg: #674125;
-	--tag-dark-text: #ffeadf;
-	--tag-dark-border: #976d4e;
 }
 .project-tag[data-tag-style='modding'] {
 	--tag-bg: #d7e5d2;
@@ -538,6 +338,14 @@
 	--tag-dark-bg: #393c61;
 	--tag-dark-text: #f0f1ff;
 	--tag-dark-border: #686c9b;
+}
+.project-tag[data-tag-style='firebase'] {
+	--tag-bg: #ffe4b9;
+	--tag-text: #68470c;
+	--tag-border: #e9c47b;
+	--tag-dark-bg: #624c2a;
+	--tag-dark-text: #fff2d4;
+	--tag-dark-border: #927343;
 }
 .project-tag[data-tag-style='fmod'] {
 	--tag-bg: #d7e4ed;

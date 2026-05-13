@@ -9,6 +9,7 @@ const magickPath = path.join(repoRoot, '.tools', 'ImageMagick', 'magick.exe');
 
 const readRepoFile = (relativePath) => readFileSync(path.join(repoRoot, relativePath), 'utf8');
 const toAssetPath = (src) => path.join(repoRoot, 'public', src.replace(/^\//, ''));
+const stripBlockComments = (source) => source.replace(/\/\*[\s\S]*?\*\//g, '');
 const getProjectTagStyleKey = (tag) =>
 	tag
 		.toLowerCase()
@@ -63,7 +64,7 @@ const checkImageDimensions = () => {
 };
 
 const parseProjectTagStyleKeys = () => {
-	const projectsSource = readRepoFile('src/data/projects.ts');
+	const projectsSource = stripBlockComments(readRepoFile('src/data/projects.ts'));
 	const tagLabels = new Set();
 	const projectTagsPattern = /projectTags:\s*\{([\s\S]*?)\n\t\t\t\}/g;
 	const tagGroupPattern = /\b(?:format|platform|specialty|tech):\s*\[([\s\S]*?)\]/g;
