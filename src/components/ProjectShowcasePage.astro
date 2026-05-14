@@ -191,8 +191,11 @@ const initialTransitionSlotRange = 3;
 												<section class="project-detail-section" aria-labelledby={section.id}>
 													<h4 id={section.id}>{section.title}</h4>
 													<ul>
-														{section.items.map((item) => (
-															<li>{item}</li>
+														{section.items.map((item, itemIndex) => (
+															<li>
+																{item}
+																{itemIndex < section.items.length - 1 ? ' ' : ''}
+															</li>
 														))}
 													</ul>
 												</section>

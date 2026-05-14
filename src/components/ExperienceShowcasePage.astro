@@ -177,8 +177,11 @@ const initialTransitionSlotRange = 3;
 										<div class="experience-highlights" aria-label={`${item.role} highlights`}>
 											<p class="experience-highlights-title">Highlights</p>
 											<ul>
-												{item.highlights.map((highlight) => (
-													<li>{highlight}</li>
+												{item.highlights.map((highlight, highlightIndex) => (
+													<li>
+														{highlight}
+														{highlightIndex < item.highlights.length - 1 ? ' ' : ''}
+													</li>
 												))}
 											</ul>
 										</div>
