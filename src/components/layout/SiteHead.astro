@@ -8,6 +8,10 @@ interface Props {
 }
 
 const { title, description, canonicalUrl, socialImageUrl, generator } = Astro.props;
+const themeColors = {
+	light: '#fff9f0',
+	dark: '#06111f',
+} as const;
 const criticalImagePreloads = [{ href: '/assets/textures/nav-brush.webp', type: 'image/webp' }] as const;
 const criticalFontPreloads = [
 	{ href: '/assets/fonts/balsamiq-sans-400-latin.woff2', type: 'font/woff2' },
@@ -33,8 +37,13 @@ const criticalFontPreloads = [
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content={description} />
 	<meta name="generator" content={generator} />
-	<meta name="theme-color" content="#fff9f0" media="(prefers-color-scheme: light)" />
-	<meta name="theme-color" content="#06111f" media="(prefers-color-scheme: dark)" />
+	<meta
+		name="theme-color"
+		content={themeColors.light}
+		data-theme-color
+		data-light-color={themeColors.light}
+		data-dark-color={themeColors.dark}
+	/>
 	<link rel="canonical" href={canonicalUrl} />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={title} />
@@ -58,8 +67,16 @@ const criticalFontPreloads = [
 				savedLeaves = null;
 			}
 			const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-			root.dataset.theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : systemTheme;
+			const theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : systemTheme;
+			const themeColor = document.querySelector('meta[name="theme-color"][data-theme-color]');
+			root.dataset.theme = theme;
 			root.dataset.leaves = savedLeaves === 'off' ? 'off' : 'on';
+			if (themeColor instanceof HTMLMetaElement) {
+				themeColor.content =
+					theme === 'dark'
+						? (themeColor.dataset.darkColor ?? '#06111f')
+						: (themeColor.dataset.lightColor ?? '#fff9f0');
+			}
 		})();
 	</script>
 	<title>{title}</title>

@@ -1,5 +1,9 @@
 const themeStorageKey = 'luke-lachlan-day.theme';
 const leavesStorageKey = 'luke-lachlan-day.fallingLeaves';
+const fallbackThemeColors = {
+	light: '#fff9f0',
+	dark: '#06111f',
+} as const;
 
 type Theme = 'light' | 'dark';
 type LeavesState = 'on' | 'off';
@@ -39,9 +43,19 @@ export const setupSitePreferences = () => {
 	const themeToggleLabel = document.querySelector<HTMLElement>('[data-theme-toggle-label]');
 	const leavesToggleLabel = document.querySelector<HTMLElement>('[data-leaves-toggle-label]');
 	const currentPageLinks = document.querySelectorAll<HTMLAnchorElement>('[data-current-page-link]');
+	const themeColor = document.querySelector<HTMLMetaElement>('meta[name="theme-color"][data-theme-color]');
 	const systemQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
 	const systemTheme = (): Theme => (systemQuery.matches ? 'dark' : 'light');
+	const updateThemeColor = (theme: Theme) => {
+		if (!themeColor) {
+			return;
+		}
+		themeColor.content =
+			theme === 'dark'
+				? (themeColor.dataset.darkColor ?? fallbackThemeColors.dark)
+				: (themeColor.dataset.lightColor ?? fallbackThemeColors.light);
+	};
 	const isCurrentUrl = (url: URL) =>
 		url.origin === window.location.origin &&
 		url.pathname === window.location.pathname &&
@@ -49,6 +63,7 @@ export const setupSitePreferences = () => {
 		url.hash === window.location.hash;
 	const setTheme = (theme: Theme, persist: boolean) => {
 		root.dataset.theme = theme;
+		updateThemeColor(theme);
 		themeToggle?.setAttribute('aria-pressed', String(theme === 'dark'));
 		if (themeToggleLabel) {
 			themeToggleLabel.textContent = `Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`;
