@@ -67,7 +67,7 @@
 	--theme-transition-filter: filter var(--theme-transition);
 	--theme-transition-opacity: opacity var(--theme-transition);
 	--theme-transition-shadow: box-shadow var(--theme-transition);
-	--theme-transition-page-background: background-color 0ms;
+	--theme-transition-page-background: background-color var(--theme-transition);
 	--theme-transition-surface:
 		var(--theme-transition-background), var(--theme-transition-border), var(--theme-transition-shadow),
 		var(--theme-transition-color);

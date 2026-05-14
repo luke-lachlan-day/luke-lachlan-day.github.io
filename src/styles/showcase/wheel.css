@@ -275,6 +275,9 @@
 		grid-template-columns: 38px minmax(0, 1fr) 38px;
 		width: calc(100% + 10px);
 		margin-left: -5px;
+		overflow: hidden;
+		overflow: clip;
+		overflow-clip-margin: 18px;
 	}
 
 	.project-wheel-viewport {

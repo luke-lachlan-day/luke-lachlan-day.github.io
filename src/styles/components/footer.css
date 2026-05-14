@@ -169,8 +169,8 @@
 
 @media (max-width: 560px) {
 	.footer-visual {
-		--footer-frame-width: clamp(540px, 168vw, 700px);
-		padding: 76px 0 42px;
+		--footer-frame-width: min(100% - 10px, var(--hero-max-width));
+		padding: 50px 0 8px;
 	}
 
 	.footer-visual::before,
@@ -180,20 +180,22 @@
 
 	.footer-inner {
 		width: min(100% - 22px, var(--hero-max-width));
-		padding-inline: 14px;
+		gap: 6px;
+		padding-inline: 8px;
 	}
 
 	.footer-heart {
-		width: 34px;
-		height: 28px;
+		width: 29px;
+		height: 24px;
 	}
 
 	.footer-inner p:first-of-type {
-		font-size: 1.28rem;
+		font-size: 1.12rem;
+		line-height: 1.15;
 	}
 
 	.footer-links {
-		gap: 8px;
+		gap: 6px;
 	}
 
 	.footer-links a {
@@ -207,6 +209,7 @@
 	}
 
 	.copyright {
-		font-size: 0.86rem;
+		font-size: 0.82rem;
+		line-height: 1.25;
 	}
 }
