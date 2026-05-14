@@ -55,7 +55,7 @@ Use this checklist for manual review after visual, interaction, or asset changes
 - Slow network or cache-disabled loading still leaves meaningful text, alt text, and layout stability while assets load.
 - Dark and light themes both preserve contrast, artwork legibility, and the pixel-art direction.
 - Project wheel cards are selectable, readable, and clearly connected to the active detail panel.
-- Project detail panels and galleries remain usable with pointer, keyboard, and direct URL hash navigation.
+- Project detail panels and galleries remain usable with pointer, keyboard, and direct route URLs.
 
 ## License
 
