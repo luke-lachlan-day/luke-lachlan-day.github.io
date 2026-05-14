@@ -54,6 +54,55 @@ test('projects interaction works', async ({ page }) => {
 	await expect(page).toHaveURL(/#dungeons-and-dining-tables$/);
 });
 
+test('projects quick list selects the active project', async ({ page }) => {
+	await page.goto('/projects/');
+
+	const quickListToggle = page.getByRole('button', { name: 'Browse projects' });
+	const quickList = page.getByRole('navigation', { name: 'Project quick selection' });
+	const nextProjectLink = quickList.getByRole('link', { name: 'Select Dungeons and Dining Tables' });
+
+	await expect(quickListToggle).toHaveAttribute('aria-expanded', 'false');
+
+	await quickListToggle.click();
+
+	await expect(quickListToggle).toHaveAttribute('aria-expanded', 'true');
+	await expect(quickList).toBeVisible();
+
+	await nextProjectLink.click();
+
+	await expect(quickListToggle).toHaveAttribute('aria-expanded', 'false');
+	await expect(page.locator('#project-detail-dungeons-and-dining-tables')).toBeVisible();
+	await expect(page).toHaveURL(/#dungeons-and-dining-tables$/);
+	await expect(
+		page.locator('[data-showcase-quick-link][href="#dungeons-and-dining-tables"]')
+	).toHaveAttribute('aria-current', 'true');
+});
+
+test('projects quick list reflects direct project links', async ({ page }) => {
+	await page.goto('/projects/#dungeons-and-dining-tables');
+
+	await page.getByRole('button', { name: 'Browse projects' }).click();
+
+	await expect(page.locator('#project-detail-dungeons-and-dining-tables')).toBeVisible();
+	await expect(
+		page.locator('[data-showcase-quick-link][href="#dungeons-and-dining-tables"]')
+	).toHaveAttribute('aria-current', 'true');
+});
+
+test('experience quick list opens', async ({ page }) => {
+	await page.goto('/experience/');
+
+	const quickListToggle = page.getByRole('button', { name: 'Browse experience' });
+
+	await expect(quickListToggle).toHaveAttribute('aria-expanded', 'false');
+
+	await quickListToggle.click();
+
+	await expect(quickListToggle).toHaveAttribute('aria-expanded', 'true');
+	await expect(page.getByRole('navigation', { name: 'Experience quick selection' })).toBeVisible();
+	await expect(page.getByRole('button', { name: 'Select Co-Founder at Daytime Devs Pty Ltd' })).toBeVisible();
+});
+
 test('project gallery controls work when present', async ({ page }) => {
 	await page.goto('/projects/');
 

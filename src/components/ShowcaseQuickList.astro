@@ -1,0 +1,59 @@
+---
+type ShowcaseQuickListItem = {
+	href: string;
+	label: string;
+	ariaLabel: string;
+};
+
+type Props = {
+	id: string;
+	label: string;
+	navLabel: string;
+	changeEvent: string;
+	items: ShowcaseQuickListItem[];
+	activeIndex: number;
+};
+
+const { id, label, navLabel, changeEvent, items, activeIndex } = Astro.props as Props;
+const panelId = `${id}-panel`;
+---
+
+<div class="showcase-quick-list" data-showcase-quick-list data-showcase-change-event={changeEvent}>
+	<button
+		class="showcase-quick-trigger"
+		type="button"
+		aria-expanded="false"
+		aria-controls={panelId}
+		data-showcase-quick-toggle
+	>
+		<span>{label}</span>
+		<svg class="showcase-quick-chevron" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+			<path
+				d="M4 6.25 8 10l4-3.75"
+				fill="none"
+				stroke="currentColor"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width="2"></path>
+		</svg>
+	</button>
+	<nav id={panelId} class="showcase-quick-nav" aria-label={navLabel} hidden data-showcase-quick-panel>
+		<ul>
+			{
+				items.map((item, index) => (
+					<li>
+						<a
+							href={item.href}
+							aria-label={item.ariaLabel}
+							aria-current={index === activeIndex ? 'true' : undefined}
+							data-showcase-quick-link
+							data-showcase-index={index}
+						>
+							<span class="showcase-quick-title">{item.label}</span>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+</div>

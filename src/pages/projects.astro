@@ -6,6 +6,7 @@ import DetailGallery from '../components/DetailGallery.astro';
 import PortfolioWheelCard from '../components/PortfolioWheelCard.astro';
 import ProjectTagList from '../components/ProjectTagList.astro';
 import ShowcaseDetail from '../components/ShowcaseDetail.astro';
+import ShowcaseQuickList from '../components/ShowcaseQuickList.astro';
 import ShowcaseWheel from '../components/ShowcaseWheel.astro';
 import { profile } from '../data/profile';
 import { getProjectShowcaseItems } from '../data/projectShowcase';
@@ -31,22 +32,18 @@ const initialTransitionSlotRange = 3;
 	<section class="section project-showcase" id="project-showcase" aria-labelledby="project-selector-title">
 		<h2 id="project-selector-title" class="visually-hidden">Project selector</h2>
 		<p id="project-selector-helper" class="showcase-selector-helper">Select a card to view details below.</p>
-		<details class="showcase-quick-list">
-			<summary>Quick project list</summary>
-			<nav class="showcase-quick-nav" aria-label="Project quick selection">
-				<ul>
-					{
-						showcaseItems.map(({ project }) => (
-							<li>
-								<a href={`#${project.id}`} aria-label={`Select ${project.product}`}>
-									<span class="showcase-quick-title">{project.product}</span>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</nav>
-		</details>
+		<ShowcaseQuickList
+			id="project-quick-list"
+			label="Browse projects"
+			navLabel="Project quick selection"
+			changeEvent="project-detail-change"
+			activeIndex={initialActiveProjectIndex}
+			items={showcaseItems.map(({ project }) => ({
+				href: `#${project.id}`,
+				label: project.product,
+				ariaLabel: `Select ${project.product}`,
+			}))}
+		/>
 		<ShowcaseWheel
 			labelledBy="project-selector-title"
 			describedBy="project-selector-helper"
@@ -216,6 +213,7 @@ const initialTransitionSlotRange = 3;
 	</section>
 
 	<script>
+		import { setupShowcaseQuickLists } from '../scripts/showcaseQuickList';
 		import { setupShowcaseControllers } from '../scripts/showcaseController';
 
 		setupShowcaseControllers({
@@ -228,5 +226,6 @@ const initialTransitionSlotRange = 3;
 			detailRootSelector: '#project-showcase',
 			gallerySelector: '[data-project-gallery]',
 		});
+		setupShowcaseQuickLists();
 	</script>
 </BaseLayout>
