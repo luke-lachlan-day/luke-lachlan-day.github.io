@@ -17,46 +17,94 @@
 	transition: var(--theme-transition-color);
 }
 
+.showcase-quick-list {
+	position: relative;
+	z-index: 8;
+	width: min(100%, 760px);
+	margin: 4px auto 0;
+	text-align: center;
+}
+
+.showcase-quick-list summary {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	border-radius: 8px;
+	color: color-mix(in srgb, var(--muted) 86%, var(--bg));
+	cursor: pointer;
+	font-size: 0.8rem;
+	font-weight: 900;
+	line-height: 1;
+	padding: 7px 9px;
+	transition:
+		var(--theme-transition-color),
+		background-color var(--motion-fast);
+}
+
+.showcase-quick-list summary::before {
+	content: '+';
+	color: var(--accent);
+	font-weight: 900;
+	transition: var(--theme-transition-color);
+}
+
+.showcase-quick-list[open] summary::before {
+	content: '-';
+}
+
+.showcase-quick-list summary:hover {
+	background-color: color-mix(in srgb, var(--accent) 6%, transparent);
+	color: var(--text);
+}
+
+.showcase-quick-list summary:focus-visible {
+	outline: var(--focus-ring-soft);
+	outline-offset: 3px;
+}
+
 .showcase-quick-nav {
-	max-width: 980px;
-	margin: clamp(4px, 1vw, 12px) auto clamp(18px, 2.4vw, 28px);
+	position: absolute;
+	top: calc(100% + 8px);
+	left: 50%;
+	width: min(calc(100vw - 32px), 680px);
+	max-height: min(300px, 42vh);
+	overflow: auto;
+	border: 1px solid color-mix(in srgb, var(--border) 86%, var(--surface));
+	border-radius: 12px;
+	background-color: color-mix(in srgb, var(--bg) 94%, var(--surface));
+	box-shadow: var(--shadow-soft);
 	color: var(--muted);
+	padding: 10px;
+	text-align: left;
+	transform: translateX(-50%);
+	transition: var(--theme-transition-surface), var(--theme-transition-color);
 }
 
 .showcase-quick-nav ul {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: 8px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 4px;
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
 .showcase-quick-nav a {
-	display: inline-flex;
-	align-items: baseline;
-	gap: 6px 8px;
-	max-width: min(100%, 360px);
-	border: 1px solid color-mix(in srgb, var(--border) 82%, var(--surface));
+	display: block;
 	border-radius: 8px;
-	background-color: color-mix(in srgb, var(--surface) 54%, transparent);
 	color: inherit;
-	font-size: 0.82rem;
+	font-size: 0.84rem;
 	font-weight: 800;
-	line-height: 1.2;
-	padding: 7px 10px;
+	line-height: 1.25;
+	padding: 8px 9px;
 	transition:
-		var(--theme-transition-surface),
 		var(--theme-transition-color),
-		transform var(--motion-fast);
+		background-color var(--motion-fast);
 }
 
 .showcase-quick-nav a:hover {
-	border-color: color-mix(in srgb, var(--accent) 34%, var(--border));
 	background-color: var(--surface-hover);
 	color: var(--text);
-	transform: var(--hover-lift-subtle);
 }
 
 .showcase-quick-nav a:focus-visible {
@@ -69,11 +117,6 @@
 	font-weight: 900;
 	overflow-wrap: anywhere;
 	transition: var(--theme-transition-color);
-}
-
-.showcase-quick-meta {
-	font-size: 0.76rem;
-	overflow-wrap: anywhere;
 }
 
 .showcase-wheel-media-fallback,
@@ -162,16 +205,7 @@
 
 @media (max-width: 560px) {
 	.showcase-quick-nav ul {
-		justify-content: stretch;
-	}
-
-	.showcase-quick-nav li,
-	.showcase-quick-nav a {
-		width: 100%;
-	}
-
-	.showcase-quick-nav a {
-		flex-wrap: wrap;
+		grid-template-columns: 1fr;
 	}
 
 	.experience-wheel-book {

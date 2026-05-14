@@ -35,6 +35,24 @@ const initialTransitionSlotRange = 3;
 		<p id="experience-selector-helper" class="showcase-selector-helper">
 			Select a card to view details below.
 		</p>
+		<details class="showcase-quick-list">
+			<summary>Quick experience list</summary>
+			<nav class="showcase-quick-nav" aria-label="Experience quick selection">
+				<ul>
+					{
+						showcaseItems.map(({ item }) => (
+							<li>
+								<a href={`#${item.id}`} aria-label={`Select ${item.role} at ${item.company}`}>
+									<span class="showcase-quick-title">
+										{item.role} at {item.company}
+									</span>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+		</details>
 		<ShowcaseWheel
 			class="experience-wheel"
 			labelledBy="experience-selector-title"
@@ -86,24 +104,6 @@ const initialTransitionSlotRange = 3;
 			{...getImageAttrs('/assets/images/experience-book.webp')}
 			aria-hidden="true"
 		/>
-
-		<nav class="showcase-quick-nav" aria-label="Experience quick selection">
-			<ul>
-				{
-					showcaseItems.map(({ item }) => (
-						<li>
-							<a href={`#${item.id}`}>
-								<span class="showcase-quick-title">{item.role}</span>
-								<span class="showcase-quick-meta">
-									{item.company}
-									{item.dateLabel && ` / ${item.dateLabel}`}
-								</span>
-							</a>
-						</li>
-					))
-				}
-			</ul>
-		</nav>
 
 		<div class="project-detail-panel experience-detail-panel" data-experience-detail aria-live="polite">
 			{
