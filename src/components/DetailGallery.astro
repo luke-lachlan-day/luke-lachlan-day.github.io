@@ -46,22 +46,22 @@ const galleryAttrs = {
 					class="project-detail-gallery-control project-detail-gallery-control-prev"
 					direction="prev"
 					data-gallery-step="-1"
-					label={`Show previous ${imageLabel} image`}
+					label={`Previous ${imageLabel} image`}
 				/>
 				<ArrowButton
 					class="project-detail-gallery-control project-detail-gallery-control-next"
 					direction="next"
 					data-gallery-step="1"
-					label={`Show next ${imageLabel} image`}
+					label={`Next ${imageLabel} image`}
 				/>
-				<div class="project-detail-gallery-dots" role="group" aria-label={`${imageLabel} image selector`}>
+				<div class="project-detail-gallery-dots" role="group" aria-label={`${imageLabel} image choices`}>
 					{pictures.map((_, pictureIndex) => (
 						<button
 							class="project-detail-gallery-dot"
 							type="button"
 							data-gallery-dot
 							data-gallery-dot-index={pictureIndex}
-							aria-label={`Show ${imageLabel} image ${pictureIndex + 1} of ${pictures.length}`}
+							aria-label={`${imageLabel} image ${pictureIndex + 1} of ${pictures.length}`}
 							aria-current={pictureIndex === 0 ? 'true' : undefined}
 						/>
 					))}

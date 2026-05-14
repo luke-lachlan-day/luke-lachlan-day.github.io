@@ -44,8 +44,11 @@ const headingAttrs = titleAriaLabel ? { 'aria-label': titleAriaLabel } : {};
 	{
 		summary.length > 0 && (
 			<p class="hero-intro">
-				{summary.map((summaryLine) => (
-					<span class="hero-intro-line">{summaryLine}</span>
+				{summary.map((summaryLine, index) => (
+					<span class="hero-intro-line">
+						{summaryLine}
+						{index < summary.length - 1 ? ' ' : ''}
+					</span>
 				))}
 			</p>
 		)

@@ -63,7 +63,7 @@ test('project gallery controls work when present', async ({ page }) => {
 	await expect(gallery).toBeVisible();
 	await expect(gallery).toHaveAttribute('data-gallery-index', '0');
 
-	await page.getByRole('button', { name: 'Show next Dungeons and Dining Tables image' }).click();
+	await page.getByRole('button', { name: 'Next Dungeons and Dining Tables image' }).click();
 
 	await expect(gallery).toBeVisible();
 	await expect(gallery).toHaveAttribute('data-gallery-index', '1');

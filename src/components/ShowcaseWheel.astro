@@ -3,6 +3,7 @@ import ArrowButton from './ArrowButton.astro';
 
 type Props = {
 	labelledBy: string;
+	describedBy?: string;
 	previousLabel: string;
 	nextLabel: string;
 	activeIndex: number;
@@ -12,6 +13,7 @@ type Props = {
 
 const {
 	labelledBy,
+	describedBy,
 	previousLabel,
 	nextLabel,
 	activeIndex,
@@ -27,7 +29,13 @@ const wheelAttrs = {
 };
 ---
 
-<div {...wheelAttrs} class={wheelClass} role="group" aria-labelledby={labelledBy}>
+<div
+	{...wheelAttrs}
+	class={wheelClass}
+	role="group"
+	aria-labelledby={labelledBy}
+	aria-describedby={describedBy}
+>
 	<ArrowButton
 		class="project-wheel-nav project-wheel-nav-prev"
 		direction="prev"

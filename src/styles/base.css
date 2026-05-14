@@ -51,9 +51,40 @@ img {
 	white-space: nowrap;
 }
 
+.skip-link {
+	position: absolute;
+	top: 12px;
+	left: 16px;
+	z-index: 100;
+	border: 1px solid color-mix(in srgb, var(--accent) 46%, var(--border));
+	border-radius: 8px;
+	background-color: color-mix(in srgb, var(--surface) 94%, var(--bg));
+	box-shadow: var(--shadow-soft);
+	color: var(--accent-strong);
+	font-family: var(--font-body);
+	font-size: 0.92rem;
+	font-weight: 900;
+	line-height: 1;
+	padding: 12px 14px;
+	transform: translateY(calc(-100% - 18px));
+	transition:
+		var(--theme-transition-surface),
+		transform var(--motion-fast);
+}
+
+.skip-link:focus-visible {
+	outline: var(--focus-ring);
+	outline-offset: 3px;
+	transform: translateY(0);
+}
+
 main {
 	position: relative;
 	z-index: 2;
+}
+
+main:focus {
+	outline: none;
 }
 
 @media (max-width: 560px) {

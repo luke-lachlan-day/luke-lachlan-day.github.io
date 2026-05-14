@@ -152,17 +152,18 @@
 .footer-legal {
 	position: relative;
 	z-index: 1;
-	padding-top: 78px;
+	padding: 64px 16px 0;
 	text-align: center;
 }
 
 .footer-media-disclaimer {
-	width: min(100% - 32px, var(--hero-max-width));
+	width: min(100%, 760px);
 	margin-inline: auto;
-	color: var(--muted);
-	font-size: 0.74rem;
+	color: color-mix(in srgb, var(--muted) 84%, var(--bg));
+	font-size: 0.72rem;
 	font-weight: 700;
 	line-height: 1.5;
+	transition: var(--theme-transition-color);
 }
 
 @media (max-width: 560px) {

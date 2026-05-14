@@ -33,11 +33,12 @@ const socialImageUrl = new URL(socialImage, Astro.url.origin).toString();
 		generator={Astro.generator}
 	/>
 	<body>
+		<a class="skip-link" href="#main-content">Skip to content</a>
 		<FallingLeaves config={profile.effects.fallingLeaves} />
 
 		<SiteHeader currentPath={currentPath} />
 
-		<main>
+		<main id="main-content" tabindex="-1">
 			<slot />
 		</main>
 

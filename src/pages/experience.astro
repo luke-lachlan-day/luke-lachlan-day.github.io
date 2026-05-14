@@ -32,9 +32,13 @@ const initialTransitionSlotRange = 3;
 		aria-labelledby="experience-selector-title"
 	>
 		<h2 id="experience-selector-title" class="visually-hidden">Experience selector</h2>
+		<p id="experience-selector-helper" class="showcase-selector-helper">
+			Select a card to view details below.
+		</p>
 		<ShowcaseWheel
 			class="experience-wheel"
 			labelledBy="experience-selector-title"
+			describedBy="experience-selector-helper"
 			previousLabel="Previous experience"
 			nextLabel="Next experience"
 			activeIndex={initialActiveExperienceIndex}
@@ -82,6 +86,24 @@ const initialTransitionSlotRange = 3;
 			{...getImageAttrs('/assets/images/experience-book.webp')}
 			aria-hidden="true"
 		/>
+
+		<nav class="showcase-quick-nav" aria-label="Experience quick selection">
+			<ul>
+				{
+					showcaseItems.map(({ item }) => (
+						<li>
+							<a href={`#${item.id}`}>
+								<span class="showcase-quick-title">{item.role}</span>
+								<span class="showcase-quick-meta">
+									{item.company}
+									{item.dateLabel && ` / ${item.dateLabel}`}
+								</span>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
 
 		<div class="project-detail-panel experience-detail-panel" data-experience-detail aria-live="polite">
 			{

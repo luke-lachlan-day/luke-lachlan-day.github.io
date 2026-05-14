@@ -30,8 +30,10 @@ const initialTransitionSlotRange = 3;
 
 	<section class="section project-showcase" id="project-showcase" aria-labelledby="project-selector-title">
 		<h2 id="project-selector-title" class="visually-hidden">Project selector</h2>
+		<p id="project-selector-helper" class="showcase-selector-helper">Select a card to view details below.</p>
 		<ShowcaseWheel
 			labelledBy="project-selector-title"
+			describedBy="project-selector-helper"
 			previousLabel="Previous project"
 			nextLabel="Next project"
 			activeIndex={initialActiveProjectIndex}
@@ -78,6 +80,25 @@ const initialTransitionSlotRange = 3;
 			{...getImageAttrs('/assets/images/project-chest.webp')}
 			aria-hidden="true"
 		/>
+
+		<nav class="showcase-quick-nav" aria-label="Project quick selection">
+			<ul>
+				{
+					showcaseItems.map(({ project, company, releaseStageLabel }) => (
+						<li>
+							<a href={`#${project.id}`}>
+								<span class="showcase-quick-title">{project.product}</span>
+								<span class="showcase-quick-meta">
+									{releaseStageLabel}
+									{project.yearLabel && ` / ${project.yearLabel}`}
+									{company && ` / ${company.name}`}
+								</span>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
 
 		<div class="project-detail-panel" data-project-detail aria-live="polite">
 			{
