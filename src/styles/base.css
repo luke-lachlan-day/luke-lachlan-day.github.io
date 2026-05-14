@@ -4,6 +4,8 @@
 
 html {
 	background-color: var(--bg);
+	overflow-x: hidden;
+	overflow-x: clip;
 	transition: var(--theme-transition-page-background), var(--theme-transition-color);
 }
 
@@ -11,14 +13,15 @@ body {
 	position: relative;
 	margin: 0;
 	min-width: 320px;
-	background-color: var(--bg);
+	background-color: transparent;
 	color: var(--text);
 	font-family: var(--font-body);
 	font-size: 16px;
 	font-weight: 600;
 	line-height: 1.55;
+	overflow-x: hidden;
 	overflow-x: clip;
-	transition: var(--theme-transition-page-background), var(--theme-transition-color);
+	transition: var(--theme-transition-color);
 }
 
 a {
