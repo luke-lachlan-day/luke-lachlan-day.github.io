@@ -1,6 +1,7 @@
 import { getCompanyById } from './companies';
 import { getProjectActionLinks, type ProjectActionLink } from './projectActions';
 import { getProjectTagRenderGroups, type ProjectTagRenderGroup } from './projectTags';
+import { getExperienceHref } from './showcaseRoutes';
 import type { Company, ExperienceItem, ImageAsset, Project } from './types';
 
 export type ProjectReleaseStageLabel = 'In Dev' | 'Released' | 'Shelved' | 'Contributed';
@@ -119,9 +120,7 @@ export const getProjectShowcaseItems = ({
 		return {
 			project,
 			company,
-			companyExperienceHref: companyExperience
-				? `/experience/#${encodeURIComponent(companyExperience.id)}`
-				: undefined,
+			companyExperienceHref: companyExperience ? getExperienceHref(companyExperience.id) : undefined,
 			primaryPicture: project.pictures[0],
 			fallbackLabel: project.product.slice(0, 1),
 			releaseStageLabel: projectReleaseStageLabels[project.releaseStage],

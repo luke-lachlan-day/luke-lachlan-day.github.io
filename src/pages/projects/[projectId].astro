@@ -1,0 +1,19 @@
+---
+import ProjectShowcasePage from '../../components/ProjectShowcasePage.astro';
+import { profile } from '../../data/profile';
+
+type Props = {
+	projectId: string;
+};
+
+export function getStaticPaths() {
+	return profile.projects.items.map((project) => ({
+		params: { projectId: project.id },
+		props: { projectId: project.id },
+	}));
+}
+
+const { projectId } = Astro.props as Props;
+---
+
+<ProjectShowcasePage selectedProjectId={projectId} />

@@ -9,6 +9,7 @@ import ThemeHeroArt from '../components/ThemeHeroArt.astro';
 import { getCompanyById } from '../data/companies';
 import { profile, type Project } from '../data/profile';
 import { getProjectTagRenderGroups } from '../data/projectTags';
+import { getProjectHref } from '../data/showcaseRoutes';
 import { getCompanyLogoToneClass } from '../utils/companyLogoTone';
 import { getImageAttrs } from '../utils/images';
 
@@ -65,7 +66,7 @@ const featuredProjects = home.featuredProjectIds
 							)}
 							<a
 								class="project-card"
-								href={`${projects.href}#${project.id}`}
+								href={getProjectHref(project.id)}
 								aria-label={`View ${project.product} in projects`}
 							>
 								<ProjectImageFrame class="project-image" src={picture.src} alt={picture.alt} loading="lazy">

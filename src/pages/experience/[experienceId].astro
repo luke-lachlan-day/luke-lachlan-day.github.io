@@ -1,0 +1,19 @@
+---
+import ExperienceShowcasePage from '../../components/ExperienceShowcasePage.astro';
+import { profile } from '../../data/profile';
+
+type Props = {
+	experienceId: string;
+};
+
+export function getStaticPaths() {
+	return profile.experience.items.map((item) => ({
+		params: { experienceId: item.id },
+		props: { experienceId: item.id },
+	}));
+}
+
+const { experienceId } = Astro.props as Props;
+---
+
+<ExperienceShowcasePage selectedExperienceId={experienceId} />

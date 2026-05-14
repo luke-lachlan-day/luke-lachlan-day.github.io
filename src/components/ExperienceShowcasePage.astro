@@ -1,0 +1,222 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/pages/showcase.css';
+import ButtonLink from './ButtonLink.astro';
+import DetailGallery from './DetailGallery.astro';
+import PortfolioWheelCard from './PortfolioWheelCard.astro';
+import ProjectImageFrame from './ProjectImageFrame.astro';
+import ShowcaseDetail from './ShowcaseDetail.astro';
+import ShowcaseQuickList from './ShowcaseQuickList.astro';
+import ShowcaseWheel from './ShowcaseWheel.astro';
+import { getExperienceShowcaseItems } from '../data/experienceShowcase';
+import { profile } from '../data/profile';
+import { getExperienceHref, getSelectedShowcaseIndex } from '../data/showcaseRoutes';
+import { getCompanyLogoToneClass } from '../utils/companyLogoTone';
+import { getImageAttrs } from '../utils/images';
+import { getInitialWheelSlot } from '../utils/wheelSlots';
+
+type Props = {
+	selectedExperienceId?: string;
+};
+
+const { selectedExperienceId } = Astro.props as Props;
+const { experience, companies } = profile;
+const showcaseItems = getExperienceShowcaseItems({ items: experience.items, companies });
+const experienceHeroLead = 'lead' in experience.hero ? experience.hero.lead : undefined;
+const initialActiveExperienceIndex = getSelectedShowcaseIndex(
+	showcaseItems.map(({ item }) => item),
+	selectedExperienceId
+);
+const initialTransitionSlotRange = 3;
+---
+
+<BaseLayout title={experience.title} description={experience.description}>
+	<section class="page-hero projects-hero" aria-labelledby="experience-title">
+		<h1 id="experience-title">{experience.hero.title}</h1>
+		{experienceHeroLead && <p>{experienceHeroLead}</p>}
+	</section>
+
+	<section
+		class="section project-showcase"
+		id="experience-showcase"
+		aria-labelledby="experience-selector-title"
+	>
+		<h2 id="experience-selector-title" class="visually-hidden">Experience selector</h2>
+		<p id="experience-selector-helper" class="showcase-selector-helper">
+			Select a card to view details below.
+		</p>
+		<ShowcaseQuickList
+			id="experience-quick-list"
+			label="Browse experience"
+			navLabel="Experience quick selection"
+			changeEvent="experience-detail-change"
+			activeIndex={initialActiveExperienceIndex}
+			items={showcaseItems.map(({ item }) => ({
+				href: getExperienceHref(item.id),
+				label: `${item.role} at ${item.company}`,
+				ariaLabel: `Select ${item.role} at ${item.company}`,
+			}))}
+		/>
+		<ShowcaseWheel
+			class="experience-wheel"
+			labelledBy="experience-selector-title"
+			describedBy="experience-selector-helper"
+			previousLabel="Previous experience"
+			nextLabel="Next experience"
+			activeIndex={initialActiveExperienceIndex}
+			dataAttrs={{ 'data-experience-wheel': '' }}
+		>
+			{
+				showcaseItems.map(({ item, icon, media, fallbackLabel }, index) => {
+					const isActive = index === initialActiveExperienceIndex;
+					const initialSlot = getInitialWheelSlot(
+						index,
+						showcaseItems.length,
+						initialActiveExperienceIndex,
+						initialTransitionSlotRange
+					);
+
+					return (
+						<PortfolioWheelCard
+							class="experience-wheel-card"
+							title={item.cardRole ?? item.role}
+							subtitle={item.cardDateLabel}
+							media={media}
+							mediaDecorative={true}
+							badge={icon ? { icon } : { label: fallbackLabel }}
+							ariaLabel={`Select ${item.role} at ${item.company}`}
+							isActive={isActive}
+							initialSlot={initialSlot}
+							fallbackClass="experience-wheel-media-fallback"
+							fallbackLabel={fallbackLabel}
+							dataAttrs={{
+								'data-experience-card': '',
+								'data-experience-index': index,
+								'data-showcase-href': getExperienceHref(item.id),
+							}}
+						/>
+					);
+				})
+			}
+		</ShowcaseWheel>
+
+		<img
+			class="project-wheel-chest experience-wheel-book"
+			src="/assets/images/experience-book.webp"
+			alt=""
+			loading="lazy"
+			{...getImageAttrs('/assets/images/experience-book.webp')}
+			aria-hidden="true"
+		/>
+
+		<div class="project-detail-panel experience-detail-panel" data-experience-detail aria-live="polite">
+			{
+				showcaseItems.map(
+					({ item, icon, pictures, fallbackLabel, hasHighlights, companyActionLinks }, index) => {
+						return (
+							<ShowcaseDetail
+								id={`experience-detail-${item.id}`}
+								index={index}
+								activeIndex={initialActiveExperienceIndex}
+								itemAttr="data-experience-detail-item"
+								indexAttr="data-experience-index"
+								awards={item.recognition ?? []}
+								awardsAriaLabel={`${item.role} recognition`}
+								class="experience-detail"
+								awardClass="experience-recognition-compact"
+								mediaClass="experience-detail-media"
+								contentClass="experience-detail-content"
+							>
+								<Fragment slot="media">
+									{pictures.length > 0 ? (
+										<DetailGallery
+											pictures={pictures}
+											galleryAttr="data-experience-gallery"
+											galleryLabel={`${item.role} at ${item.company} images`}
+											imageLabel={item.role}
+											firstImageEager={index === initialActiveExperienceIndex}
+										/>
+									) : icon ? (
+										<ProjectImageFrame
+											class="project-detail-gallery"
+											src={icon.src}
+											alt={icon.alt}
+											loading={index === initialActiveExperienceIndex ? 'eager' : 'lazy'}
+										/>
+									) : (
+										<div class="experience-detail-media-fallback" aria-hidden="true">
+											<span class="experience-media-fallback-initial">{fallbackLabel}</span>
+										</div>
+									)}
+								</Fragment>
+								{item.mediaNotice && (
+									<p slot="media-footer" class="project-detail-media-notice">
+										{item.mediaNotice}
+									</p>
+								)}
+
+								<Fragment slot="content">
+									<h3>{item.role}</h3>
+									<div class="project-detail-meta">
+										<span class="project-detail-company">
+											{icon && (
+												<img
+													class={getCompanyLogoToneClass(icon)}
+													src={icon.src}
+													alt=""
+													loading="lazy"
+													{...getImageAttrs(icon)}
+												/>
+											)}
+											<span>{item.company}</span>
+										</span>
+										<span>{item.dateLabel}</span>
+									</div>
+									<p class="project-detail-description">{item.summary}</p>
+									{hasHighlights && (
+										<div class="experience-highlights" aria-label={`${item.role} highlights`}>
+											<p class="experience-highlights-title">Highlights</p>
+											<ul>
+												{item.highlights.map((highlight) => (
+													<li>{highlight}</li>
+												))}
+											</ul>
+										</div>
+									)}
+									{companyActionLinks.length > 0 && (
+										<div class="project-detail-actions">
+											{companyActionLinks.map((action) => (
+												<ButtonLink
+													href={action.href}
+													label={action.label}
+													icon={action.icon}
+													variant={action.variant}
+												/>
+											))}
+										</div>
+									)}
+								</Fragment>
+							</ShowcaseDetail>
+						);
+					}
+				)
+			}
+		</div>
+	</section>
+
+	<script>
+		import { setupShowcaseQuickLists } from '../scripts/showcaseQuickList';
+		import { setupShowcaseControllers } from '../scripts/showcaseController';
+
+		setupShowcaseControllers({
+			wheelSelector: '[data-experience-wheel]',
+			cardSelector: '[data-experience-card]',
+			detailSelector: '[data-experience-detail-item]',
+			indexAttr: 'data-experience-index',
+			changeEvent: 'experience-detail-change',
+			detailRootSelector: '#experience-showcase',
+			gallerySelector: '[data-experience-gallery]',
+		});
+		setupShowcaseQuickLists();
+	</script>
+</BaseLayout>

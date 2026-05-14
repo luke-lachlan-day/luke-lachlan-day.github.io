@@ -8,20 +8,6 @@ const indexAttr = 'data-showcase-index';
 
 type ShowcaseChangeEvent = CustomEvent<{ activeIndex: number }>;
 
-const getHashId = (hash: string) => {
-	const hashValue = hash.slice(1);
-
-	if (!hashValue) {
-		return '';
-	}
-
-	try {
-		return decodeURIComponent(hashValue);
-	} catch {
-		return hashValue;
-	}
-};
-
 const setCurrentLink = (links: HTMLAnchorElement[], activeIndex: number) => {
 	links.forEach((link) => {
 		const linkIndex = Number(link.getAttribute(indexAttr));
@@ -34,20 +20,25 @@ const setCurrentLink = (links: HTMLAnchorElement[], activeIndex: number) => {
 	});
 };
 
-const syncCurrentLinkFromHash = (links: HTMLAnchorElement[]) => {
-	const activeHashId = getHashId(window.location.hash);
+const shouldHandleQuickLinkClick = (event: MouseEvent) =>
+	event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
 
-	if (!activeHashId) {
+const writeRoute = (href: string) => {
+	const nextUrl = new URL(href, window.location.origin);
+	const nextPath = `${nextUrl.pathname}${nextUrl.search}`;
+	const currentPath = `${window.location.pathname}${window.location.search}`;
+
+	if (currentPath !== nextPath || window.location.hash) {
+		window.history.replaceState(null, '', nextPath);
+	}
+};
+
+const dispatchQuickListChange = (changeEvent: string | undefined, activeIndex: number) => {
+	if (!changeEvent) {
 		return;
 	}
 
-	const activeLink = links.find((link) => getHashId(link.hash) === activeHashId);
-
-	if (!activeLink) {
-		return;
-	}
-
-	setCurrentLink(links, Number(activeLink.getAttribute(indexAttr)));
+	window.dispatchEvent(new CustomEvent(changeEvent, { detail: { activeIndex } }));
 };
 
 const setupShowcaseQuickList = (quickList: HTMLElement) => {
@@ -76,8 +67,23 @@ const setupShowcaseQuickList = (quickList: HTMLElement) => {
 	});
 
 	links.forEach((link) => {
-		link.addEventListener('click', () => {
+		link.addEventListener('click', (event) => {
+			if (!shouldHandleQuickLinkClick(event)) {
+				return;
+			}
+
+			const linkUrl = new URL(link.href);
+
+			if (linkUrl.origin !== window.location.origin) {
+				return;
+			}
+
+			event.preventDefault();
 			setOpen(false);
+			const activeIndex = Number(link.getAttribute(indexAttr));
+			setCurrentLink(links, activeIndex);
+			writeRoute(link.href);
+			dispatchQuickListChange(quickList.dataset.showcaseChangeEvent, activeIndex);
 		});
 	});
 
@@ -109,8 +115,6 @@ const setupShowcaseQuickList = (quickList: HTMLElement) => {
 			}
 		});
 	}
-
-	syncCurrentLinkFromHash(links);
 };
 
 export const setupShowcaseQuickLists = () => {

@@ -51,7 +51,7 @@ test('projects interaction works', async ({ page }) => {
 
 	await expect(nextDetail).toBeVisible();
 	await expect(nextDetail.getByRole('heading', { name: 'Dungeons and Dining Tables' })).toBeVisible();
-	await expect(page).toHaveURL(/#dungeons-and-dining-tables$/);
+	await expect(page).toHaveURL(/\/projects\/dungeons-and-dining-tables\/$/);
 });
 
 test('projects quick list selects the active project', async ({ page }) => {
@@ -72,35 +72,57 @@ test('projects quick list selects the active project', async ({ page }) => {
 
 	await expect(quickListToggle).toHaveAttribute('aria-expanded', 'false');
 	await expect(page.locator('#project-detail-dungeons-and-dining-tables')).toBeVisible();
-	await expect(page).toHaveURL(/#dungeons-and-dining-tables$/);
+	await expect(page).toHaveURL(/\/projects\/dungeons-and-dining-tables\/$/);
 	await expect(
-		page.locator('[data-showcase-quick-link][href="#dungeons-and-dining-tables"]')
+		page.locator('[data-showcase-quick-link][href="/projects/dungeons-and-dining-tables/"]')
 	).toHaveAttribute('aria-current', 'true');
 });
 
-test('projects quick list reflects direct project links', async ({ page }) => {
-	await page.goto('/projects/#dungeons-and-dining-tables');
+test('projects direct route selects the active project', async ({ page }) => {
+	await page.goto('/projects/dungeons-and-dining-tables/');
 
 	await page.getByRole('button', { name: 'Browse projects' }).click();
 
 	await expect(page.locator('#project-detail-dungeons-and-dining-tables')).toBeVisible();
 	await expect(
-		page.locator('[data-showcase-quick-link][href="#dungeons-and-dining-tables"]')
+		page.locator('[data-showcase-quick-link][href="/projects/dungeons-and-dining-tables/"]')
 	).toHaveAttribute('aria-current', 'true');
+});
+
+test('experience direct route selects the active experience', async ({ page }) => {
+	await page.goto('/experience/daytime-devs/');
+
+	await page.getByRole('button', { name: 'Browse experience' }).click();
+
+	await expect(page.locator('#experience-detail-daytime-devs')).toBeVisible();
+	await expect(
+		page.locator('#experience-detail-daytime-devs').getByRole('heading', { name: 'Co-Founder', exact: true })
+	).toBeVisible();
+	await expect(page.locator('[data-showcase-quick-link][href="/experience/daytime-devs/"]')).toHaveAttribute(
+		'aria-current',
+		'true'
+	);
 });
 
 test('experience quick list opens', async ({ page }) => {
 	await page.goto('/experience/');
 
 	const quickListToggle = page.getByRole('button', { name: 'Browse experience' });
+	const quickList = page.getByRole('navigation', { name: 'Experience quick selection' });
 
 	await expect(quickListToggle).toHaveAttribute('aria-expanded', 'false');
 
 	await quickListToggle.click();
 
 	await expect(quickListToggle).toHaveAttribute('aria-expanded', 'true');
-	await expect(page.getByRole('navigation', { name: 'Experience quick selection' })).toBeVisible();
+	await expect(quickList).toBeVisible();
 	await expect(page.getByRole('button', { name: 'Select Co-Founder at Daytime Devs Pty Ltd' })).toBeVisible();
+
+	await quickList.getByRole('link', { name: 'Select Co-Founder at Daytime Devs Pty Ltd' }).click();
+
+	await expect(quickListToggle).toHaveAttribute('aria-expanded', 'false');
+	await expect(page.locator('#experience-detail-daytime-devs')).toBeVisible();
+	await expect(page).toHaveURL(/\/experience\/daytime-devs\/$/);
 });
 
 test('project gallery controls work when present', async ({ page }) => {

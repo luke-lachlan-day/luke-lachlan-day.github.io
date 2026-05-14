@@ -20,28 +20,15 @@ export type WheelControllerOptions = {
 	cardSelector: string;
 	detailSelector: string;
 	indexAttr: string;
-	idAttr: string;
 	changeEvent: string;
+	hrefAttr?: string;
 	detailRootSelector?: string;
 };
 
+const defaultHrefAttr = 'data-showcase-href';
 const getAttr = (element: Element, name: string) => element.getAttribute(name) ?? '';
 const getNumberAttr = (element: Element, name: string) => Number(getAttr(element, name)) || 0;
 const wrapIndex = (index: number, total: number) => ((index % total) + total) % total;
-
-const getHashId = () => {
-	const hash = window.location.hash.slice(1);
-
-	if (!hash) {
-		return '';
-	}
-
-	try {
-		return decodeURIComponent(hash);
-	} catch {
-		return hash;
-	}
-};
 
 const enableTransitionsAfterPaint = (wheel: HTMLElement) => {
 	const enableWheelTransitions = () => {
@@ -135,17 +122,20 @@ const dispatchWheelChange = (changeEvent: string, activeIndex: number) => {
 	window.dispatchEvent(new CustomEvent(changeEvent, { detail: { activeIndex } }));
 };
 
-const writeActiveHash = (cards: HTMLElement[], activeIndex: number, idAttr: string) => {
+const writeActiveRoute = (cards: HTMLElement[], activeIndex: number, hrefAttr: string) => {
 	const activeCard = cards[activeIndex];
-	const itemId = activeCard ? getAttr(activeCard, idAttr) : '';
+	const itemHref = activeCard ? getAttr(activeCard, hrefAttr) : '';
 
-	if (!itemId) {
+	if (!itemHref) {
 		return;
 	}
 
-	const nextHash = `#${encodeURIComponent(itemId)}`;
-	if (window.location.hash !== nextHash) {
-		window.history.replaceState(null, '', nextHash);
+	const nextUrl = new URL(itemHref, window.location.origin);
+	const nextPath = `${nextUrl.pathname}${nextUrl.search}`;
+	const currentPath = `${window.location.pathname}${window.location.search}`;
+
+	if (currentPath !== nextPath || window.location.hash) {
+		window.history.replaceState(null, '', nextPath);
 	}
 };
 
@@ -165,6 +155,7 @@ export const setupWheelController = (wheel: HTMLElement, options: WheelControlle
 	const total = cards.length;
 	const desktopQuery = window.matchMedia(desktopQueryText);
 	const phoneQuery = window.matchMedia(phoneQueryText);
+	const hrefAttr = options.hrefAttr ?? defaultHrefAttr;
 	let activeIndex = Number(wheel.getAttribute('data-active-index')) || 0;
 
 	const updateWheel = () => {
@@ -176,29 +167,22 @@ export const setupWheelController = (wheel: HTMLElement, options: WheelControlle
 		dispatchWheelChange(options.changeEvent, activeIndex);
 	};
 
-	const setActiveIndex = (index: number, shouldUpdateHash = false) => {
-		activeIndex = wrapIndex(index, total);
+	const setActiveIndex = (index: number, shouldUpdateRoute = false) => {
+		const nextIndex = wrapIndex(index, total);
+
+		if (nextIndex === activeIndex) {
+			if (shouldUpdateRoute) {
+				writeActiveRoute(cards, activeIndex, hrefAttr);
+			}
+			return;
+		}
+
+		activeIndex = nextIndex;
 		updateWheel();
 
-		if (shouldUpdateHash) {
-			writeActiveHash(cards, activeIndex, options.idAttr);
+		if (shouldUpdateRoute) {
+			writeActiveRoute(cards, activeIndex, hrefAttr);
 		}
-	};
-
-	const setActiveItemFromHash = () => {
-		const itemId = getHashId();
-
-		if (!itemId) {
-			return;
-		}
-
-		const matchingCard = cards.find((card) => getAttr(card, options.idAttr) === itemId);
-
-		if (!matchingCard) {
-			return;
-		}
-
-		setActiveIndex(getNumberAttr(matchingCard, options.indexAttr));
 	};
 
 	cards.forEach((card) => {
@@ -209,23 +193,28 @@ export const setupWheelController = (wheel: HTMLElement, options: WheelControlle
 		card.addEventListener('keydown', (event) => {
 			if (event.key === 'ArrowLeft') {
 				event.preventDefault();
-				setActiveIndex(activeIndex - 1);
+				setActiveIndex(activeIndex - 1, true);
 			}
 
 			if (event.key === 'ArrowRight') {
 				event.preventDefault();
-				setActiveIndex(activeIndex + 1);
+				setActiveIndex(activeIndex + 1, true);
 			}
 		});
 	});
 
-	previousButton?.addEventListener('click', () => setActiveIndex(activeIndex - 1));
-	nextButton?.addEventListener('click', () => setActiveIndex(activeIndex + 1));
+	previousButton?.addEventListener('click', () => setActiveIndex(activeIndex - 1, true));
+	nextButton?.addEventListener('click', () => setActiveIndex(activeIndex + 1, true));
 	desktopQuery.addEventListener('change', updateWheel);
 	phoneQuery.addEventListener('change', updateWheel);
-	window.addEventListener('hashchange', setActiveItemFromHash);
+	window.addEventListener(options.changeEvent, (event) => {
+		const requestedIndex = (event as CustomEvent<{ activeIndex?: number }>).detail?.activeIndex;
 
-	setActiveItemFromHash();
+		if (typeof requestedIndex === 'number') {
+			setActiveIndex(requestedIndex);
+		}
+	});
+
 	updateWheel();
 	enableTransitionsAfterPaint(wheel);
 };
