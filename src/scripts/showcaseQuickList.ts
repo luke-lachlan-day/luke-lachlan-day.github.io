@@ -58,6 +58,7 @@ const setupShowcaseQuickList = (quickList: HTMLElement) => {
 
 	const setOpen = (isOpen: boolean) => {
 		panel.hidden = !isOpen;
+		panel.inert = !isOpen;
 		toggle.setAttribute('aria-expanded', String(isOpen));
 		quickList.toggleAttribute(openAttr, isOpen);
 	};

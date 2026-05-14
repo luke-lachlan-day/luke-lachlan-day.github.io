@@ -105,6 +105,7 @@ const updateCardState = (
 
 	card.setAttribute('aria-pressed', String(isActive));
 	card.setAttribute('aria-hidden', String(!isInteractive));
+	card.inert = !isInteractive;
 	card.tabIndex = isInteractive ? 0 : -1;
 };
 

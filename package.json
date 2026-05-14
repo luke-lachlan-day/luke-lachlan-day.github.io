@@ -9,6 +9,7 @@
     "dev": "astro dev",
     "check": "astro check",
     "check:assets": "node scripts/check-assets.mjs",
+    "audit:site": "playwright test --config=playwright.audit.config.ts",
     "process:assets": "node scripts/process-assets.mjs",
     "build": "astro build",
     "format": "prettier --write .",
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "@playwright/test": "^1.59.1",
+    "@types/node": "^22.12.0",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^6.0.3"
