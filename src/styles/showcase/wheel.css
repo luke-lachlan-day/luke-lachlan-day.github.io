@@ -274,9 +274,7 @@
 
 @media (max-width: 560px) {
 	.project-wheel {
-		grid-template-columns: 38px minmax(0, 1fr) 38px;
-		width: calc(100% + 10px);
-		margin-left: -5px;
+		grid-template-columns: 42px minmax(0, 1fr) 42px;
 		overflow: hidden;
 		overflow: clip;
 		overflow-clip-margin: 18px;
