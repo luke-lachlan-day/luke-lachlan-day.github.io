@@ -8,8 +8,10 @@
 }
 
 .project-showcase {
+	--showcase-shadow-bleed: clamp(24px, 2vw, 36px);
 	overflow-x: hidden;
 	overflow-x: clip;
+	overflow-clip-margin: var(--showcase-shadow-bleed);
 	overflow-anchor: none;
 }
 
@@ -277,7 +279,7 @@
 		grid-template-columns: 42px minmax(0, 1fr) 42px;
 		overflow: hidden;
 		overflow: clip;
-		overflow-clip-margin: 18px;
+		overflow-clip-margin: var(--showcase-shadow-bleed);
 	}
 
 	.project-wheel-viewport {
