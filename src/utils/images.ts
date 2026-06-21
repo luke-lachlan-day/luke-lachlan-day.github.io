@@ -34,7 +34,10 @@ export const imageDimensionsBySrc = {
 	'/assets/images/experience-book.webp': { width: 760, height: 478 },
 	'/assets/images/experience-catalyst-games-sagta-award-group.webp': { width: 750, height: 422 },
 	'/assets/images/experience-catalyst-games-studio-event-group.webp': { width: 760, height: 428 },
-	'/assets/images/experience-catalyst-games-agricultural-vr-training-filming.webp': {	width: 760,	height: 428, },
+	'/assets/images/experience-catalyst-games-agricultural-vr-training-filming.webp': {
+		width: 760,
+		height: 428,
+	},
 	'/assets/images/experience-daytime-devs-avcon-costumes.webp': { width: 760, height: 428 },
 	'/assets/images/experience-daytime-devs-booth-team.webp': { width: 760, height: 428 },
 	'/assets/images/experience-daytime-devs-convention.webp': { width: 760, height: 428 },
