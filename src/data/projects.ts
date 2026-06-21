@@ -132,7 +132,7 @@ export const projects = {
 				},
 			],
 			description:
-				'A Catalyst Games contribution to client training work, supporting agricultural VR simulations, a web puzzle, and practical project delivery.',
+				'A Catalyst Games contribution to training-focused work, supporting agricultural VR simulations, a web puzzle, and practical project delivery.',
 			mediaNotice: mediaOwnershipNotice,
 			projectTags: {
 				format: ['Interactive Experience'],
