@@ -119,7 +119,7 @@ export const experience = {
 			cardDateLabel: '2025 - 2026',
 			sortDate: '2026-03-01',
 			summary:
-				'Worked across original IP including Dungeons and Dining Tables, client projects including agricultural VR training experiences, and the Firebase-authenticated Disney Game Night mobile app. Contributed beyond development through publisher pitching, school-based game development teaching, and team training sessions.',
+				'Worked across original IP and client work, such as Dungeons and Dining Tables, agricultural VR training experiences, and the Firebase-authenticated Disney Game Night mobile app. Contributed beyond development through publisher pitching, school-based game development teaching, and team training sessions.',
 			mediaNotice: mediaOwnershipNotice,
 			recognition: [
 				{
