@@ -12,8 +12,8 @@ const defaultOutputDir = path.join(repoRoot, 'public', 'assets', 'images');
 
 const assets = [
 	{
-		source: 'project-think-digital-vr-work-cattle-vr-simulation.jpg',
-		output: 'project-think-digital-vr-work-cattle-vr-simulation.webp',
+		source: 'project-agricultural-vr-training-cattle-simulation.jpg',
+		output: 'project-agricultural-vr-training-cattle-simulation.webp',
 		maxSize: 1640,
 		crop: '1893x1065+0+107',
 	},
@@ -111,8 +111,8 @@ const assets = [
 		crop: '750x422+0+21',
 	},
 	{
-		source: 'catalyst-think-digital-vr-cattle-vr.jpg',
-		output: 'experience-catalyst-games-think-digital-vr-cattle-vr.webp',
+		source: 'catalyst-agricultural-vr-training-filming.jpg',
+		output: 'experience-catalyst-games-agricultural-vr-training-filming.webp',
 		maxSize: 760,
 		crop: '1280x720+0+523',
 	},

@@ -107,19 +107,19 @@ export const experience = {
 					alt: 'Catalyst Games team members posing with a SAGTA South Australian Game Industry Award.',
 				},
 				{
-					src: '/assets/images/experience-catalyst-games-think-digital-vr-cattle-vr.webp',
-					alt: 'Catalyst and Think Digital VR team members filming a cattle VR training experience.',
-				},
-				{
 					src: '/assets/images/experience-catalyst-games-studio-event-group.webp',
 					alt: 'Large Catalyst Games studio event group photo on a staircase.',
+				},
+				{
+					src: '/assets/images/experience-catalyst-games-agricultural-vr-training-filming.webp',
+					alt: 'Catalyst Games team members filming a cattle VR training experience.',
 				},
 			],
 			dateLabel: 'Jan 2025 - Mar 2026',
 			cardDateLabel: '2025 - 2026',
 			sortDate: '2026-03-01',
 			summary:
-				'Worked across original IP including Dungeons and Dining Tables, client projects such as Think Digital VR training experiences, and the Firebase-authenticated Disney Game Night mobile app. Contributed beyond development through publisher pitching, school-based game development teaching, and team training sessions.',
+				'Worked across original IP including Dungeons and Dining Tables, client projects including agricultural VR training experiences, and the Firebase-authenticated Disney Game Night mobile app. Contributed beyond development through publisher pitching, school-based game development teaching, and team training sessions.',
 			mediaNotice: mediaOwnershipNotice,
 			recognition: [
 				{

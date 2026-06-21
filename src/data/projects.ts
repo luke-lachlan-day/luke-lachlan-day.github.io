@@ -122,17 +122,17 @@ export const projects = {
 			],
 		},
 		{
-			id: 'think-digital-vr-work',
+			id: 'agricultural-vr-training',
 			companyId: 'catalyst-games',
-			product: 'Think Digital Work',
+			product: 'Agricultural VR Training',
 			pictures: [
 				{
-					src: '/assets/images/project-think-digital-vr-work-cattle-vr-simulation.webp',
-					alt: 'CattleVR training simulation showing a cow in a virtual cattle crush.',
+					src: '/assets/images/project-agricultural-vr-training-cattle-simulation.webp',
+					alt: 'VR training simulation showing a cow in a virtual cattle crush.',
 				},
 			],
 			description:
-				'A Catalyst Games contribution to Think Digital client work, supporting VR interactive training experiences, a web puzzle and practical project delivery.',
+				'A Catalyst Games contribution to client training work, supporting agricultural VR simulations, a web puzzle, and practical project delivery.',
 			mediaNotice: mediaOwnershipNotice,
 			projectTags: {
 				format: ['Interactive Experience'],
@@ -145,7 +145,6 @@ export const projects = {
 			yearLabel: '2025 - 2026',
 			releaseStage: 'contributed',
 			awards: [],
-			actions: [{ type: 'website', href: 'https://think.digital/' }],
 		},
 		{
 			id: 'super-raccoon',
