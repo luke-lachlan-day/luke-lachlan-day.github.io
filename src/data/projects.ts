@@ -37,6 +37,39 @@ export const projects = {
 			],
 		},
 		{
+			id: 'tomb-tails',
+			companyId: 'daytime-devs',
+			product: 'Tomb Tails',
+			pictures: [
+				{
+					src: '/assets/images/project-tomb-tails-tomb-coop.webp',
+					alt: 'Tomb Tails gameplay showing cats cooperating inside an ancient tomb.',
+				},
+				{
+					src: '/assets/images/project-tomb-tails-trap-corridor.webp',
+					alt: 'Tomb Tails gameplay showing cats navigating a trap-filled tomb corridor.',
+				},
+				{
+					src: '/assets/images/project-tomb-tails-puzzle-room.webp',
+					alt: 'Tomb Tails gameplay showing cats exploring a puzzle room with ancient mechanisms.',
+				},
+			],
+			description:
+				'Play as cats trapped in forgotten tombs, solving puzzles, dodging deadly traps, finding food, and cooperating with friends to uncover a path to freedom.',
+			projectTags: {
+				format: ['Game'],
+				platform: ['PC', 'Steam'],
+				specialty: ['Adventure', 'Puzzle', 'Group Play'],
+				tech: ['C#', 'Unity'],
+			},
+			sortDate: '2026-07-06',
+			dateLabel: 'In Dev',
+			yearLabel: 'In Dev',
+			releaseStage: 'dev',
+			awards: [],
+			actions: [{ type: 'steam', href: 'https://store.steampowered.com/app/4287700/Tomb_Tails/' }],
+		},
+		{
 			id: 'dungeons-and-dining-tables',
 			companyId: 'catalyst-games',
 			product: 'Dungeons and Dining Tables',
@@ -127,8 +160,8 @@ export const projects = {
 			product: 'Agricultural VR Training',
 			pictures: [
 				{
-					src: '/assets/images/project-agricultural-vr-training-cattle-simulation.webp',
-					alt: 'VR training simulation showing a cow in a virtual cattle crush.',
+					src: '/assets/images/experience-catalyst-games-agricultural-vr-training-filming.webp',
+					alt: 'Catalyst Games team members filming a cattle VR training experience.',
 				},
 			],
 			description:
@@ -448,6 +481,29 @@ export const projects = {
 			releaseStage: 'dev',
 			awards: [],
 			actions: [{ type: 'discord', href: 'https://discord.com/invite/R79ShQzvBX' }],
+		},
+		{
+			id: 'charcuterie-wars',
+			companyId: 'solo',
+			product: 'Charcuterie Wars',
+			pictures: [
+				{
+					src: '/assets/images/project-charcuterie-wars.webp',
+					alt: 'Charcuterie Wars title art with a game logo over a wooden board and charcuterie pieces.',
+				},
+			],
+			description:
+				'Build the perfect charcuterie board in this cosy tactical puzzle game. Place fruit, cheese, crackers and dips, manage freshness, trigger tasty combos, and outscore your rival in bite-sized charcuterie battles.',
+			projectTags: {
+				format: ['Game'],
+				platform: ['PC'],
+				specialty: ['Autobattler', 'Card Game', 'Strategy'],
+				tech: ['C#', 'Unity'],
+			},
+			dateLabel: 'In Dev',
+			yearLabel: 'In Dev',
+			releaseStage: 'dev',
+			awards: [],
 		},
 	] satisfies Project[],
 } as const;

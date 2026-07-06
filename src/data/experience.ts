@@ -92,7 +92,7 @@ export const experience = {
 			cardDateLabel: '2026 - Present',
 			sortDate: '2026-04-01',
 			summary:
-				'Recently joined the team at SciWorld, supporting STEM outreach for schools, parties, and public events across South Australia.',
+				'Joined the team at SciWorld, supporting STEM outreach for schools, parties, and public events across South Australia.',
 			mediaNotice: mediaOwnershipNotice,
 			highlights: [],
 		},
