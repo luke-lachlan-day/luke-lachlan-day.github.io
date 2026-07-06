@@ -496,8 +496,8 @@ export const projects = {
 				'Build the perfect charcuterie board in this cosy tactical puzzle game. Place fruit, cheese, crackers and dips, manage freshness, trigger tasty combos, and outscore your rival in bite-sized charcuterie battles.',
 			projectTags: {
 				format: ['Game'],
-				platform: ['PC'],
-				specialty: ['Autobattler', 'Card Game', 'Strategy'],
+				platform: ['Mobile', 'PC', 'Steam'],
+				specialty: ['Puzzle', 'Strategy', 'Cozy'],
 				tech: ['C#', 'Unity'],
 			},
 			dateLabel: 'In Dev',
