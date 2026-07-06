@@ -12,6 +12,39 @@ const defaultOutputDir = path.join(repoRoot, 'public', 'assets', 'images');
 
 const assets = [
 	{
+		source: 'project-tomb-tails-header.jpg',
+		output: 'project-tomb-tails.webp',
+		maxSize: 460,
+		quality: 90,
+	},
+	{
+		source: 'project-tomb-tails-capsule.jpg',
+		output: 'project-tomb-tails-capsule.webp',
+		maxSize: 231,
+		quality: 90,
+	},
+	{
+		source: 'project-tomb-tails-tomb-coop.jpg',
+		output: 'project-tomb-tails-tomb-coop.webp',
+		maxSize: 1672,
+	},
+	{
+		source: 'project-tomb-tails-trap-corridor.jpg',
+		output: 'project-tomb-tails-trap-corridor.webp',
+		maxSize: 1672,
+	},
+	{
+		source: 'project-tomb-tails-puzzle-room.jpg',
+		output: 'project-tomb-tails-puzzle-room.webp',
+		maxSize: 1672,
+	},
+	{
+		source: 'project-charcuterie-wars-title.png',
+		output: 'project-charcuterie-wars.webp',
+		maxSize: 1536,
+		quality: 90,
+	},
+	{
 		source: 'project-agricultural-vr-training-cattle-simulation.jpg',
 		output: 'project-agricultural-vr-training-cattle-simulation.webp',
 		maxSize: 1640,
