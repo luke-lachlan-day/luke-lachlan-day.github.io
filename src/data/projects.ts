@@ -451,6 +451,8 @@ export const projects = {
 			releaseStage: 'shelved',
 			awards: [],
 		},
+		// Temporarily hidden projects; retain their content for restoration.
+		/*
 		{
 			id: 'petes-place',
 			companyId: 'solo',
@@ -505,5 +507,6 @@ export const projects = {
 			releaseStage: 'dev',
 			awards: [],
 		},
+		*/
 	] satisfies Project[],
 } as const;
