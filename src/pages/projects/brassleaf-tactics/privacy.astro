@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { brassleafPrivacy } from '../../../data/brassleafPrivacy';
+import { getExternalLinkAttrs } from '../../../utils/links';
+import '../../../styles/pages/privacy.css';
+---
+
+<BaseLayout title={brassleafPrivacy.title} description={brassleafPrivacy.description}>
+	<article class="privacy-policy" aria-labelledby="privacy-title">
+		<header class="privacy-policy-header">
+			<h1 id="privacy-title">{brassleafPrivacy.title}</h1>
+			<p class="privacy-policy-updated">
+				Last updated: <time datetime={brassleafPrivacy.updatedDate}>{brassleafPrivacy.updatedLabel}</time>
+			</p>
+			<p>{brassleafPrivacy.introduction}</p>
+		</header>
+		{
+			brassleafPrivacy.sections.map((section) => (
+				<section class="privacy-policy-section">
+					<h2>{section.heading}</h2>
+					<p>
+						{section.content.map((part) =>
+							typeof part === 'string' ? (
+								part
+							) : (
+								<a href={part.href} {...getExternalLinkAttrs(part.href)} set:text={part.label} />
+							)
+						)}
+					</p>
+				</section>
+			))
+		}
+	</article>
+</BaseLayout>
