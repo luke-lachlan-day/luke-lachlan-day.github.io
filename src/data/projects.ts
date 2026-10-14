@@ -451,6 +451,56 @@ export const projects = {
 			releaseStage: 'shelved',
 			awards: [],
 		},
+		{
+			id: 'brassleaf-tactics',
+			companyId: 'solo',
+			product: 'Brassleaf Tactics',
+			pictures: [
+				{
+					src: '/assets/images/project-brassleaf-tactics-title.webp',
+					alt: 'Brassleaf Tactics trailer poster with animal commanders, a steampunk castle, and the game logo.',
+				},
+				{
+					src: '/assets/images/project-brassleaf-tactics-ground-battle.webp',
+					alt: 'Brassleaf Tactics ground battle between Banner and Flint with infantry, vehicles, and aircraft on a hex-grid map.',
+				},
+				{
+					src: '/assets/images/project-brassleaf-tactics-attack-forecast.webp',
+					alt: 'Brassleaf Tactics attack forecast showing a helicopter movement route and predicted knockout against a vehicle.',
+				},
+				{
+					src: '/assets/images/project-brassleaf-tactics-naval-engagement.webp',
+					alt: 'Brassleaf Tactics naval engagement with ships, coastal properties, and an attack forecast across sea hexes.',
+				},
+				{
+					src: '/assets/images/project-brassleaf-tactics-commander-selection.webp',
+					alt: 'Brassleaf Tactics commander roster with Banner selected and his bonuses and Annex power displayed.',
+				},
+				{
+					src: '/assets/images/project-brassleaf-tactics-map-editor.webp',
+					alt: 'Brassleaf Tactics map editor showing the terrain palette, an Industrial Foundry battlefield, and Ironclad unit details.',
+				},
+			],
+			description:
+				'A solo-developed steampunk turn-based tactics game by Luke Lachlan Day, built in Unity with C#. Lead animal and clockwork armies across hex-grid battlefields, capture properties to fund new units, and turn the tide with commander powers. Play solo missions, face computer opponents or friends in local versus, and create your own battlefields with the built-in map editor.',
+			projectTags: {
+				format: ['Game'],
+				platform: ['PC', 'Steam'],
+				specialty: ['Strategy'],
+				tech: ['C#', 'Unity'],
+			},
+			dateLabel: 'In Dev',
+			yearLabel: 'In Dev',
+			releaseStage: 'dev',
+			awards: [],
+			actions: [
+				{
+					type: 'steam',
+					href: 'https://store.steampowered.com/app/4875550/Brassleaf_Tactics/',
+					label: 'Wishlist on Steam',
+				},
+			],
+		},
 		// Temporarily hidden projects; retain their content for restoration.
 		/*
 		{

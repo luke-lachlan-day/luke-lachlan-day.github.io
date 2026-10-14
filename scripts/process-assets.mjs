@@ -12,6 +12,42 @@ const defaultOutputDir = path.join(repoRoot, 'public', 'assets', 'images');
 
 const assets = [
 	{
+		source: 'project-brassleaf-tactics-title.png',
+		output: 'project-brassleaf-tactics-title.webp',
+		maxSize: 1672,
+		quality: 90,
+	},
+	{
+		source: 'project-brassleaf-tactics-ground-battle.png',
+		output: 'project-brassleaf-tactics-ground-battle.webp',
+		maxSize: 1672,
+		quality: 90,
+	},
+	{
+		source: 'project-brassleaf-tactics-attack-forecast.png',
+		output: 'project-brassleaf-tactics-attack-forecast.webp',
+		maxSize: 1672,
+		quality: 90,
+	},
+	{
+		source: 'project-brassleaf-tactics-naval-engagement.png',
+		output: 'project-brassleaf-tactics-naval-engagement.webp',
+		maxSize: 1672,
+		quality: 90,
+	},
+	{
+		source: 'project-brassleaf-tactics-commander-selection.png',
+		output: 'project-brassleaf-tactics-commander-selection.webp',
+		maxSize: 1672,
+		quality: 90,
+	},
+	{
+		source: 'project-brassleaf-tactics-map-editor.png',
+		output: 'project-brassleaf-tactics-map-editor.webp',
+		maxSize: 1672,
+		quality: 90,
+	},
+	{
 		source: 'project-tomb-tails-header.jpg',
 		output: 'project-tomb-tails.webp',
 		maxSize: 460,
