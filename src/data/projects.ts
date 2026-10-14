@@ -482,7 +482,7 @@ export const projects = {
 				},
 			],
 			description:
-				'A solo-developed steampunk turn-based tactics game by Luke Lachlan Day, built in Unity with C#. Lead animal and clockwork armies across hex-grid battlefields, capture properties to fund new units, and turn the tide with commander powers. Play solo missions, face computer opponents or friends in local versus, and create your own battlefields with the built-in map editor.',
+				'Command animal armies in a steampunk turn-based tactics game. Capture cities, build your forces and unleash commander powers across hex-grid battlefields. Take on solo missions, challenge friends in local versus, or create your own maps.',
 			projectTags: {
 				format: ['Game'],
 				platform: ['PC', 'Steam'],
