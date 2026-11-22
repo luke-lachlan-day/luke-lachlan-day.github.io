@@ -48,6 +48,21 @@ const assets = [
 		quality: 90,
 	},
 	{
+		source: 'project-the-eleventh-bell-title.png',
+		output: 'project-the-eleventh-bell-title.webp',
+		maxSize: 1232,
+	},
+	{
+		source: 'project-the-eleventh-bell-hex-scribe.png',
+		output: 'project-the-eleventh-bell-hex-scribe.webp',
+		maxSize: 1672,
+	},
+	{
+		source: 'project-the-eleventh-bell-cursed-pact.png',
+		output: 'project-the-eleventh-bell-cursed-pact.webp',
+		maxSize: 1672,
+	},
+	{
 		source: 'project-tomb-tails-header.jpg',
 		output: 'project-tomb-tails.webp',
 		maxSize: 460,

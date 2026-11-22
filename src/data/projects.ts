@@ -501,6 +501,37 @@ export const projects = {
 				},
 			],
 		},
+		{
+			id: 'the-eleventh-bell',
+			companyId: 'solo',
+			product: 'The Eleventh Bell',
+			pictures: [
+				{
+					src: '/assets/images/project-the-eleventh-bell-title.webp',
+					alt: 'The Eleventh Bell cover art with the lantern Keeper facing an armoured knight in a moonlit town.',
+				},
+				{
+					src: '/assets/images/project-the-eleventh-bell-hex-scribe.webp',
+					alt: 'The Keeper faces the Hex Scribe with five cards in hand and a Lantern total of 8 out of 11.',
+				},
+				{
+					src: '/assets/images/project-the-eleventh-bell-cursed-pact.webp',
+					alt: 'The Cursed Pact event offers a chance at a Legendary reward in exchange for 10 health.',
+				},
+			],
+			description:
+				'A push-your-luck deckbuilder set in a moonlit town. As the lantern Keeper, build a hand to fend off the town’s nightmares. Hit exactly 11 for a Jackpot, then decide whether to play your combo or risk another draw. Between battles, recruit cards and choose your next stop at Crossroads.',
+			projectTags: {
+				format: ['Game'],
+				platform: ['PC', 'Mobile'],
+				specialty: ['Card Game', 'Strategy'],
+				tech: ['C#', 'Unity'],
+			},
+			dateLabel: 'In Dev',
+			yearLabel: 'In Dev',
+			releaseStage: 'dev',
+			awards: [],
+		},
 		// Temporarily hidden projects; retain their content for restoration.
 		/*
 		{
