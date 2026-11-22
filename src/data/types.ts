@@ -7,6 +7,18 @@ export type Link = {
 	description?: string;
 };
 
+export type PrivacyPolicy = {
+	title: string;
+	description: string;
+	updatedDate: string;
+	updatedLabel: string;
+	introduction: string;
+	sections: {
+		heading: string;
+		content: (string | Pick<Link, 'label' | 'href'>)[];
+	}[];
+};
+
 export type ExperienceRecognition = {
 	name: string;
 	awardedFrom: string;

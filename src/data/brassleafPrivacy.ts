@@ -1,7 +1,6 @@
-type PolicySection = {
-	heading: string;
-	content: (string | { label: string; href: string })[];
-};
+import { emailAddress } from './contact';
+import { websitePrivacySection } from './site';
+import type { PrivacyPolicy } from './types';
 
 export const brassleafPrivacy = {
 	title: 'Brassleaf Tactics Privacy Policy',
@@ -29,24 +28,14 @@ export const brassleafPrivacy = {
 			heading: 'Contact',
 			content: [
 				'If you email ',
-				{ label: 'luke@lukelachlanday.dev', href: 'mailto:luke@lukelachlanday.dev' },
+				{ label: emailAddress, href: `mailto:${emailAddress}` },
 				', your email address and the information you provide are used to respond to your inquiry.',
 			],
 		},
-		{
-			heading: 'This website',
-			content: [
-				'This website stores your theme and animation preferences in your browser. ',
-				{
-					label: 'GitHub Pages',
-					href: 'https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages',
-				},
-				', which hosts this page, logs visitors’ IP addresses for security purposes.',
-			],
-		},
+		websitePrivacySection,
 		{
 			heading: 'Updates',
 			content: ['This policy will be updated if the game’s privacy practices change.'],
 		},
-	] satisfies PolicySection[],
-};
+	],
+} satisfies PrivacyPolicy;

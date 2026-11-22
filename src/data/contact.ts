@@ -1,5 +1,7 @@
 import type { ContactHeroContent, Link, ThemeImageAssets } from './types';
 
+export const emailAddress = 'luke@lukelachlanday.dev';
+
 export const contact = {
 	title: 'Luke Lachlan Day | Contact',
 	description: 'Contact links for Luke Lachlan Day.',
@@ -25,7 +27,7 @@ export const contact = {
 	links: [
 		{
 			label: 'Email',
-			href: 'mailto:luke@lukelachlanday.dev',
+			href: `mailto:${emailAddress}`,
 			display: 'Email me',
 			icon: '/assets/icons/email.svg',
 			contactIcon: '/assets/icons/contact-email.webp',
